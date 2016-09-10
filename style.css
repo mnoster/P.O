@@ -1,0 +1,85 @@
+html{
+    background-color: #3bc8ff;
+}
+nav{
+    position: fixed;
+    top: 0;
+}
+body{
+    background-color:#3bc8ff;
+    /*background: url("images/bluebrain.png"); center center fixed;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin:0;
+    padding:0;*/
+}
+#logo{
+    /*background:url("images/logo.png");
+    background-repeat: no-repeat;*/
+
+    height: 30vh;
+    background-color: transparent;
+
+}
+#searchbar{
+    margin-top:90px;
+}
+#info1{
+    margin: 40px 0 0 32px ;
+
+}
+
+#footcontent{
+    text-align: center;
+    padding:10px 0 0 0;
+    color:black;
+}
+select{
+    margin: 5px;
+}
+#title{
+    margin-top: 60px;
+}
+/*-------------Client Form Specs---------------------*/
+.client_form{
+    border: 1px solid black;
+    padding: 10px;
+}
+.third_head{
+    color: #0a06a2;
+}
+/*------------Login Form---------------*/
+.login-form{
+    text-align: center;
+}
+.second-form {
+    margin-bottom: 150px;
+}
+/*-----------------dashboard list---------------*/
+#dashboard-list{
+    list-style-type: none;
+    margin-left: -25px;
+}
+#dashboard-list li{
+    margin-top: 10px;
+}
+#dashboard-list button{
+    width:100%
+}
+
+.footer{
+    bottom:0;
+    height:5vh;
+    position:fixed;
+    width:100%;
+    background-color: #d6d6d6;
+
+}
+/*------------------make new client------------*/
+.next{
+    margin-top:15px;
+    text-align:right;
+}
