@@ -3,42 +3,45 @@ var app = angular.module("psychoApp", ["ngRoute"]);
 app.config(function($routeProvider){
     $routeProvider
         .when('/',{
-            templateUrl: '/Psychorigins Alpha/home.php'
+            templateUrl: '/P.O/home.php'
             // controller: 'mainController'
         })
         .when('/about',{
-            templateUrl: '/Psychorigins Alpha/About.php'
+            templateUrl: '/P.O/About.php'
             // controller:'secondController'
         })
         .when('/form',{
-            templateUrl: '/Psychorigins Alpha/Form.php'
+            templateUrl: '/P.O/Form.php'
             // controller: 'thirdController'
         })
         .when('/login',{
-            templateUrl: '/Psychorigins Alpha/login.php'
+            templateUrl: '/P.O/login.php'
             // controller: 'thirdController'
         })
         .when('/register',{
-            templateUrl: '/Psychorigins Alpha/register.php'
+            templateUrl: '/P.O/register.php'
             // controller: 'thirdController'
         })
         .when('/contact',{
-            templateUrl: '/Psychorigins Alpha/contact.php'
+            templateUrl: '/P.O/contact.php'
             // controller: 'thirdController'
         })
         .when('/FAQ',{
-            templateUrl: '/Psychorigins Alpha/FAQ.php'
+            templateUrl: '/P.O/FAQ.php'
             // controller: 'thirdController'
         })
         .when('/dashboard',{
-            templateUrl: '/Psychorigins Alpha/dashboard.php'
+            templateUrl: '/P.O/dashboard.php'
             // controller: 'thirdController'
         })
         .when('/create_client',{
-            templateUrl: '/Psychorigins Alpha/create_client.php'
+            templateUrl: '/P.O/create_client.php'
+        })
+        .when('/logout',{
+            templateUrl: '/P.O/logout.php'
         })
         .when('/login',{
-            templateUrl: '/Psychorigins Alpha/login.php'
+            templateUrl: '/P.O/login.php'
         })
         .otherwise({
             redirectTo: '/'
@@ -82,7 +85,6 @@ app.provider('loginData', function () {
 // app.config(function ($httpProvider){
 //    $httpProvider.defaults.headers.post =  {'Content-Type': 'application/x-www-form-urlencoded'};
 //     // $httpProvider.defaults.
-//
 // });
 //Include your service in the function parameter list along with any other services you may want to use
 app.controller('loginController', function (loginData, $scope) {
@@ -98,5 +100,9 @@ app.controller('loginController', function (loginData, $scope) {
                 new_self.data = response.data;
             })
     };
+});
+app.controller('logoutController', function (loginData, $scope) {
+    //Create a variable to hold this, DO NOT use the same name you used in your provider
+    var new_self = this;
 
 });

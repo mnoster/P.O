@@ -44,6 +44,8 @@ if(empty($_SESSION)){
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="#logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+
             </ul>
         </div>
     </div>

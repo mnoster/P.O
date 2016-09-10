@@ -83,3 +83,8 @@ select{
     margin-top:15px;
     text-align:right;
 }
+/*-------logout------*/
+.logout-contain{
+    text-align: center;
+    margin-top: 25vh;
+}
