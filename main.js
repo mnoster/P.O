@@ -1,4 +1,7 @@
 var app = angular.module("psychoApp", ["ngRoute"]);
+app.config(function ($httpProvider){
+    $httpProvider.defaults.headers.post =  {'Content-Type': 'application/x-www-form-urlencoded'};
+});
 
 app.config(function($routeProvider){
     $routeProvider
@@ -34,6 +37,10 @@ app.config(function($routeProvider){
             templateUrl: '/P.O/dashboard.php'
             // controller: 'thirdController'
         })
+        .when('/my_forms',{
+            templateUrl: '/P.O/my_forms.php'
+            // controller: 'thirdController'
+        })
         .when('/create_client',{
             templateUrl: '/P.O/create_client.php'
         })
@@ -44,11 +51,29 @@ app.config(function($routeProvider){
             templateUrl: '/P.O/select_form.php'
         })
         .when('/logout',{
-            templateUrl: '/P.O/logout.php',
-            controller: 'logoutController'
+            templateUrl: '/P.O/logout.php'
+            // controller: 'logoutController'
         })
         .when('/login',{
             templateUrl: '/P.O/login.php'
+        })
+        .when('/form1',{
+            templateUrl: '/P.O/form1.php'
+        })
+        .when('/edit_form1',{
+            templateUrl: '/P.O/edit_form1.php'
+        })
+        .when('/form2',{
+            templateUrl: '/P.O/form2.php'
+        })
+        .when('/edit_form2',{
+            templateUrl: '/P.O/edit_form2.php'
+        })
+        .when('/form3',{
+            templateUrl: '/P.O/form3.php'
+        })
+        .when('/edit_form3',{
+            templateUrl: '/P.O/edit_form3.php'
         })
         .otherwise({
             redirectTo: '/'
@@ -70,7 +95,7 @@ app.provider('loginData', function () {
                     url: api_url,
                     method: "POST",
                     dataType: 'json',
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    // headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                     data: data
                 }).then(function success(response) {
                     console.log("success: " , response.data.success);
@@ -108,8 +133,21 @@ app.controller('loginController', function (loginData, $scope) {
             })
     };
 });
-app.controller('logoutController', function (loginData, $scope) {
-    //Create a variable to hold this, DO NOT use the same name you used in your provider
-    var new_self = this;
 
+app.provider('logoutData', function () {
+    console.log("logout provider");
+    var api_url = "logout_handler.php";
+    this.$get = function ($http, $log) {
+        $http.post(api_url)
+            .then((function success(response){
+                console.log("this is logout: ",response);
+            }));
+    }
+});
+
+app.controller('logoutController', function () {
+    //Add a function called getData to your controller to call the SGT API
+    this.logout_user = function (logoutData){
+        logoutData.callApi();
+    };
 });

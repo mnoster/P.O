@@ -1,9 +1,4 @@
-/**
- * Created by njporter10 on 9/8/16.
- */
-/**
- * Created by njporter10 on 9/3/16.
- */
+
 $(document).on('click', "#create_user", function () {
     create_user();
 });

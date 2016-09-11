@@ -16,13 +16,12 @@ if($password !== $check_password){
     die("Error");
 }
 $encrypted_pass = sha1($password);
-
+$password = " ";
 $output = [];
 
 $query = "INSERT INTO users (email, password, username) VALUES ('$email' , '$encrypted_pass' , '$username')";
 
 mysqli_query($conn,$query);
-$password = " ";
 
 $rows_affected = mysqli_affected_rows($conn);
 

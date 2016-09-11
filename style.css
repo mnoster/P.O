@@ -69,14 +69,15 @@ select{
 #dashboard-list button{
     width:100%
 }
-
 .footer{
     bottom:0;
     height:5vh;
     position:fixed;
     width:100%;
     background-color: #d6d6d6;
-
+}
+.my-info{
+    background-color: #d500ff;
 }
 /*------------------make new client------------*/
 .next{
@@ -100,4 +101,9 @@ select{
 }
 .form-icon:hover{
     color: yellow;
+}
+/*------default form-------*/
+.main-contain{
+    border-radius: 4px;
+    background-color: rgba(222, 222, 222, 0.68);
 }

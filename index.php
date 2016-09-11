@@ -51,10 +51,5 @@ if(empty($_SESSION)){
     </div>
 </nav>
 <div ng-view></div>
-<!--<footer class="footer">-->
-<!--    <div class="container" id="footcontent">-->
-<!--        <p class="text-muted">Copyright 2016 NJP PsychOrigins.com</p>-->
-<!--    </div>-->
-<!--</footer>-->
 </body>
 </html>

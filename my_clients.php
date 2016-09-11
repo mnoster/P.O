@@ -3,7 +3,7 @@
         <h2>My Clients</h2>
         <hr>
         <div class="col-xs-12">
-            <ul ng-repeat="">
+            <ul>
 
             </ul>
         </div>
@@ -44,9 +44,9 @@
             <input type="text" class="form-control" name="clientGrade" id="clientGrade"
                    placeholder="Client Grade">
         </div>
-        <button type="button" class="btn btn-success" ng-click="addClicked()">Add</button>
-        <button type="button" class="btn btn-default" ng-click="cancelClicked()">Cancel</button>
-        <button type="button" class="btn btn-default" ng-click="getDataFromServer()">Get Data From Server</button>
+        <button type="button" class="btn btn-success" >Add</button>
+        <button type="button" class="btn btn-default" >Cancel</button>
+        <button type="button" class="btn btn-default" >Get Data From Server</button>
     </div>
     <!--</div>-->
     <!--<div class="row">-->
