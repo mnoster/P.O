@@ -13,10 +13,9 @@
             </form>
             <div class="row">
                 <div class = "col-xs-12 next" >
-                    <button id="next" class="btn btn-success glyphicon glyphicon-chevron-right"></button>
+                  <a  href="#select_form"><button id="next" class="btn btn-success glyphicon glyphicon-chevron-right"></button></a>
                 </div>
             </div>
         </div>
-
     </div>
 </div>

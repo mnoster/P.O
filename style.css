@@ -88,3 +88,16 @@ select{
     text-align: center;
     margin-top: 25vh;
 }
+/*--------my clients---------*/
+.client-contain{
+    background-color: rgba(145, 145, 145, 0.33);
+    border-radius:3px;
+}
+/*-----------select form---------------*/
+.form-icon{
+    font-size:200px;
+    color:black;
+}
+.form-icon:hover{
+    color: yellow;
+}

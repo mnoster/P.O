@@ -37,8 +37,15 @@ app.config(function($routeProvider){
         .when('/create_client',{
             templateUrl: '/P.O/create_client.php'
         })
+        .when('/my_clients',{
+            templateUrl: '/P.O/my_clients.php'
+        })
+        .when('/select_form',{
+            templateUrl: '/P.O/select_form.php'
+        })
         .when('/logout',{
-            templateUrl: '/P.O/logout.php'
+            templateUrl: '/P.O/logout.php',
+            controller: 'logoutController'
         })
         .when('/login',{
             templateUrl: '/P.O/login.php'
