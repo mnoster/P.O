@@ -148,11 +148,11 @@ app.provider('logoutData', function () {
     }
 });
 
-app.controller('logoutController', function () {
+app.controller('logoutController', function (logoutData) {
     //Add a function called getData to your controller to call the SGT API
-    this.logout_user = function (logoutData){
-        logoutData.callApi();
-    };
+    // this.logout_user = function (logoutData){
+    //     logoutData.callApi();
+    // };
 });
 
 
