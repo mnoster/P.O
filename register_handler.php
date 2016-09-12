@@ -38,3 +38,49 @@ if($rows_affected > 0){
     print($output);
 }
 ?>
+
+if(empty($first_success)){
+$first_success =addslashes($_SESSION['1st_success']);
+}else{
+$first_success =addslashes($_POST['1st_success']);
+}
+if(empty($second_success)){
+$second_success =addslashes($_SESSION['2nd_success']);
+}else{
+$second_success =addslashes($_POST['2nd_success']);
+}
+if(empty($second_success)){
+$second_success =addslashes($_SESSION['2nd_success']);
+}else{
+$second_success =addslashes($_POST['2nd_success']);
+}
+if(empty($third_success)){
+$third_success =addslashes($_SESSION['3rd_success']);
+}else{
+$third_success =addslashes($_POST['3rd_success']);
+}
+if(empty($forth_success)){
+$forth_success =addslashes($_SESSION['4th_success']);
+}else{
+$forth_success =addslashes($_POST['4th_success']);
+}
+if(empty($fifth_success)){
+$fifth_success =addslashes($_SESSION['5th_success']);
+}else{
+$fifth_success =addslashes($_POST['5th_success']);
+}
+if(empty($sixth_success)){
+$sixth_success =addslashes($_SESSION['6th_success']);
+}else{
+$sixth_success =addslashes($_POST['6th_success']);
+}
+if(empty($seventh_success)){
+$seventh_success =addslashes($_SESSION['7th_success']);
+}else{
+$seventh_success =addslashes($_POST['7th_success']);
+}
+if(empty($eighth_success)){
+$eighth_success =addslashes($_SESSION['8th_success']);
+}else{
+$eighth_success =addslashes($_POST['8th_success']);
+}

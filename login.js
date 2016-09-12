@@ -1,53 +1,54 @@
-/**
- * Created by njporter10 on 9/8/16.
- */
-$(document).on('click', ".login-button", function () {
-    user_login();
-});
-function user_login() {
-    var username = $('#username').val();
-    console.log(username);
-    var password = $('#password').val();
-    console.log(password);
-
-    $.ajax({
-        url: 'login_handler.php',
-        method: 'POST',
-        data: {
-            username: username,
-            password: password
-        },
-        dataType: 'json',
-        success: function (response) {
-            console.log("response is success: ", response);
-            if (response.success == true) {
-                populate_user_profile_info(username);
-                window.location.replace('create_profile.php');
+app.provider('loginData', function () {
+    console.log("provider");
+    this.self = this;
+    var api_url = "login_handler.php";
+    this.$get = function ($http, $q, $log) {
+        console.log("$get");
+        return {
+            callApi: function ($scope,user) {
+                var data = $.param({username: user.username,password: user.password});
+                var user_info = user;
+                console.log("user: " , user.username, 'password: ', user.password);
+                var defer = $q.defer();
+                $http({
+                    url: api_url,
+                    method: "POST",
+                    dataType: 'json',
+                    // headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: data
+                }).then(function success(response) {
+                    console.log("success: " , response.data.success);
+                    if(response.data.success == true){
+                        window.location.replace("index.php");
+                    }
+                    defer.resolve(response)
+                }), function error(response) {
+                    $log.error("$http fail: ", response);
+                    defer.reject("Error msg here");
+                };
+                return defer.promise;
             }
-        },
-        error: function (response) {
-            console.log("there was an error: ", response);
-            $('<div>').addClass("text-danger").text("Invalid code").appendTo('#error-message');
         }
-    })
-}
-function populate_user_profile_info(username){
-    $.ajax({
-        url: 'user_session.php',
-        method: 'POST',
-        data: {
-            username: username
-        },
-        dataType: 'json',
-        success: function (response) {
-            console.log("get user info is success: ", response);
-        },
-        error: function (response) {
-            console.log("there was an error: ", response);
-//                $('<div>').addClass("text-danger").text("Invalid code").appendTo('#error-message');
-        }
-    })
-}
+    };
+});
 
-
-//-------angular script--------------
+//Config your provider here to set the api_key and the api_url
+// app.config(function ($httpProvider){
+//    $httpProvider.defaults.headers.post =  {'Content-Type': 'application/x-www-form-urlencoded'};
+//     // $httpProvider.defaults.
+// });
+//Include your service in the function parameter list along with any other services you may want to use
+app.controller('loginController', function (loginData, $scope) {
+    //Create a variable to hold this, DO NOT use the same name you used in your provider
+    var new_self = this;
+    //Add an empty data object to your controller, make sure to call it 'data'
+    $scope.data = {};
+    //Add a function called getData to your controller to call the SGT API
+    this.getData = function (user){
+        console.log("get data fn, this is user: " , user);
+        loginData.callApi($scope,user)
+            .then(function success(response){
+                new_self.data = response.data;
+            })
+    };
+});

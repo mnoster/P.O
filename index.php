@@ -18,6 +18,8 @@ if(empty($_SESSION)){
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="http://code.angularjs.org/1.3.15/angular-route.js"></script>
     <script src="main.js"></script>
+    <script src="login.js"></script>
+    <script src="register_control.js"></script>
 </head>
 <body ng-app="psychoApp">
 <nav class="navbar navbar-inverse">
@@ -45,6 +47,7 @@ if(empty($_SESSION)){
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                <li><a href="#register"><span class=""></span>Register</a></li>
 
             </ul>
         </div>
