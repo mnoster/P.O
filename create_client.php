@@ -1,5 +1,5 @@
 <div class="container login-background">
-    <div class="col-xs-12 col-sm-8 col-md-5">
+    <div class="col-xs-12 col-sm-9 ">
         <div class="col-xs-12 contact-inner">
             <h2>Create new client</h2>
             <hr>

@@ -61,5 +61,6 @@ if (empty($_SESSION)) {
     </div>
 </nav>
 <div ng-view></div>
+
 </body>
 </html>

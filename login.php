@@ -69,5 +69,10 @@ if(empty($_SESSION)){
         </div>
     </div>
 </div>
+<footer>
+    <div class="row footer">
+        <img src="Images/hipaa_blue.png" height="100px" width="200px">
+    </div>
+</footer>
 </body>
 </html>

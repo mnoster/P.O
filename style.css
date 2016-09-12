@@ -69,12 +69,14 @@ select{
 #dashboard-list button{
     width:100%
 }
-.footer{
+footer{
     bottom:0;
-    height:5vh;
+    text-align: right;
     position:fixed;
     width:100%;
-    background-color: #d6d6d6;
+}
+.footer{
+    margin-right:10px;
 }
 .my-info{
     background-color: #d500ff;

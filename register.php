@@ -17,3 +17,8 @@
     <p>Already a member? Sign in <a href="login.php">here</a></p>
     <div id="#error-message"></div>
 </div>
+<footer>
+    <div class="row footer">
+        <img src="Images/hipaa_blue.png" height="100px" width="200px">
+    </div>
+</footer>
