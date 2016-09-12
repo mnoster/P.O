@@ -11,7 +11,7 @@ if(empty($_POST['username']) || empty($_POST['password'])){
 };
 $username = mysqli_real_escape_string($conn,$_POST['username']);
 $password = mysqli_real_escape_string($conn,$_POST['password']);
-$encrypted_pass = sha1($password);
+$encrypted_pass = password_hash($password, PASSWORD_DEFAULT);
 $password = "";
 $output = [];
 
