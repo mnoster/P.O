@@ -106,4 +106,12 @@ select{
 .main-contain{
     border-radius: 4px;
     background-color: rgba(222, 222, 222, 0.68);
+
+}
+.content-block{
+    background-color: rgba(245, 245, 245, 0.75);
+    border-radius: 5px;
+    border:1px solid black;
+    padding:10px;
+    margin:5px 0 5px 0;
 }

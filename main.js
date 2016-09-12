@@ -33,6 +33,9 @@ app.config(function($routeProvider){
             templateUrl: '/P.O/FAQ.php'
             // controller: 'thirdController'
         })
+        .when('/compliance',{
+            templateUrl: '/P.O/Compliance.php'
+        })
         .when('/dashboard',{
             templateUrl: '/P.O/dashboard.php'
             // controller: 'thirdController'
@@ -166,6 +169,7 @@ app.controller('formController', function ($scope) {
     $scope.therapy_years = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60];
     $scope.adopted = ['yes','no'];
     $scope.ethnicity = ['Chinese','Japanese','Acholi','Akan','Albanian','Amhara','Arab','Arminian','Assyrian','Azerbaijanis','Balochis','Bamars','Bambara','Bashkris','Basque','Bemba','Bengali','Berbers','Beti-Pahuin','Bihari','Bosniaks','Brahui','Bulgarian','Catalan','Chuvash','Circassian','Chewa','Croats','Czechs','Danes','Dinka','Dutch','English','Estonian','Faroese','Finn','French','Frisians','Fula','Ganada','German','Greek','Georgian','Gujarati','Igbo','Hindunstani','Hui','Hungarian','Icelander','Irish','Italian','Javanese','Jewish','Kazakh','Kongo','Korean','Kurd','Lebanese','Macedonian','Malays','Marathi','Nepali','Persian','Polish','Portugese','Punjab','Romanian','Russian','Scottish','Serbian','Sinhalese','Slovik','Spanish','Swedish','Tajik','Thai','Turkish','Ukrainian','Vietnamese','Welsh','French','Filipian','Brazilian','Peruvian','Canadian','Jamacian','Ecuadorian','Mexican','Iranian','Egyptian','Greek','Syrian','Bolivian'];
+
     //Add an empty data object to your controller, make sure to call it 'data'
     $scope.data = {};
     //Add a function called getData to your controller to call the SGT API

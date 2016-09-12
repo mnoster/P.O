@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(empty($_SESSION)){
+if (empty($_SESSION)) {
     header("Location: login.php"); /* Redirect browser */
     exit();
 }
@@ -37,14 +37,20 @@ if(empty($_SESSION)){
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#home">Home</a></li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">Research <span class="caret"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown">Tools<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#dashboard">Dashboard</a></li>
-                        <li><a href="#FAQ">FAQ</a></li>
                     </ul>
                 </li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Info<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#FAQ">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#compliance">Compliance</a></li>
+                    </ul>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
