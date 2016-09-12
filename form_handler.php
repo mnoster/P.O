@@ -99,6 +99,16 @@ if(empty($current_medications)){
 }else{
     $current_medications =addslashes($_POST['current_medications']);
 }
+if(empty($past_medications)){
+    $past_medications =addslashes($_SESSION['past_medications']);
+}else{
+    $past_medications =addslashes($_POST['past_medications']);
+}
+if(empty($homeless)){
+    $homeless =addslashes($_SESSION['homeless']);
+}else{
+    $homeless =addslashes($_POST['homeless']);
+}
 
 //------diagnosis------------------
 if(empty($first_Diagnosis)){
@@ -247,7 +257,7 @@ $full_name = $first_name ." ". $last_name;
 
 $output = [];
 
-$query = "INSERT INTO people (full_name, clinician_ID, age, gender, ethnicity, state, country, parental_situation, relationship_status, number_of_children, brain_trauma, education, 1st_Past_Diagnosis, 2nd_Past_Diagnosis, 3rd_Past_Diagnosis, 4th_Past_Diagnosis, 5th_Past_Diagnosis, 6th_Past_Diagnosis, 7th_Past_Diagnosis, 8th_Past_Diagnosis, 1st_treatment, 2nd_treatment, 3rd_treatment, 4th_treatment, 5th_treatment, 6th_treatment, 7th_treatment, 8th_treatment, 1st_success, 2nd_success, 3rd_success, 4th_success, 5th_success, 6th_success, 7th_success, 8th_success, Arrested, Prison, Employed, career, sexual_orientation, current_medications, past_medications, homeless) VALUES ('$email' , '$encrypted_pass' , '$username')";
+$query = "UPDATE people SET full_name='$full_name', clinician_ID='$clinician_ID', age='$age', gender='$gender', ethnicity='$ethnicity', state='$state', country='$country', parental_situation'$country', relationship_status='$relationship_status', number_of_children='$number_of_children', brain_trauma='$brain_trauma', education='$education', 1st_Past_Diagnosis='$first_Diagnosis', 2nd_Past_Diagnosis='$second_Diagnosis', 3rd_Past_Diagnosis='$third_Diagnosis', 4th_Past_Diagnosis='$forth_Diagnosis', 5th_Past_Diagnosis='$fifth_Diagnosis', 6th_Past_Diagnosis='$sixth_Diagnosis', 7th_Past_Diagnosis='$seventh_Diagnosis', 8th_Past_Diagnosis='$eighth_Diagnosis', 1st_treatment='$first_treatment', 2nd_treatment='$second_treatment', 3rd_treatment='$third_treatment', 4th_treatment='$forth_treatment', 5th_treatment='$fifth_treatment', 6th_treatment='$sixth_treatment', 7th_treatment='$seventh_treatment', 8th_treatment='$eighth_treatment', 1st_success='$first_success', 2nd_success='$second_success', 3rd_success='$third_success', 4th_success='$forth_success', 5th_success='$fifth_success', 6th_success='$sixth_success', 7th_success='$seventh_success', 8th_success='$eighth_success', Arrested='$arrested', Prison='$prison', Employed='$employed', career='$career', sexual_orientation='$sexual_orientation', current_medications='$current_medications', past_medications='$past_medications', homeless='$homeless') WHERE client_ID = $user_ID";
 
 mysqli_query($conn,$query);
 
