@@ -9,6 +9,7 @@ $lastName = addslashes($_POST['last_name']);
 $form = addslashes($_POST['form']);
 $fullName = $firstName ." ". $lastName;
 $active = addslashes($_POST['active']);
+$dr_id = addslashes($_SESSION['ID']);
 //
 //if(empty($firstName . $lastName . $active . $form)){
 //    $output['message'] = 'fill out all fields';
@@ -20,8 +21,8 @@ $active = addslashes($_POST['active']);
 
 $output = [];
 
-$query = "INSERT INTO names (first_name, last_name, full_name, active, form) 
-          VALUES ('$firstName' , '$lastName' , '$fullName', '$active', '$form')";
+$query = "INSERT INTO names (first_name, last_name, full_name, active, form, dr_id) 
+          VALUES ('$firstName' , '$lastName' , '$fullName', '$active', '$form', '$dr_id')";
 
 mysqli_query($conn,$query);
 
