@@ -21,6 +21,7 @@ print_r($_SESSION);
     <script src="main.js"></script>
 <!--    <script src="login.js"></script>-->
     <script src="register_control.js"></script>
+    <script src="tablesort"></script>
     <script src="form_script.js"></script>
 </head>
 <body ng-app="psychoApp">

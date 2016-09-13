@@ -1,6 +1,9 @@
 var app = angular.module("psychoApp", ["ngRoute"]);
+// document.getElementById('client-id').tablesorter();
+
 app.config(function ($httpProvider) {
     $httpProvider.defaults.headers.post = {'Content-Type': 'application/x-www-form-urlencoded'};
+
 });
 
 app.config(function ($routeProvider) {
@@ -122,7 +125,7 @@ app.provider('loginData', function () {
                         self.populate_user_profile_info(user.username, $http);
                         data = " ";
                         user_info = " ";
-                        // window.location.replace("index.php");
+                        window.location.replace("index.php");
                     }
                     defer.resolve(response);
 
@@ -136,8 +139,6 @@ app.provider('loginData', function () {
     };
 
 });
-
-
 //Include your service in the function parameter list along with any other services you may want to use
 app.controller('loginController', function (loginData, $scope) {
     //Create a variable to hold this, DO NOT use the same name you used in your provider
@@ -154,24 +155,28 @@ app.controller('loginController', function (loginData, $scope) {
     };
 });
 
+//-------------------logout data-------------------------
+
+app.controller('logoutController', function () {
+    //Add a function called getData to your controller to call the SGT API
+    this.logout_user = function (){
+        logoutData.callApi()
+            .then(function success(response){
+                new_self.data = response.data;
+            })
+    };
+});
+
 app.provider('logoutData', function () {
     console.log("logout provider");
     var api_url = "logout_handler.php";
     this.$get = function ($http, $log) {
         $http.post(api_url)
-            .then((function success(response) {
-                console.log("this is logout: ", response);
+            .then((function success(response){
+                console.log(response);
             }));
     }
 });
-
-app.controller('logoutController', function (logoutData) {
-    //Add a function called getData to your controller to call the SGT API
-    // this.logout_user = function (logoutData){
-    //     logoutData.callApi();
-    // };
-});
-
 
 //------------form Controller------------
 app.controller('formController', function ($scope) {
@@ -186,7 +191,6 @@ app.controller('formController', function ($scope) {
     $scope.therapy_years = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60];
     $scope.adopted = ['yes', 'no'];
     $scope.ethnicity = ['Chinese', 'Japanese', 'Acholi', 'Akan', 'Albanian', 'Amhara', 'Arab', 'Arminian', 'Assyrian', 'Azerbaijanis', 'Balochis', 'Bamars', 'Bambara', 'Bashkris', 'Basque', 'Bemba', 'Bengali', 'Berbers', 'Beti-Pahuin', 'Bihari', 'Bosniaks', 'Brahui', 'Bulgarian', 'Catalan', 'Chuvash', 'Circassian', 'Chewa', 'Croats', 'Czechs', 'Danes', 'Dinka', 'Dutch', 'English', 'Estonian', 'Faroese', 'Finn', 'French', 'Frisians', 'Fula', 'Ganada', 'German', 'Greek', 'Georgian', 'Gujarati', 'Igbo', 'Hindunstani', 'Hui', 'Hungarian', 'Icelander', 'Irish', 'Italian', 'Javanese', 'Jewish', 'Kazakh', 'Kongo', 'Korean', 'Kurd', 'Lebanese', 'Macedonian', 'Malays', 'Marathi', 'Nepali', 'Persian', 'Polish', 'Portugese', 'Punjab', 'Romanian', 'Russian', 'Scottish', 'Serbian', 'Sinhalese', 'Slovik', 'Spanish', 'Swedish', 'Tajik', 'Thai', 'Turkish', 'Ukrainian', 'Vietnamese', 'Welsh', 'French', 'Filipian', 'Brazilian', 'Peruvian', 'Canadian', 'Jamacian', 'Ecuadorian', 'Mexican', 'Iranian', 'Egyptian', 'Greek', 'Syrian', 'Bolivian'];
-
     //Add an empty data object to your controller, make sure to call it 'data'
     $scope.data = {};
     //Add a function called getData to your controller to call the SGT API
@@ -194,6 +198,57 @@ app.controller('formController', function ($scope) {
         console.log("get data fn, this is user: ", form);
         form.callApi($scope, form)
             .then(function success(response) {
+                new_self.data = response.data;
+            })
+    };
+});
+//-----------client form controller------------
+app.provider('clientData', function () {
+
+    console.log(" client provider");
+    var self = this;
+    var api_url = "add_client_handler.php";
+    this.$get = function ($http, $q, $log) {
+        console.log("$get");
+        return {
+            callApi: function ($scope,client) {
+                var data = $.param({first_name: client.first_name, last_name:client.last_name, number_of_appts:client.number_of_appts});
+                var user_info = signup;
+                console.log("fisrt name: " , client.first_name, 'last name: ', client.last_name);
+                var defer = $q.defer();
+                $http({
+                    url: api_url,
+                    method: "POST",
+                    dataType: 'json',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: data
+                }).then(function success(response) {
+                    console.log("success: " , response.data.success);
+                    if(response.data.success == true){
+                        window.location.replace("index.php");
+                    }
+                    defer.resolve(response)
+                }), function error(response) {
+                    $log.error("$http fail: ", response);
+                    defer.reject("Error msg here");
+                };
+                return defer.promise;
+            }
+        }
+    };
+});
+
+//Include your service in the function parameter list along with any other services you may want to use
+app.controller('clientController', function (clientData, $scope) {
+    //Create a variable to hold this, DO NOT use the same name you used in your provider
+    var new_self = this;
+    //Add an empty data object to your controller, make sure to call it 'data'
+    $scope.data = {};
+    //Add a function called getData to your controller to call the SGT API
+    this.sendClient= function (client){
+        console.log("get data fn, this is user: " , client);
+        registerData.callApi($scope,client)
+            .then(function success(response){
                 new_self.data = response.data;
             })
     };
