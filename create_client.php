@@ -1,5 +1,5 @@
 <div class="container login-background">
-    <div class="col-xs-12 col-sm-8 col-md-5">
+    <div class="col-xs-12 col-sm-9 ">
         <div class="col-xs-12 contact-inner">
             <h2>Create new client</h2>
             <hr>
@@ -13,10 +13,9 @@
             </form>
             <div class="row">
                 <div class = "col-xs-12 next" >
-                    <button id="next" class="btn btn-success glyphicon glyphicon-chevron-right"></button>
+                  <a href="#select_form"><button id="next" class="btn btn-success glyphicon glyphicon-chevron-right"></button></a>
                 </div>
             </div>
         </div>
-
     </div>
 </div>

@@ -1,9 +1,10 @@
 <?php
 session_start();
-if(empty($_SESSION)){
+if (empty($_SESSION)) {
     header("Location: login.php"); /* Redirect browser */
     exit();
 }
+print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +19,10 @@ if(empty($_SESSION)){
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="http://code.angularjs.org/1.3.15/angular-route.js"></script>
     <script src="main.js"></script>
+<!--    <script src="login.js"></script>-->
+    <script src="register_control.js"></script>
+<!--    <script src="tablesort"></script>-->
+    <script src="form_script.js"></script>
 </head>
 <body ng-app="psychoApp">
 <nav class="navbar navbar-inverse">
@@ -34,25 +39,30 @@ if(empty($_SESSION)){
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#home">Home</a></li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">Research <span class="caret"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown">Tools<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#dashboard">Dashboard</a></li>
-                        <li><a href="#FAQ">FAQ</a></li>
                     </ul>
                 </li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Info<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#FAQ">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#compliance">Compliance</a></li>
+                    </ul>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="#logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                <li><a href="#register"><span class=""></span>Register</a></li>
+
             </ul>
         </div>
     </div>
 </nav>
 <div ng-view></div>
-<footer class="footer">
-    <div class="container" id="footcontent">
-        <p class="text-muted">Copyright 2016 NJP PsychOrigins.com</p>
-    </div>
-</footer>
+
 </body>
 </html>

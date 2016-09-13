@@ -69,17 +69,54 @@ select{
 #dashboard-list button{
     width:100%
 }
-
-.footer{
+footer{
     bottom:0;
-    height:5vh;
+    text-align: right;
     position:fixed;
     width:100%;
-    background-color: #d6d6d6;
-
+}
+.footer{
+    margin-right:10px;
+}
+.my-info{
+    background-color: #d500ff;
 }
 /*------------------make new client------------*/
 .next{
     margin-top:15px;
     text-align:right;
+}
+/*-------logout------*/
+.logout-contain{
+    text-align: center;
+    margin-top: 25vh;
+}
+/*--------my clients---------*/
+.client-contain{
+    background-color: rgba(145, 145, 145, 0.33);
+    border-radius:3px;
+}
+.display_error{
+    background-color: red;
+}
+/*-----------select form---------------*/
+.form-icon{
+    font-size:200px;
+    color:black;
+}
+.form-icon:hover{
+    color: yellow;
+}
+/*------default form-------*/
+.main-contain{
+    border-radius: 4px;
+    background-color: rgba(222, 222, 222, 0.68);
+
+}
+.content-block{
+    background-color: rgba(245, 245, 245, 0.75);
+    border-radius: 5px;
+    border:1px solid black;
+    padding:10px;
+    margin:5px 0 5px 0;
 }

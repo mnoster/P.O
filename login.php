@@ -21,6 +21,7 @@ if(empty($_SESSION)){
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="http://code.angularjs.org/1.3.15/angular-route.js"></script>
     <script src="main.js"></script>
+<!--    <script src="login.js"></script>-->
 </head>
 <body ng-app="psychoApp">
 <nav class="navbar navbar-inverse">
@@ -69,9 +70,9 @@ if(empty($_SESSION)){
         </div>
     </div>
 </div>
-<footer class="footer">
-    <div class="container" id="footcontent">
-        <p class="text-muted">Copyright 2016 NJP PsychOrigins.com</p>
+<footer>
+    <div class="row footer">
+        <img src="Images/hipaa_blue.png" height="100px" width="200px">
     </div>
 </footer>
 </body>
