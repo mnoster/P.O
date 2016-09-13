@@ -19,7 +19,7 @@ print_r($_SESSION);
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="http://code.angularjs.org/1.3.15/angular-route.js"></script>
     <script src="main.js"></script>
-    <script src="login.js"></script>
+<!--    <script src="login.js"></script>-->
     <script src="register_control.js"></script>
     <script src="form_script.js"></script>
 </head>
