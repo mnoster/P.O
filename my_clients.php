@@ -1,4 +1,4 @@
-<div class="container" ng-controller="clientController as cc">
+<div class="container" >
     <div class="row">
         <h2>My Clients</h2>
         <hr>
@@ -9,7 +9,7 @@
         </div>
     </div>
 </div>
-<div class="container client-contain">
+<div class="container client-contain" ng-controller="clientController as cc">
     <div >
         <!-- only show this element when the isnt on mobile -->
         <h2 class="page-header hidden-xs col-sm-12 ">Client Table
@@ -35,17 +35,23 @@
             </span>
             <input ng-model="cc.client.last_name" type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name">
         </div>
-
-        <div class="input-group form-group">
+        <div class="col-xs-6">
             <h4>Active</h4>
-            <input ng-model="cc.client.active" type="checkbox" class="form-control" name="clientGrade" id="clientGrade" checked>
+            <input ng-model="cc.client.active" type="checkbox" class="form-control" name="active" id="active" checked>
         </div>
-        <button  ng-click ="cc.sendClient(cc.client)" class="btn btn-success">Add</button>
+
+        <div class="input-group form-group ">
+            <h4>Form</h4>
+            <select  ng-model="cc.client.form"  ng-options="x for x in cc.form_options">
+                <option disabled selected value> -- select a form -- </option>
+            </select>
+        </div>
+        <button ng-mouseup = "cc.sendClient(cc.client)" class="btn btn-success">Add</button>
         <button type="button" class="btn btn-default" >Cancel</button>
     </div>
     <!--</div>-->
     <!--<div class="row">-->
-    <div class="client-list-container col-sm-7">
+    <div class="client-list-container col-sm-8">
         <table id="client-list" class="client-list table table-hover">
             <thead>
             <tr>

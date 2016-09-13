@@ -204,7 +204,6 @@ app.controller('formController', function ($scope) {
 });
 //-----------client form controller------------
 app.provider('clientData', function () {
-
     console.log(" client provider");
     var self = this;
     var api_url = "add_client_handler.php";
@@ -212,12 +211,13 @@ app.provider('clientData', function () {
         console.log("$get");
         return {
             callApi: function ($scope,client) {
-                var data = $.param({first_name: client.first_name, last_name:client.last_name, active:client.active});
-                if(!client.first_name || !client.last_name || !client.active){
+                var data = $.param({first_name: client.first_name, last_name:client.last_name, active:client.active, form:client.form});
+                if(!client.first_name || !client.last_name || !client.active || !client.form){
+                    console.log('fill out all the fields');
                     return;
                 }
                 var user_info = client;
-                console.log("fisrt name: " , client.first_name, 'last name: ', client.last_name);
+                console.log("first name: " , client.first_name, 'last name: ', client.last_name, 'form type: ' , client.form);
                 var defer = $q.defer();
                 $http({
                     url: api_url,
@@ -226,7 +226,7 @@ app.provider('clientData', function () {
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                     data: data
                 }).then(function success(response) {
-                    console.log("success: " , response.data.success);
+                    console.log("success: " , response);
 
                     defer.resolve(response)
                 }), function error(response) {
@@ -243,6 +243,7 @@ app.provider('clientData', function () {
 app.controller('clientController', function (clientData, $scope) {
     //Create a variable to hold this, DO NOT use the same name you used in your provider
     var new_self = this;
+    this.form_options = ['Form 1','Form 2','Form 3'];
     //Add an empty data object to your controller, make sure to call it 'data'
     $scope.data = {};
     console.log("client controller");

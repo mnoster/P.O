@@ -6,21 +6,22 @@ if ($conn->connect_error) {
 }
 $firstName = addslashes($_POST['first_name']);
 $lastName = addslashes($_POST['last_name']);
-$fullName = addslashes($_POST['full_name']);
+$form = addslashes($_POST['form']);
+$fullName = $firstName ." ". $lastName;
 $active = addslashes($_POST['active']);
-if(empty($firstName . $lastName . $active)){
-    $output['message'] = 'fill out all fields';
-    $output['success'] = false;
-    $output = json_encode($output);
-    print($output);
-    die("Error");
-}
-$encrypted_pass = sha1($password);
-$password = " ";
+//
+//if(empty($firstName . $lastName . $active . $form)){
+//    $output['message'] = 'fill out all fields';
+//    $output['success'] = false;
+//    $output = json_encode($output);
+//    print($output);
+//    die("Error");
+//}
+
 $output = [];
 
-$query = "INSERT INTO people (first_name, last_name, full_name, active) 
-          VALUES ('$firstName' , '$lastName' , '$fullName', '$active')";
+$query = "INSERT INTO names (first_name, last_name, full_name, active, form) 
+          VALUES ('$firstName' , '$lastName' , '$fullName', '$active', '$form')";
 
 mysqli_query($conn,$query);
 
@@ -28,7 +29,6 @@ mysqli_query($conn,$query);
 $rows_affected = mysqli_affected_rows($conn);
 
 if($rows_affected > 0){
-    $_SESSION['username'] = $username;
     $output['message'] = 'success';
     $output['success'] = true;
     $output = json_encode($output);
