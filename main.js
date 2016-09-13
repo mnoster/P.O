@@ -212,8 +212,11 @@ app.provider('clientData', function () {
         console.log("$get");
         return {
             callApi: function ($scope,client) {
-                var data = $.param({first_name: client.first_name, last_name:client.last_name, number_of_appts:client.number_of_appts});
-                var user_info = signup;
+                var data = $.param({first_name: client.first_name, last_name:client.last_name, active:client.active});
+                if(!client.first_name || !client.last_name || !client.active){
+                    return;
+                }
+                var user_info = client;
                 console.log("fisrt name: " , client.first_name, 'last name: ', client.last_name);
                 var defer = $q.defer();
                 $http({
@@ -224,9 +227,7 @@ app.provider('clientData', function () {
                     data: data
                 }).then(function success(response) {
                     console.log("success: " , response.data.success);
-                    if(response.data.success == true){
-                        window.location.replace("index.php");
-                    }
+
                     defer.resolve(response)
                 }), function error(response) {
                     $log.error("$http fail: ", response);
@@ -244,10 +245,11 @@ app.controller('clientController', function (clientData, $scope) {
     var new_self = this;
     //Add an empty data object to your controller, make sure to call it 'data'
     $scope.data = {};
+    console.log("client controller");
     //Add a function called getData to your controller to call the SGT API
     this.sendClient= function (client){
         console.log("get data fn, this is user: " , client);
-        registerData.callApi($scope,client)
+        clientData.callApi($scope,client)
             .then(function success(response){
                 new_self.data = response.data;
             })

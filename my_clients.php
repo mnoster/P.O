@@ -40,13 +40,13 @@
             <h4>Active</h4>
             <input ng-model="cc.client.active" type="checkbox" class="form-control" name="clientGrade" id="clientGrade" checked>
         </div>
-        <button type="button" class="btn btn-success" ng-click ="cc.sendClient(cc.client)" >Add</button>
+        <button  ng-click ="cc.sendClient(cc.client)" class="btn btn-success">Add</button>
         <button type="button" class="btn btn-default" >Cancel</button>
     </div>
     <!--</div>-->
     <!--<div class="row">-->
     <div class="client-list-container col-sm-7">
-        <table id="client-list" class="client-list table table-hover tablesorter">
+        <table id="client-list" class="client-list table table-hover">
             <thead>
             <tr>
                 <th>Client Name</th>
