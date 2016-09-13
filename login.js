@@ -18,6 +18,7 @@ app.provider('loginData', function () {
                     data: data
                 }).then(function success(response) {
                     console.log("success: ", response.data.success);
+                    console.log("response: " , response);
                     if (response.data.success == true) {
                         populate_user_profile_info(username);
                         // window.location.replace("index.php");
