@@ -214,6 +214,7 @@ app.provider('clientData', function () {
                 var data = $.param({first_name: client.first_name, last_name:client.last_name, active:client.active, form:client.form});
                 if(!client.first_name || !client.last_name || !client.active || !client.form){
                     console.log('fill out all the fields');
+                    self.display_errors = false;
                     return;
                 }
                 var user_info = client;
@@ -243,6 +244,9 @@ app.provider('clientData', function () {
 app.controller('clientController', function (clientData, $scope) {
     //Create a variable to hold this, DO NOT use the same name you used in your provider
     var new_self = this;
+    var self = this;
+    this.display_errors = true;
+
     this.form_options = ['Form 1','Form 2','Form 3'];
     //Add an empty data object to your controller, make sure to call it 'data'
     $scope.data = {};
@@ -250,7 +254,7 @@ app.controller('clientController', function (clientData, $scope) {
     //Add a function called getData to your controller to call the SGT API
     this.sendClient= function (client){
         console.log("get data fn, this is user: " , client);
-        clientData.callApi($scope,client)
+        clientData.callApi($scope,client, self.display_errors)
             .then(function success(response){
                 new_self.data = response.data;
             })

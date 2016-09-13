@@ -48,6 +48,7 @@
         </div>
         <button ng-mouseup = "cc.sendClient(cc.client)" class="btn btn-success">Add</button>
         <button type="button" class="btn btn-default" >Cancel</button>
+        <div ng-hide="cc.display_errors" class="text-danger">Please fill out all the fields</div>
     </div>
     <!--</div>-->
     <!--<div class="row">-->
