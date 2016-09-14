@@ -66,8 +66,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="client in cc.clientArray track by $index">
-                <td>{{client.name}}</td>
+            <tr ng-repeat="client in clientArray track by $index">
+                <td>{{client.full_name}}</td>
                 <td>{{client.date_added}}</td>
                 <td>{{client.active}}</td>
                 <td>{{client.form}}</td>
@@ -82,6 +82,7 @@
             </tr>
             </tbody>
         </table>
+        {{cc.clientArray}}
     </div>
     <!--</div>-->
 

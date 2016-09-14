@@ -254,19 +254,27 @@ app.provider('clientData', function () {
     };
 });
 app.factory('getClients', function ($http) {
+    // var self = this;
+    // self.form = {
+    //     full_name: [],
+    //     date_added: [],
+    //     active: [],
+    //     form: []
+    // };
+    // self.clientArray = [];
+    // self.clientArray.push(self.form);
     var link = 'get_clients_handler.php';
     return {
-        callApi: function () {
+        callApi: function ($scope) {
             $http({
                 url: link,
                 dataType:'json',
                 method: 'POST'
             }).then(function success(response) {
-                console.log("getclients response: " , response);
-                // var serverClientArray = response.data.data;
-                // for (var i = 0; i < serverClientArray.length; i++) {
-                //     self.clientArray.push(serverClientArray[i]);
-                // }
+                var client = response.data.client;
+                console.log("client: " , client);
+                $scope.clientArray = client;
+
             });
         }
     }
@@ -278,23 +286,13 @@ app.controller('clientController', function (clientData, $scope, getClients) {
     //Create a variable to hold this, DO NOT use the same name you used in your provider
     var new_self = this;
     var self = this;
+    self.clientArray;
     this.display_errors = true;
-    self.form = {
-        name: 'john',
-        date_added: '5/34',
-        active: 'true',
-        form: 'Form 1'
-    };
-    self.clientArray = [];
-    self.clientArray.push(self.form);
-    console.log(self.clientArray);
-    this.form_options = ['Form 1', 'Form 2', 'Form 3'];
     //Add an empty data object to your controller, make sure to call it 'data'
     $scope.data = {};
-    console.log("client controller");
     //Add a function called getData to your controller to call the SGT API
     this.getClientData = function () {
-        getClients.callApi($scope)
+        getClients.callApi($scope,self.clientArray)
 
     };
     this.getClientData();
