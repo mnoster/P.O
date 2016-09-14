@@ -207,6 +207,9 @@ app.provider('clientData', function () {
     console.log(" client provider");
     var self = this;
     var api_url = "add_client_handler.php";
+    this.delete_user = function($index){
+
+    };
     this.$get = function ($http, $q, $log) {
         console.log("$get");
         return {
@@ -228,7 +231,13 @@ app.provider('clientData', function () {
                     data: data
                 }).then(function success(response) {
                     console.log("success: " , response);
-
+                    if(response.data.message == "success"){
+                        console.log("making client obj");
+                        self.clientList.first_name = client.first_name;
+                        self.clientList.last_name = client.last_name;
+                        self.clientList.active = client.active;
+                        self.clientList.form = client.form;
+                    }
                     defer.resolve(response)
                 }), function error(response) {
                     $log.error("$http fail: ", response);
@@ -246,7 +255,15 @@ app.controller('clientController', function (clientData, $scope) {
     var new_self = this;
     var self = this;
     this.display_errors = true;
-
+    self.form = {
+        name: 'john',
+        date_added: '5/34',
+        active: 'true',
+        form: 'Form 1'
+    };
+    self.clientArray = [];
+    self.clientArray.push(self.form);
+    console.log(self.clientArray);
     this.form_options = ['Form 1','Form 2','Form 3'];
     //Add an empty data object to your controller, make sure to call it 'data'
     $scope.data = {};

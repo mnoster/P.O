@@ -1,4 +1,4 @@
-<div class="container" >
+<div class="container">
     <div class="row">
         <h2>My Clients</h2>
         <hr>
@@ -10,7 +10,7 @@
     </div>
 </div>
 <div class="container client-contain" ng-controller="clientController as cc">
-    <div >
+    <div>
         <!-- only show this element when the isnt on mobile -->
         <h2 class="page-header hidden-xs col-sm-12 ">Client Table
             <small class="pull-right"><span class="avgGrade label label-default"></span></small>
@@ -27,13 +27,15 @@
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-user"></span>
             </span>
-            <input ng-model="cc.client.first_name" type="text" class="form-control" name="firstName" id="lastName" placeholder="First Name">
+            <input ng-model="cc.client.first_name" type="text" class="form-control" name="firstName" id="lastName"
+                   placeholder="First Name">
         </div>
         <div class="input-group form-group">
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-user"></span>
             </span>
-            <input ng-model="cc.client.last_name" type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name">
+            <input ng-model="cc.client.last_name" type="text" class="form-control" name="lastName" id="lastName"
+                   placeholder="Last Name">
         </div>
         <div class="col-xs-6">
             <h4>Active</h4>
@@ -42,12 +44,12 @@
 
         <div class="input-group form-group ">
             <h4>Form</h4>
-            <select  ng-model="cc.client.form"  ng-options="x for x in cc.form_options">
-                <option disabled selected value> -- select a form -- </option>
+            <select ng-model="cc.client.form" ng-options="x for x in cc.form_options">
+                <option disabled selected value> -- select a form --</option>
             </select>
         </div>
-        <button ng-mouseup = "cc.sendClient(cc.client)" class="btn btn-success">Add</button>
-        <button type="button" class="btn btn-default" >Cancel</button>
+        <button ng-mouseup="cc.sendClient(cc.client)" class="btn btn-success">Add</button>
+        <button type="button" class="btn btn-default">Cancel</button>
         <div ng-hide="cc.display_errors" class="text-danger">Please fill out all the fields</div>
     </div>
     <!--</div>-->
@@ -63,13 +65,20 @@
                 <th class="hidden-xs">Operations</th>
             </tr>
             </thead>
-            <tbody id="people">
-            <tr>
-                <td>{{cc.client.first_name}} {{cc.client.last_name}}</td>
-                <td>{{cc.client.timestamp}}</td>
-                <td>{{cc.client.active}}</td>
-                <td>{{cc.client.form}}</td>
-                <td class="hidden-xs"><button class="btn btn-danger">Delete</button></td>
+            <tbody>
+            <tr ng-repeat="client in cc.clientArray track by $index">
+                <td>{{client.name}}</td>
+                <td>{{client.date_added}}</td>
+                <td>{{client.active}}</td>
+                <td>{{client.form}}</td>
+                <td class="hidden-xs">
+                    <button ng-click="cc.delete_user($index)" class="btn btn-danger">Delete</button>
+                </td>
+                <!--                <td ng-repeat = 'name in cc.clientList[0]'>{{name}} {{}}</td>-->
+                <!--                <td ng-repeat = 'date_added in cc.clientList[2]'>{{date_added}}</td>-->
+                <!--                <td ng-repeat = 'active in cc.clientList[3]'>{{active}}</td>-->
+                <!--                <td ng-repeat = 'form in cc.clientList[4]'>{{form}}</td>-->
+                <!--                <td ng-repeat = 'form in cc.clientList[0]' class="hidden-xs"><button ng-click="cc.delete_user($index)" class="btn btn-danger">Delete</button></td>-->
             </tr>
             </tbody>
         </table>
