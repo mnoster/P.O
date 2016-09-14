@@ -3,6 +3,7 @@ var app = angular.module("psychoApp", ["ngRoute"]);
 
 app.config(function ($httpProvider) {
     $httpProvider.defaults.headers.post = {'Content-Type': 'application/x-www-form-urlencoded'};
+    // $httpProvider.defaults.dataType.post = 'json';
 
 });
 
@@ -90,7 +91,7 @@ app.provider('loginData', function () {
     console.log("provider");
     var self = this;
     var api_url = "login_handler.php";
-    self.populate_user_profile_info = function(username, $http){
+    self.populate_user_profile_info = function (username, $http) {
         var data = $.param({username: username});
         console.log("username: ", username);
         $http({
@@ -101,7 +102,7 @@ app.provider('loginData', function () {
         }).then(function success(response) {
             console.log("get user info is success: ", response);
 
-        }),function error(response) {
+        }), function error(response) {
             $log.error("$http fail: ", response);
         }
     };
@@ -159,9 +160,9 @@ app.controller('loginController', function (loginData, $scope) {
 
 app.controller('logoutController', function () {
     //Add a function called getData to your controller to call the SGT API
-    this.logout_user = function (){
+    this.logout_user = function () {
         logoutData.callApi()
-            .then(function success(response){
+            .then(function success(response) {
                 new_self.data = response.data;
             })
     };
@@ -172,7 +173,7 @@ app.provider('logoutData', function () {
     var api_url = "logout_handler.php";
     this.$get = function ($http, $log) {
         $http.post(api_url)
-            .then((function success(response){
+            .then((function success(response) {
                 console.log(response);
             }));
     }
@@ -207,28 +208,41 @@ app.provider('clientData', function () {
     console.log(" client provider");
     var self = this;
     var api_url = "add_client_handler.php";
+    this.delete_user = function ($index) {
+
+    };
     this.$get = function ($http, $q, $log) {
         console.log("$get");
         return {
-            callApi: function ($scope,client) {
-                var data = $.param({first_name: client.first_name, last_name:client.last_name, active:client.active, form:client.form});
-                if(!client.first_name || !client.last_name || !client.active || !client.form){
+            callApi: function ($scope, client) {
+                var data = $.param({
+                    first_name: client.first_name,
+                    last_name: client.last_name,
+                    active: client.active,
+                    form: client.form
+                });
+                if (!client.first_name || !client.last_name || !client.active || !client.form) {
                     console.log('fill out all the fields');
                     self.display_errors = false;
                     return;
                 }
                 var user_info = client;
-                console.log("first name: " , client.first_name, 'last name: ', client.last_name, 'form type: ' , client.form);
+                console.log("first name: ", client.first_name, 'last name: ', client.last_name, 'form type: ', client.form);
                 var defer = $q.defer();
                 $http({
                     url: api_url,
                     method: "POST",
                     dataType: 'json',
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                     data: data
                 }).then(function success(response) {
-                    console.log("success: " , response);
-
+                    console.log("success: ", response);
+                    if (response.data.message == "success") {
+                        console.log("making client obj");
+                        self.clientList.first_name = client.first_name;
+                        self.clientList.last_name = client.last_name;
+                        self.clientList.active = client.active;
+                        self.clientList.form = client.form;
+                    }
                     defer.resolve(response)
                 }), function error(response) {
                     $log.error("$http fail: ", response);
@@ -239,23 +253,56 @@ app.provider('clientData', function () {
         }
     };
 });
+app.factory('getClients', function ($http) {
+    var link = 'get_clients_handler.php';
+    return {
+        callApi: function () {
+            $http({
+                url: link,
+                dataType:'json',
+                method: 'POST'
+            }).then(function success(response) {
+                console.log("getclients response: " , response);
+                // var serverClientArray = response.data.data;
+                // for (var i = 0; i < serverClientArray.length; i++) {
+                //     self.clientArray.push(serverClientArray[i]);
+                // }
+            });
+        }
+    }
+});
+
 
 //Include your service in the function parameter list along with any other services you may want to use
-app.controller('clientController', function (clientData, $scope) {
+app.controller('clientController', function (clientData, $scope, getClients) {
     //Create a variable to hold this, DO NOT use the same name you used in your provider
     var new_self = this;
     var self = this;
     this.display_errors = true;
-
-    this.form_options = ['Form 1','Form 2','Form 3'];
+    self.form = {
+        name: 'john',
+        date_added: '5/34',
+        active: 'true',
+        form: 'Form 1'
+    };
+    self.clientArray = [];
+    self.clientArray.push(self.form);
+    console.log(self.clientArray);
+    this.form_options = ['Form 1', 'Form 2', 'Form 3'];
     //Add an empty data object to your controller, make sure to call it 'data'
     $scope.data = {};
     console.log("client controller");
     //Add a function called getData to your controller to call the SGT API
-    this.sendClient= function (client){
-        console.log("get data fn, this is user: " , client);
-        clientData.callApi($scope,client, self.display_errors)
-            .then(function success(response){
+    this.getClientData = function () {
+        getClients.callApi($scope)
+
+    };
+    this.getClientData();
+    //Add a function called getData to your controller to call the SGT API
+    this.sendClient = function (client) {
+        console.log("get data fn, this is user: ", client);
+        clientData.callApi($scope, client, self.display_errors)
+            .then(function success(response) {
                 new_self.data = response.data;
             })
     };
