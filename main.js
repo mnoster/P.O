@@ -233,7 +233,6 @@ app.provider('clientData', function () {
                     url: api_url,
                     method: "POST",
                     dataType: 'json',
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                     data: data
                 }).then(function success(response) {
                     console.log("success: ", response);
@@ -258,7 +257,11 @@ app.factory('getClients', function ($http) {
     var link = 'get_clients_handler.php';
     return {
         callApi: function () {
-            $http.post(link).success(function (response) {
+            $http({
+                url: link,
+                dataType:'json',
+                method: 'POST'
+            }).then(function success(response) {
                 console.log("getclients response: " , response);
                 // var serverClientArray = response.data.data;
                 // for (var i = 0; i < serverClientArray.length; i++) {
@@ -292,9 +295,7 @@ app.controller('clientController', function (clientData, $scope, getClients) {
     //Add a function called getData to your controller to call the SGT API
     this.getClientData = function () {
         getClients.callApi($scope)
-            .then(function success(response) {
-                new_self.data = response.data;
-            })
+
     };
     this.getClientData();
     //Add a function called getData to your controller to call the SGT API

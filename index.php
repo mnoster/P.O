@@ -4,7 +4,7 @@ if (empty($_SESSION)) {
     header("Location: login.php"); /* Redirect browser */
     exit();
 }
-print_r($_SESSION);
+//print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
