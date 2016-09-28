@@ -62,105 +62,9 @@
         <hr>
         <sup>1</sup><a href="https://privacyruleandresearch.nih.gov/pr_08.asp" target="_blank" class="resource-link">https://privacyruleandresearch.nih.gov/pr_08.asp</a>
     </div>
-    <div class="content-block">
-        <h2>Research Data Usage agreement</h2>
-        <hr>
-        <p><strong>The following is a sample data use agreement for research purposes.</strong></p>
-
-        <p>AUTHORIZATION TO USE OR DISCLOSE (RELEASE) HEALTH INFORMATION THAT IDENTIFIES YOU FOR A RESEARCH STUDY</p>
-
-        <p>If you sign this document, you give permission to [name or other identification of specific health care
-            provider(s) or description of classes of persons, e.g., all doctors, all health care providers] at [name of
-            covered entity or covered entities] to use or disclose (release) your health information that identifies you
-            for
-            the research study described here:</p>
-
-        <p>[Provide a description of the research study, such as the title and purpose of the research.]</p>
-
-        <p>The health information that we may use or disclose (release) for this research includes [complete as
-            appropriate]:</p>
-
-        <p>[Provide a description of information to be used or disclosed for the research project. This may include, for
-            example, all information in a medical record, results of physical examinations, medical history, lab tests,
-            or
-            certain health information indicating or relating to a particular condition.]</p>
-
-        <p>The health information listed above may be used by and/or disclosed (released) to:</p>
-
-        <p>[Name or class of persons involved in the research; i.e., researchers and their staff]</p>
-
-        <p>[Name of covered entity] is required by law to protect your health information. By signing this document, you
-            authorize [name of covered entity] to use and/or disclose (release) your health information for this
-            research.
-            Those persons who receive your health information may not be required by Federal privacy laws (such as the
-            Privacy Rule) to protect it and may share your information with others without your permission, if permitted
-            by
-            laws governing them.</p>
-
-        <p>Where a covered entity conducts the research study, the Authorization must list ALL names or other
-            identification, or ALL classes, of persons who will have access through the covered entity to the Protected
-            Health Information (PHI) for the research study (e.g., research collaborators, sponsors, and others who will
-            have access to data that includes PHI). Examples may include, but are not limited to the following:</p>
-
-        <p>Data coordinating centers that will receive and process PHI;
-            <br>
-            Sponsors who want access to PHI or who will actually own the research data; and/or
-            <br>
-            Institutional Review Boards or Data Safety and Monitoring Boards.
-        </p>
-
-        <p>If the research study is conducted by a covered entity other than the covered entity, the authorization need
-            only
-            list the name or other identification of the outside researcher (or class of researchers) and any other
-            covered
-            entity to whom the covered entity is expected to make the disclosure.</p>
-
-        <p>Please note that [include the appropriate statement]:</p>
-
-        <p>You do not have to sign this Authorization, but if you do not, you may not receive research-related
-            treatment.</p>
-
-        <p>[Name of covered entity] may not condition (withhold or refuse) treating you on whether you sign this
-            Authorization.</p>
-
-        <p>Please note that [include the appropriate statement]:</p>
-
-        <p>You may change your mind and revoke (take back) this Authorization at any time, except to the extent that
-            [name
-            of covered entity(ies)] has already acted based on this Authorization. To revoke this Authorization, you
-            must
-            write to: [name of the covered entity(ies) and contact information].</p>
-
-        <p>You may change your mind and revoke (take back) this Authorization at any time. Even if you revoke this
-            Authorization, [name or class of persons at the covered entity involved in the research] may still use or
-            disclose health information they already have obtained about you as necessary to maintain the integrity or
-            reliability of the current research. To revoke this Authorization, you must write to: [name of the covered
-            entity(ies) and contact information].</p>
-
-        <p>This Authorization does not have an expiration date [or as appropriate, insert expiration date or event, such
-            as
-            "end of the research study."]</p>
-
-        <p>____________________
-            <br>
-            Signature of participant or participant's personal representative
-        </p>
-
-        <p>____________________
-            <br>
-            Date
-        </p>
-
-        <p>____________________
-            <br>
-            Printed name of participant or participant's personal representative
-        </p>
-
-        <hr>
-        <p class="italic">
-            Courtesy of
-            <a href="https://privacyruleandresearch.nih.gov/authorization.asp" target="_blank">https://privacyruleandresearch.nih.gov/authorization.asp</a>
-        </p>
+    <div class="content-block" style="height:100vh">
+        <a id="dl-agreement" href="ResearchDataUsageagreement.pdf" target="_blank">Click Here to Download Research Agreement</a>
+        <embed src="ResearchDataUsageagreement.pdf" width="100%" height="100%" internalinstanceid="3">
     </div>
     <div class="col-xs-12">
         <h1>Section 11: Selected HIPAA regulations</h1>
@@ -288,4 +192,5 @@
             section.
         </p>
     </div>
+
 </div>

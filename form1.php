@@ -1,5 +1,5 @@
-<div class="container main-contain" ng-controller="formController as fc">
-    <div class="col-md-10 col-sm-12 col-xs 12"  id="logo">
+<div class="container" ng-controller="formController as fc">
+    <div class="col-md-10 col-sm-12 col-xs 12"  id="logo"  style="z-index: 1">
         <h1 id="about_title">Client Form</h1>
         <form class="client_form">
             <h3 class = 'third_head'>Background Information</h3>
@@ -67,4 +67,9 @@
             </select>
         </form>
     </div>
+    <footer>
+        <div class="row footer"  style="z-index: 0; margin-right:80px">
+            <img src="Images/hipaa_blue.png" height="100px" width="200px">
+        </div>
+    </footer>
 </div>

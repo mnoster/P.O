@@ -184,7 +184,7 @@ app.controller('formController', function ($scope) {
     var new_self = this;
     var country = [];
     $scope.states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Federated States of Micronesia', 'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
-    $scope.gender = ['male', 'female', 'transgender man', 'transgender woman'];
+    $scope.gender = ['male', 'female', 'transgender man', 'transgender woman','other'];
     $scope.relationship_status = ['single', 'married', 'divorced', 'widowed'];
     $scope.education = ['Less than high school', 'Some high school', 'High school graduate', 'Associates', 'Bachelors', 'Masters', 'Phd'];
     $scope.sexual_orientation = ['straight', 'lesbian', 'bisexual', 'gay', 'queer', 'asexual'];
@@ -253,6 +253,7 @@ app.provider('clientData', function () {
         }
     };
 });
+//-----this will make http call and display it in client list form
 app.factory('getClients', function ($http) {
     // var self = this;
     // self.form = {
@@ -281,7 +282,7 @@ app.factory('getClients', function ($http) {
 });
 
 
-//Include your service in the function parameter list along with any other services you may want to use
+//Include service in the function parameter list along with any other services
 app.controller('clientController', function (clientData, $scope, getClients) {
     //Create a variable to hold this, DO NOT use the same name you used in your provider
     var new_self = this;
