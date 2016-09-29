@@ -219,7 +219,7 @@ app.provider('clientData', function () {
                     first_name: client.first_name,
                     last_name: client.last_name,
                     active: client.active,
-                    form: client.form
+                    form: client.form,
                 });
                 if (!client.first_name || !client.last_name || !client.active || !client.form) {
                     console.log('fill out all the fields');
@@ -285,8 +285,8 @@ app.factory('getClients', function ($http) {
                         form:client.form[i]
                     });
                 }
-                console.log("client: " , full_name);
-                console.log("client obj: " , client_obj);
+                // console.log("client: " , full_name);
+                // console.log("client obj: " , client_obj);
 
                 $scope.clientArray = client_obj;
 
