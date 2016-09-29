@@ -8,7 +8,13 @@ $firstName = addslashes($_POST['first_name']);
 $lastName = addslashes($_POST['last_name']);
 $form = addslashes($_POST['form']);
 $fullName = $firstName ." ". $lastName;
-$active = addslashes($_POST['active']);
+if(empty($_POST['active'])){
+    $active = 'false';
+}
+else{
+    $active = addslashes($_POST['active']);
+
+}
 $dr_id = addslashes($_SESSION['ID']);
 //
 //if(empty($firstName . $lastName . $active . $form)){
@@ -28,6 +34,8 @@ mysqli_query($conn,$query);
 
 
 $rows_affected = mysqli_affected_rows($conn);
+
+
 
 if($rows_affected > 0){
     $output['message'] = 'success';

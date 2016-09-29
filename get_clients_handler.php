@@ -22,6 +22,7 @@ if ($result->num_rows > 0) {
         $output['client']['full_name'][] = $row['full_name'];
         $output['client']["active"][] = $row['active'];
         $output['client']['form'][] = $row['form'];
+        $output['client']['date_added'][] = $row['date_added'];
 //        $output['timestamp'][] = $row['timestamp'];
     };
     $output['status'] = 'success';

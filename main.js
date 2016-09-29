@@ -184,7 +184,7 @@ app.controller('formController', function ($scope) {
     var new_self = this;
     var country = [];
     $scope.states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Federated States of Micronesia', 'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
-    $scope.gender = ['male', 'female', 'transgender man', 'transgender woman'];
+    $scope.gender = ['male', 'female', 'transgender man', 'transgender woman','other'];
     $scope.relationship_status = ['single', 'married', 'divorced', 'widowed'];
     $scope.education = ['Less than high school', 'Some high school', 'High school graduate', 'Associates', 'Bachelors', 'Masters', 'Phd'];
     $scope.sexual_orientation = ['straight', 'lesbian', 'bisexual', 'gay', 'queer', 'asexual'];
@@ -215,7 +215,7 @@ app.provider('clientData', function () {
         console.log("$get");
         return {
             callApi: function ($scope, client) {
-                var data = $.param({
+                $scope.data = $.param({
                     first_name: client.first_name,
                     last_name: client.last_name,
                     active: client.active,
@@ -233,15 +233,17 @@ app.provider('clientData', function () {
                     url: api_url,
                     method: "POST",
                     dataType: 'json',
-                    data: data
+                    data: $scope.data
                 }).then(function success(response) {
                     console.log("success: ", response);
                     if (response.data.message == "success") {
-                        console.log("making client obj");
-                        self.clientList.first_name = client.first_name;
-                        self.clientList.last_name = client.last_name;
-                        self.clientList.active = client.active;
-                        self.clientList.form = client.form;
+                        console.log('client.first_name: ',client.first_name);
+                        $scope.data.first_name = client.first_name;
+                        $scope.data.last_name = client.last_name;
+                        $scope.data.active = client.active;
+                        $scope.data.form = client.form;
+                        window.location.reload();
+
                     }
                     defer.resolve(response)
                 }), function error(response) {
@@ -253,48 +255,64 @@ app.provider('clientData', function () {
         }
     };
 });
+//-----this will make http call and display it in client list form
 app.factory('getClients', function ($http) {
+    // var self = this;
+    // self.form = {
+    //     full_name: [],
+    //     date_added: [],
+    //     active: [],
+    //     form: []
+    // };
+    // self.clientArray = [];
+    // self.clientArray.push(self.form);
     var link = 'get_clients_handler.php';
+    var client = null;
+    var client_obj = [];
+    var full_name = null;
     return {
-        callApi: function () {
+        callApi: function ($scope) {
             $http({
                 url: link,
                 dataType:'json',
                 method: 'POST'
             }).then(function success(response) {
-                console.log("getclients response: " , response);
-                // var serverClientArray = response.data.data;
-                // for (var i = 0; i < serverClientArray.length; i++) {
-                //     self.clientArray.push(serverClientArray[i]);
-                // }
+                client = response.data.client;
+                full_name = client.full_name;
+                for(var i = 0; i < full_name.length;i++){
+                    client_obj.push({
+                        full_name: full_name[i],
+                        date_added:client.date_added[i],
+                        active:client.active[i],
+                        form:client.form[i]
+                    });
+                }
+                $('.page-header').append($("<h4>Number of Clients: "+ full_name.length + "</h4>").css({'float':'right'}));
+
+                // console.log("client: " , full_name);
+                // console.log("client obj: " , client_obj);
+
+                $scope.clientArray = client_obj;
+
             });
         }
     }
 });
 
 
-//Include your service in the function parameter list along with any other services you may want to use
+//Include service in the function parameter list along with any other services
 app.controller('clientController', function (clientData, $scope, getClients) {
     //Create a variable to hold this, DO NOT use the same name you used in your provider
     var new_self = this;
     var self = this;
+    self.clientArray;
     this.display_errors = true;
-    self.form = {
-        name: 'john',
-        date_added: '5/34',
-        active: 'true',
-        form: 'Form 1'
-    };
-    self.clientArray = [];
-    self.clientArray.push(self.form);
-    console.log(self.clientArray);
-    this.form_options = ['Form 1', 'Form 2', 'Form 3'];
+    this.form_options = ["Form 1","Form 2", "Form 3"];
     //Add an empty data object to your controller, make sure to call it 'data'
     $scope.data = {};
-    console.log("client controller");
     //Add a function called getData to your controller to call the SGT API
     this.getClientData = function () {
-        getClients.callApi($scope)
+        getClients.callApi($scope,self.clientArray)
 
     };
     this.getClientData();

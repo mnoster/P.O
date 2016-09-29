@@ -1,20 +1,29 @@
 html{
-    background-color: #3bc8ff;
+    background-color:transparent;
+    height:100%;
+
 }
 nav{
     position: fixed;
     top: 0;
 }
+.navbar{
+    background-color: rgba(0, 0, 0, 0.82);
+
+}
 body{
-    background-color:#3bc8ff;
-    /*background: url("images/bluebrain.png"); center center fixed;
+    /*background-image: url('Images/iam-solutions-brain.png');*/
+    /*background-repeat:no-repeat ;*/
+    background: url("Images/iam-solutions-brain.png"); center center fixed;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: 100% 100%;
     margin:0;
-    padding:0;*/
+    padding:0;
+    background-color: #3bc8ff;
+
 }
 #logo{
     /*background:url("images/logo.png");
@@ -43,10 +52,31 @@ select{
 #title{
     margin-top: 60px;
 }
+/*---------about---------------*/
+#about_info{
+    font-size: 16px;
+}
+#about_info p{
+    background-color: rgba(255, 255, 255, 0.97);
+    border-radius: 2px;
+    border:1px solid black;
+    padding:10px;
+    margin:5px 0 18px 0;
+    box-shadow: 1px 1px 1px 1px black;
+
+}
+#dl-agreement{
+    font-size: 20px;
+    float:right;
+    color:red;
+    font-weight: 500;
+}
 /*-------------Client Form Specs---------------------*/
 .client_form{
     border: 1px solid black;
     padding: 10px;
+    background-color: rgba(237, 253, 255, 0.89);
+    box-shadow: 1px 1px 1px 1px black;
 }
 .third_head{
     color: #0a06a2;
@@ -93,7 +123,7 @@ footer{
 }
 /*--------my clients---------*/
 .client-contain{
-    background-color: rgba(145, 145, 145, 0.33);
+    background-color: rgba(247, 247, 247, 0.82);
     border-radius:3px;
 }
 .display_error{
@@ -110,13 +140,17 @@ footer{
 /*------default form-------*/
 .main-contain{
     border-radius: 4px;
-    background-color: rgba(222, 222, 222, 0.68);
+    background-color: rgba(255, 255, 255, 0.52);
 
 }
 .content-block{
-    background-color: rgba(245, 245, 245, 0.75);
-    border-radius: 5px;
+    background-color: rgba(245, 245, 245, 0.8);
+    border-radius: 2px;
     border:1px solid black;
     padding:10px;
     margin:5px 0 5px 0;
+}
+/*-------------contact email page--------------*/
+#submit{
+    margin-top: 10px;
 }

@@ -8,7 +8,7 @@
                 <input id="subject" class="form-control" placeholder="Subject"><br>
                 <textarea class="form-control" id="textarea" placeholder="Your message" rows="8"></textarea>
             </form>
-            <button id="submit" class="btn btn-info" value="submit">Send Mail</button>
+            <button id="submit" class="btn btn-danger" value="submit">Send Mail</button>
         </div>
 
     </div>
