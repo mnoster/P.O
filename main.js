@@ -265,6 +265,9 @@ app.factory('getClients', function ($http) {
     // self.clientArray = [];
     // self.clientArray.push(self.form);
     var link = 'get_clients_handler.php';
+    var client = null;
+    var client_obj = [];
+    var full_name = null;
     return {
         callApi: function ($scope) {
             $http({
@@ -272,9 +275,20 @@ app.factory('getClients', function ($http) {
                 dataType:'json',
                 method: 'POST'
             }).then(function success(response) {
-                var client = response.data.client;
-                console.log("client: " , client);
-                $scope.clientArray = client;
+                client = response.data.client;
+                full_name = client.full_name;
+                for(var i = 0; i < full_name.length;i++){
+                    client_obj.push({
+                        full_name: full_name[i],
+                        date_added:client.date_added[i],
+                        active:client.active[i],
+                        form:client.form[i]
+                    });
+                }
+                console.log("client: " , full_name);
+                console.log("client obj: " , client_obj);
+
+                $scope.clientArray = client_obj;
 
             });
         }
@@ -289,6 +303,7 @@ app.controller('clientController', function (clientData, $scope, getClients) {
     var self = this;
     self.clientArray;
     this.display_errors = true;
+    this.form_options = ["Form 1","Form 2", "Form 3"];
     //Add an empty data object to your controller, make sure to call it 'data'
     $scope.data = {};
     //Add a function called getData to your controller to call the SGT API
