@@ -215,11 +215,11 @@ app.provider('clientData', function () {
         console.log("$get");
         return {
             callApi: function ($scope, client) {
-                var data = $.param({
+                $scope.data = $.param({
                     first_name: client.first_name,
                     last_name: client.last_name,
                     active: client.active,
-                    form: client.form,
+                    form: client.form
                 });
                 if (!client.first_name || !client.last_name || !client.active || !client.form) {
                     console.log('fill out all the fields');
@@ -233,15 +233,17 @@ app.provider('clientData', function () {
                     url: api_url,
                     method: "POST",
                     dataType: 'json',
-                    data: data
+                    data: $scope.data
                 }).then(function success(response) {
                     console.log("success: ", response);
                     if (response.data.message == "success") {
-                        console.log("making client obj");
-                        self.clientList.first_name = client.first_name;
-                        self.clientList.last_name = client.last_name;
-                        self.clientList.active = client.active;
-                        self.clientList.form = client.form;
+                        console.log('client.first_name: ',client.first_name);
+                        $scope.data.first_name = client.first_name;
+                        $scope.data.last_name = client.last_name;
+                        $scope.data.active = client.active;
+                        $scope.data.form = client.form;
+                        window.location.reload();
+
                     }
                     defer.resolve(response)
                 }), function error(response) {
@@ -285,6 +287,8 @@ app.factory('getClients', function ($http) {
                         form:client.form[i]
                     });
                 }
+                $('.page-header').append($("<h4>Number of Clients: "+ full_name.length + "</h4>").css({'float':'right'}));
+
                 // console.log("client: " , full_name);
                 // console.log("client obj: " , client_obj);
 
