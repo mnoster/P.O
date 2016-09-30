@@ -28,18 +28,18 @@
                 <span class="glyphicon glyphicon-user"></span>
             </span>
             <input ng-model="cc.client.first_name" type="text" class="form-control" name="firstName" id="lastName"
-                   placeholder="First Name">
+                   placeholder="First Name" maxlength="20">
         </div>
         <div class="input-group form-group">
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-user"></span>
             </span>
             <input ng-model="cc.client.last_name" type="text" class="form-control" name="lastName" id="lastName"
-                   placeholder="Last Name">
+                   placeholder="Last Name" maxlength="30">
         </div>
         <div class="col-xs-6">
             <h4>Active</h4>
-            <input ng-model="cc.client.active" type="checkbox" class="form-control" name="active" id="active" checked>
+            <input ng-model="cc.client.active" ng-init="cc.client.active = 'false'" type="checkbox" class="form-control" name="active" id="active" checked>
         </div>
 
         <div class="input-group form-group ">
