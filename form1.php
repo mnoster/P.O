@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <div class="container" ng-controller="formController as fc">
     <div class="col-md-10 col-sm-12 col-xs 12"  id="logo"  style="z-index: 1">
         <h1 id="about_title">Client Form</h1>

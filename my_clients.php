@@ -20,7 +20,6 @@
         </h3>
 
     </div>
-    <!--<div class="row">-->
     <div class="client-add-form form-group col-md-4 pull-right">
         <h4>Add Client</h4>
         <div class="input-group form-group">
@@ -39,9 +38,9 @@
         </div>
         <div class="col-xs-6">
             <h4>Active</h4>
-            <input ng-model="cc.client.active" ng-init="cc.client.active = 'false'" type="checkbox" class="form-control" name="active" id="active" checked>
+            <input ng-model="cc.client.active" ng-init="cc.client.active = 'false'" type="checkbox" class="form-control"
+                   name="active" id="active" checked>
         </div>
-
         <div class="input-group form-group ">
             <h4>Form</h4>
             <select ng-model="cc.client.form" ng-options="x for x in cc.form_options">
@@ -52,8 +51,6 @@
         <button type="button" class="btn btn-default">Cancel</button>
         <div ng-hide="cc.display_errors" class="text-danger">Please fill out all the fields</div>
     </div>
-    <!--</div>-->
-    <!--<div class="row">-->
     <div class="client-list-container col-sm-8">
         <table id="client-list" class="client-list table table-hover">
             <thead>
@@ -74,16 +71,8 @@
                 <td class="hidden-xs">
                     <button ng-click="cc.delete_user($index)" class="btn btn-danger">Delete</button>
                 </td>
-                <!--                <td ng-repeat = 'name in cc.clientList[0]'>{{name}} {{}}</td>-->
-                <!--                <td ng-repeat = 'date_added in cc.clientList[2]'>{{date_added}}</td>-->
-                <!--                <td ng-repeat = 'active in cc.clientList[3]'>{{active}}</td>-->
-                <!--                <td ng-repeat = 'form in cc.clientList[4]'>{{form}}</td>-->
-                <!--                <td ng-repeat = 'form in cc.clientList[0]' class="hidden-xs"><button ng-click="cc.delete_user($index)" class="btn btn-danger">Delete</button></td>-->
             </tr>
             </tbody>
         </table>
-        {{cc.clientArray}}
     </div>
-    <!--</div>-->
-
 </div>
