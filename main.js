@@ -6,7 +6,7 @@ app.config(function ($httpProvider) {
     // $httpProvider.defaults.dataType.post = 'json';
 
 });
-
+// this will route the view to whatever specified template URL when an href to that page is clicked on
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
@@ -86,6 +86,7 @@ app.config(function ($routeProvider) {
             redirectTo: '/'
         });
 });
+
 //-------------login----------------------
 app.provider('loginData', function () {
     console.log("provider");
@@ -172,9 +173,9 @@ app.provider('logoutData', function () {
     var api_url = "logout_handler.php";
     this.$get = function ($http, $log) {
         $http.post(api_url)
-            .then((function success(response) {
+            .then(function success(response) {
                 console.log(response);
-            }));
+            });
     }
 });
 
@@ -271,9 +272,10 @@ app.factory('getClients', function ($http) {
                 dataType: 'json',
                 method: 'POST'
             }).then(function success(response) {
+                client_obj = [];
                 client = response.data.client;
                 full_name = client.full_name;
-                for (var i = 0; i < full_name.length; i++) {
+                for (var i = 0; i < full_name.length; i++){
                     client_obj.push({
                         full_name: full_name[i],
                         date_added: client.date_added[i],
@@ -288,7 +290,7 @@ app.factory('getClients', function ($http) {
     }
 });
 
-//Include service in the function parameter list along with any other services
+//Include the service in the function parameter list along with any other services
 app.controller('clientController', function (clientData, $scope, getClients) {
     //Create a variable to hold this, DO NOT use the same name you used in your provider
     var new_self = this;
@@ -296,9 +298,9 @@ app.controller('clientController', function (clientData, $scope, getClients) {
     self.clientArray;
     this.display_errors = true;
     this.form_options = ["Form 1", "Form 2", "Form 3"];
-    //Add an empty data object to your controller, make sure to call it 'data'
+    //Add an empty data object to your controller
     $scope.data = {};
-    //Add a function called getData to your controller to call the SGT API
+    //Add a function called getData to your controller to call the PHP API
     this.getClientData = function () {
         getClients.callApi($scope, self.clientArray)
     };
@@ -319,11 +321,19 @@ app.factory('clientSetup',function($http,$log){
     $log.info("ClientSetup Service");
     return{
         callApi: function ($scope, data){
-            console.log("first name: " , data);
+           if(data.first_name == '' || data.last_name == ''){
+
+           }
+            console.log("first name: " , data.first_name);
+            var setupData = $.param({
+                first_name: data.first_name,
+                last_name : data.last_name,
+                notes:data.notes
+            });
             $http({
                 url:link,
                 dataType:'json',
-                data: data,
+                data: setupData,
                 method:'POST'
             }).then(function success(response){
                 console.log("clientSetup success: " ,response);
@@ -369,9 +379,13 @@ app.factory('selectForm',function($http,$log){
 app.controller('selectFormController', function ($scope, selectForm) {
     var self = this;
     self.data = null;
-    this.form_type = function () {
+    this.form1 = 'Form 1';
+    this.form2 = 'Form 2'; //form2.php has not been made yet, expect error
+    this.form3 = 'Form3'; //form3.php has not been made yet, expect error
+    this.form_type = function (form_number){
+        console.log("form number: ", form_number);
         self.client_form = {
-            form: self.form_number
+            form: form_number
         };
         selectForm.callApi($scope,self.client_form);
         // .then(function(response){
