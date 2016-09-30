@@ -53,6 +53,12 @@ select{
     margin-top: 60px;
 }
 /*---------about---------------*/
+.fancy{
+    font-family: 'Indie Flower', cursive;
+    background-color: rgba(194, 238, 255, 0.71);
+    padding:10px;
+    border-radius: 4px;
+}
 #about_info{
     font-size: 16px;
 }
