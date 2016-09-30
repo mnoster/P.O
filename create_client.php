@@ -5,11 +5,11 @@
             <hr>
             <form>
                 <h5>First Name</h5>
-                <input ng-model="scs.first_name" id="first_name" class="form-control" placeholder="client first name" maxlength="30"><br>
+                <input ng-model="csc.first_name" id="first_name" class="form-control" placeholder="client first name" maxlength="30"><br>
                 <h5>Last Name</h5>
-                <input  ng-model="scs.last_name" id="last_name" class="form-control" placeholder="client last name" maxlength="40"><br>
+                <input  ng-model="csc.last_name" id="last_name" class="form-control" placeholder="client last name" maxlength="40"><br>
                 <h5>Notes</h5>
-                <textarea  ng-model="scs.notes" class="form-control" id="notes" placeholder="Notes" rows="8" maxlength="1000"></textarea>
+                <textarea  ng-model="csc.notes" class="form-control" id="notes" placeholder="Notes" rows="8" maxlength="1000"></textarea>
             </form>
             <div class="row">
                 <div class = "col-xs-12 next" >

@@ -167,7 +167,6 @@ app.controller('logoutController', function () {
             })
     };
 });
-
 app.provider('logoutData', function () {
     console.log("logout provider");
     var api_url = "logout_handler.php";
@@ -304,7 +303,6 @@ app.controller('clientController', function (clientData, $scope, getClients) {
         getClients.callApi($scope, self.clientArray)
     };
     this.getClientData();
-    //Add a function called getData to your controller to call the SGT API
     this.sendClient = function (client) {
         console.log("get data fn, this is user: ", client);
         clientData.callApi($scope, client, self.display_errors)
@@ -313,42 +311,71 @@ app.controller('clientController', function (clientData, $scope, getClients) {
             })
     };
 });
-//This is the controller and http service that is called when you click next on create client page
 
+//This is the controller and http service that is called when you click next on create client page
 app.factory('clientSetup',function($http,$log){
     var self = this;
-    var link = 'clientSetup_handler';
+    var link = 'clientSetup_handler.php';
     $log.info("ClientSetup Service");
-
     return{
-        callApi: function ($scope,data){
-            self.client_data = $.param({
-                first_name: self.first_name,
-                last_name: self.last_name,
-                notes: self.notes
-            });
+        callApi: function ($scope, data){
+            console.log("first name: " , data);
             $http({
                 url:link,
                 dataType:'json',
-                data: self.client_data,
+                data: data,
                 method:'POST'
             }).then(function success(response){
-                console.log("clientSetup success")
+                console.log("clientSetup success: " ,response);
             })
         }
     }
 });
-
-
-
-
 app.controller('clientSetupController', function ($scope, clientSetup) {
     var self = this;
     self.data = null;
-    this.client_first_name = null;
-    this.client_last_name = null;
-    this.client_notes = null;
     this.sessionName = function () {
-        clientSetup.callApi($scope, self.data)
+        self.client_data = {
+            first_name: self.first_name,
+            last_name: self.last_name,
+            notes: self.notes
+        };
+        clientSetup.callApi($scope,self.client_data);
+            // .then(function(response){
+            //     console.log("success for call api promise");
+            // })
+    }
+});
+
+//This is the controller and http service that is called when you click the FORM 1,2, or 3 on Select_form.php
+app.factory('selectForm',function($http,$log){
+    var self = this;
+    var link = 'clientSetup_handler.php';
+    $log.info("Form Setup Service");
+    return{
+        callApi: function ($scope, data){
+            console.log("form number: " , data);
+            $http({
+                url:link,
+                dataType:'json',
+                data: data,
+                method:'POST'
+            }).then(function success(response){
+                console.log("form select success: " ,response);
+            })
+        }
+    }
+});
+app.controller('selectFormController', function ($scope, selectForm) {
+    var self = this;
+    self.data = null;
+    this.form_type = function () {
+        self.client_form = {
+            form: self.form_number
+        };
+        selectForm.callApi($scope,self.client_form);
+        // .then(function(response){
+        //     console.log("success for call api promise");
+        // })
     }
 });
