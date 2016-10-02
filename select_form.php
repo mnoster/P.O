@@ -1,6 +1,25 @@
 <?php
 session_start();
+//header('Location: '. 'select_form.php');
 ?>
+<script type='text/javascript'>
+    //Since the angular routing is not restoring session on every redirect, the page needs to be refreshed each time
+    //this is merely a band-aid approach for now. Need to do more research on solution.
+    console.log("hello");
+    (function()
+    {
+        if( window.localStorage )
+        {
+            if( !localStorage.getItem( 'firstLoad' ) )
+            {
+                localStorage[ 'firstLoad' ] = true;
+                window.location.reload();
+            }
+            else
+                localStorage.removeItem( 'firstLoad' );
+        }
+    })();
+</script>
 
 <div class="container" ng-controller="selectFormController as sfc">
     <h2>Select Form</h2>
