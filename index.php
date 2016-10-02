@@ -4,7 +4,6 @@ if (empty($_SESSION)) {
     header("Location: login.php"); /* Redirect browser */
     exit();
 }
-//print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,7 +62,7 @@ if (empty($_SESSION)) {
         </div>
     </div>
 </nav>
-<div ng-view></div>
+<div ng-view ></div>
 
 </body>
 </html>

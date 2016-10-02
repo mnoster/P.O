@@ -360,15 +360,19 @@ app.controller('clientSetupController', function ($scope, clientSetup) {
 //This is the controller and http service that is called when you click the FORM 1,2, or 3 on Select_form.php
 app.factory('selectForm',function($http,$log){
     var self = this;
-    var link = 'clientSetup_handler.php';
+    var link = 'formSelect_handler.php';
+
     $log.info("Form Setup Service");
     return{
         callApi: function ($scope, data){
+            var form = $.param(
+                data
+            );
             console.log("form number: " , data);
             $http({
                 url:link,
                 dataType:'json',
-                data: data,
+                data: form,
                 method:'POST'
             }).then(function success(response){
                 console.log("form select success: " ,response);
@@ -381,7 +385,7 @@ app.controller('selectFormController', function ($scope, selectForm) {
     self.data = null;
     this.form1 = 'Form 1';
     this.form2 = 'Form 2'; //form2.php has not been made yet, expect error
-    this.form3 = 'Form3'; //form3.php has not been made yet, expect error
+    this.form3 = 'Form 3'; //form3.php has not been made yet, expect error
     this.form_type = function (form_number){
         console.log("form number: ", form_number);
         self.client_form = {

@@ -14,7 +14,7 @@ nav{
 body{
     /*background-image: url('Images/iam-solutions-brain.png');*/
     /*background-repeat:no-repeat ;*/
-    background: url("Images/iam-solutions-brain.png"); center center fixed;
+    background: url("Images/iam-solutions-brain.png") center center fixed;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -142,7 +142,9 @@ footer{
 }
 .form-icon:hover{
     color: yellow;
+    cursor:pointer;
 }
+
 /*------default form-------*/
 .main-contain{
     border-radius: 4px;
