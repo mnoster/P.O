@@ -51,9 +51,6 @@ session_start();
                 <option disabled selected value> -- select an option -- </option>
 
             </select>
-            
-            
-
             <input type="submit">
         </form>
         <form  class="client_form second-form" >

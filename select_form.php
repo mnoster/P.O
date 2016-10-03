@@ -3,9 +3,8 @@ session_start();
 //header('Location: '. 'select_form.php');
 ?>
 <script type='text/javascript'>
-    //Since the angular routing is not restoring session on every redirect, the page needs to be refreshed each time
-    //this is merely a band-aid approach for now. Need to do more research on solution.
-    console.log("hello");
+    //Since the angular routing is not restoring session on every redirect, the page needs to be refreshed each time.
+    //This is merely a band-aid approach for now. Need to do more research on solution.
     (function()
     {
         if( window.localStorage )

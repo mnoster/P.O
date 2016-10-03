@@ -5,9 +5,9 @@ if ($conn->connect_error) {
     die("Connection failed ");
 }
 if(empty($_POST['clinician_ID'])){
-    $clinician_ID = addslashes($_SESSION['clinician_ID']);
+    $clinician_ID = addslashes($_SESSION['ID']);
 }else{
-    $clinician_ID = addslashes($_POST['clinician_ID']);
+    $clinician_ID = addslashes($_POST['ID']);
 };
 if(empty($_POST['age'])){
     $age = addslashes($_SESSION['age']);
@@ -24,16 +24,16 @@ if(empty($_POST['state'])){
 }else{
     $state =addslashes($_POST['state']);
 };
-if(empty($_POST['first_name'])){
-    $first_name =addslashes($_SESSION['first_name']);
-}else{
-    $first_name =addslashes($_POST['first_name']);
-};
-if(empty($_POST['last_name'])){
-    $last_name =addslashes($_SESSION['last_name']);
-}else{
-    $last_name =addslashes($_POST['last_name']);
-};
+//if(empty($_POST['first_name'])){
+//    $first_name =addslashes($_SESSION['first_name']);
+//}else{
+//    $first_name =addslashes($_POST['first_name']);
+//};
+//if(empty($_POST['last_name'])){
+//    $last_name =addslashes($_SESSION['last_name']);
+//}else{
+//    $last_name =addslashes($_POST['last_name']);
+//};
 if(empty($_POST['ethnicity'])){
     $ethnicity =addslashes($_SESSION['ethnicity']);
 }else{

@@ -57,12 +57,11 @@ if (empty($_SESSION)) {
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 <li><a href="#register"><span class=""></span>Register</a></li>
-
             </ul>
         </div>
     </div>
 </nav>
-<div ng-view ></div>
+<div ng-view></div>
 
 </body>
 </html>
