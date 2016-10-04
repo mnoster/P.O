@@ -6,6 +6,13 @@ app.config(function ($httpProvider) {
     // $httpProvider.defaults.dataType.post = 'json';
 
 });
+app.directive('diagnosis', function () {
+    return {
+        restrict: 'AE',
+        priority: 1001,
+        templateUrl: 'diagnosis.html'
+    }
+});
 // this will route the view to whatever specified template URL when an href to that page is clicked on
 app.config(function ($routeProvider) {
     $routeProvider
@@ -179,51 +186,6 @@ app.provider('logoutData', function () {
     }
 });
 
-//------------form Controller------------
-app.controller('formController', function ($scope) {
-    var new_self = this;
-    var country = [];
-    $scope.states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Federated States of Micronesia', 'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
-    $scope.gender = ['male', 'female', 'transgender man', 'transgender woman', 'other'];
-    $scope.relationship_status = ['single', 'married', 'divorced', 'widowed'];
-    $scope.education = ['Less than high school', 'Some high school', 'High school graduate', 'Associates', 'Bachelors', 'Masters', 'Phd'];
-    $scope.sexual_orientation = ['straight', 'lesbian', 'bisexual', 'gay', 'queer', 'asexual'];
-    $scope.children = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-    $scope.therapy_years = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60];
-    $scope.adopted = ['yes', 'no'];
-    $scope.ethnicity = ['Chinese', 'Japanese', 'Acholi', 'Akan', 'Albanian', 'Amhara', 'Arab', 'Arminian', 'Assyrian', 'Azerbaijanis', 'Balochis', 'Bamars', 'Bambara', 'Bashkris', 'Basque', 'Bemba', 'Bengali', 'Berbers', 'Beti-Pahuin', 'Bihari', 'Bosniaks', 'Brahui', 'Bulgarian', 'Catalan', 'Chuvash', 'Circassian', 'Chewa', 'Croats', 'Czechs', 'Danes', 'Dinka', 'Dutch', 'English', 'Estonian', 'Faroese', 'Finn', 'French', 'Frisians', 'Fula', 'Ganada', 'German', 'Greek', 'Georgian', 'Gujarati', 'Igbo', 'Hindunstani', 'Hui', 'Hungarian', 'Icelander', 'Irish', 'Italian', 'Javanese', 'Jewish', 'Kazakh', 'Kongo', 'Korean', 'Kurd', 'Lebanese', 'Macedonian', 'Malays', 'Marathi', 'Nepali', 'Persian', 'Polish', 'Portugese', 'Punjab', 'Romanian', 'Russian', 'Scottish', 'Serbian', 'Sinhalese', 'Slovik', 'Spanish', 'Swedish', 'Tajik', 'Thai', 'Turkish', 'Ukrainian', 'Vietnamese', 'Welsh', 'French', 'Filipian', 'Brazilian', 'Peruvian', 'Canadian', 'Jamacian', 'Ecuadorian', 'Mexican', 'Iranian', 'Egyptian', 'Greek', 'Syrian', 'Bolivian'];
-    $scope.past_diagnosis =  ["Absence seizure","Abulia","Acute Stress Disorder","Adjustment Disorders","Agoraphobia","Akiltism","Alcohol Addiction", "Alzheimer’s Disease", "Amnesia", "Amphetamine Addiction", "Anorexia Nervosa", "Anterograde Amnesia", "Antisocial personality disorder", "Anxiety Disorder", "Anxiolytic related disorders", "Asperger’s Syndrome", "Attention Deficit Disorder", "Attention Deficit Hyperactivity Disorder", "Autism Spectrum Disorder", "Autophagia", "Avoidant Personality Disorder",
-        "Barbiturate related disorders", "Benzodiazepine-related disorders", "Bereavement", "Bibliomania", "Binge Eating Disorder", "Bipolar disorder I", "Bipolar disorder II", "Body Dysmorphic Disorder", "Borderline intellectual functioning", "Borderline Personality Disorder", "Breathing-Related Sleep Disorder", "Brief Psychotic Disorder", "Bruxism", "Bulimia Nervosa",
-        "Caffeine Addiction", "Cannabis Addiction", "Catatonic disorder", "Catatonic schizophrenia", "Childhood amnesia", "Childhood Onset Fluency Disorder", "Circadian Rhythm Disorders", "Claustrophobia", "Cocaine related disorders", "Communication disorder", "Conduct Disorder", "Conversion Disorder", "Cotard delusion", "Cyclothymia",
-        "Delerium","Delusional Disorder","Dementia", "Dependent Personality Disorder or Asthenic Personality Disorder ", "Depersonalization disorder or Derealization", "Depressive personality disorder", "Derealization disorder", "Dermotillomania", "Desynchronosis", "Developmental coordination disorder", "Diogenes Syndrome", "Disorder of written expression", "Dispareunia", "Dissocial Personality Disorder", "Dissociative Amnesia", "Dissociative Fugue", "Dissociative Identity Disorder or Multiple Personality Disorder", "Down syndrome", "Dyslexia", "Dyspareunia", "Dysthymia or Persistent Depressive Disorder",
-        "Eating disorder NOS", "Ekbom’s Syndrome (Delusional Parasitosis)", "Encopresis", "Enuresis (bedwetting)", "Erotomania", "Exhibitionistic Disorder", "Expressive language disorder",
-        "Factitious Disorder", "Female Sexual Disorders", "Fetishistic Disorder", "Folie à deux", "Fregoli delusion", "Frotteuristic Disorder", "Fugue State",
-        "Ganser syndrome", "Gambling Addiction", "Gender Dysphoria or Gender Identity Disorder", "Generalized Anxiety Disorder", "General adaptation syndrome", "Grandiose delusions",
-        "Hallucinogen Addiction", "Haltlose personality disorder", "Histrionic Personality Disorder", "Primary hypersomnia", "Huntington’s Disease", "Hypoactive sexual desire disorder", "Hypochondriasis", "Hypomania", "Hyperkinetic syndrome", "Hypersomnia", "Hysteria",
-        "Impulse control disorder", "Impulse control disorder NOS", "Inhalant Addiction", "Insomnia", "Intellectual Development Disorder", "Intermittent Explosive Disorder",
-        "Joubert syndrome",
-        "Kleptomania", "Korsakoff’s syndrome",
-        "Lacunar amnesia", "Language Disorder", "Learning Disorders",
-        "Major Depression", "Major depressive disorder", "Male Sexual Disorders", "Malingering", "Mathematics disorder", "Medication-related disorder", "Melancholia", "Intellectual Development Disorder", "Misophonia", "Morbid jealousy", "Munchausen Syndrome", "Munchausen by Proxy",
-        "Narcissistic Personality Disorder", "Narcolepsy", "Neglect of child", "Neuroleptic-related disorder", "Nightmare Disorder", "Non Rapid Eye Movement",
-        "Obsessive-Compulsive Disorder", "Obsessive-Compulsive Personality Disorder", "Oneirophrenia", "Onychophagia", "Opioid Addiction", "Oppositional Defiant Disorder", "Orthorexia",
-        "Pain disorder", "Panic attacks", "Panic Disorder", "Paranoid Personality Disorder", "Parkinson’s Disease", "Partner relational problem", "Passive-aggressive personality disorder", "Pathological gambling", "Pedophilic Disorder", "Perfectionism", "Persecutory delusion", "Personality change due to a general medical condition", "Personality disorder", "Pervasive developmental disorder (PDD)", "Phencyclidine related disorder", "Phobic disorder", "Phonological disorder", "Physical abuse", "Pica", "Polysubstance related disorder", "Postpartum Depression", "Post-traumatic embitterment disorder (PTED)", "Post Traumatic Stress Disorder (PSTD)", "Premature ejaculation", "Premenstrual Dysphoric Disorder", "Psychogenic amnesia", "Psychological factor affecting medical condition", "Psychoneurotic personality disorder", "Psychotic disorder", "Pyromania",
-        "Reactive Attachment Disorder", "Reading disorder", "Recurrent brief depression", "Relational disorder", "REM Sleep Behavior Disorder", "Restless Leg Syndrome", "Retrograde amnesia", "Rumination syndrome",
-        "Sadistic personality disorder", "Schizoaffective Disorder", "Schizoid Personality Disorder", "Schizophrenia", "Schizophreniform disorder", "Schizotypal Personality Disorder", "Seasonal Affective Disorder", "Sedative, Hypnotic, or Anxiolytic Addiction", "Selective Mutism", "Self-defeating personality disorder", "Separation Anxiety Disorder", "Sexual Disorders Female", "Sexual Disorders Male", "Sexual Addiction", "Sexual Masochism Disorder", "Sexual Sadism Disorder", "Shared Psychotic Disorder", "Sleep Arousal Disorders", "Sleep Paralysis", "Sleep Terror Disorder or Nightmare Disorder", "Social Anxiety Disorder", "Somatization Disorder", "Specific Phobias", "Stendhal syndrome", "Stereotypic movement disorder", "Stimulant Addiction", "Stuttering or Childhood Onset Fluency Disorder", "Substance related disorder",
-        "Tardive dyskinesia", "Tobacco Addiction", "Tourettes Syndrome", "Transient tic disorder", "Transient global amnesia", "Transvestic Disorder", "Trichotillomania",
-        "Vaginismus", "Voyeuristic Disorder"
-    ];
-    //Add an empty data object to your controller, make sure to call it 'data'
-    $scope.data = {};
-    //Add a function called getData to your controller to call the SGT API
-    this.getData = function (form) {
-        console.log("get data fn, this is user: ", form);
-        form.callApi($scope, form)
-            .then(function success(response) {
-                new_self.data = response.data;
-            })
-    };
-});
 //-----------client form controller------------
 app.provider('clientData', function () {
     console.log(" client provider");
@@ -417,4 +379,144 @@ app.controller('selectFormController', function ($scope, selectForm) {
         //     console.log("success for call api promise");
         // })
     }
+});
+
+//------------form Controller------------
+//this controller contains all the data that is necessary for the client form
+app.controller('formController', function ($scope,$log) {
+    var self = this;
+    self.numberOfFields = false;
+    $scope.states = ['none', 'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+    $scope.country = ["Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegowina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo", "Congo, the Democratic Republic of the", "Cook Islands", "Costa Rica", "Cote d'Ivoire", "Croatia (Hrvatska)", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands (Malvinas)",
+        "Faroe Islands", "Fiji", "Finland", "France", "France Metropolitan", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Heard and Mc Donald Islands", "Holy See (Vatican City State)", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran (Islamic Republic of)", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, Democratic People's Republic of", "Korea, Republic of", "Kuwait", "Kyrgyzstan", "Lao, People's Democratic Republic", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libyan Arab Jamahiriya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States of",
+        "Moldova, Republic of", "Monaco", "Mongolia", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island",
+        "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russian Federation", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Seychelles", "Sierra Leone", "Singapore", "Slovakia (Slovak Republic)", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "Spain", "Sri Lanka", "St. Helena", "St. Pierre and Miquelon", "Sudan", "Suriname", "Svalbard and Jan Mayen Islands", "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan, Province of China", "Tajikistan", "Tanzania, United Republic of", "Thailand", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States",
+        "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (U.S.)", "Wallis and Futuna Islands", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"];
+    $scope.gender = ['male', 'female', 'transgender man', 'transgender woman', 'other'];
+    $scope.relationship_status = ['single', 'married', 'divorced', 'widowed'];
+    $scope.education = ['Less than high school', 'Some high school', 'High school graduate', 'Associates', 'Bachelors', 'Masters', 'Phd'];
+    $scope.sexual_orientation = ['straight', 'lesbian', 'bisexual', 'gay', 'queer', 'asexual'];
+    $scope.children = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+    $scope.therapy_years = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60];
+    $scope.adopted = ['yes', 'no'];
+    $scope.order = ['1st','2nd','3rd','4th','5th','6th','7th','8th'];
+    $scope.ethnicity = ['Chinese', 'Japanese', 'Acholi', 'Akan', 'Albanian', 'Amhara', 'Arab', 'Arminian', 'Assyrian', 'Azerbaijanis', 'Balochis', 'Bamars', 'Bambara', 'Bashkris', 'Basque', 'Bemba', 'Bengali', 'Berbers', 'Beti-Pahuin', 'Bihari', 'Bosniaks', 'Brahui', 'Bulgarian', 'Catalan', 'Chuvash', 'Circassian', 'Chewa', 'Croats', 'Czechs', 'Danes', 'Dinka', 'Dutch', 'English', 'Estonian', 'Faroese', 'Finn', 'French', 'Frisians', 'Fula', 'Ganada', 'German', 'Greek', 'Georgian', 'Gujarati', 'Igbo', 'Hindunstani', 'Hui', 'Hungarian', 'Icelander', 'Irish', 'Italian', 'Javanese', 'Jewish', 'Kazakh', 'Kongo', 'Korean', 'Kurd', 'Lebanese', 'Macedonian', 'Malays', 'Marathi', 'Nepali', 'Persian', 'Polish', 'Portugese', 'Punjab', 'Romanian', 'Russian', 'Scottish', 'Serbian', 'Sinhalese', 'Slovik', 'Spanish', 'Swedish', 'Tajik', 'Thai', 'Turkish', 'Ukrainian', 'Vietnamese', 'Welsh', 'French', 'Filipian', 'Brazilian', 'Peruvian', 'Canadian', 'Jamacian', 'Ecuadorian', 'Mexican', 'Iranian', 'Egyptian', 'Greek', 'Syrian', 'Bolivian'];
+    $scope.past_diagnosis =  ["Absence seizure","Abulia","Acute Stress Disorder","Adjustment Disorders","Agoraphobia","Akiltism","Alcohol Addiction", "Alzheimer’s Disease", "Amnesia", "Amphetamine Addiction", "Anorexia Nervosa", "Anterograde Amnesia", "Antisocial personality disorder", "Anxiety Disorder", "Anxiolytic related disorders", "Asperger’s Syndrome", "Attention Deficit Disorder", "Attention Deficit Hyperactivity Disorder", "Autism Spectrum Disorder", "Autophagia", "Avoidant Personality Disorder",
+        "Barbiturate related disorders", "Benzodiazepine-related disorders", "Bereavement", "Bibliomania", "Binge Eating Disorder", "Bipolar disorder I", "Bipolar disorder II", "Body Dysmorphic Disorder", "Borderline intellectual functioning", "Borderline Personality Disorder", "Breathing-Related Sleep Disorder", "Brief Psychotic Disorder", "Bruxism", "Bulimia Nervosa",
+        "Caffeine Addiction", "Cannabis Addiction", "Catatonic disorder", "Catatonic schizophrenia", "Childhood amnesia", "Childhood Onset Fluency Disorder", "Circadian Rhythm Disorders", "Claustrophobia", "Cocaine related disorders", "Communication disorder", "Conduct Disorder", "Conversion Disorder", "Cotard delusion", "Cyclothymia",
+        "Delerium","Delusional Disorder","Dementia", "Dependent Personality Disorder or Asthenic Personality Disorder ", "Depersonalization disorder or Derealization", "Depressive personality disorder", "Derealization disorder", "Dermotillomania", "Desynchronosis", "Developmental coordination disorder", "Diogenes Syndrome", "Disorder of written expression", "Dispareunia", "Dissocial Personality Disorder", "Dissociative Amnesia", "Dissociative Fugue", "Dissociative Identity Disorder or Multiple Personality Disorder", "Down syndrome", "Dyslexia", "Dyspareunia", "Dysthymia or Persistent Depressive Disorder",
+        "Eating disorder NOS", "Ekbom’s Syndrome (Delusional Parasitosis)", "Encopresis", "Enuresis (bedwetting)", "Erotomania", "Exhibitionistic Disorder", "Expressive language disorder",
+        "Factitious Disorder", "Female Sexual Disorders", "Fetishistic Disorder", "Folie à deux", "Fregoli delusion", "Frotteuristic Disorder", "Fugue State",
+        "Ganser syndrome", "Gambling Addiction", "Gender Dysphoria or Gender Identity Disorder", "Generalized Anxiety Disorder", "General adaptation syndrome", "Grandiose delusions",
+        "Hallucinogen Addiction", "Haltlose personality disorder", "Histrionic Personality Disorder", "Primary hypersomnia", "Huntington’s Disease", "Hypoactive sexual desire disorder", "Hypochondriasis", "Hypomania", "Hyperkinetic syndrome", "Hypersomnia", "Hysteria",
+        "Impulse control disorder", "Impulse control disorder NOS", "Inhalant Addiction", "Insomnia", "Intellectual Development Disorder", "Intermittent Explosive Disorder",
+        "Joubert syndrome",
+        "Kleptomania", "Korsakoff’s syndrome",
+        "Lacunar amnesia", "Language Disorder", "Learning Disorders",
+        "Major Depression", "Major depressive disorder", "Male Sexual Disorders", "Malingering", "Mathematics disorder", "Medication-related disorder", "Melancholia", "Intellectual Development Disorder", "Misophonia", "Morbid jealousy", "Munchausen Syndrome", "Munchausen by Proxy",
+        "Narcissistic Personality Disorder", "Narcolepsy", "Neglect of child", "Neuroleptic-related disorder", "Nightmare Disorder", "Non Rapid Eye Movement",
+        "Obsessive-Compulsive Disorder", "Obsessive-Compulsive Personality Disorder", "Oneirophrenia", "Onychophagia", "Opioid Addiction", "Oppositional Defiant Disorder", "Orthorexia",
+        "Pain disorder", "Panic attacks", "Panic Disorder", "Paranoid Personality Disorder", "Parkinson’s Disease", "Partner relational problem", "Passive-aggressive personality disorder", "Pathological gambling", "Pedophilic Disorder", "Perfectionism", "Persecutory delusion", "Personality change due to a general medical condition", "Personality disorder", "Pervasive developmental disorder (PDD)", "Phencyclidine related disorder", "Phobic disorder", "Phonological disorder", "Physical abuse", "Pica", "Polysubstance related disorder", "Postpartum Depression", "Post-traumatic embitterment disorder (PTED)", "Post Traumatic Stress Disorder (PSTD)", "Premature ejaculation", "Premenstrual Dysphoric Disorder", "Psychogenic amnesia", "Psychological factor affecting medical condition", "Psychoneurotic personality disorder", "Psychotic disorder", "Pyromania",
+        "Reactive Attachment Disorder", "Reading disorder", "Recurrent brief depression", "Relational disorder", "REM Sleep Behavior Disorder", "Restless Leg Syndrome", "Retrograde amnesia", "Rumination syndrome",
+        "Sadistic personality disorder", "Schizoaffective Disorder", "Schizoid Personality Disorder", "Schizophrenia", "Schizophreniform disorder", "Schizotypal Personality Disorder", "Seasonal Affective Disorder", "Sedative, Hypnotic, or Anxiolytic Addiction", "Selective Mutism", "Self-defeating personality disorder", "Separation Anxiety Disorder", "Sexual Disorders Female", "Sexual Disorders Male", "Sexual Addiction", "Sexual Masochism Disorder", "Sexual Sadism Disorder", "Shared Psychotic Disorder", "Sleep Arousal Disorders", "Sleep Paralysis", "Sleep Terror Disorder or Nightmare Disorder", "Social Anxiety Disorder", "Somatization Disorder", "Specific Phobias", "Stendhal syndrome", "Stereotypic movement disorder", "Stimulant Addiction", "Stuttering or Childhood Onset Fluency Disorder", "Substance related disorder",
+        "Tardive dyskinesia", "Tobacco Addiction", "Tourettes Syndrome", "Transient tic disorder", "Transient global amnesia", "Transvestic Disorder", "Trichotillomania",
+        "Vaginismus", "Voyeuristic Disorder"
+    ];
+    $scope.num_of_diagnosis = [0,1,2,3,4,5,6,7,8];
+    $scope.holdNumber = [];
+    $scope.data = {};
+    this.displayDiagnosisFields = function(num){
+        $log.info(num);
+        if(num == 0){
+            self.oneField = false;
+            self.twoFields = false;
+            self.threeFields = false;
+            self.fourFields = false;
+            self.fiveFields = false;
+            self.sixFields = false;
+            self.sevenFields = false;
+            self.eightFields = false;
+        }
+        else if(num == 1){
+            self.oneField = true;
+            self.twoFields = false;
+            self.threeFields = false;
+            self.fourFields = false;
+            self.fiveFields = false;
+            self.sixFields = false;
+            self.sevenFields = false;
+            self.eightFields = false;
+        }else if(num==2){
+            self.oneField = true;
+            self.twoFields = true;
+            self.threeFields = false;
+            self.fourFields = false;
+            self.fiveFields = false;
+            self.sixFields = false;
+            self.sevenFields = false;
+            self.eightFields = false;
+        }else if(num == 3){
+            self.oneField = true;
+            self.twoFields = true;
+            self.threeFields = true;
+            self.fourFields = false;
+            self.fiveFields = false;
+            self.sixFields = false;
+            self.sevenFields = false;
+            self.eightFields = false;
+        }else if(num ==4){
+            self.oneField = true;
+            self.twoFields = true;
+            self.threeFields = true;
+            self.fourFields = true;
+            self.fiveFields = false;
+            self.sixFields = false;
+            self.sevenFields = false;
+            self.eightFields = false;
+        }else if(num ==5){
+            self.oneField = true;
+            self.twoFields = true;
+            self.threeFields = true;
+            self.fourFields = true;
+            self.fiveFields = true;
+            self.sixFields = false;
+            self.sevenFields = false;
+            self.eightFields = false;
+        }else if(num == 6){
+            self.oneField = true;
+            self.twoFields = true;
+            self.threeFields = true;
+            self.fourFields = true;
+            self.fiveFields = true;
+            self.sixFields = true;
+            self.sevenFields = false;
+            self.eightFields = false;
+        }else if(num == 7){
+            self.oneField = true;
+            self.twoFields = true;
+            self.threeFields = true;
+            self.fourFields = true;
+            self.fiveFields = true;
+            self.sixFields = true;
+            self.sevenFields = true;
+            self.eightFields = false;
+        }else if(num == 8){
+            self.oneField = true;
+            self.twoFields = true;
+            self.threeFields = true;
+            self.fourFields = true;
+            self.fiveFields = true;
+            self.sixFields = true;
+            self.sevenFields = true;
+            self.eightFields = true;
+        }
+    };
+    //Added function called submitData to call the API
+    this.submitData = function (form) {
+        console.log("get data fn, this is user: ", form);
+        form.callApi($scope, form)
+            .then(function success(response) {
+                new_self.data = response.data;
+            })
+    };
 });

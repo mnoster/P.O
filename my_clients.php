@@ -2,23 +2,14 @@
     <div class="row">
         <h2>My Clients</h2>
         <hr>
-        <div class="col-xs-12">
-            <ul>
-
-            </ul>
-        </div>
     </div>
 </div>
 <div class="container client-contain" ng-controller="clientController as cc">
     <div>
         <!-- only show this element when the isnt on mobile -->
-        <h2 class="page-header hidden-xs col-sm-12 ">Client Table
+        <h2 class="page-header  col-sm-12 ">Client Table
             <small class="pull-right"><span class="avgGrade label label-default"></span></small>
         </h2>
-        <!-- only show this element when the user gets to a mobile version -->
-        <h3 class="page-header col-xs-11 h3 hidden-sm hidden-md hidden-lg ">
-        </h3>
-
     </div>
     <div class="client-add-form form-group col-md-4 pull-right">
         <h4>Add Client</h4>
@@ -51,7 +42,7 @@
         <button type="button" class="btn btn-default">Cancel</button>
         <div ng-hide="cc.display_errors" class="text-danger">Please fill out all the fields</div>
     </div>
-    <div class="client-list-container col-sm-8">
+    <div class="client-list-container col-md-8">
         <table id="client-list" class="client-list table table-hover">
             <thead>
             <tr>
