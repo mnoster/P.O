@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="aece51e6-ff4b-434f-9aa4-86cebea867a8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clientSetup_handler.php" afterPath="$PROJECT_DIR$/clientSetup_handler.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/form1.php" afterPath="$PROJECT_DIR$/form1.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/form_handler.php" afterPath="$PROJECT_DIR$/form_handler.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/style.css" afterPath="$PROJECT_DIR$/style.css" />
     </list>
     <ignored path="P.O.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,25 +27,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="166" column="57" selection-start-line="166" selection-start-column="57" selection-end-line="166" selection-end-column="57" />
+            <state relative-caret-position="360">
+              <caret line="428" column="165" selection-start-line="428" selection-start-column="165" selection-end-line="428" selection-end-column="165" />
               <folding>
-                <marker date="1475605597000" expanded="true" signature="9541:9577" placeholder="..." />
+                <marker date="1475611323000" expanded="true" signature="9541:9577" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="form_handler.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="form1.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/form1.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="76" column="33" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
+              <folding>
+                <element signature="n#form#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form_handler.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/form_handler.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="26" column="53" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
+            <state relative-caret-position="345">
+              <caret line="123" column="18" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
               <folding>
-                <marker date="1475604988000" expanded="true" signature="7813:9225" placeholder="UPDATE peopl... " />
+                <marker date="1475612847000" expanded="true" signature="448:465" placeholder="INSERT INTO names... " />
+                <marker date="1475612847000" expanded="true" signature="448:593" placeholder="INSERT INTO names... " />
+                <marker date="1475612847000" expanded="true" signature="8259:9671" placeholder="UPDATE peopl... " />
               </folding>
             </state>
           </provider>
@@ -110,12 +123,12 @@
         <option value="$PROJECT_DIR$/my_clients.php" />
         <option value="$PROJECT_DIR$/script.js" />
         <option value="$PROJECT_DIR$/diagnosis.html" />
-        <option value="$PROJECT_DIR$/form1.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/style.css" />
-        <option value="$PROJECT_DIR$/form_handler.php" />
         <option value="$PROJECT_DIR$/clientSetup_handler.php" />
         <option value="$PROJECT_DIR$/main.js" />
+        <option value="$PROJECT_DIR$/form1.php" />
+        <option value="$PROJECT_DIR$/form_handler.php" />
       </list>
     </option>
   </component>
@@ -259,18 +272,18 @@
       <workItem from="1475012081113" duration="4443000" />
       <workItem from="1475124574967" duration="3334000" />
       <workItem from="1475189230809" duration="34834000" />
-      <workItem from="1475440051664" duration="34691000" />
+      <workItem from="1475440051664" duration="39310000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="158711000" />
+    <option name="totallyTimeSpent" value="163330000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="704" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="704" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18739903" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18724279" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -438,13 +451,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="11128" selection-start-line="2" selection-start-column="11128" selection-end-line="2" selection-end-column="11128" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/register_handler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -626,14 +632,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/form1.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1343">
-          <caret line="323" column="20" selection-start-line="323" selection-start-column="20" selection-end-line="323" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="447">
@@ -666,22 +664,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/form_handler.php">
+    <entry file="file://$PROJECT_DIR$/register_handler.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="26" column="53" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
-          <folding>
-            <marker date="1475604988000" expanded="true" signature="7813:9225" placeholder="UPDATE peopl... " />
-          </folding>
+        <state relative-caret-position="315">
+          <caret line="21" column="108" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="108" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="166" column="57" selection-start-line="166" selection-start-column="57" selection-end-line="166" selection-end-column="57" />
+        <state relative-caret-position="360">
+          <caret line="428" column="165" selection-start-line="428" selection-start-column="165" selection-end-line="428" selection-end-column="165" />
           <folding>
-            <marker date="1475605597000" expanded="true" signature="9541:9577" placeholder="..." />
+            <marker date="1475611323000" expanded="true" signature="9541:9577" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/form1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="76" column="33" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
+          <folding>
+            <element signature="n#form#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/form_handler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="123" column="18" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
+          <folding>
+            <marker date="1475612847000" expanded="true" signature="448:465" placeholder="INSERT INTO names... " />
+            <marker date="1475612847000" expanded="true" signature="448:593" placeholder="INSERT INTO names... " />
+            <marker date="1475612847000" expanded="true" signature="8259:9671" placeholder="UPDATE peopl... " />
           </folding>
         </state>
       </provider>

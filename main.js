@@ -392,7 +392,7 @@ app.controller('formController', function ($scope,$log) {
         "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russian Federation", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Seychelles", "Sierra Leone", "Singapore", "Slovakia (Slovak Republic)", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "Spain", "Sri Lanka", "St. Helena", "St. Pierre and Miquelon", "Sudan", "Suriname", "Svalbard and Jan Mayen Islands", "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan, Province of China", "Tajikistan", "Tanzania, United Republic of", "Thailand", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States",
         "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (U.S.)", "Wallis and Futuna Islands", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"];
     $scope.gender = ['male', 'female', 'transgender man', 'transgender woman', 'other'];
-    $scope.relationship_status = ['single', 'married', 'divorced', 'widowed'];
+    $scope.relationship_status = ['single','significant other','married','separated', 'divorced', 'widowed'];
     $scope.education = ['Less than high school', 'Some high school', 'High school graduate', 'Associates', 'Bachelors', 'Masters', 'Phd'];
     $scope.sexual_orientation = ['straight', 'lesbian', 'bisexual', 'gay', 'queer', 'asexual'];
     $scope.children = [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
@@ -425,7 +425,8 @@ app.controller('formController', function ($scope,$log) {
     $scope.num_of_diagnosis = [0,1,2,3,4,5,6,7,8];
     $scope.treatment_types = ["none","Anti-anxiety Agents","Anti-psychotics","Anti-depressants","Anti-obsessive Agents","Anti-Panic Agents","Mood Stabilizers","Stimulants","other"];
     $scope.therapy_types = ["none","Arts Therapy","Counselling","Behavioral Therapy", "Cognitive Behavioural Therapy (CBT)","Humanistic Therapy", "Psychotherapy", "Family therapy", "Couples therapy", "Group therapy", "Interpersonal therapy", "Behavioural activation", "Mindfulness-based therapies","other"];
-
+    $scope.employment = ['Employed','Unemployed','Full-time Student','Part-time Student','Retired','Disabled'];
+    $scope.religion = ['None','Atheist/Agnostic','Buddhist','Catholic','Christian','Hindu','Jewish','Mormon','Muslim','Orthodox','Other','Protestant','Scientologist'];
     $scope.holdNumber = [];
     $scope.data = {};
     this.displayDiagnosisFields = function(num){

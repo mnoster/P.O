@@ -68,7 +68,28 @@ session_start();
 
             </select>
             <br/>
-            Do you have military combat experience?
+            Employment
+            <select name="Employment" class="form-control" ng-model="selectedEmployment" ng-options="x for x in employment">
+                <option disabled selected value> -- select an option --</option>
+
+            </select>
+            <br/>
+            Religious Affiliation
+            <select name="Religion" class="form-control" ng-model="selectedReligion" ng-options="x for x in religion">
+                <option disabled selected value> -- select an option --</option>
+
+            </select>
+            <br/>
+            Status of your parents
+            <select name="Parent" class="form-control" ng-model="selectedParentStatus">
+                <option disabled selected value> -- select an option --</option>
+                <option> Parents Married</option>
+                <option> Parents Divorced</option>
+                <option> Parents Separated</option>
+                <option> Never Married </option>
+            </select>
+            <br>
+            Are you a protected Veteran?
             <select name="Veteran" class="form-control" ng-model="selectedVeteran">
                 <option disabled selected value> -- select an option --</option>
                 <option> Yes</option>
@@ -76,7 +97,7 @@ session_start();
             </select>
             <br/>
             Have you been arrested?
-            <select name="Veteran" class="form-control" ng-model="selectedArrested">
+            <select name="Arrested" class="form-control" ng-model="selectedArrested">
                 <option disabled selected value> -- select an option --</option>
                 <option> Yes</option>
                 <option> No</option>
@@ -90,32 +111,37 @@ session_start();
             </select>
             <br/>
             Do you have history of drug/alcohol abuse?
-            <select name="Veteran" class="form-control" ng-model="selectedDrugProblems">
+            <select name="DrugAlcohol" class="form-control" ng-model="selectedDrugProblems">
+                <option disabled selected value> -- select an option --</option>
+                <option> Yes</option>
+                <option> No</option>
+            </select>
+            <br>
+            Have you ever experienced significant brain trauma?
+            <select name="Brian Trauma" class="form-control" ng-model="selectedBrainTrauma">
                 <option disabled selected value> -- select an option --</option>
                 <option> Yes</option>
                 <option> No</option>
             </select>
             <br>
             Have your mother or father suffered from mental health problems?
-            <select name="Parents" class="form-control" ng-model="selectedParents">
+            <select name="Parents" class="form-control" ng-model="selectedParentHealth">
                 <option disabled selected value> -- select an option --</option>
                 <option> Yes</option>
                 <option> No</option>
             </select>
             <br>
-            Parental Situation
-            <select name="Veteran" class="form-control" ng-model="selectedVeteran">
-                <option disabled selected value> -- select an option --</option>
-                <option> Parents Married</option>
-                <option> Parents Divorced</option>
-                <option> Never Married </option>
-            </select>
-            <br>
-            Have you been without a place to live for more than 2 weeks?
+            Longest you've been without a place to live?
             <select name="Homeless" class="form-control" ng-model="selectedHomeless">
                 <option disabled selected value> -- select an option --</option>
-                <option> Yes</option>
-                <option> No</option>
+                <option> I've always had a place to live</option>
+                <option> 1-2 weeks</option>
+                <option> 3-4 weeks</option>
+                <option> 1-3 months</option>
+                <option> 4-9 months</option>
+                <option> 10-12 months</option>
+                <option> 1-2 years</option>
+                <option> 2+ years</option>
             </select>
             <br>
             How many days per week do you get more than 20 min of physical activity?
@@ -133,9 +159,9 @@ session_start();
             <br>
             <br>
             <input type="submit">
-
         </form>
         <br>
+<!--        SECOND PART OF FORMS------------>
         <form class="client_form second-form">
             <h3 class="third_head">Past Treatment</h3>
             Combined Years of Therapy
