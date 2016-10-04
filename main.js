@@ -380,7 +380,35 @@ app.controller('selectFormController', function ($scope, selectForm) {
     }
 });
 
-//------------form Controller------------
+//------------form Submission service------------
+app.factory('formSubmit',function($http,$log){
+    var self = this;
+    var link = 'form_handler.php';
+    $log.info("formSubmit Service");
+    return{
+        callApi: function ($scope, data){
+            if(data.first_name == '' || data.last_name == ''){
+
+            }
+            console.log("first name: " , data.first_name);
+            var submitData = $.param({
+                first_name: data.first_name,
+                last_name : data.last_name,
+                notes:data.notes
+            });
+            $http({
+                url:link,
+                dataType:'json',
+                data: submitData,
+                method:'POST'
+            }).then(function success(response){
+                console.log("form submit success: " ,response);
+            })
+        }
+    }
+});
+
+
 //this controller contains all the data that is necessary for the client form
 app.controller('formController', function ($scope,$log) {
     var self = this;
@@ -514,9 +542,9 @@ app.controller('formController', function ($scope,$log) {
         }
     };
     //Added function called submitData to call the API
-    this.submitData = function (form) {
-        console.log("get data fn, this is user: ", form);
-        form.callApi($scope, form)
+    this.submitData = function () {
+        console.log("submit data function");
+        formSubmit.callApi($scope, form)
             .then(function success(response) {
                 new_self.data = response.data;
             })
