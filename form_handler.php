@@ -24,16 +24,16 @@ if(empty($_POST['state'])){
 }else{
     $state =addslashes($_POST['state']);
 };
-//if(empty($_POST['first_name'])){
-//    $first_name =addslashes($_SESSION['first_name']);
-//}else{
-//    $first_name =addslashes($_POST['first_name']);
-//};
-//if(empty($_POST['last_name'])){
-//    $last_name =addslashes($_SESSION['last_name']);
-//}else{
-//    $last_name =addslashes($_POST['last_name']);
-//};
+    $first_name =addslashes($_SESSION['first_name']);
+    $first_name = sha1($first_name);
+    $last_name =addslashes($_SESSION['last_name']);
+    $last_name = sha1($last_name);
+    $notes =addslashes($_SESSION['notes']);
+    $dr_ID = addslashes($_SESSION['ID']);
+    $active = addslashes($_SESSION['active']);
+    $form = addslashes($_SESSION['form']);
+
+
 if(empty($_POST['ethnicity'])){
     $ethnicity =addslashes($_SESSION['ethnicity']);
 }else{

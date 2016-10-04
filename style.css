@@ -28,12 +28,13 @@ body{
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: 100% 100%;
+    background-size: 90% 90%;
     margin:0;
     padding:0;
-    background-color: #fff9fc;
+    background-color: rgba(144, 193, 207, 0.5);
     /*this positioning will put the background image below the navbar*/
-    background-position: 0 6vh;
+    background-position: 0 9vh;
+    background-position-x: 20px;
 
 }
 #logo{
@@ -150,6 +151,9 @@ footer{
 .form-icon:hover{
     color: yellow;
     cursor:pointer;
+}
+.client_name{
+    color:blue;
 }
 
 /*------default form-------*/

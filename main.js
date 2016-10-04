@@ -165,7 +165,6 @@ app.controller('loginController', function (loginData, $scope) {
 });
 
 //-------------------logout data-------------------------
-
 app.controller('logoutController', function () {
     //Add a function called getData to your controller to call the SGT API
     this.logout_user = function () {
