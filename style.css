@@ -1,15 +1,24 @@
 html{
     background-color:transparent;
     height:100%;
-
 }
 nav{
     position: fixed;
     top: 0;
 }
 .navbar{
-    background-color: rgba(0, 0, 0, 0.82);
-
+    border-radius: 0;
+}
+.navbar-inverse, .navbar, nav{
+    background-color: rgba(0, 0, 0, 0.91);
+    color:white;
+}
+.dropdown-menu>li>a{
+    background-color: rgba(255, 255, 255, 0.91);
+    color: black;
+}
+.logo{
+    margin-top: -10px;
 }
 body{
     /*background-image: url('Images/iam-solutions-brain.png');*/
@@ -19,28 +28,27 @@ body{
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: 100% 100%;
+    background-size: 90% 90%;
     margin:0;
     padding:0;
-    background-color: #fff9fc;
+    background-color: rgba(144, 193, 207, 0.5);
+    /*this positioning will put the background image below the navbar*/
+    background-position: 0 9vh;
+    background-position-x: 20px;
 
 }
 #logo{
     /*background:url("images/logo.png");
     background-repeat: no-repeat;*/
-
     height: 30vh;
     background-color: transparent;
-
 }
 #searchbar{
     margin-top:90px;
 }
 #info1{
     margin: 40px 0 0 32px ;
-
 }
-
 #footcontent{
     text-align: center;
     padding:10px 0 0 0;
@@ -143,6 +151,9 @@ footer{
 .form-icon:hover{
     color: yellow;
     cursor:pointer;
+}
+.client_name{
+    color:blue;
 }
 
 /*------default form-------*/
