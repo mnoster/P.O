@@ -7,7 +7,10 @@ if($conn->connect_error){
     print($output);
     die();
 }
-$_SESSION['first_name'] = $_POST['first_name'];
-$_SESSION['last_name'] = $_POST['last_name'];
-$_SESSION['notes'] = $_POST['notes'];
+$output = $_POST['form'];
+$output = addslashes($output);
+$_SESSION['form'] = $output;
+$output = json_encode($output);
+print($output);
+
 ?>

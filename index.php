@@ -4,7 +4,6 @@ if (empty($_SESSION)) {
     header("Location: login.php"); /* Redirect browser */
     exit();
 }
-//print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +57,6 @@ if (empty($_SESSION)) {
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 <li><a href="#register"><span class=""></span>Register</a></li>
-
             </ul>
         </div>
     </div>

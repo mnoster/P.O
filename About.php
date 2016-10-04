@@ -17,7 +17,7 @@
             by mental health conditions.
         </h2>
         </p>
-        <p ><h2 class="fancy">With this application, we wish to appropriately aggregate information and use it to
+        <p ><h2 class="fancy">With this application, we wish to appropriately aggregate information from actual mental health patients and use it to
             generate better information so that researchers, pharmaceutical companies, and curious minds have access to more representative data.
         </h2>
         </p>

@@ -1,0 +1,32 @@
+<div class="container-fluid"  ng-repeat='x in holdNumber' >
+    <div class="row">
+        <div class="col-xs-3"><strong>Diagnosis {{o}} </strong></div>
+        <div class="col-xs-9">
+            <select name="First Diagnosis" class="form-control" ng-model="firstDiagnosis"
+                    ng-options="x for x in past_diagnosis">
+                <option disabled selected value> -- select a diagnosis --</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3"><strong>Treatment {{o}}</strong></div>
+        <div class="col-xs-9">
+            <select name="First Diagnosis" class="form-control" ng-model="firstTreatment"
+                    ng-options="x for x in past_diagnosis">
+                <option disabled selected value> -- select a diagnosis --</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3"><strong>Treatment Successful?</strong></div>
+        <div class="col-xs-9">
+            <select name="Past Diagnosis" class="form-control" ng-model="firstTreatmentSuccess">
+                <option disabled selected value> -- select an option --</option>
+                <option> Yes</option>
+                <option> No</option>
+                <option> Temporarily</option>
+            </select>
+        </div>
+    </div>
+    <br>
+</div>
