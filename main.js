@@ -381,7 +381,7 @@ app.controller('selectFormController', function ($scope, selectForm) {
 });
 
 //------------form Submission service------------
-app.factory('formSubmit',function($http,$log){
+app.factory('formSubmit',function($http,$log,$q){
     var self = this;
     var link = 'form_handler.php';
     $log.info("formSubmit Service");
@@ -389,18 +389,23 @@ app.factory('formSubmit',function($http,$log){
         callApi: function ($scope,form){
             console.log('selected age: ' , form);
             // var submitData = $.param({
-            //     age: self.selectedAge,
-            //     last_name : data.last_name,
-            //     notes:data.notes
+            //     form
             // });
-            // $http({
-            //     url:link,
-            //     dataType:'json',
-            //     data: submitData,
-            //     method:'POST'
-            // }).then(function success(response){
-            //     console.log("form submit success: " ,response);
-            // })
+            var defer = $q.defer();
+            $http({
+                url:link,
+                dataType:'json',
+                // data: submitData,
+                method:'POST'
+            }).then(function success(response){
+
+                console.log("form submit success: " ,response);
+                defer.resolve(response)
+            }), function error(response) {
+                $log.error("$http fail: ", response);
+                defer.reject("Error msg here");
+            };
+            return defer.promise;
         }
     }
 });
@@ -541,9 +546,9 @@ app.controller('formController', function ($scope,$log,formSubmit) {
     //Added function called submitData to call the API
     this.submitData = function (form) {
         console.log("submit data function");
-        formSubmit.callApi($scope,form);
-            // .then(function success(response) {
-            //     console.log('success');
-            // })
+        formSubmit.callApi($scope,form)
+            .then(function success(response) {
+                console.log("this is the callback response after promise");
+            })
     };
 });

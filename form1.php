@@ -1,6 +1,23 @@
 <?php
 session_start();
 ?>
+<script type='text/javascript'>
+    //Since the angular routing is not restoring session on every redirect, the page needs to be refreshed each time.
+    //This is merely a band-aid approach for now. Need to do more research on solution.
+    (function()
+    {
+        if( window.localStorage )
+        {
+            if( !localStorage.getItem( 'firstLoad' ) )
+            {
+                localStorage[ 'firstLoad' ] = true;
+                window.location.reload();
+            }
+            else
+                localStorage.removeItem( 'firstLoad' );
+        }
+    })();
+</script>
 <div class="container" ng-controller="formController as fc">
     <div class=" col-sm-12 col-md-10" id="logo" style="z-index: 1">
         <h1 id="about_title">Client Form</h1>
@@ -128,6 +145,7 @@ session_start();
                 <option disabled selected value> -- select an option --</option>
                 <option>Yes</option>
                 <option>No</option>
+                <option>I don't know</option>
             </select>
             <br>
             Longest you've been without a place to live?
