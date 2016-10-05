@@ -4,8 +4,7 @@ include('mysql_connect.php');
 if ($conn->connect_error) {
     die("Connection failed ");
 }
-$user_ID = $name_id;
-$clinician_ID = addslashes($_SESSION['ID']);
+$name_ID =  addslashes($_SESSION['name_ID']);
 
 if(empty($_POST['age'])){
 $age = "";
@@ -279,19 +278,14 @@ $eighth_success ="";
 $eighth_success =addslashes($_POST['8th_success']);
 }
 
-
-$full_name = $first_name ." ". $last_name;
-//$full_name = password_hash($full_name, PASSWORD_DEFAULT);
-$first_name = " ";
-$last_name = " ";
 $output = [];
 
-$query = "UPDATE people SET full_name='$full_name', clinician_ID='$clinician_ID', age='$age', gender='$gender', ethnicity='$ethnicity', state='$state', country='$country', parental_situation='$parental_situation','$country', relationship_status='$relationship_status', number_of_children='$number_of_children', brain_trauma='$brain_trauma', education='$education',
+$query = "UPDATE people SET age='$age', gender='$gender', ethnicity='$ethnicity', state='$state', country='$country', parental_situation='$parental_situation','$country', relationship_status='$relationship_status', number_of_children='$number_of_children', brain_trauma='$brain_trauma', education='$education',
 1st_Past_Diagnosis='$first_Diagnosis', 2nd_Past_Diagnosis='$second_Diagnosis', 3rd_Past_Diagnosis='$third_Diagnosis', 4th_Past_Diagnosis='$forth_Diagnosis', 5th_Past_Diagnosis='$fifth_Diagnosis', 6th_Past_Diagnosis='$sixth_Diagnosis', 7th_Past_Diagnosis='$seventh_Diagnosis', 8th_Past_Diagnosis='$eighth_Diagnosis',
 1st_treatment='$first_treatment', 2nd_treatment='$second_treatment', 3rd_treatment='$third_treatment', 4th_treatment='$forth_treatment', 5th_treatment='$fifth_treatment', 6th_treatment='$sixth_treatment', 7th_treatment='$seventh_treatment', 8th_treatment='$eighth_treatment',
 1st_therapy='$first_therapy', 2nd_therapy='$second_therapy', 3rd_therapy='$third_therapy', 4th_therapy='$forth_therapy', 5th_therapy='$fifth_therapy', 6th_therapy='$sixth_therapy', 7th_therapy='$seventh_therapy', 8th_therapy='$eighth_therapy'
 1st_success='$first_success', 2nd_success='$second_success', 3rd_success='$third_success', 4th_success='$forth_success', 5th_success='$fifth_success', 6th_success='$sixth_success', 7th_success='$seventh_success', 8th_success='$eighth_success',
-Arrested='$arrested', Prison='$prison', Employed='$employed', sexual_orientation='$sexual_orientation', current_medications='$current_medications', homeless='$homeless',religion = '$religion',veteran = '$veteran',drug_abuse='$drug_abuse',physical_activity='$physical',years_therapy='$years_therapy') WHERE client_ID = $user_ID";
+Arrested='$arrested', Prison='$prison', Employed='$employed', sexual_orientation='$sexual_orientation', current_medications='$current_medications', homeless='$homeless',religion = '$religion',veteran = '$veteran',drug_abuse='$drug_abuse',physical_activity='$physical',years_therapy='$years_therapy') WHERE name_ID = $name_ID";
 
 mysqli_query($conn,$query);
 
