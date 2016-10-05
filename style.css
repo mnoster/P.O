@@ -34,7 +34,7 @@ body{
     background-color: rgba(144, 193, 207, 0.5);
     /*this positioning will put the background image below the navbar*/
     background-position: 0 9vh;
-    background-position-x: 20px;
+    background-position-x: 25px;
 
 }
 #logo{

@@ -386,31 +386,28 @@ app.factory('formSubmit',function($http,$log){
     var link = 'form_handler.php';
     $log.info("formSubmit Service");
     return{
-        callApi: function ($scope, data){
-            if(data.first_name == '' || data.last_name == ''){
-
-            }
-            console.log("first name: " , data.first_name);
-            var submitData = $.param({
-                first_name: data.first_name,
-                last_name : data.last_name,
-                notes:data.notes
-            });
-            $http({
-                url:link,
-                dataType:'json',
-                data: submitData,
-                method:'POST'
-            }).then(function success(response){
-                console.log("form submit success: " ,response);
-            })
+        callApi: function ($scope,form){
+            console.log('selected age: ' , form);
+            // var submitData = $.param({
+            //     age: self.selectedAge,
+            //     last_name : data.last_name,
+            //     notes:data.notes
+            // });
+            // $http({
+            //     url:link,
+            //     dataType:'json',
+            //     data: submitData,
+            //     method:'POST'
+            // }).then(function success(response){
+            //     console.log("form submit success: " ,response);
+            // })
         }
     }
 });
 
 
 //this controller contains all the data that is necessary for the client form
-app.controller('formController', function ($scope,$log) {
+app.controller('formController', function ($scope,$log,formSubmit) {
     var self = this;
     self.numberOfFields = false;
     $scope.states = ['none', 'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
@@ -452,7 +449,7 @@ app.controller('formController', function ($scope,$log) {
     ];
     $scope.num_of_diagnosis = [0,1,2,3,4,5,6,7,8];
     $scope.treatment_types = ["none","Anti-anxiety Agents","Anti-psychotics","Anti-depressants","Anti-obsessive Agents","Anti-Panic Agents","Mood Stabilizers","Stimulants","other"];
-    $scope.therapy_types = ["none","Arts Therapy","Counselling","Behavioral Therapy", "Cognitive Behavioural Therapy (CBT)","Humanistic Therapy", "Psychotherapy", "Family therapy", "Couples therapy", "Group therapy", "Interpersonal therapy", "Behavioural activation", "Mindfulness-based therapies","other"];
+    $scope.therapy_types = ["none","Arts Therapy", "Behavioural activation", "Behavioral Therapy", "Cognitive Behavioural Therapy (CBT)","Counselling","Couples therapy","Family therapy", "Group therapy","Humanistic Therapy", "Interpersonal therapy","Mindfulness-based therapies","other","Psychotherapy",];
     $scope.employment = ['Employed','Unemployed','Full-time Student','Part-time Student','Retired','Disabled'];
     $scope.religion = ['None','Atheist/Agnostic','Buddhist','Catholic','Christian','Hindu','Jewish','Mormon','Muslim','Orthodox','Other','Protestant','Scientologist'];
     $scope.holdNumber = [];
@@ -542,11 +539,11 @@ app.controller('formController', function ($scope,$log) {
         }
     };
     //Added function called submitData to call the API
-    this.submitData = function () {
+    this.submitData = function (form) {
         console.log("submit data function");
-        formSubmit.callApi($scope, form)
-            .then(function success(response) {
-                new_self.data = response.data;
-            })
+        formSubmit.callApi($scope,form);
+            // .then(function success(response) {
+            //     console.log('success');
+            // })
     };
 });
