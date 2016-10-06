@@ -10,15 +10,14 @@ body{
     float: right;
 }
 .pdf-form{
-
-
+    background-color: transparent;
     font-family: "Times New Roman",'Helvetica';
 }
 .data{
     margin-left: 20px;
 }
 .wrapper{
-    background-color: white;
+    /*background-color: rgba(245, 245, 245, 0.78);*/
     border:1px solid black;
     margin:8px;
     padding:10px;

@@ -18,7 +18,7 @@ app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: '/P.O/home.php'
-            // controller: 'mainController'
+
         })
         .when('/about', {
             templateUrl: '/P.O/About.php'
@@ -74,6 +74,9 @@ app.config(function ($routeProvider) {
         .when('/form1', {
             templateUrl: '/P.O/form1.php'
         })
+        .when('/pdf_form', {
+            templateUrl: '/P.O/pdf_form.php'
+        })
         .when('/edit_form1', {
             templateUrl: '/P.O/edit_form1.php'
         })
@@ -93,6 +96,7 @@ app.config(function ($routeProvider) {
             redirectTo: '/'
         });
 });
+
 
 //-------------login----------------------
 app.provider('loginData', function () {
@@ -164,6 +168,7 @@ app.controller('loginController', function (loginData, $scope) {
     };
 });
 
+
 //-------------------logout data-------------------------
 app.controller('logoutController', function () {
     //Add a function called getData to your controller to call the SGT API
@@ -185,7 +190,8 @@ app.provider('logoutData', function () {
     }
 });
 
-//-----------client form controller------------
+
+//-----------client form------------
 app.provider('clientData', function () {
     console.log(" client provider");
     var self = this;
@@ -271,9 +277,35 @@ app.factory('getClients', function ($http) {
         }
     }
 });
+//----this is the service that will be used to get the form data of the client that is clicked on
+app.factory('getFormInfo',function($http,$log){
+    $log.info('getFormInfo Service');
+    var link = 'getFormInfo.php';
+    return{
+        callApi: function ($scope,formName,date){
+            $log.info(' Call APi getFormInfo Service');
 
-//Include the service in the function parameter list along with any other services
-app.controller('clientController', function (clientData, $scope, getClients) {
+            var data = $.param({
+                name: formName,
+                date:date
+            });
+            console.log('data: ' ,data);
+            $http({
+                url:link,
+                dataType: 'json',
+                method: 'post',
+                data: data
+            }).then(function success(response){
+                // if(response.data.status == 'success'){
+                //     window.location.replace('index.php#/pdf_form.php');
+                // }
+            });
+        }
+    }
+});
+//----This is the controller for both the clientData provider service and the getClients service
+
+app.controller('clientController', function (clientData, $scope, getClients,getFormInfo) {
     //Create a variable to hold this, DO NOT use the same name you used in your provider
     var new_self = this;
     var self = this;
@@ -282,6 +314,9 @@ app.controller('clientController', function (clientData, $scope, getClients) {
     this.form_options = ["Form 1", "Form 2", "Form 3"];
     //Add an empty data object to your controller
     $scope.data = {};
+    this.getForm = function(formName, date){
+        getFormInfo.callApi($scope, formName,date)
+    };
     //Add a function called getData to your controller to call the PHP API
     this.getClientData = function () {
         getClients.callApi($scope, self.clientArray)
@@ -295,6 +330,7 @@ app.controller('clientController', function (clientData, $scope, getClients) {
             })
     };
 });
+
 
 //This is the controller and http service that is called when you click next on create client page
 app.factory('clientSetup',function($http,$log){
@@ -339,6 +375,7 @@ app.controller('clientSetupController', function ($scope, clientSetup) {
     }
 });
 
+
 //This is the controller and http service that is called when you click the FORM 1,2, or 3 on Select_form.php
 app.factory('selectForm',function($http,$log){
     var self = this;
@@ -379,6 +416,7 @@ app.controller('selectFormController', function ($scope, selectForm) {
         // })
     }
 });
+
 
 //------------form Submission service------------
 app.factory('formSubmit',function($http,$log,$q){
@@ -432,8 +470,6 @@ app.factory('formSubmit',function($http,$log,$q){
 
 
 });
-
-
 //this controller contains all the data that is necessary for the client form
 app.controller('formController', function ($scope,$log,formSubmit,$location) {
     var self = this;
