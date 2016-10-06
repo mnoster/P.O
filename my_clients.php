@@ -58,7 +58,7 @@
                 <td>{{client.full_name}}</td>
                 <td>{{client.date_added}}</td>
                 <td>{{client.active}}</td>
-                <td>{{client.form}}</td>
+                <td><a ng-click="cc.getForm(client.full_name,client.date_added)" href = '#pdf_form'>{{client.form}}</a></td>
                 <td class="hidden-xs">
                     <button ng-click="cc.delete_user($index)" class="btn btn-danger">Delete</button>
                 </td>
