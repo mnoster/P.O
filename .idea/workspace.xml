@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="aece51e6-ff4b-434f-9aa4-86cebea867a8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/form1.php" afterPath="$PROJECT_DIR$/form1.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/style.css" afterPath="$PROJECT_DIR$/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_clients.php" afterPath="$PROJECT_DIR$/my_clients.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pdf_form.css" afterPath="$PROJECT_DIR$/pdf_form.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pdf_form.html" afterPath="$PROJECT_DIR$/pdf_form.html" />
     </list>
     <ignored path="P.O.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +30,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="486" column="45" selection-start-line="486" selection-start-column="45" selection-end-line="486" selection-end-column="45" />
+            <state relative-caret-position="476">
+              <caret line="437" column="77" selection-start-line="437" selection-start-column="77" selection-end-line="437" selection-end-column="77" />
               <folding>
                 <element signature="e#8677#9681#0" expanded="false" />
                 <element signature="e#9845#10647#0" expanded="false" />
@@ -39,6 +39,8 @@
                 <element signature="e#11624#12040#0" expanded="false" />
                 <element signature="e#12199#12753#0" expanded="false" />
                 <element signature="e#12825#13384#0" expanded="false" />
+                <element signature="e#13486#15105#0" expanded="false" />
+                <element signature="e#15265#32287#0" expanded="false" />
                 <marker date="1475737873000" expanded="true" signature="9541:9577" placeholder="..." />
                 <marker date="1475737873000" expanded="false" signature="28685:31614" placeholder="..." />
               </folding>
@@ -46,35 +48,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="form1.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/form1.php">
+      <file leaf-file-name="pdf_form.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pdf_form.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="32" column="119" selection-start-line="32" selection-start-column="119" selection-end-line="32" selection-end-column="119" />
+            <state relative-caret-position="180">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bird_graph.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Natural-History/bird_graph.html">
+      <file leaf-file-name="my_clients.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/my_clients.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="27" column="79" selection-start-line="27" selection-start-column="79" selection-end-line="28" selection-end-column="46" />
+            <state relative-caret-position="332">
+              <caret line="60" column="43" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="all_form_data_handler.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/all_form_data_handler.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="302" column="26" selection-start-line="302" selection-start-column="26" selection-end-line="302" selection-end-column="26" />
-              <folding>
-                <marker date="1475711900000" expanded="true" signature="7119:8754" placeholder="UPDATE peopl... " />
-                <marker date="1475711900000" expanded="true" signature="8737:8754" placeholder="UPDATE peopl... " />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -82,28 +71,8 @@
       <file leaf-file-name="pdf_form.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pdf_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-165">
-              <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pdf_form.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pdf_form.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+            <state relative-caret-position="825">
+              <caret line="55" column="100" selection-start-line="55" selection-start-column="100" selection-end-line="55" selection-end-column="100" />
               <folding />
             </state>
           </provider>
@@ -154,7 +123,6 @@
         <option value="$PROJECT_DIR$/select_form.php" />
         <option value="$PROJECT_DIR$/data edit.php" />
         <option value="$PROJECT_DIR$/data edit.js" />
-        <option value="$PROJECT_DIR$/my_clients.php" />
         <option value="$PROJECT_DIR$/diagnosis.html" />
         <option value="$PROJECT_DIR$/clientSetup_handler.php" />
         <option value="$PROJECT_DIR$/script.js" />
@@ -165,10 +133,11 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/pdf_form.php" />
         <option value="$PROJECT_DIR$/style.css" />
-        <option value="$PROJECT_DIR$/pdf_form.css" />
-        <option value="$PROJECT_DIR$/pdf_form.html" />
         <option value="$PROJECT_DIR$/form1.php" />
         <option value="$PROJECT_DIR$/main.js" />
+        <option value="$PROJECT_DIR$/pdf_form.html" />
+        <option value="$PROJECT_DIR$/pdf_form.css" />
+        <option value="$PROJECT_DIR$/my_clients.php" />
       </list>
     </option>
   </component>
@@ -213,24 +182,7 @@
     </navigator>
     <panes>
       <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="P.O" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="P.O" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="P.O" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+        <subPane />
       </pane>
       <pane id="Scratches" />
       <pane id="Scope" />
@@ -315,18 +267,18 @@
       <workItem from="1475124574967" duration="3334000" />
       <workItem from="1475189230809" duration="34834000" />
       <workItem from="1475440051664" duration="43618000" />
-      <workItem from="1475644868107" duration="27905000" />
+      <workItem from="1475644868107" duration="30328000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="195543000" />
+    <option name="totallyTimeSpent" value="197966000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="23" width="1244" height="686" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19467553" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16638935" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -578,14 +530,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_clients.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="50" column="31" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/register_handler.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -695,10 +639,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pdf_form.css">
+    <entry file="file://$PROJECT_DIR$/../Natural-History/bird_chart.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+        <state relative-caret-position="-1515">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/form1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="32" column="119" selection-start-line="32" selection-start-column="119" selection-end-line="32" selection-end-column="119" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Natural-History/bird_graph.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="27" column="79" selection-start-line="27" selection-start-column="79" selection-end-line="28" selection-end-column="46" />
           <folding />
         </state>
       </provider>
@@ -714,30 +674,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Natural-History/bird_chart.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1515">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Natural-History/bird_graph.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="27" column="79" selection-start-line="27" selection-start-column="79" selection-end-line="28" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pdf_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-165">
@@ -746,18 +682,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/form1.php">
+    <entry file="file://$PROJECT_DIR$/pdf_form.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="32" column="119" selection-start-line="32" selection-start-column="119" selection-end-line="32" selection-end-column="119" />
+        <state relative-caret-position="180">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pdf_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="55" column="100" selection-start-line="55" selection-start-column="100" selection-end-line="55" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_clients.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="60" column="43" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="486" column="45" selection-start-line="486" selection-start-column="45" selection-end-line="486" selection-end-column="45" />
+        <state relative-caret-position="476">
+          <caret line="437" column="77" selection-start-line="437" selection-start-column="77" selection-end-line="437" selection-end-column="77" />
           <folding>
             <element signature="e#8677#9681#0" expanded="false" />
             <element signature="e#9845#10647#0" expanded="false" />
@@ -765,6 +717,8 @@
             <element signature="e#11624#12040#0" expanded="false" />
             <element signature="e#12199#12753#0" expanded="false" />
             <element signature="e#12825#13384#0" expanded="false" />
+            <element signature="e#13486#15105#0" expanded="false" />
+            <element signature="e#15265#32287#0" expanded="false" />
             <marker date="1475737873000" expanded="true" signature="9541:9577" placeholder="..." />
             <marker date="1475737873000" expanded="false" signature="28685:31614" placeholder="..." />
           </folding>

@@ -1,22 +1,25 @@
 /*-------pdf form---------*/
-#title{
-    padding-top:40px;
-    display: inline-block;
+body{
+    background-color: rgba(240, 206, 0, 0.12);
 }
-.date{
-    margin:15px 20px 0 0;
+#title{
+    padding:40px 0 0 40px;
+    display: inline-block;
 }
 .date,.first-name,.last-name{
     float: right;
 }
 .pdf-form{
+
+
     font-family: "Times New Roman",'Helvetica';
 }
 .data{
     margin-left: 20px;
 }
 .wrapper{
+    background-color: white;
     border:1px solid black;
     margin:8px;
-    padding:8px;
+    padding:10px;
 }
