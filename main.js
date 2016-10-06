@@ -382,32 +382,57 @@ app.controller('selectFormController', function ($scope, selectForm) {
 
 //------------form Submission service------------
 app.factory('formSubmit',function($http,$log,$q){
+
     var self = this;
     var link = 'form_handler.php';
+    var link2 = 'all_form_data_handler.php';
     $log.info("formSubmit Service");
     return{
         callApi: function ($scope,form){
             console.log('selected age: ' , form);
-            // var submitData = $.param({
-            //     form
-            // });
             var defer = $q.defer();
             $http({
                 url:link,
                 dataType:'json',
-                // data: submitData,
                 method:'POST'
             }).then(function success(response){
-
-                console.log("form submit success: " ,response);
-                defer.resolve(response)
+                console.log("success response: " , response);
+                if(response.data.status == 'success'){
+                    defer.resolve(response)
+                }
+                else{
+                    console.log("Error in the api");
+                }
             }), function error(response) {
                 $log.error("$http fail: ", response);
-                defer.reject("Error msg here");
+                defer.reject("Error response");
+            };
+            return defer.promise;
+        },
+        callApi2:function($scope,form){
+            console.log('form data second api call: ' , form);
+            var submitData = $.param({
+                form
+            });
+            var defer = $q.defer();
+            $http({
+                url:link2,
+                dataType:'json',
+                data: submitData,
+                method:'POST'
+            }).then(function success(response){
+                    console.log("call api 2 connected: " , response);
+                    defer.resolve(response)
+
+            }), function error(response) {
+                $log.error("$http fail: ", response);
+                defer.reject("Error response");
             };
             return defer.promise;
         }
     }
+
+
 });
 
 
@@ -548,7 +573,15 @@ app.controller('formController', function ($scope,$log,formSubmit) {
         console.log("submit data function");
         formSubmit.callApi($scope,form)
             .then(function success(response) {
-                console.log("this is the callback response after promise");
+                console.log('response promise: ' , response);
+                self.submitAllData(form);
+
             })
     };
+    self.submitAllData = function(form){
+        formSubmit.callApi2($scope,form)
+            .then(function success(response){
+                console.log('all form data submitted correctly: ' , response);
+            })
+    }
 });

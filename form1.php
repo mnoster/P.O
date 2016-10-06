@@ -325,7 +325,7 @@ session_start();
                 <div class="row">
                     <div class="col-xs-3"><strong>Diagnosis 4 </strong></div>
                     <div class="col-xs-9">
-                        <select name="Four Diagnosis" class="form-control" ng-model="fc.form.fourDiagnosis"
+                        <select name="Four Diagnosis" class="form-control" ng-model="fc.form.fourthDiagnosis"
                                 ng-options="x for x in past_diagnosis">
                             <option disabled selected value> -- select a diagnosis --</option>
                         </select>
