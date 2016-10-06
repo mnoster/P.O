@@ -653,27 +653,36 @@ app.provider('MicrosoftService',function(){
                         type: "GET",
                         // Request body
                         dataType:'json'
-                    })
-                    .done(function(response) {
+                    }).done(function(response) {
                        console.log("success: " , response);
-                    })
-                    .fail(function() {
+                        microsoft_evaluate(response.interpretations[0].rules[0].output.value);
+                    }).fail(function() {
                         console.log("error");
                     });
-                $.ajax({
-                        url: evaluate_link + $.param(params),
+                function microsoft_evaluate(interpret){
+                    var params2 = {
+                        // Request parameters
+                        expr: interpret,
+                        model: "latest",
+                        count: "5",
+                        offset: "0"
+                    };
+                    $.ajax({
+                        url: evaluate_link + $.param(params2) + "&attributes=Ti,Y,CC,AA.AuN,F.FN,J.JN,W,E",
                         beforeSend: function(xhrObj){
                             // Request headers
                             xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", key);
                         },
                         type: "GET",
                         // Request body
-                        dataType:'json' 
+                        dataType:'json'
                     }).done(function(response) {
                         console.log('evaluate: ', response)
                     }).fail(function(response) {
-                    console.log('evaluate error: ', response)
+                        console.log('evaluate error: ', response)
                     });
+                }
+
             
             }
         }
