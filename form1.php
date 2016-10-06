@@ -19,6 +19,22 @@ session_start();
     })();
 </script>
 <div class="container" ng-controller="formController as fc">
+    <div class="modal fade" id="successModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Finished</h4>
+                </div>
+                <div class="modal-body">
+                    <h5>Thank you. You have completed the form.</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="close" class="btn btn-default" data-dismiss="modal" ng-click="fc.goHome()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class=" col-sm-12 col-md-10" id="logo" style="z-index: 1">
         <h1 id="about_title">Client Form</h1>
         <form class="client_form">
@@ -536,7 +552,8 @@ session_start();
 
             </select>
         </form>
-        <input type="submit" ng-click="fc.submitData(fc.form)">
+        <input type="submit" ng-click="fc.submitData(fc.form)" data-toggle="modal"
+               data-target="#successModal">
     </div>
     <footer>
         <div class="row footer" style="z-index: 0; margin-right:80px">

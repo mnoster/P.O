@@ -411,9 +411,7 @@ app.factory('formSubmit',function($http,$log,$q){
         },
         callApi2:function($scope,form){
             console.log('form data second api call: ' , form);
-            var submitData = $.param({
-                form
-            });
+            var submitData = $.param({form});
             var defer = $q.defer();
             $http({
                 url:link2,
@@ -437,7 +435,7 @@ app.factory('formSubmit',function($http,$log,$q){
 
 
 //this controller contains all the data that is necessary for the client form
-app.controller('formController', function ($scope,$log,formSubmit) {
+app.controller('formController', function ($scope,$log,formSubmit,$location) {
     var self = this;
     self.numberOfFields = false;
     $scope.states = ['none', 'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
@@ -484,6 +482,11 @@ app.controller('formController', function ($scope,$log,formSubmit) {
     $scope.religion = ['None','Atheist/Agnostic','Buddhist','Catholic','Christian','Hindu','Jewish','Mormon','Muslim','Orthodox','Other','Protestant','Scientologist'];
     $scope.holdNumber = [];
     $scope.data = {};
+    self.goHome = function () {
+        // $location.url('index.php');
+        window.location.replace('index.php');
+
+    };
     this.displayDiagnosisFields = function(num){
         if(num == 0){
             self.oneField = false;
@@ -582,6 +585,9 @@ app.controller('formController', function ($scope,$log,formSubmit) {
         formSubmit.callApi2($scope,form)
             .then(function success(response){
                 console.log('all form data submitted correctly: ' , response);
+                if(response.data.status == true){
+                    
+                }
             })
     }
 });

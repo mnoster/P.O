@@ -1,0 +1,22 @@
+/*-------pdf form---------*/
+#title{
+    padding-top:40px;
+    display: inline-block;
+}
+.date{
+    margin:15px 20px 0 0;
+}
+.date,.first-name,.last-name{
+    float: right;
+}
+.pdf-form{
+    font-family: "Times New Roman",'Helvetica';
+}
+.data{
+    margin-left: 20px;
+}
+.wrapper{
+    border:1px solid black;
+    margin:8px;
+    padding:8px;
+}
