@@ -638,7 +638,7 @@ app.provider('MicrosoftService',function(){
             callApi: function ($scope, query) {
                 var params = {
                     // Request parameters
-                    query: query,
+                    query: query.toLowerCase(),
                     model: "latest",
                     count: "10",
                     offset: "0"
@@ -677,7 +677,33 @@ app.provider('MicrosoftService',function(){
                         // Request body
                         dataType:'json'
                     }).done(function(response) {
-                        console.log('evaluate: ', response)
+                        console.log(response);
+
+                        var article_data = [
+                            {meta:[
+                                {title:[]},
+                                {link1:[]},
+                                {link2:[]},
+                                {link3:[]},
+                                {summary:[]}
+                            ]},
+                            {year:[]},
+                            {author1:[]},
+                            {author2:[]},
+                            {keyword1:[]},
+                            {keyword2:[]},
+                            {keyword3:[]},
+                            {keyword4:[]}
+                        ];
+                        // console.log(E.DN);
+                        for(var i= 0;i<5;i++){
+                            var E =  response.entities[i].E;
+                            E = JSON.parse(E);
+                            article_data['E'].push(E)
+                        }
+                        console.log(article_data);
+
+
                     }).fail(function(response) {
                         console.log('evaluate error: ', response)
                     });
