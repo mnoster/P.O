@@ -17,9 +17,12 @@
         </p>
         <div class="container-fluid results_page">
             <div class ='row'>
-                <ul ng-repeat="(key,data) in mc.meta_data track by $index">
-                    <li class="article-title">{{mc.meta_data.title[$index]}}</li>
-                    <li>{{mc.meta_data.link1[$index]}}</li>
+                <ul ng-repeat="(key,data) in mc.meta_data track by $index" class="result-list">
+                    <div class="row">
+                        <li class="article-title">{{mc.meta_data.title[$index]}}</li>
+                        <li>{{mc.meta_data.link1[$index]}}</li>
+                    </div>
+
                     <li>{{mc.meta_data.link2[$index]}}</li>
                     <li>{{mc.meta_data.summary[$index]}}</li>
                 </ul>

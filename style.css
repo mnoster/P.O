@@ -182,6 +182,6 @@ footer{
 .results_page{
     background-color: white;
 }
-/*.results_page ul{*/
-    /*list-style-type: none;*/
-/*}*/
+.result-list{
+    list-style-type: none;
+}
