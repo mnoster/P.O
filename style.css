@@ -173,3 +173,28 @@ footer{
 #submit{
     margin-top: 10px;
 }
+/*------------results---------*/
+.article-title{
+    color: #2b90ff;
+    font-weight: 500;
+    font-size: 18px;
+    margin-left:-20px;
+}
+.results_page{
+    background-color: white;
+    margin-top:10vh;
+}
+.result-list{
+    margin-top: 10px;
+    list-style: none;
+    padding-right:10px;
+}
+.summary{
+    height:30vh;
+    overflow-y: scroll;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    padding:4px 8px 4px 8px;
+    margin-left:-20px;
+
+}

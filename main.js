@@ -13,6 +13,20 @@ app.directive('diagnosis', function () {
         templateUrl: 'diagnosis.html'
     }
 });
+app.filter('capitalize', function() {
+    return function(str) {
+        if(!str){
+            return
+        }
+        str = str.toLowerCase().split(' ');                // will split the string delimited by space into an array of words
+        for(var i = 0; i < str.length; i++){               // str.length holds the number of occurrences of the array...
+            str[i] = str[i].split('');                    // splits the array occurrence into an array of letters
+            str[i][0] = str[i][0].toUpperCase();          // converts the first occurrence of the array to uppercase
+            str[i] = str[i].join('');                     // converts the array of letters back into a word.
+        }
+        return str.join(' ');                              //  converts the array of words back to a sentence.
+    }
+});
 // this will route the view to whatever specified template URL when an href to that page is clicked on
 app.config(function ($routeProvider) {
     $routeProvider
@@ -91,6 +105,10 @@ app.config(function ($routeProvider) {
         })
         .when('/edit_form3', {
             templateUrl: '/P.O/edit_form3.php'
+        })
+        .when('/results_page', {
+            templateUrl: '/P.O/results_page.php'
+            // controller:'MicrosoftController'
         })
         .otherwise({
             redirectTo: '/'
@@ -629,16 +647,18 @@ app.controller('formController', function ($scope,$log,formSubmit,$location) {
 
 //----------Microsoft Academic API-------------
 app.provider('MicrosoftService',function(){
+    var self = this;
     var interpret_link = "https://api.projectoxford.ai/academic/v1.0/interpret?";
     var evaluate_link =  "https://api.projectoxford.ai/academic/v1.0/evaluate?";
     var key = "03651106c156405b9f833184b7fa09ab";
+
     this.$get = function ($http, $q, $log) {
         console.log("Microsoft provider");
         return {
-            callApi: function ($scope, query) {
+            callApi: function ($scope, query,meta_data) {
                 var params = {
                     // Request parameters
-                    query: query,
+                    query: query.toLowerCase(),
                     model: "latest",
                     count: "10",
                     offset: "0"
@@ -655,19 +675,20 @@ app.provider('MicrosoftService',function(){
                         dataType:'json'
                     }).done(function(response) {
                        console.log("success: " , response);
-                        microsoft_evaluate(response.interpretations[0].rules[0].output.value);
+                        microsoft_evaluate(response.interpretations[0].rules[0].output.value,meta_data);
                     }).fail(function() {
                         console.log("error");
                     });
-                function microsoft_evaluate(interpret){
+                function microsoft_evaluate(interpret,meta_data){
+                    self.meta_data = meta_data;
                     var params2 = {
                         // Request parameters
                         expr: interpret,
                         model: "latest",
-                        count: "5",
+                        count: "13",
                         offset: "0"
                     };
-                    $.ajax({
+                    $scope.$digest($.ajax({
                         url: evaluate_link + $.param(params2) + "&attributes=Ti,Y,CC,AA.AuN,F.FN,J.JN,W,E",
                         beforeSend: function(xhrObj){
                             // Request headers
@@ -677,10 +698,62 @@ app.provider('MicrosoftService',function(){
                         // Request body
                         dataType:'json'
                     }).done(function(response) {
-                        console.log('evaluate: ', response)
+                        console.log('evaluate: ', response);
+                        for(var i= 0;i<13;i++){
+                            var E =  response.entities[i].E;
+                            E = JSON.parse(E);
+                            self.meta_data.title[i]= E.DN;
+                            self.meta_data.summary[i]= E.D;
+                            self.meta_data.link1[i]= E.S[0].U;
+                            if(!E.S[1]){
+                                self.meta_data.link2[i] = '';
+                                self.meta_data.link3[i] = '';
+                            }else if(!E.S[2]){
+                                self.meta_data.link2[i] = E.S[1].U;
+                                self.meta_data.link3[i] = '';
+                            }else{
+                                self.meta_data.link2[i] = E.S[1].U;
+                                self.meta_data.link3[i] = E.S[2].U;
+                            }
+                            self.meta_data.summary[i]= E.D;
+                            self.meta_data.year[i]= response.entities[i].Y;
+                            self.meta_data.author1[i] = response.entities[i].AA[0]['AuN'];
+                            if(!response.entities[i].AA[1]){
+                                self.meta_data.author2[i] =  '';
+                                self.meta_data.author3[i] =  '';
+                            }else if(!response.entities[i].AA[2]){
+                                self.meta_data.author2[i] =  response.entities[i].AA[1]['AuN'];
+                                self.meta_data.author3[i] =  '';
+                            }else{
+                                self.meta_data.author2[i] =  response.entities[i].AA[1]['AuN'];
+                                self.meta_data.author3[i] =  response.entities[i].AA[2]['AuN'];
+                            }
+                            self.meta_data.keyword1[i] = response.entities[i].W[0];
+                            if(!response.entities[i].W[1]){
+                                self.meta_data.keyword2[i] =  '';
+                                self.meta_data.keyword3[i] =  '';
+                                self.meta_data.keyword4[i] =  '';
+                            }else if(!response.entities[i].W[2]) {
+                                self.meta_data.keyword2[i] = response.entities[i].W[1];
+                                self.meta_data.keyword3[i] = '';
+                                self.meta_data.keyword4[i] = '';
+                            }
+                            else if(!response.entities[i].W[3]){
+                                    self.meta_data.keyword2[i] =  response.entities[i].W[1];
+                                    self.meta_data.keyword3[i] =  response.entities[i].W[2];
+                                    self.meta_data.keyword4[i] =  '';
+                            }else{
+                                self.meta_data.keyword2[i] =  response.entities[i].W[1];
+                                self.meta_data.keyword3[i] =  response.entities[i].W[2];
+                                self.meta_data.keyword4[i] =  response.entities[i].W[3];
+                            }
+                        }
+                        console.log(E);
+                        // console.log(self.meta_data);
+                        // console.log(self.meta_data);
                     }).fail(function(response) {
                         console.log('evaluate error: ', response)
-                    });
+                    }));
                 }
 
             
@@ -692,8 +765,24 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,$log){
     var self = this;
     self.query = null;
     self.makeQuery = function(query){
+        self.meta_data = {
+            title: [],
+            link1: [],
+            link2: [],
+            link3: [],
+            summary: [],
+            year: [],
+            author1: [],
+            author2: [],
+            author3: [],
+            keyword1: [],
+            keyword2: [],
+            keyword3: [],
+            keyword4: []
+        };
+
         $log.warn(query);
-        MicrosoftService.callApi($scope,query)
+        MicrosoftService.callApi($scope,query,self.meta_data)
             // .then()
     }
 });
