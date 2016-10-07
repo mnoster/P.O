@@ -677,16 +677,14 @@ app.provider('MicrosoftService',function(){
                         // Request body
                         dataType:'json'
                     }).done(function(response) {
-                        console.log(response);
-
-                        var meta_data = {
+                        self.meta_data = {
                                 title: [],
                                 link1: [],
                                 link2: [],
                                 link3: [],
                                 summary: []
                         };
-                        var article_data = {
+                        self.article_data = {
                             year: [],
                             author1: [],
                             author2: [],
@@ -700,28 +698,56 @@ app.provider('MicrosoftService',function(){
                         for(var i= 0;i<5;i++){
                             var E =  response.entities[i].E;
                             E = JSON.parse(E);
-                            meta_data.title[i]= E.DN;
-                            meta_data.link1[i]= E.S;
-                            meta_data.summary[i]= E.D;
-                            article_data.year[i]= E.Y;
-                            article_data.author1[i] = response.entities[i].AA[0];
-                            if(!response.entities[i].AA[1]){
-                                article_data.author2[i] =  '';
-                                article_data.author3[i] =  '';
-                            }else if(!response.entities[i].AA[2]){
-                                article_data.author2[i] =  response.entities[i].AA[1];
-                                article_data.author3[i] =  '';
+                            self.meta_data.title[i]= E.DN;
+                            self.meta_data.summary[i]= E.D;
+                            self.meta_data.link1[i]= E.S[0];
+                            if(!E.S[1]){
+                                self.meta_data.link2[i] = '';
+                                self.meta_data.link2[i] = '';
+                            }else if(!E.S[2]){
+                                self.meta_data.link2[i] = E.S[1];
+                                self.meta_data.link2[i] = '';
                             }else{
-                                article_data.author2[i] =  response.entities[i].AA[1];
-                                article_data.author3[i] =  response.entities[i].AA[2];
+                                self.meta_data.link2[i] = E.S[1];
+                                self.meta_data.link2[i] = E.S[2];
                             }
-                            
-
+                            self.meta_data.link2[i] = E.S[1];
+                            self.meta_data.link2[i] = E.S[2];
+                            self.meta_data.summary[i]= E.D;
+                            self.article_data.year[i]= response.entities[i].Y;
+                            self.article_data.author1[i] = response.entities[i].AA[0];
+                            if(!response.entities[i].AA[1]){
+                                self.article_data.author2[i] =  '';
+                                self.article_data.author3[i] =  '';
+                            }else if(!response.entities[i].AA[2]){
+                                self.article_data.author2[i] =  response.entities[i].AA[1];
+                                self.article_data.author3[i] =  '';
+                            }else{
+                                self.article_data.author2[i] =  response.entities[i].AA[1];
+                                self.article_data.author3[i] =  response.entities[i].AA[2];
+                            }
+                            self.article_data.keyword1[i] = response.entities[i].W[0];
+                            if(!response.entities[i].W[1]){
+                                self.article_data.keyword2[i] =  '';
+                                self.article_data.keyword3[i] =  '';
+                                self.article_data.keyword4[i] =  '';
+                            }else if(!response.entities[i].W[2]) {
+                                self.article_data.keyword2[i] = response.entities[i].W[1];
+                                self.article_data.keyword3[i] = '';
+                                self.article_data.keyword4[i] = '';
+                            }
+                            else if(!response.entities[i].W[3]){
+                                    self.article_data.keyword2[i] =  response.entities[i].W[1];
+                                    self.article_data.keyword3[i] =  response.entities[i].W[2];
+                                    self.article_data.keyword4[i] =  '';
+                            }else{
+                                self.article_data.keyword2[i] =  response.entities[i].W[1];
+                                self.article_data.keyword3[i] =  response.entities[i].W[2];
+                                self.article_data.keyword4[i] =  response.entities[i].W[3];
+                            }
                         }
-                        console.log(article_data);
-                        console.log(meta_data);
-
-
+                        console.log(self.article_data);
+                        console.log(self.meta_data);
                     }).fail(function(response) {
                         console.log('evaluate error: ', response)
                     });
