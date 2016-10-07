@@ -92,6 +92,10 @@ app.config(function ($routeProvider) {
         .when('/edit_form3', {
             templateUrl: '/P.O/edit_form3.php'
         })
+        .when('/results_page', {
+            templateUrl: '/P.O/results_page.php'
+            // controller:'MicrosoftController'
+        })
         .otherwise({
             redirectTo: '/'
         });
@@ -629,13 +633,14 @@ app.controller('formController', function ($scope,$log,formSubmit,$location) {
 
 //----------Microsoft Academic API-------------
 app.provider('MicrosoftService',function(){
+    var self = this;
     var interpret_link = "https://api.projectoxford.ai/academic/v1.0/interpret?";
     var evaluate_link =  "https://api.projectoxford.ai/academic/v1.0/evaluate?";
     var key = "03651106c156405b9f833184b7fa09ab";
     this.$get = function ($http, $q, $log) {
         console.log("Microsoft provider");
         return {
-            callApi: function ($scope, query) {
+            callApi: function ($scope, query,article_data,meta_data) {
                 var params = {
                     // Request parameters
                     query: query.toLowerCase(),
@@ -655,11 +660,13 @@ app.provider('MicrosoftService',function(){
                         dataType:'json'
                     }).done(function(response) {
                        console.log("success: " , response);
-                        microsoft_evaluate(response.interpretations[0].rules[0].output.value);
+                        microsoft_evaluate(response.interpretations[0].rules[0].output.value,article_data,meta_data);
                     }).fail(function() {
                         console.log("error");
                     });
-                function microsoft_evaluate(interpret){
+                function microsoft_evaluate(interpret,article_data,meta_data){
+                    self.article_data = article_data;
+                    self.meta_data = meta_data;
                     var params2 = {
                         // Request parameters
                         expr: interpret,
@@ -667,7 +674,7 @@ app.provider('MicrosoftService',function(){
                         count: "5",
                         offset: "0"
                     };
-                    $.ajax({
+                    $scope.$apply($.ajax({
                         url: evaluate_link + $.param(params2) + "&attributes=Ti,Y,CC,AA.AuN,F.FN,J.JN,W,E",
                         beforeSend: function(xhrObj){
                             // Request headers
@@ -677,23 +684,7 @@ app.provider('MicrosoftService',function(){
                         // Request body
                         dataType:'json'
                     }).done(function(response) {
-                        self.meta_data = {
-                                title: [],
-                                link1: [],
-                                link2: [],
-                                link3: [],
-                                summary: []
-                        };
-                        self.article_data = {
-                            year: [],
-                            author1: [],
-                            author2: [],
-                            author3: [],
-                            keyword1: [],
-                            keyword2: [],
-                            keyword3: [],
-                            keyword4: []
-                        };
+
                         // console.log(E.DN);
                         for(var i= 0;i<5;i++){
                             var E =  response.entities[i].E;
@@ -750,7 +741,7 @@ app.provider('MicrosoftService',function(){
                         console.log(self.meta_data);
                     }).fail(function(response) {
                         console.log('evaluate error: ', response)
-                    });
+                    }));
                 }
 
             
@@ -762,8 +753,25 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,$log){
     var self = this;
     self.query = null;
     self.makeQuery = function(query){
+        self.meta_data = {
+            title: [],
+            link1: [],
+            link2: [],
+            link3: [],
+            summary: []
+        };
+        self.article_data = {
+            year: [],
+            author1: [],
+            author2: [],
+            author3: [],
+            keyword1: [],
+            keyword2: [],
+            keyword3: [],
+            keyword4: []
+        };
         $log.warn(query);
-        MicrosoftService.callApi($scope,query)
+        MicrosoftService.callApi($scope,query,self.article_data,self.meta_data)
             // .then()
     }
 });

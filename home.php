@@ -7,7 +7,7 @@
             <div class="input-group">
                 <input ng-model="mc.query" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
                 <div class="input-group-btn">
-                    <button class="btn btn-default" ng-click="mc.makeQuery(mc.query)"><i class="glyphicon glyphicon-search"></i></button>
+                    <a ><button class="btn btn-default" ng-click="mc.makeQuery(mc.query)"><i class="glyphicon glyphicon-search"></i></button></a>
                 </div>
 
             </div>
@@ -15,6 +15,18 @@
         <p id="info1">
             New to PsychOrigins.com? Click <a href="howitworks.html">here</a> for help
         </p>
+        <div class="container-fluid">
+            <div class ='row'>
+                <ul ng-repeat="(key,data) in mc.meta_data">
+                    <li>{{key}</li>
+                    <li>{{key}}</li>
+                    <li>{{key}}</li>
+                    <li>{{key}}</li>
+                </ul>
+            </div>
+
+        </div>
+
     </div>
 </div>
 <footer>
