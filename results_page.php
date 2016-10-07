@@ -17,13 +17,22 @@
 
             </div>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid results_page">
         <div class ='row'>
-            <div>{{mc.meta_data.title}}</div>
-            <ul ng-repeat="(key,data) in mc.meta_data">
-                <li>{{data}<p>{{data}}</p></li>
-                <li>{{data.author1}}</li>
-                <li>{{data.year}}</li>
+            <ul ng-repeat="(key,data) in mc.meta_data track by $index" class="result-list">
+
+                <li class="article-title">{{mc.meta_data.title[$index]}}
+                </li>
+                <li>
+                    <a href="{{mc.meta_data.link1[$index]}}" target='_blank'>link 1 </a> |
+                    <a href="{{mc.meta_data.link2[$index]}}" target='_blank'>link 2</a>  |
+                    <a href="{{mc.meta_data.link3[$index]}}" target='_blank'>link 3 </a> |
+                    <a href="{{mc.meta_data.link4[$index]}}" target='_blank'>link 4</a>
+                </li>
+                <li>
+                    <h4 ng-click="sumClick[$index]= !sumClick[$index]">Summary</h4>
+                    <p ng-show="sumClick[$index]" class="summary">{{mc.meta_data.summary[$index]}} <a href="{{mc.meta_data.link1[$index]}}"  target='_blank'> more</a></p>
+                </li>
             </ul>
         </div>
 

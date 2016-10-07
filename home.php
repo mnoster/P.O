@@ -1,4 +1,5 @@
-<div class="container" ng-controller="MicrosoftController as mc">
+<div class="container-fluid" ng-controller="MicrosoftController as mc">
+    <div class="container">
     <div class="col-md-10 col-sm-12 col-xs 12"  id="logo">
         <h1 id="title">PsychOrigins
 <!--            <small class="text-muted">.com</small>-->
@@ -11,26 +12,36 @@
                 </div>
 
             </div>
+            <p id="info1">
+                New to PsychOrigins.com? Click <a href="howitworks.html">here</a> for help
+            </p>
         </form>
-        <p id="info1">
-            New to PsychOrigins.com? Click <a href="howitworks.html">here</a> for help
-        </p>
+
+    </div>
+    </div>
         <div class="container-fluid results_page">
             <div class ='row'>
                 <ul ng-repeat="(key,data) in mc.meta_data track by $index" class="result-list">
-                    <div class="row">
-                        <li class="article-title">{{mc.meta_data.title[$index]}}</li>
-                        <li>{{mc.meta_data.link1[$index]}}</li>
-                    </div>
 
-                    <li>{{mc.meta_data.link2[$index]}}</li>
-                    <li>{{mc.meta_data.summary[$index]}}</li>
+                        <li class="article-title">{{$index}}. {{mc.meta_data.title[$index]}}
+                            </li>
+                        <li>
+                            <a href="{{mc.meta_data.link1[$index]}}" target='_blank'>link 1 </a> |
+                            <a href="{{mc.meta_data.link2[$index]}}" target='_blank'>link 2</a>  |
+                            <a href="{{mc.meta_data.link3[$index]}}" target='_blank'>link 3 </a> |
+                            <a href="{{mc.meta_data.link4[$index]}}" target='_blank'>link 4</a>
+                        </li>
+                    <li>
+                        Authors: {{mc.meta_data.author1[$index] | capitalize}}, {{mc.meta_data.author2[$index] | capitalize}}, {{mc.meta_data.author3[$index] | capitalize}}
+                    </li>
+                    <li>
+                        <h4 ng-click="sumClick[$index]= !sumClick[$index]">Summary</h4>
+                        <p ng-show="sumClick[$index]" class="summary">{{mc.meta_data.summary[$index]}} <a href="{{mc.meta_data.link1[$index]}}"  target='_blank'> more</a></p>
+                    </li>
                 </ul>
             </div>
 
         </div>
-
-    </div>
 </div>
 <footer>
     <div class="row footer">

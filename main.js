@@ -13,6 +13,20 @@ app.directive('diagnosis', function () {
         templateUrl: 'diagnosis.html'
     }
 });
+app.filter('capitalize', function() {
+    return function(str) {
+        if(!str){
+            return
+        }
+        str = str.toLowerCase().split(' ');                // will split the string delimited by space into an array of words
+        for(var i = 0; i < str.length; i++){               // str.length holds the number of occurrences of the array...
+            str[i] = str[i].split('');                    // splits the array occurrence into an array of letters
+            str[i][0] = str[i][0].toUpperCase();          // converts the first occurrence of the array to uppercase
+            str[i] = str[i].join('');                     // converts the array of letters back into a word.
+        }
+        return str.join(' ');                              //  converts the array of words back to a sentence.
+    }
+});
 // this will route the view to whatever specified template URL when an href to that page is clicked on
 app.config(function ($routeProvider) {
     $routeProvider
@@ -637,10 +651,11 @@ app.provider('MicrosoftService',function(){
     var interpret_link = "https://api.projectoxford.ai/academic/v1.0/interpret?";
     var evaluate_link =  "https://api.projectoxford.ai/academic/v1.0/evaluate?";
     var key = "03651106c156405b9f833184b7fa09ab";
+
     this.$get = function ($http, $q, $log) {
         console.log("Microsoft provider");
         return {
-            callApi: function ($scope, query,article_data,meta_data) {
+            callApi: function ($scope, query,meta_data) {
                 var params = {
                     // Request parameters
                     query: query.toLowerCase(),
@@ -660,12 +675,11 @@ app.provider('MicrosoftService',function(){
                         dataType:'json'
                     }).done(function(response) {
                        console.log("success: " , response);
-                        microsoft_evaluate(response.interpretations[0].rules[0].output.value,article_data,meta_data);
+                        microsoft_evaluate(response.interpretations[0].rules[0].output.value,meta_data);
                     }).fail(function() {
                         console.log("error");
                     });
-                function microsoft_evaluate(interpret,article_data,meta_data){
-                    self.article_data = article_data;
+                function microsoft_evaluate(interpret,meta_data){
                     self.meta_data = meta_data;
                     var params2 = {
                         // Request parameters
@@ -684,7 +698,6 @@ app.provider('MicrosoftService',function(){
                         // Request body
                         dataType:'json'
                     }).done(function(response) {
-
                         console.log('evaluate: ', response);
                         for(var i= 0;i<5;i++){
                             var E =  response.entities[i].E;
@@ -703,40 +716,40 @@ app.provider('MicrosoftService',function(){
                                 self.meta_data.link3[i] = E.S[2].U;
                             }
                             self.meta_data.summary[i]= E.D;
-                            self.article_data.year[i]= response.entities[i].Y;
-                            self.article_data.author1[i] = response.entities[i].AA[0];
+                            self.meta_data.year[i]= response.entities[i].Y;
+                            self.meta_data.author1[i] = response.entities[i].AA[0]['AuN'];
                             if(!response.entities[i].AA[1]){
-                                self.article_data.author2[i] =  '';
-                                self.article_data.author3[i] =  '';
+                                self.meta_data.author2[i] =  '';
+                                self.meta_data.author3[i] =  '';
                             }else if(!response.entities[i].AA[2]){
-                                self.article_data.author2[i] =  response.entities[i].AA[1];
-                                self.article_data.author3[i] =  '';
+                                self.meta_data.author2[i] =  response.entities[i].AA[1]['AuN'];
+                                self.meta_data.author3[i] =  '';
                             }else{
-                                self.article_data.author2[i] =  response.entities[i].AA[1];
-                                self.article_data.author3[i] =  response.entities[i].AA[2];
+                                self.meta_data.author2[i] =  response.entities[i].AA[1]['AuN'];
+                                self.meta_data.author3[i] =  response.entities[i].AA[2]['AuN'];
                             }
-                            self.article_data.keyword1[i] = response.entities[i].W[0];
+                            self.meta_data.keyword1[i] = response.entities[i].W[0];
                             if(!response.entities[i].W[1]){
-                                self.article_data.keyword2[i] =  '';
-                                self.article_data.keyword3[i] =  '';
-                                self.article_data.keyword4[i] =  '';
+                                self.meta_data.keyword2[i] =  '';
+                                self.meta_data.keyword3[i] =  '';
+                                self.meta_data.keyword4[i] =  '';
                             }else if(!response.entities[i].W[2]) {
-                                self.article_data.keyword2[i] = response.entities[i].W[1];
-                                self.article_data.keyword3[i] = '';
-                                self.article_data.keyword4[i] = '';
+                                self.meta_data.keyword2[i] = response.entities[i].W[1];
+                                self.meta_data.keyword3[i] = '';
+                                self.meta_data.keyword4[i] = '';
                             }
                             else if(!response.entities[i].W[3]){
-                                    self.article_data.keyword2[i] =  response.entities[i].W[1];
-                                    self.article_data.keyword3[i] =  response.entities[i].W[2];
-                                    self.article_data.keyword4[i] =  '';
+                                    self.meta_data.keyword2[i] =  response.entities[i].W[1];
+                                    self.meta_data.keyword3[i] =  response.entities[i].W[2];
+                                    self.meta_data.keyword4[i] =  '';
                             }else{
-                                self.article_data.keyword2[i] =  response.entities[i].W[1];
-                                self.article_data.keyword3[i] =  response.entities[i].W[2];
-                                self.article_data.keyword4[i] =  response.entities[i].W[3];
+                                self.meta_data.keyword2[i] =  response.entities[i].W[1];
+                                self.meta_data.keyword3[i] =  response.entities[i].W[2];
+                                self.meta_data.keyword4[i] =  response.entities[i].W[3];
                             }
                         }
                         console.log(E);
-                        // console.log(self.article_data);
+                        // console.log(self.meta_data);
                         // console.log(self.meta_data);
                     }).fail(function(response) {
                         console.log('evaluate error: ', response)
@@ -757,9 +770,7 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,$log){
             link1: [],
             link2: [],
             link3: [],
-            summary: []
-        };
-        self.article_data = {
+            summary: [],
             year: [],
             author1: [],
             author2: [],
@@ -769,8 +780,9 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,$log){
             keyword3: [],
             keyword4: []
         };
+
         $log.warn(query);
-        MicrosoftService.callApi($scope,query,self.article_data,self.meta_data)
+        MicrosoftService.callApi($scope,query,self.meta_data)
             // .then()
     }
 });
