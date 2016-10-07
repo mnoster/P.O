@@ -15,13 +15,13 @@
         <p id="info1">
             New to PsychOrigins.com? Click <a href="howitworks.html">here</a> for help
         </p>
-        <div class="container-fluid">
+        <div class="container-fluid results_page">
             <div class ='row'>
-                <ul ng-repeat="(key,data) in mc.meta_data">
-                    <li>{{key}</li>
-                    <li>{{key}}</li>
-                    <li>{{key}}</li>
-                    <li>{{key}}</li>
+                <ul ng-repeat="(key,data) in mc.meta_data track by $index">
+                    <li class="article-title">{{mc.meta_data.title[$index]}}</li>
+                    <li>{{mc.meta_data.link1[$index]}}</li>
+                    <li>{{mc.meta_data.link2[$index]}}</li>
+                    <li>{{mc.meta_data.summary[$index]}}</li>
                 </ul>
             </div>
 

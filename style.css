@@ -173,3 +173,15 @@ footer{
 #submit{
     margin-top: 10px;
 }
+/*------------results---------*/
+.article-title{
+    color:blue;
+    font-weight: 500;
+    font-size: 18px;
+}
+.results_page{
+    background-color: white;
+}
+/*.results_page ul{*/
+    /*list-style-type: none;*/
+/*}*/

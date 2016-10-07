@@ -685,25 +685,23 @@ app.provider('MicrosoftService',function(){
                         dataType:'json'
                     }).done(function(response) {
 
-                        // console.log(E.DN);
+                        console.log('evaluate: ', response);
                         for(var i= 0;i<5;i++){
                             var E =  response.entities[i].E;
                             E = JSON.parse(E);
                             self.meta_data.title[i]= E.DN;
                             self.meta_data.summary[i]= E.D;
-                            self.meta_data.link1[i]= E.S[0];
+                            self.meta_data.link1[i]= E.S[0].U;
                             if(!E.S[1]){
                                 self.meta_data.link2[i] = '';
-                                self.meta_data.link2[i] = '';
+                                self.meta_data.link3[i] = '';
                             }else if(!E.S[2]){
-                                self.meta_data.link2[i] = E.S[1];
-                                self.meta_data.link2[i] = '';
+                                self.meta_data.link2[i] = E.S[1].U;
+                                self.meta_data.link3[i] = '';
                             }else{
-                                self.meta_data.link2[i] = E.S[1];
-                                self.meta_data.link2[i] = E.S[2];
+                                self.meta_data.link2[i] = E.S[1].U;
+                                self.meta_data.link3[i] = E.S[2].U;
                             }
-                            self.meta_data.link2[i] = E.S[1];
-                            self.meta_data.link2[i] = E.S[2];
                             self.meta_data.summary[i]= E.D;
                             self.article_data.year[i]= response.entities[i].Y;
                             self.article_data.author1[i] = response.entities[i].AA[0];
@@ -737,8 +735,9 @@ app.provider('MicrosoftService',function(){
                                 self.article_data.keyword4[i] =  response.entities[i].W[3];
                             }
                         }
-                        console.log(self.article_data);
-                        console.log(self.meta_data);
+                        console.log(E);
+                        // console.log(self.article_data);
+                        // console.log(self.meta_data);
                     }).fail(function(response) {
                         console.log('evaluate error: ', response)
                     }));
