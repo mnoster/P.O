@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aece51e6-ff4b-434f-9aa4-86cebea867a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pdf_form.css" afterPath="$PROJECT_DIR$/pdf_form.css" />
     </list>
     <ignored path="P.O.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,8 +27,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="682" column="37" selection-start-line="682" selection-start-column="37" selection-end-line="682" selection-end-column="37" />
+            <state relative-caret-position="461">
+              <caret line="705" column="81" selection-start-line="705" selection-start-column="81" selection-end-line="705" selection-end-column="81" />
               <folding>
                 <element signature="e#341#449#0" expanded="false" />
                 <element signature="e#592#2918#0" expanded="false" />
@@ -48,8 +46,8 @@
                 <element signature="e#13792#14351#0" expanded="false" />
                 <element signature="e#14454#16073#0" expanded="false" />
                 <element signature="e#16231#33253#0" expanded="false" />
-                <marker date="1475815868000" expanded="true" signature="9575:9611" placeholder="..." />
-                <marker date="1475815868000" expanded="false" signature="29651:32580" placeholder="..." />
+                <marker date="1475817397000" expanded="true" signature="9575:9611" placeholder="..." />
+                <marker date="1475817397000" expanded="false" signature="29651:32580" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -285,12 +283,12 @@
       <workItem from="1475124574967" duration="3334000" />
       <workItem from="1475189230809" duration="34834000" />
       <workItem from="1475440051664" duration="43618000" />
-      <workItem from="1475644868107" duration="42862000" />
+      <workItem from="1475644868107" duration="44377000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="210500000" />
+    <option name="totallyTimeSpent" value="212015000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="23" width="1244" height="686" extended-state="0" />
@@ -302,7 +300,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3457792" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -729,8 +727,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="682" column="37" selection-start-line="682" selection-start-column="37" selection-end-line="682" selection-end-column="37" />
+        <state relative-caret-position="461">
+          <caret line="705" column="81" selection-start-line="705" selection-start-column="81" selection-end-line="705" selection-end-column="81" />
           <folding>
             <element signature="e#341#449#0" expanded="false" />
             <element signature="e#592#2918#0" expanded="false" />
@@ -748,8 +746,8 @@
             <element signature="e#13792#14351#0" expanded="false" />
             <element signature="e#14454#16073#0" expanded="false" />
             <element signature="e#16231#33253#0" expanded="false" />
-            <marker date="1475815868000" expanded="true" signature="9575:9611" placeholder="..." />
-            <marker date="1475815868000" expanded="false" signature="29651:32580" placeholder="..." />
+            <marker date="1475817397000" expanded="true" signature="9575:9611" placeholder="..." />
+            <marker date="1475817397000" expanded="false" signature="29651:32580" placeholder="..." />
           </folding>
         </state>
       </provider>

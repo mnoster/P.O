@@ -679,29 +679,47 @@ app.provider('MicrosoftService',function(){
                     }).done(function(response) {
                         console.log(response);
 
-                        var article_data = [
-                            {meta:[
-                                {title:[]},
-                                {link1:[]},
-                                {link2:[]},
-                                {link3:[]},
-                                {summary:[]}
-                            ]},
-                            {year:[]},
-                            {author1:[]},
-                            {author2:[]},
-                            {keyword1:[]},
-                            {keyword2:[]},
-                            {keyword3:[]},
-                            {keyword4:[]}
-                        ];
+                        var meta_data = {
+                                title: [],
+                                link1: [],
+                                link2: [],
+                                link3: [],
+                                summary: []
+                        };
+                        var article_data = {
+                            year: [],
+                            author1: [],
+                            author2: [],
+                            author3: [],
+                            keyword1: [],
+                            keyword2: [],
+                            keyword3: [],
+                            keyword4: []
+                        };
                         // console.log(E.DN);
                         for(var i= 0;i<5;i++){
                             var E =  response.entities[i].E;
                             E = JSON.parse(E);
-                            article_data['E'].push(E)
+                            meta_data.title[i]= E.DN;
+                            meta_data.link1[i]= E.S;
+                            meta_data.summary[i]= E.D;
+                            article_data.year[i]= E.Y;
+                            article_data.author1[i] = response.entities[i].AA[0];
+                            if(!response.entities[i].AA[1]){
+                                article_data.author2[i] =  '';
+                                article_data.author3[i] =  '';
+                            }else if(!response.entities[i].AA[2]){
+                                article_data.author2[i] =  response.entities[i].AA[1];
+                                article_data.author3[i] =  '';
+                            }else{
+                                article_data.author2[i] =  response.entities[i].AA[1];
+                                article_data.author3[i] =  response.entities[i].AA[2];
+                            }
+                            
+
                         }
                         console.log(article_data);
+                        console.log(meta_data);
 
 
                     }).fail(function(response) {
