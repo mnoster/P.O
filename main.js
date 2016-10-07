@@ -685,10 +685,10 @@ app.provider('MicrosoftService',function(){
                         // Request parameters
                         expr: interpret,
                         model: "latest",
-                        count: "5",
+                        count: "13",
                         offset: "0"
                     };
-                    $scope.$apply($.ajax({
+                    $scope.$digest($.ajax({
                         url: evaluate_link + $.param(params2) + "&attributes=Ti,Y,CC,AA.AuN,F.FN,J.JN,W,E",
                         beforeSend: function(xhrObj){
                             // Request headers
@@ -699,7 +699,7 @@ app.provider('MicrosoftService',function(){
                         dataType:'json'
                     }).done(function(response) {
                         console.log('evaluate: ', response);
-                        for(var i= 0;i<5;i++){
+                        for(var i= 0;i<13;i++){
                             var E =  response.entities[i].E;
                             E = JSON.parse(E);
                             self.meta_data.title[i]= E.DN;
