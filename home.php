@@ -1,7 +1,7 @@
 <div class="container-fluid" ng-controller="MicrosoftController as mc">
     <div class="container">
     <div class="col-md-10 col-sm-12 col-xs 12"  id="logo">
-        <h1 id="title">PsychOrigins
+        <h1 id="title" >PsychOrigins
 <!--            <small class="text-muted">.com</small>-->
         </h1>
         <form class="row-form" role="search" id="searchbar">
