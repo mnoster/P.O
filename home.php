@@ -22,7 +22,6 @@
         <div class="container-fluid results_page">
             <div class ='row'>
                 <ul ng-repeat="(key,data) in mc.meta_data track by $index" class="result-list">
-
                         <li class="article-title">{{$index}}. {{mc.meta_data.title[$index]}}
                             </li>
                         <li>
@@ -45,6 +44,8 @@
 </div>
 <footer>
     <div class="row footer">
-        <img src="Images/hipaa_blue.png" height="100px" width="200px">
+    <h5 class='microsoft'>Powered by<br>
+        <img src="Images/Microsoft.png" height="42vh" width="160px"></h5>
+        <img src="Images/hipaa_blue.png" class="hippa" height="75vh" width="160px">
     </div>
 </footer>

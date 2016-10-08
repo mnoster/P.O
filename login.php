@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['username'] = "";
+$_SESSION['username'] = ""; //do not delete
 ?>
 <?php
 if(empty($_SESSION)){
@@ -16,6 +16,7 @@ if(empty($_SESSION)){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/png" href="Images/Logomakr_0X15Cd.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
@@ -32,7 +33,7 @@ if(empty($_SESSION)){
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand">PsychOrigins</a>
+            <a class="navbar-brand"><img  class="logo" src="Images/Logomakr_0X15Cd.png" height="200%"></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -57,7 +58,7 @@ if(empty($_SESSION)){
         <div class="wrapper">
             <form class="form-signin">
                 <h2 class="form-signin-heading">Please login</h2>
-                <input ng-model="lc.user.username"  value="" type="text" id="username" class="form-control" name="username" placeholder="username" required=""
+                <input ng-model="lc.user.username"  value="" type="text" id="username" class="form-control form-group" name="username" placeholder="username" required=""
                        autofocus/>
                 <input ng-model="lc.user.password" id="password" type="password" class="form-control" name="password" placeholder="Password" />
                 <label class="checkbox">

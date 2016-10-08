@@ -120,9 +120,12 @@ app.config(function ($routeProvider) {
 app.provider('loginData', function () {
     console.log("provider");
     var self = this;
-    var api_url = "login_handler.php";
+    var api_url = "backs/backs.php";
     self.populate_user_profile_info = function (username, $http) {
-        var data = $.param({username: username});
+        var data = $.param({
+            username: username,
+            keyword:'login'
+        });
         console.log("username: ", username);
         $http({
             url: 'user_session.php',
@@ -140,7 +143,7 @@ app.provider('loginData', function () {
         console.log("$get");
         return {
             callApi: function ($scope, user) {
-                var data = $.param({username: user.username, password: user.password});
+                var data = $.param({username: user.username, password: user.password,keyword:'login'});
                 var user_info = user;
                 var defer = $q.defer();
                 $http({
@@ -188,33 +191,43 @@ app.controller('loginController', function (loginData, $scope) {
 
 
 //-------------------logout data-------------------------
-app.controller('logoutController', function () {
+app.controller('logoutController', function (logoutData) {
     //Add a function called getData to your controller to call the SGT API
     this.logout_user = function () {
         logoutData.callApi()
-            .then(function success(response) {
-                new_self.data = response.data;
-            })
+
     };
 });
-app.provider('logoutData', function () {
+app.factory('logoutData', function ($http) {
     console.log("logout provider");
-    var api_url = "logout_handler.php";
-    this.$get = function ($http, $log) {
-        $http.post(api_url)
-            .then(function success(response) {
-                console.log(response);
+    var api_url = "backs/backs.php";
+    var data = $.param({
+        keyword:'logout'
+    });
+    return{
+        callApi: function ($log) {
+            $http({
+                method: 'POST',
+                url: api_url,
+                dataType: 'json',
+                data: data
+            }).then(function success(response) {
+                    console.log('logout: ', response);
+                if(response.data.status == 'you are logged out'){
+                    window.location.replace('login.php')
+                }
             });
+        }
     }
 });
 
 
 //-----------client form------------
 app.provider('clientData', function () {
-    console.log(" client provider");
+    console.info(" client provider");
     var self = this;
     var active = null;
-    var api_url = "add_client_handler.php";
+    var api_url = "backs/backs.php";
     this.delete_user = function ($index) {
     };
     this.$get = function ($http, $q, $log) {
@@ -231,7 +244,8 @@ app.provider('clientData', function () {
                     first_name: client.first_name,
                     last_name: client.last_name,
                     active: client.active,
-                    form: client.form
+                    form: client.form,
+                    keyword: 'clientData'
                 });
                 if (!client.first_name || !client.last_name || !client.active || !client.form) {
                     console.log('fill out all the fields');
@@ -267,17 +281,22 @@ app.provider('clientData', function () {
 });
 //-----this will make http call and display it in client list form
 app.factory('getClients', function ($http) {
-    var link = 'get_clients_handler.php';
+    var link = 'backs/backs.php';
     var client = null;
     var client_obj = [];
     var full_name = null;
+    var data = $.param({
+        keyword:'getClients'
+    });
     return {
         callApi: function ($scope) {
             $http({
                 url: link,
                 dataType: 'json',
-                method: 'POST'
+                method: 'POST',
+                data:data
             }).then(function success(response) {
+                console.log(response);
                 client_obj = [];
                 client = response.data.client;
                 full_name = client.full_name;
@@ -298,14 +317,15 @@ app.factory('getClients', function ($http) {
 //----this is the service that will be used to get the form data of the client that is clicked on
 app.factory('getFormInfo',function($http,$log){
     $log.info('getFormInfo Service');
-    var link = 'getFormInfo.php';
+    var link = 'backs/backs.php';
     return{
         callApi: function ($scope,formName,date){
             $log.info(' Call APi getFormInfo Service');
 
             var data = $.param({
                 name: formName,
-                date:date
+                date:date,
+                keyword: 'getFormInfo'
             });
             console.log('data: ' ,data);
             $http({
@@ -321,7 +341,7 @@ app.factory('getFormInfo',function($http,$log){
         }
     }
 });
-//----This is the controller for both the clientData provider service and the getClients service
+//----This is the controller for the clientData provider, getFormInfo, and the getClients service
 
 app.controller('clientController', function (clientData, $scope, getClients,getFormInfo) {
     //Create a variable to hold this, DO NOT use the same name you used in your provider
@@ -352,7 +372,7 @@ app.controller('clientController', function (clientData, $scope, getClients,getF
 //This is the controller and http service that is called when you click next on create client page
 app.factory('clientSetup',function($http,$log){
     var self = this;
-    var link = 'clientSetup_handler.php';
+    var link = 'backs/backs.php';
     $log.info("ClientSetup Service");
     return{
         callApi: function ($scope, data){
@@ -363,7 +383,8 @@ app.factory('clientSetup',function($http,$log){
             var setupData = $.param({
                 first_name: data.first_name,
                 last_name : data.last_name,
-                notes:data.notes
+                notes:data.notes,
+                keyword:'clientSetup'
             });
             $http({
                 url:link,
@@ -396,13 +417,14 @@ app.controller('clientSetupController', function ($scope, clientSetup) {
 //This is the controller and http service that is called when you click the FORM 1,2, or 3 on Select_form.php
 app.factory('selectForm',function($http,$log){
     var self = this;
-    var link = 'formSelect_handler.php';
+    var link = 'backs/backs.php';
 
     $log.info("Form Setup Service");
     return{
         callApi: function ($scope, data){
             var form = $.param(
                 data
+                
             );
             console.log("form number: " , data);
             $http({
@@ -425,7 +447,8 @@ app.controller('selectFormController', function ($scope, selectForm) {
     this.form_type = function (form_number){
         console.log("form number: ", form_number);
         self.client_form = {
-            form: form_number
+            form: form_number,
+            keyword:'formSelect'
         };
         selectForm.callApi($scope,self.client_form);
         // .then(function(response){
@@ -439,17 +462,21 @@ app.controller('selectFormController', function ($scope, selectForm) {
 app.factory('formSubmit',function($http,$log,$q){
 
     var self = this;
-    var link = 'form_handler.php';
-    var link2 = 'all_form_data_handler.php';
+    var link = 'backs/backs.php';
+    var link2 = 'backs/all_form_data_handler.php';
     $log.info("formSubmit Service");
     return{
         callApi: function ($scope,form){
             console.log('selected age: ' , form);
+            var data = $.param({
+                keyword: 'form'
+            });
             var defer = $q.defer();
             $http({
                 url:link,
                 dataType:'json',
-                method:'POST'
+                method:'POST',
+                data:data
             }).then(function success(response){
                 console.log("success response: " , response);
                 if(response.data.status == 'success'){
@@ -467,6 +494,7 @@ app.factory('formSubmit',function($http,$log,$q){
         callApi2:function($scope,form){
             console.log('form data second api call: ' , form);
             var submitData = $.param({form});
+            console.log('submit data: ' ,submitData);
             var defer = $q.defer();
             $http({
                 url:link2,
@@ -671,13 +699,14 @@ app.provider('MicrosoftService',function(){
                             xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", key);
                         },
                         type: "GET",
+                        crossDomain : true,
                         // Request body
                         dataType:'json'
                     }).done(function(response) {
-                       console.log("success: " , response);
+                       console.log("success interpret: " , response);
                         microsoft_evaluate(response.interpretations[0].rules[0].output.value,meta_data);
                     }).fail(function() {
-                        console.log("error");
+                        console.log("error interpret");
                     });
                 function microsoft_evaluate(interpret,meta_data){
                     self.meta_data = meta_data;

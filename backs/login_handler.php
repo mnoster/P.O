@@ -1,9 +1,4 @@
 <?php
-session_start();
-include('mysql_connect.php');
-if ($conn->connect_error) {
-    die("Connection failed ");
-}
 $output = [];
 if(empty($_POST['username']) || empty($_POST['password'])){
     $output['message'][] = "fill out both fields";
@@ -19,10 +14,22 @@ $output = [];
 
 $query = "SELECT * FROM `users` WHERE `username` = '$username' AND `password`='$encrypted_pass'";
 
-mysqli_query($conn,$query);
+$result=mysqli_query($conn,$query);
 
 
 $rows_affected = mysqli_affected_rows($conn);
+$result = $conn->query($query);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        $_SESSION['username'] = $row["username"];
+        $_SESSION["ID"]=$row["ID"];
+    }
+} else {
+    echo "0 results";
+}
+
 
 if($rows_affected > 0){
     $_SESSION['username'] = $username;

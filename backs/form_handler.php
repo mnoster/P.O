@@ -1,10 +1,4 @@
 <?php
-session_start();
-include('mysql_connect.php');
-if ($conn->connect_error) {
-    die("Connection failed ");
-}
-
 $first_name = addslashes($_SESSION['first_name']);
 $last_name = addslashes($_SESSION['last_name']);
 $notes = addslashes($_SESSION['notes']);
