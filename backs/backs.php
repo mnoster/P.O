@@ -4,7 +4,6 @@ include('mysql_connect.php');
 if ($conn->connect_error) {
     die("Connection failed ");
 }
-
     if($_POST['keyword'] == 'login'){
         include('login_handler.php');
     }else if($_POST['keyword'] == 'logout'){
@@ -22,6 +21,5 @@ if ($conn->connect_error) {
     }else if($_POST['keyword'] == 'form'){
         include ('form_handler.php');
     }
-
 
 ?>

@@ -327,16 +327,16 @@ app.factory('getFormInfo',function($http,$log){
                 date:date,
                 keyword: 'getFormInfo'
             });
-            console.log('data: ' ,data);
             $http({
                 url:link,
                 dataType: 'json',
                 method: 'post',
                 data: data
             }).then(function success(response){
-                // if(response.data.status == 'success'){
-                //     window.location.replace('index.php#/pdf_form.php');
-                // }
+                console.log("succss get form info: " , response );
+                if(response.data.status == 'success'){
+                    console.log('big repsonse');
+                }
             });
         }
     }
