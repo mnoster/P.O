@@ -62,6 +62,7 @@ select{
 #title{
     margin-top: 60px;
 }
+
 /*---------about---------------*/
 .fancy{
     font-family: 'Indie Flower', cursive;
@@ -213,5 +214,122 @@ footer{
     border-radius: 3px;
     padding:4px 8px 4px 8px;
     margin-left:-20px;
+}
+.divider{
+    border-bottom: 1px solid black;
+    padding-bottom: 30px;
+}
+.main-contain-results{
+    padding-right: 0;
+    padding-left: 0;
+}
+
+
+/*--------mobile settings------*/
+
+/* ----------- iPhone 5 and 5S ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2) {
+    .divider,#logo,.main-contain-results,.main-contain-search   {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .hippa{
+        display: none;
+    }
+    body{
+        background-position-y: 21vh ;
+        background-position-x: 25px ;
+        background-size:90% 64%;
+    }
+}
+
+/* Portrait */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) {
+    .divider,#logo,.main-contain-results,.main-contain-search   {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .hippa{
+        display: none;
+    }
+}
+
+/* Landscape */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) {
+    .divider,#logo,.main-contain-results,.main-contain-search   {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .hippa{
+        display: none;
+    }
 
 }
+
+/* ----------- iPhone 6 ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 667px)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+    .divider,#logo,.main-contain-results,.main-contain-search {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .hippa{
+        display: none;
+    }
+    body{
+        background-position-y: 21vh ;
+        background-position-x: 30px ;
+        background-size:90% 64%;
+    }
+}
+
+/* Portrait */
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 667px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) {
+    .divider,#logo,.main-contain-results,.main-contain-search   {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .hippa{
+        display: none;
+    }
+
+}
+
+/* Landscape */
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 667px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) {
+    .divider,#logo,.main-contain-results,.main-contain-search   {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .hippa{
+        display: none;
+    }
+
+}
+    

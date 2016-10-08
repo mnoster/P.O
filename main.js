@@ -335,7 +335,7 @@ app.factory('getFormInfo',function($http,$log){
             }).then(function success(response){
                 console.log("succss get form info: " , response );
                 if(response.data.status == 'success'){
-                    console.log('big repsonse');
+                    console.log('big response');
                 }
             });
         }
