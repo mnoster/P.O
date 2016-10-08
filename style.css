@@ -30,13 +30,13 @@ body{
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: 90% 90%;
+    background-size: 85% 90%;
     margin:0;
     padding:0;
     background-color: rgba(144, 193, 207, 0.5);
     /*this positioning will put the background image below the navbar*/
     background-position: 0 9vh;
-    background-position-x: 25px;
+    background-position-x: 50px;
 
 }
 #logo{
@@ -65,8 +65,8 @@ select{
 
 /*---------about---------------*/
 .fancy{
-    font-family: 'Indie Flower', cursive;
-    background-color: rgba(194, 238, 255, 0.71);
+    font-family: 'Indie Flower', cursive, Helvetica;
+    /*background-color: rgba(194, 238, 255, 0.71);*/
     padding:10px;
     border-radius: 4px;
 }
@@ -87,6 +87,18 @@ select{
     float:right;
     color:red;
     font-weight: 500;
+}
+.fade-background1{
+    background-color: rgba(254, 255, 244, 0.84);
+    margin-top: -20px;
+    border-bottom: 2px solid black;
+}
+.fade-background1 > .container{
+
+}
+.fade-background{
+    background-color: rgba(171, 235, 227, 0.68);
+    border-bottom: 2px solid black;
 }
 /*-------------Client Form Specs---------------------*/
 .client_form{
@@ -234,7 +246,7 @@ footer{
 and (min-device-width: 320px)
 and (max-device-width: 568px)
 and (-webkit-min-device-pixel-ratio: 2) {
-    .divider,#logo,.main-contain-results,.main-contain-search   {
+    .divider,#logo,.main-contain-results,.main-contain-search,.fade-background1,.fade-background{
         padding-right: 0;
         padding-left: 0;
     }
@@ -254,7 +266,7 @@ and (min-device-width: 320px)
 and (max-device-width: 568px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: portrait) {
-    .divider,#logo,.main-contain-results,.main-contain-search   {
+    .divider,#logo,.main-contain-results,.main-contain-search,.fade-background1,.fade-background {
         padding-right: 0;
         padding-left: 0;
     }
@@ -269,14 +281,13 @@ and (min-device-width: 320px)
 and (max-device-width: 568px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: landscape) {
-    .divider,#logo,.main-contain-results,.main-contain-search   {
+    .divider,#logo,.main-contain-results,.main-contain-search,.fade-background1,.fade-background {
         padding-right: 0;
         padding-left: 0;
     }
     .hippa{
         display: none;
     }
-
 }
 
 /* ----------- iPhone 6 ----------- */
@@ -286,8 +297,7 @@ and (orientation: landscape) {
 and (min-device-width: 375px)
 and (max-device-width: 667px)
 and (-webkit-min-device-pixel-ratio: 2) {
-
-    .divider,#logo,.main-contain-results,.main-contain-search {
+    .divider,#logo,.main-contain-results,.main-contain-search,.fade-background1,.fade-background {
         padding-right: 0;
         padding-left: 0;
     }
@@ -300,30 +310,27 @@ and (-webkit-min-device-pixel-ratio: 2) {
         background-size:90% 64%;
     }
 }
-
 /* Portrait */
 @media only screen
 and (min-device-width: 375px)
 and (max-device-width: 667px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: portrait) {
-    .divider,#logo,.main-contain-results,.main-contain-search   {
+    .divider,#logo,.main-contain-results,.main-contain-search,.fade-background1,.fade-background{
         padding-right: 0;
         padding-left: 0;
     }
     .hippa{
         display: none;
     }
-
 }
-
 /* Landscape */
 @media only screen
 and (min-device-width: 375px)
 and (max-device-width: 667px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: landscape) {
-    .divider,#logo,.main-contain-results,.main-contain-search   {
+    .divider,#logo,.main-contain-results,.main-contain-search,.fade-background1,.fade-background {
         padding-right: 0;
         padding-left: 0;
     }
