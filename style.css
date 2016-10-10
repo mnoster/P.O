@@ -21,6 +21,7 @@ nav{
 }
 .logo{
     margin-top: -10px;
+    height: 200%;
 }
 body{
     /*background-image: url('Images/iam-solutions-brain.png');*/
@@ -87,13 +88,14 @@ select{
     color:red;
     font-weight: 500;
 }
-.fade-background1{
+.fade-background1, .fade-background2{
     background-color: rgba(254, 255, 244, 0.84);
     margin-top: -20px;
     border-bottom: 2px solid black;
 }
-.fade-background1 > .container{
 
+.fade-background2{
+    margin-top: 0;
 }
 .fade-background{
     background-color: rgba(171, 235, 227, 0.68);
@@ -211,7 +213,7 @@ footer{
 }
 .results_page{
     background-color: white;
-    margin-top:10vh;
+    margin-top:3vh;
 }
 .result-list{
     margin-top: 10px;
@@ -225,6 +227,7 @@ footer{
     border-radius: 3px;
     padding:4px 8px 4px 8px;
     margin-left:-20px;
+    margin-bottom: 20px;
 }
 .divider{
     border-bottom: 1px solid black;
@@ -260,6 +263,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
         background-position-x: 25px ;
         background-size:90% 64%;
     }
+    #logo{
+        height:100%;
+    }
 }
 
 /* Portrait */
@@ -275,6 +281,9 @@ and (orientation: portrait) {
     .hippa{
         display: none;
     }
+    #logo{
+        height:100%;
+    }
 }
 
 /* Landscape */
@@ -289,6 +298,9 @@ and (orientation: landscape) {
     }
     .hippa{
         display: none;
+    }
+    #logo{
+        height:100%;
     }
 }
 
@@ -311,6 +323,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
         background-position-x: 30px ;
         background-size:90% 64%;
     }
+    #logo{
+        height:100%;
+    }
 }
 /* Portrait */
 @media only screen
@@ -325,6 +340,9 @@ and (orientation: portrait) {
     .hippa{
         display: none;
     }
+    #logo{
+        height:100%;
+    }
 }
 /* Landscape */
 @media only screen
@@ -338,6 +356,9 @@ and (orientation: landscape) {
     }
     .hippa{
         display: none;
+    }
+    #logo{
+        height:100%;
     }
 
 }
