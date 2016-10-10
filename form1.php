@@ -552,7 +552,7 @@ session_start();
 
             </select>
         </form>
-        <input type="submit" ng-click="fc.submitData(fc.form)" data-toggle="modal"
+        <input class="form-submit" type="submit" ng-click="fc.submitData(fc.form)" data-toggle="modal"
                data-target="#successModal">
     </div>
     <footer>

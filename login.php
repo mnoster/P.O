@@ -35,22 +35,22 @@ if(empty($_SESSION)){
             </button>
             <a class="navbar-brand"><img  class="logo" src="Images/Logomakr_0X15Cd.png" height="200%"></a>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">Research <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#FAQ">FAQ</a></li>
-                    </ul>
-                </li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
-        </div>
+<!--        <div class="collapse navbar-collapse" id="myNavbar">-->
+<!--            <ul class="nav navbar-nav">-->
+<!--                <li class="dropdown">-->
+<!--                    <a class="dropdown-toggle" data-toggle="dropdown">Research <span class="caret"></span></a>-->
+<!--                    <ul class="dropdown-menu">-->
+<!--                        <li><a href="#FAQ">FAQ</a></li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+<!--                <li><a href="#about">About</a></li>-->
+<!--                <li><a href="#contact">Contact</a></li>-->
+<!--            </ul>-->
+<!--            <ul class="nav navbar-nav navbar-right">-->
+<!--                <li><a href="#register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
+<!--                <li><a href="#login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
     </div>
 </nav>
 <div class="container login-background" ng-controller="loginController as lc">
@@ -73,7 +73,8 @@ if(empty($_SESSION)){
 </div>
 <footer>
     <div class="row footer">
-        <img src="Images/hipaa_blue.png" height="100px" width="200px">
+        <img src="Images/hipaa_blue.png" class="hippa" height="75vh" width="160px">
+
     </div>
 </footer>
 </body>

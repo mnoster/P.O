@@ -684,7 +684,7 @@ app.provider('MicrosoftService',function(){
     this.$get = function ($http, $q, $log) {
         console.log("Microsoft provider");
         return {
-            callApi: function ($scope, query,meta_data) {
+            callApi: function ($scope, query,meta_data,order) {
                 console.log("mircosoft query: " , query);
                 query = query.replace(/['"]+/g, '');
                 var params = {
@@ -694,6 +694,8 @@ app.provider('MicrosoftService',function(){
                     count: "10",
                     offset: "0",
                     complete:1
+                    // orderby:'Y:asc'
+
                 };
                 //I really hate using jquery ajax in angular but I could not fix the cross origin error so I had no choice to use ajax.
 
@@ -716,19 +718,30 @@ app.provider('MicrosoftService',function(){
                         }else{
                             console.log("success interpret: " , response);
                         $scope.$apply($scope.results = true);
-                            microsoft_evaluate(response.interpretations[0].rules[0].output.value,meta_data);
+                            microsoft_evaluate(response.interpretations[0].rules[0].output.value,meta_data,order);
                         }
                     }).fail(function() {
                         console.log("error interpret");
                     });
-                function microsoft_evaluate(interpret,meta_data){
+                function microsoft_evaluate(interpret,meta_data,order){
+                    console.log(order);
+
+                    if(order){
+                        order = 'Y:desc';
+                    }else{
+                        order = ''
+                    }
                     self.meta_data = meta_data;
+                    console.log(order);
                     var params2 = {
                         // Request parameters
                         expr: interpret,
                         model: "latest",
                         count: "13",
+                        orderby: order,
                         offset: "0"
+
+
                     };
                     $scope.$digest($.ajax({
                         url: evaluate_link + $.param(params2) + "&attributes=Ti,Y,CC,AA.AuN,F.FN,J.JN,W,E",
@@ -844,6 +857,7 @@ app.factory('searchString',function($http,$q){
     var self = this;
     var link = 'backs/backs.php';
     var defer = $q.defer();
+
     return{
         callApi: function($scope,query){
             var data = $.param({
@@ -871,7 +885,7 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,$log,searc
     self.query = null;
     self.error = true;
     $scope.results= true;
-
+    // self.order = false;
 
     self.sessionQuery = function(query){
       searchString.callApi($scope,query)
@@ -883,7 +897,7 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,$log,searc
         })
     };
 
-    self.makeQuery = function(query){
+    self.makeQuery = function(query,order){
 
         self.meta_data = {
             title: [],
@@ -904,7 +918,7 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,$log,searc
             // keyword7: []
         };
         $log.warn(query);
-        MicrosoftService.callApi($scope,query,self.meta_data);
+        MicrosoftService.callApi($scope,query,self.meta_data,order);
             // .then()
     }
 });
