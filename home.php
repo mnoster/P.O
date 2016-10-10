@@ -13,7 +13,7 @@
 
             </div>
             <p id="info1">
-                New to PsychOrigins.com? Click <a href="howitworks.html">here</a> for help
+                New to PsychOrigins.com? Click <a href="#about">here</a> for help
             </p>
         </form>
 

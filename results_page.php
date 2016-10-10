@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+$query = $_SESSION['query'];
 ?>
 <style>
     body{
@@ -12,20 +12,25 @@ session_start();
     }
 </style>
 
-<div class="container-fluid main-contain-results" ng-controller="MicrosoftController as mc" >
+<div class="container-fluid main-contain-results" ng-controller="MicrosoftController as mc">
     <div class="container-fluid divider" >
     <div class="container">
     <div class="col-md-10 col-sm-12 col-xs 12">
         <h1>PsychOrigins
             <!--            <small class="text-muted">.com</small>-->
         </h1>
-            <div class="input-group">
+        <form>
+            <div class="input-group" ng-init="mc.query='<?=$query?>'; mc.makeQuery(mc.query,mc.order)">
+
                 <input ng-model="mc.query" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
                 <div class="input-group-btn">
-                    <button class="btn btn-default" ng-click="mc.makeQuery(mc.query)"><i class="glyphicon glyphicon-search"></i></button>
+                    <button class="btn btn-default" ng-click="mc.makeQuery(mc.query,mc.order)"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
 
             </div>
+        </form>
+        <p class="order-by">Order by year <input type="checkbox" ng-model="mc.order" [ng-true-value="true"] [ng-false-value="false"]></p>
+
         <div style="color:red" ng-hide="results">No results for this search</div>
     </div>
         </div>

@@ -1,5 +1,6 @@
 <div class="container">
     <h2>Frequently Asked Questions</h2>
+    <p style="color:red"<strong>Page still in development</strong></p>
     <hr>
     <div class="row">
         <div class="col-xs-12 col-md-9">

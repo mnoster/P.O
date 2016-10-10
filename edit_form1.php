@@ -1,11 +1,18 @@
-<div class="container main-contain">
-    <div class="col-md-10 col-sm-12 col-xs 12"  id="logo">
+<div class="container" ng-controller="formController as fc">
+
+    <div class=" col-sm-12 col-md-10" id="logo" style="z-index: 1">
         <h1 id="about_title">Client Form</h1>
-        <form action="action_page.php" class="client_form">
-            <h3 class = 'third_head'>Background Information</h3>
+        <form class="client_form" name="form1" novalidate>
+            <h3 class='third_head'>Background Information</h3>
+            Age
+            <select name="Age" class="form-control" ng-model="fc.form.selectedAge" ng-options="x for x in age"  ng-required="true">
+                <option disabled selected value> -- select an option --</option>
+
+            </select>
+            <br/>
             Ethnicity
-            <select name="Ethnicity" class="form-control">
-                <option disabled selected value> -- select an option -- </option>
+            <select name="Ethnicity" class="form-control" ng-model="fc.form.selectedEthnicity" ng-required="true">
+                <option disabled selected value> -- select an option --</option>
                 <option value="Asian">Asian / Pacific Islander</option>
                 <option value="Black">Black or African American</option>
                 <option value="Hispanic">Hispanic or Latino</option>
@@ -15,144 +22,505 @@
             </select>
             <br/>
             Gender
-            <select name="Gender" class="form-control">
-                <option disabled selected value> -- select an option -- </option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
+            <select name="Gender" class="form-control" ng-model="fc.form.selectedGender" ng-options="x for x in gender">
+                <option disabled selected value> -- select an option --</option>
+
+            </select>
+            <br/>
+            Country
+            <select name="Country" class="form-control" ng-model="fc.form.selectedCountry" ng-options="x for x in country"  ng-required="true">
+                <option disabled selected value> -- select an option --</option>
+
             </select>
             <br/>
             State
-            <select name="State" class="form-control">
-                <option disabled selected value> -- select an option -- </option>
-                <option value="Alabama">Alabama</option>
-                <option value="Alaska">Alaska</option>
-                <option value="Arizona">Arizona</option>
-                <option value="Arkansas">Arkansas</option>
-                <option value="California">California</option>
-                <option value="Colorado">Colorado</option>
-                <option value="Connecticut">Connecticut</option>
-                <option value="Delaware">Delaware</option>
-                <option value="Florida">Florida</option>
-                <option value="Georgia">Georgia</option>
-                <option value="Hawaii">Hawaii</option>
-                <option value="Idaho">Idaho</option>
-                <option value="Illinois">Illinois</option>
-                <option value="Indiana">Indiana</option>
-                <option value="Iowa">Iowa</option>
-                <option value="Kansas">Kansas</option>
-                <option value="Kentucky">Kentucky</option>
-                <option value="Louisiana">Louisiana</option>
-                <option value="Maine">Maine</option>
-                <option value="Maryland">Maryland</option>
-                <option value="Massachusetts">Massachusetts</option>
-                <option value="Michigan">Michigan</option>
-                <option value="Minnesota">Minnesota</option>
-                <option value="Mississippi">Mississippi</option>
-                <option value="Missouri ">Missouri </option>
-                <option value="Montana">Montana</option>
-                <option value="Nebraska">Nebraska</option>
-                <option value="Nevada ">Nevada </option>
-                <option value="New Hampshire">New Hampshire </option>
-                <option value="New Jersey">New Jersey</option>
-                <option value="New Mexico">New Mexico</option>
-                <option value="New York">New York</option>
-                <option value="North Carolina">North Carolina</option>
-                <option value="North Dakota">North Dakota</option>
-                <option value="Ohio">Ohio</option>
-                <option value="Oklahoma">Oklahoma</option>
-                <option value="Oregon">Oregon</option>
-                <option value="Pennsylvania">Pennsylvania</option>
-                <option value="Rhode Island">Rhode Island</option>
-                <option value="South Carolina">South Carolina</option>
-                <option value="South Dakota">South Dakota</option>
-                <option value="Tennessee">Tennessee</option>
-                <option value="Texas">Texas</option>
-                <option value="Utah">Utah</option>
-                <option value="Vermont">Vermont</option>
-                <option value="Virginia">Virginia</option>
-                <option value="Washington">Washington</option>
-                <option value="West Virginia">West Virginia</option>
-                <option value="Wisconsin">Wisconsin</option>
-                <option value="Wyoming">Wyoming</option>
+            <select name="State" class="form-control" ng-model="fc.form.selectedState" ng-options="x for x in states"  ng-required="true">
+                <option disabled selected value> -- select an option --</option>
 
             </select>
             <br/>
             Relationship Status
-            <select name="Relationship Status" class="form-control">
-                <option disabled selected value> -- select an option -- </option>
-                <option value="Single">Single</option>
-                <option value="Married">Married</option>
-                <option value="Divorced">Divorced</option>
-                <option value="Widowed">Widowed</option>
+            <select name="Relationship Status" class="form-control" ng-model="fc.form.selectedRelationship"
+                    ng-options="x for x in relationship_status"  ng-required="true">
+                <option disabled selected value> -- select an option --</option>
+
             </select>
             <br/>
             Education
-            <select name="Education" class="form-control">
-                <option disabled selected value> -- select an option -- </option>
-                <option value="Less than high school">Less than High School Grad</option>
-                <option value="High School">High School Graduate</option>
-                <option value="Associates">Associates</option>
-                <option value="Bachelors">Bachelors</option>
-                <option value="Masters">Masters</option>
-                <option value="Doctoral">Doctoral</option>
+            <select name="Education" class="form-control" ng-model="fc.form.selectedEducation"
+                    ng-options="x for x in education"  ng-required="true">
+                <option disabled selected value> -- select an option --</option>
             </select>
             <br/>
             Sexual Orientation
-            <select name="Sexual Orientation" class="form-control">
-                <option disabled selected value> -- select an option -- </option>
-                <option value="Straight">Straight</option>
-                <option value="Gay/Lesbian">Gay/Lesbian</option>
-                <option value="Bisexual">Bisexual</option>
+            <select name="Sexual Orientation" class="form-control" ng-model="fc.form.selectedOrientation"
+                    ng-options="x for x in sexual_orientation">
+                <option disabled selected value> -- select an option --</option>
+
             </select>
             <br/>
             Number of Children
-            <select name="Children" class="form-control">
-                <option disabled selected value> -- select an option -- </option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-            </select>
-            
-            
+            <select name="Children" class="form-control" ng-model="fc.form.selectedChildren" ng-options="x for x in children"  ng-required="true">
+                <option disabled selected value> -- select an option --</option>
 
-            <input type="submit">
-        </form>
-        <form action="action_page.php" class="client_form second-form">
-            <h3 class ="third_head">Past Treatment</h3>
-            Combined Years of Therapy
-            <select name="Length of Therapy" class="form-control">
-                <option disabled selected value> -- select an option -- </option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
             </select>
             <br/>
+            Employment
+            <select name="Employment" class="form-control" ng-model="fc.form.selectedEmployment" ng-options="x for x in employment"  ng-required="true">
+                <option disabled selected value> -- select an option --</option>
+
+            </select>
+            <br/>
+            Religious Affiliation
+            <select name="Religion" class="form-control" ng-model="fc.form.selectedReligion" ng-options="x for x in religion">
+                <option disabled selected value> -- select an option --</option>
+
+            </select>
+            <br/>
+            Status of your parents
+            <select name="Parent" class="form-control" ng-model="fc.form.selectedParentStatus"  ng-required="true">
+                <option disabled selected value> -- select an option --</option>
+                <option>Parents Married</option>
+                <option>Parents Divorced</option>
+                <option>Parents Separated</option>
+                <option>Never Married </option>
+            </select>
+            <br>
+            Are you a protected Veteran?
+            <select name="Veteran" class="form-control" ng-model="fc.form.selectedVeteran"  ng-required="true">
+                <option disabled selected value> -- select an option --</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <br/>
+            Have you been arrested?
+            <select name="Arrested" class="form-control" ng-model="fc.form.selectedArrested">
+                <option disabled selected value> -- select an option --</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <br/>
+            Have you been to prison?
+            <select name="Prison" class="form-control" ng-model="fc.form.selectedPrison">
+                <option disabled selected value> -- select an option --</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <br/>
+            Do you have history of drug/alcohol abuse?
+            <select name="DrugAlcohol" class="form-control" ng-model="fc.form.selectedDrugProblems">
+                <option disabled selected value> -- select an option --</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <br>
+            Have you ever experienced significant brain trauma?
+            <select name="Brian Trauma" class="form-control" ng-model="fc.form.selectedBrainTrauma"  ng-required="true">
+                <option disabled selected value> -- select an option --</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <br>
+            Have your mother or father suffered from mental health problems?
+            <select name="Parents" class="form-control" ng-model="fc.form.selectedParentHealth"  ng-required="true">
+                <option disabled selected value> -- select an option --</option>
+                <option>Yes</option>
+                <option>No</option>
+                <option>I don't know</option>
+            </select>
+            <br>
+            Longest you've been without a place to live?
+            <select name="Homeless" class="form-control" ng-model="fc.form.selectedHomeless"  ng-required="true">
+                <option disabled selected value> -- select an option --</option>
+                <option>I've always had a place to live</option>
+                <option>1-2 weeks</option>
+                <option>3-4 weeks</option>
+                <option>1-3 months</option>
+                <option>4-9 months</option>
+                <option>10-12 months</option>
+                <option>1-2 years</option>
+                <option>2+ years</option>
+            </select>
+            <br>
+            How many days per week do you get more than 20 min of physical activity?
+            <select name="Activity" class="form-control" ng-model="fc.form.selectedActivity"  ng-required="true">
+                <option disabled selected value> -- select an option --</option>
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+            </select>
+            <br>
+            <br>
+        </form>
+        <br>
+        <!--        SECOND PART OF FORMS------------>
+        <form class="client_form second-form">
+            <h3 class="third_head">Past Treatment</h3>
+            Combined Years of Therapy
+            <select name="Length of Therapy" class="form-control" ng-model="fc.form.selectedYears"
+                    ng-options="x for x in therapy_years"  ng-required="true">
+                <option disabled selected value> -- select an option --</option>
+            </select>
+            <br/>
+            Number of Past Diagnosis's
+            <select name="Past Diagnosis" class="form-control" ng-model="fc.form.selectedNumberDiagnosis" ng-value="fc.displayDiagnosisFields(fc.form.selectedNumberDiagnosis)"
+                    ng-options="x for x in num_of_diagnosis"  ng-required="true">
+                <option disabled selected value> -- select an option --</option>
+            </select>
+            <br/>
+            <!--            <diagnosis></diagnosis>-->
+            <div class="container-fluid" ng-show="fc.oneField">
+                <hr>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Diagnosis 1 </strong></div>
+                    <div class="col-xs-9">
+                        <select name="First Diagnosis" class="form-control" ng-model="fc.form.firstDiagnosis"
+                                ng-options="x for x in past_diagnosis">
+                            <option disabled selected value> -- select a diagnosis --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Therapy Treatment</strong></div>
+                    <div class="col-xs-9">
+                        <select name="First Treatment" class="form-control" ng-model="fc.form.firstTreatment"
+                                ng-options="x for x in therapy_types">
+                            <option disabled selected value> -- select an option --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Type of Medication</strong></div>
+                    <div class="col-xs-9">
+                        <select name="First Medication" class="form-control" ng-model="fc.form.firstMedication"
+                                ng-options="x for x in treatment_types">
+                            <option disabled selected value> -- select an option --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Treatment Successful?</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Past Diagnosis" class="form-control" ng-model="fc.form.firstTreatmentSuccess">
+                            <option disabled selected value> -- select an option --</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>Temporarily</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <!--            -----------------------two------------------------------------------>
+            <div class="container-fluid" ng-show="fc.twoFields">
+                <hr>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Diagnosis 2 </strong></div>
+                    <div class="col-xs-9">
+                        <select name="Second Diagnosis" class="form-control" ng-model="fc.form.secondDiagnosis"
+                                ng-options="x for x in past_diagnosis">
+                            <option disabled selected value> -- select a diagnosis --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Therapy Treatment</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Second Treatment" class="form-control" ng-model="fc.form.secondTreatment"
+                                ng-options="x for x in therapy_types">
+                            <option disabled selected value> -- select an option --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Type of Medication</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Second Medication" class="form-control" ng-model="fc.form.secondMedication"
+                                ng-options="x for x in treatment_types">
+                            <option disabled selected value> -- select an option --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Treatment Successful?</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Past Diagnosis" class="form-control" ng-model="fc.form.secondTreatmentSuccess">
+                            <option disabled selected value> -- select an option --</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>Temporarily</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="container-fluid" ng-show="fc.threeFields">
+                <hr>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Diagnosis 3 </strong></div>
+                    <div class="col-xs-9">
+                        <select name="Third Diagnosis" class="form-control" ng-model="fc.form.thirdDiagnosis"
+                                ng-options="x for x in past_diagnosis">
+                            <option disabled selected value> -- select a diagnosis --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Therapy Treatment</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Third Treatment" class="form-control" ng-model="fc.form.thirdTreatment"
+                                ng-options="x for x in therapy_types">
+                            <option disabled selected value> -- select an option --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Type of Medication</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Third Medication" class="form-control" ng-model="fc.form.thirdMedication"
+                                ng-options="x for x in treatment_types">
+                            <option disabled selected value> -- select an option --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Treatment Successful?</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Past Diagnosis" class="form-control" ng-model="fc.form.thirdTreatmentSuccess">
+                            <option disabled selected value> -- select an option --</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>Temporarily</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="container-fluid" ng-show="fc.fourFields">
+                <hr>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Diagnosis 4 </strong></div>
+                    <div class="col-xs-9">
+                        <select name="Four Diagnosis" class="form-control" ng-model="fc.form.fourthDiagnosis"
+                                ng-options="x for x in past_diagnosis">
+                            <option disabled selected value> -- select a diagnosis --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Therapy Treatment</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Forth Treatment" class="form-control" ng-model="fc.form.forthTreatment"
+                                ng-options="x for x in therapy_types">
+                            <option disabled selected value> -- select an option --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Type of Medication</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Forth Medication" class="form-control" ng-model="fc.form.forthMedication"
+                                ng-options="x for x in treatment_types">
+                            <option disabled selected value> -- select an option --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Treatment Successful?</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Past Diagnosis" class="form-control" ng-model="fc.form.forthTreatmentSuccess">
+                            <option disabled selected value> -- select an option --</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>Temporarily</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="container-fluid" ng-show="fc.fiveFields">
+                <hr>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Diagnosis 5 </strong></div>
+                    <div class="col-xs-9">
+                        <select name="Fifth Diagnosis" class="form-control" ng-model="fc.form.fifthDiagnosis"
+                                ng-options="x for x in past_diagnosis">
+                            <option disabled selected value> -- select a diagnosis --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Therapy Treatment</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Fifth Treatment" class="form-control" ng-model="fc.form.fifthTreatment"
+                                ng-options="x for x in therapy_types">
+                            <option disabled selected value> -- select an option --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Type of Medication</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Fifth Medication" class="form-control" ng-model="fc.form.fifthMedication"
+                                ng-options="x for x in treatment_types">
+                            <option disabled selected value> -- select an option --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Treatment Successful?</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Past Diagnosis" class="form-control" ng-model="fc.form.fifthTreatmentSuccess">
+                            <option disabled selected value> -- select an option --</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>Temporarily</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="container-fluid" ng-show="fc.sixFields">
+                <hr>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Diagnosis 6 </strong></div>
+                    <div class="col-xs-9">
+                        <select name="Sixth Diagnosis" class="form-control" ng-model="fc.form.sixthDiagnosis"
+                                ng-options="x for x in past_diagnosis">
+                            <option disabled selected value> -- select a diagnosis --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Therapy Treatment</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Sixth Treatment" class="form-control" ng-model="fc.form.sixthTreatment"
+                                ng-options="x for x in therapy_types">
+                            <option disabled selected value> -- select an option --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Type of Medication</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Sixth Medication" class="form-control" ng-model="fc.form.sixthMedication"
+                                ng-options="x for x in treatment_types">
+                            <option disabled selected value> -- select an option --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Treatment Successful?</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Past Diagnosis" class="form-control" ng-model="fc.form.sixthTreatmentSuccess">
+                            <option disabled selected value> -- select an option --</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>Temporarily</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="container-fluid" ng-show="fc.sevenFields">
+                <hr>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Diagnosis 7 </strong></div>
+                    <div class="col-xs-9">
+                        <select name="Seventh Diagnosis" class="form-control" ng-model="fc.form.seventhDiagnosis"
+                                ng-options="x for x in past_diagnosis">
+                            <option disabled selected value> -- select a diagnosis --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Therapy Treatment</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Seventh Treatment" class="form-control" ng-model="fc.form.seventhTreatment"
+                                ng-options="x for x in therapy_types">
+                            <option disabled selected value> -- select an option --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Type of Medication</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Seventh Medication" class="form-control" ng-model="fc.form.seventhMedication"
+                                ng-options="x for x in treatment_types">
+                            <option disabled selected value> -- select an option --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Treatment Successful?</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Seventh Diagnosis" class="form-control" ng-model="fc.form.seventhTreatmentSuccess">
+                            <option disabled selected value> -- select an option --</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>Temporarily</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="container-fluid" ng-show="fc.eightFields">
+                <hr>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Diagnosis 8 </strong></div>
+                    <div class="col-xs-9">
+                        <select name="Eighth Diagnosis" class="form-control" ng-model="fc.form.eighthDiagnosis"
+                                ng-options="x for x in past_diagnosis">
+                            <option disabled selected value> -- select a diagnosis --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Therapy Treatment</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Eighth Treatment" class="form-control" ng-model="fc.form.eighthTreatment"
+                                ng-options="x for x in therapy_types">
+                            <option disabled selected value> -- select an option --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Type of Medication</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Eighth Medication" class="form-control" ng-model="fc.form.eighthMedication"
+                                ng-options="x for x in treatment_types">
+                            <option disabled selected value> -- select an option --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Treatment Successful?</strong></div>
+                    <div class="col-xs-9">
+                        <select name="Past Diagnosis" class="form-control" ng-model="fc.form.eighthTreatmentSuccess">
+                            <option disabled selected value> -- select an option --</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>Temporarily</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+            </div>
             Reason for visit
             <select name="Reason of visit" class="form-control">
-                <option disabled selected value> -- select an option -- </option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
+                <option disabled selected value> -- select an option --</option>
+
             </select>
         </form>
     </div>
+    <footer>
+        <div class="row footer" style="z-index: 0; margin-right:80px">
+            <img src="Images/hipaa_blue.png" height="100px" width="200px">
+        </div>
+    </footer>
 </div>
