@@ -7,10 +7,13 @@ session_start();
         background-color: transparent;
         background-image: none;
     }
+    .navbar{
+        margin-bottom: 0;
+    }
 </style>
 
 <div class="container-fluid main-contain-results" ng-controller="MicrosoftController as mc" >
-    <div class="container-fluid divider">
+    <div class="container-fluid divider" >
     <div class="container">
     <div class="col-md-10 col-sm-12 col-xs 12">
         <h1>PsychOrigins
@@ -23,12 +26,13 @@ session_start();
                 </div>
 
             </div>
+        <div style="color:red" ng-hide="results">No results for this search</div>
     </div>
         </div>
     </div>
     <div class="container-fluid results_page">
         <div class ='row'>
-            <ul ng-repeat="(key,data) in mc.meta_data track by $index" class="result-list">
+            <ul ng-show="results" ng-repeat="(key,data) in mc.meta_data track by $index" class="result-list">
                 <li class="article-title"> {{mc.meta_data.title[$index]}}
                 </li>
                 <li>
@@ -43,10 +47,13 @@ session_start();
                 </li>
                 <li>keywords:  <a ng-click="mc.query =mc.meta_data.keyword1[$index]; mc.makeQuery(mc.query)">{{mc.meta_data.keyword1[$index]}} </a>, <a  ng-click="mc.query =mc.meta_data.keyword2[$index]; mc.makeQuery(mc.query)">{{mc.meta_data.keyword2[$index]}} </a>, <a  ng-click="mc.query =mc.meta_data.keyword3[$index]; mc.makeQuery(mc.query)">{{mc.meta_data.keyword3[$index]}}</a>, <a  ng-click="mc.query =mc.meta_data.keyword4[$index]; mc.makeQuery(mc.query)">{{mc.meta_data.keyword4[$index]}}</a></li>
                 <li>
-                    <h4 ng-click="sumClick[$index]= !sumClick[$index]">Summary</h4>
+                    <h4 ng-click="sumClick[$index]= !sumClick[$index]">Summary <span class="caret"></span></h4>
                     <p ng-show="sumClick[$index]" class="summary">{{mc.meta_data.summary[$index]}} <a href="{{mc.meta_data.link1[$index]}}"  target='_blank'> more</a></p>
+                    <hr>
                 </li>
             </ul>
+
         </div>
+
     </div>
 </div>

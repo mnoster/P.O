@@ -710,9 +710,12 @@ app.provider('MicrosoftService',function(){
                     }).done(function(response) {
                     if(!response.interpretations[0]){
                             console.log('invalid name');
-                            self.error = false;
+
+                        $scope.$apply($scope.results = false);
+
                         }else{
                             console.log("success interpret: " , response);
+                        $scope.$apply($scope.results = true);
                             microsoft_evaluate(response.interpretations[0].rules[0].output.value,meta_data);
                         }
                     }).fail(function() {
@@ -867,6 +870,7 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,$log,searc
     var self = this;
     self.query = null;
     self.error = true;
+    $scope.results= true;
 
 
     self.sessionQuery = function(query){
@@ -880,6 +884,7 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,$log,searc
     };
 
     self.makeQuery = function(query){
+
         self.meta_data = {
             title: [],
             link1: [],
