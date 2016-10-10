@@ -3,6 +3,7 @@ var app = angular.module("psychoApp", ["ngRoute"]);
 
 app.config(function ($httpProvider) {
     $httpProvider.defaults.headers.post = {'Content-Type': 'application/x-www-form-urlencoded'};
+    // $httpProvider.defaults.headers.get = {'Content-Type': 'application/x-www-form-urlencoded'};
     // $httpProvider.defaults.dataType.post = 'json';
 
 });
@@ -684,14 +685,18 @@ app.provider('MicrosoftService',function(){
         console.log("Microsoft provider");
         return {
             callApi: function ($scope, query,meta_data) {
+                console.log("mircosoft query: " , query);
+                query = query.replace(/['"]+/g, '');
                 var params = {
                     // Request parameters
                     query: query.toLowerCase(),
                     model: "latest",
                     count: "10",
-                    offset: "0"
+                    offset: "0",
+                    complete:1
                 };
-                //I really hate using jquery in angular but I could not fix the cross origin error so I had no choice to use ajax.
+                //I really hate using jquery ajax in angular but I could not fix the cross origin error so I had no choice to use ajax.
+
                 $.ajax({
                         url: interpret_link + $.param(params),
                         beforeSend: function(xhrObj){
@@ -703,8 +708,13 @@ app.provider('MicrosoftService',function(){
                         // Request body
                         dataType:'json'
                     }).done(function(response) {
-                       console.log("success interpret: " , response);
-                        microsoft_evaluate(response.interpretations[0].rules[0].output.value,meta_data);
+                    if(!response.interpretations[0]){
+                            console.log('invalid name');
+                            self.error = false;
+                        }else{
+                            console.log("success interpret: " , response);
+                            microsoft_evaluate(response.interpretations[0].rules[0].output.value,meta_data);
+                        }
                     }).fail(function() {
                         console.log("error interpret");
                     });
@@ -762,37 +772,113 @@ app.provider('MicrosoftService',function(){
                                 self.meta_data.keyword2[i] =  '';
                                 self.meta_data.keyword3[i] =  '';
                                 self.meta_data.keyword4[i] =  '';
+                                // self.meta_data.keyword5[i] =  '';
+                                // self.meta_data.keyword6[i] =  '';
+                                // self.meta_data.keyword7[i] =  '';
                             }else if(!response.entities[i].W[2]) {
                                 self.meta_data.keyword2[i] = response.entities[i].W[1];
                                 self.meta_data.keyword3[i] = '';
                                 self.meta_data.keyword4[i] = '';
+                                // self.meta_data.keyword5[i] =  '';
+                                // self.meta_data.keyword6[i] =  '';
+                                // self.meta_data.keyword7[i] =  '';
                             }
                             else if(!response.entities[i].W[3]){
                                     self.meta_data.keyword2[i] =  response.entities[i].W[1];
                                     self.meta_data.keyword3[i] =  response.entities[i].W[2];
                                     self.meta_data.keyword4[i] =  '';
-                            }else{
+                                // self.meta_data.keyword5[i] =  '';
+                                // self.meta_data.keyword6[i] =  '';
+                                // self.meta_data.keyword7[i] =  '';
+                            }
+                            // else if(!response.entities[i].W[4]){
+                            //     self.meta_data.keyword2[i] =  response.entities[i].W[1];
+                            //     self.meta_data.keyword3[i] =  response.entities[i].W[2];
+                            //     self.meta_data.keyword4[i] =  response.entities[i].W[3];
+                            //     self.meta_data.keyword5[i] =  '';
+                            //     self.meta_data.keyword6[i] =  '';
+                            //     self.meta_data.keyword7[i] =  '';
+                            // }
+                            // else if(!response.entities[i].W[5]){
+                            //     self.meta_data.keyword2[i] =  response.entities[i].W[1];
+                            //     self.meta_data.keyword3[i] =  response.entities[i].W[2];
+                            //     self.meta_data.keyword4[i] =  response.entities[i].W[3];
+                            //     self.meta_data.keyword5[i] =  response.entities[i].W[4];
+                            //     self.meta_data.keyword6[i] =  '';
+                            //     self.meta_data.keyword7[i] =  '';
+                            //
+                            // }
+                            // else if(!response.entities[i].W[6]){
+                            //     self.meta_data.keyword2[i] =  response.entities[i].W[1];
+                            //     self.meta_data.keyword3[i] =  response.entities[i].W[2];
+                            //     self.meta_data.keyword4[i] =  response.entities[i].W[3];
+                            //     self.meta_data.keyword5[i] =  response.entities[i].W[4];
+                            //     self.meta_data.keyword6[i] =  response.entities[i].W[5];
+                            //     self.meta_data.keyword7[i] =  '';
+                            // }
+
+                            else{
                                 self.meta_data.keyword2[i] =  response.entities[i].W[1];
                                 self.meta_data.keyword3[i] =  response.entities[i].W[2];
                                 self.meta_data.keyword4[i] =  response.entities[i].W[3];
+                                // self.meta_data.keyword5[i] =  response.entities[i].W[4];
+                                // self.meta_data.keyword6[i] =  response.entities[i].W[5];
+                                // self.meta_data.keyword7[i] =  response.entities[i].W[6];
                             }
                         }
-                        console.log(E);
-                        // console.log(self.meta_data);
-                        // console.log(self.meta_data);
+                        // console.log(E);
+                        // console.log("meta data: " , self.meta_data);
+                        $scope.$digest();
                     }).fail(function(response) {
                         console.log('evaluate error: ', response)
                     }));
                 }
-
-            
             }
         }
     }
 });
-app.controller('MicrosoftController',function($scope,MicrosoftService,$log){
+app.factory('searchString',function($http,$q){
+    var self = this;
+    var link = 'backs/backs.php';
+    var defer = $q.defer();
+    return{
+        callApi: function($scope,query){
+            var data = $.param({
+                search_query:query,
+                keyword: 'searchData'
+            });
+            $http({
+                url:link,
+                data: data,
+                method:'POST',
+                dataType: 'json'
+            }).then(function success(response){
+                defer.resolve(response.data);
+                
+            }),function error(response){
+                defer.reject("there was an error");
+            };
+            return defer.promise;
+        }
+    }
+
+});
+app.controller('MicrosoftController',function($scope,MicrosoftService,$log,searchString,$timeout){
     var self = this;
     self.query = null;
+    self.error = true;
+
+
+    self.sessionQuery = function(query){
+      searchString.callApi($scope,query)
+          .then(function success(query){
+              console.log("process query: " ,query);
+              $timeout(function (){
+              self.makeQuery(query);
+          },1000);
+        })
+    };
+
     self.makeQuery = function(query){
         self.meta_data = {
             title: [],
@@ -808,10 +894,12 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,$log){
             keyword2: [],
             keyword3: [],
             keyword4: []
+            // keyword5: [],
+            // keyword6: [],
+            // keyword7: []
         };
-
         $log.warn(query);
-        MicrosoftService.callApi($scope,query,self.meta_data)
+        MicrosoftService.callApi($scope,query,self.meta_data);
             // .then()
     }
 });

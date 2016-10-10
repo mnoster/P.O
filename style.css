@@ -37,7 +37,6 @@ body{
     /*this positioning will put the background image below the navbar*/
     background-position: 0 9vh;
     background-position-x: 50px;
-
 }
 #logo{
     /*background:url("images/logo.png");
@@ -234,6 +233,9 @@ footer{
 .main-contain-results{
     padding-right: 0;
     padding-left: 0;
+}
+a{
+    cursor: pointer;
 }
 
 
