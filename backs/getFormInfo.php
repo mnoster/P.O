@@ -41,7 +41,7 @@ if ($result->num_rows > 0) {
             $output['education'] = $row['education'];
             $output['number_of_children'] = $row['number_of_children'];
             $output['parent_status'] = $row['parental_situation'];
-            $output['parental_situation'] = $row['physical_activity'];
+            $output['physical_activity'] = $row['physical_activity'];
             $output['homeless'] = $row['homeless'];
             $output['veteran'] = $row['veteran'];
             $output['prison'] = $row['Prison'];
@@ -50,25 +50,29 @@ if ($result->num_rows > 0) {
             $output['parent_health'] = $row['parent_health'];
             $output['years_therapy'] = $row['years_therapy'];
 
-//            $_SESSION['gender'] = $row['gender'];
-//            $_SESSION['state'] = $row['state'];
-//            $_SESSION['ethnicity'] = $row['ethnicity'];
-//            $_SESSION['country'] = $row['country'];
-//            $_SESSION['employment'] = $row['employment'];
-//            $_SESSION['relationship_status'] = $row['relationship_status'];
-//            $_SESSION['sexual_orientation'] = $row['sexual_orientation'];
-//            $_SESSION['religion'] = $row['religion'];
-//            $_SESSION['education'] = $row['education'];
-//            $_SESSION['number_of_children'] = $row['number_of_children'];
-//            $_SESSION['parent_status'] = $row['parent_status'];
-//            $_SESSION['physical_activity'] = $row['physical_activity'];
-//            $_SESSION['homeless'] = $row['homeless'];
-//            $_SESSION['veteran'] = $row['veteran'];
-//            $_SESSION['prison'] = $row['prison'];
-//            $_SESSION['arrested'] = $row['arrested'];
-//            $_SESSION['drug_abuse'] = $row['drug_abuse'];
-//            $_SESSION['parent_health'] = $row['parent_health'];
-//            $_SESSION['years_therapy'] = $row['years_therapy'];
+            //build session
+            $_SESSION['age'] = $row['age'];
+            $_SESSION['gender'] = $row['gender'];
+            $_SESSION['state'] = $row['state'];
+            $_SESSION['ethnicity'] = $row['ethnicity'];
+            $_SESSION['country'] = $row['country'];
+            $_SESSION['employed'] = $row['Employed'];
+            $_SESSION['relationship_status'] = $row['relationship_status'];
+            $_SESSION['sexual_orientation'] = $row['sexual_orientation'];
+            $_SESSION['religion'] = $row['religion'];
+            $_SESSION['education'] = $row['education'];
+            $_SESSION['number_of_children'] = $row['number_of_children'];
+            $_SESSION['parent_status'] = $row['parental_situation'];
+            $_SESSION['physical_activity'] = $row['physical_activity'];
+            $_SESSION['homeless'] = $row['homeless'];
+            $_SESSION['veteran'] = $row['veteran'];
+            $_SESSION['prison'] = $row['Prison'];
+            $_SESSION['arrested'] = $row['Arrested'];
+            $_SESSION['drug_abuse'] = $row['drug_abuse'];
+            $_SESSION['parent_health'] = $row['parent_health'];
+            $_SESSION['years_therapy'] = $row['years_therapy'];
+
+
         };
         $output['status'] = 'success';
         $output = json_encode($output);

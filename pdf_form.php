@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <head><link rel="stylesheet" type="text/css" href="pdf_form.css">
 </head>
 
@@ -18,26 +20,26 @@
     <h4>Background Information</h4>
     <hr>
     <div class="row data">
-        <div class="col-xs-12 col-sm-4"><strong> Age:</strong><br> <input class="form-control"> <strong> Ethnicity:</strong><br> <input class="form-control" type="text">
+        <div class="col-xs-12 col-sm-4"><strong> Age:</strong><br> <input class="form-control" value="<?=$_SESSION['age']?>"> <strong> Ethnicity:</strong><br> <input class="form-control" type="text" value="<?=$_SESSION['ethnicity']?>">
         </div>
         <div class="col-xs-12 col-sm-4">
-            <strong> Gender:</strong><br> <input class="form-control" type="text"><strong> Country:</strong><br> <input class="form-control" type="text">
+            <strong> Gender:</strong><br> <input class="form-control" type="text" value="<?=$_SESSION['gender']?>"><strong> Country:</strong><br> <input class="form-control" type="text" value="<?=$_SESSION['country']?>">
         </div>
         <div class="col-xs-12 col-sm-4">
-            <strong> State:</strong><br> <input class="form-control" type="text"> <strong> Employment:</strong><br><input class="form-control" type="text">
+            <strong> State:</strong><br> <input class="form-control" type="text" value="<?=$_SESSION['state']?>"> <strong> Employment:</strong><br><input class="form-control" type="text" value="<?=$_SESSION['employed']?>">
         </div>
 
     </div>
     <hr>
     <div class="row data">
         <div class="col-xs-12 col-sm-4">
-            <strong> Relationship Status:</strong><br> <input class="form-control" type="text"> <strong> Education:</strong><br> <input class="form-control" type="text">
+            <strong> Relationship Status:</strong><br> <input class="form-control" type="text" value="<?=$_SESSION['relationship_status']?>"> <strong> Education:</strong><br> <input class="form-control" type="text" value="<?=$_SESSION['education']?>">
         </div>
         <div class="col-xs-12 col-sm-4">
-       <strong> Sexual Orientation:</strong><br> <input class="form-control" type="text"> <strong> Number of Children:</strong><br> <input class="form-control" type="text">
+       <strong> Sexual Orientation:</strong><br> <input class="form-control" type="text" value="<?=$_SESSION['sexual_orientation']?>"> <strong> Number of Children:</strong><br> <input class="form-control" type="text" value="<?=$_SESSION['number_of_children']?>">
         </div>
         <div class="col-xs-12 col-sm-4">
-            <strong> Religious Affiliation:</strong><br> <input class="form-control" type="text"> <strong> Status of your parents:</strong><br> <input class="form-control" type="text">
+            <strong> Religious Affiliation:</strong><br> <input class="form-control" type="text" value="<?=$_SESSION['religion']?>"> <strong> Status of your parents:</strong><br> <input class="form-control" type="text" value="<?=$_SESSION['parent_status']?>">
 
         </div>
     </div>
@@ -67,8 +69,8 @@
         <hr>
     <div class="row data">
         <div class="col-xs-12 col-sm-8">
-            <strong> Combined years of therapy: </strong><br> <input class="form-control" type="text">
-            <strong> Number of Past Diagnosis's: </strong><br> <input class="form-control" type="text">
+            <strong> Combined years of therapy: </strong><br> <input class="form-control" type="text" value="<?=$_SESSION['years_therapy']?>">
+            <strong> Number of Past Diagnosis's: </strong><br> <input class="form-control" type="text" value="">
 
         </div>
 
