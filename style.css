@@ -13,7 +13,6 @@ nav{
 .navbar-inverse, .navbar, nav{
     background-color: rgba(0, 0, 0, 0.91);
     color:white;
-
 }
 .dropdown-menu>li>a{
     background-color: rgba(255, 255, 255, 0.91);
@@ -240,7 +239,6 @@ footer{
 a{
     cursor: pointer;
 }
-
 
 /*--------mobile settings------*/
 
