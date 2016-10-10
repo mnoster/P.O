@@ -1,9 +1,4 @@
 <?php
-session_start();
-include('mysql_connect.php');
-if ($conn->connect_error) {
-    die("Connection failed ");
-}
 $firstName = addslashes($_POST['first_name']);
 $lastName = addslashes($_POST['last_name']);
 $form = addslashes($_POST['form']);

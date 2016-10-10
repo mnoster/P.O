@@ -37,16 +37,16 @@ session_start();
     </div>
     <div class=" col-sm-12 col-md-10" id="logo" style="z-index: 1">
         <h1 id="about_title">Client Form</h1>
-        <form class="client_form">
+        <form class="client_form" name="form1" novalidate>
             <h3 class='third_head'>Background Information</h3>
             Age
-            <select name="Age" class="form-control" ng-model="fc.form.selectedAge" ng-options="x for x in age">
+            <select name="Age" class="form-control" ng-model="fc.form.selectedAge" ng-options="x for x in age"  ng-required="true">
                 <option disabled selected value> -- select an option --</option>
 
             </select>
             <br/>
             Ethnicity
-            <select name="Ethnicity" class="form-control" ng-model="fc.form.selectedEthnicity">
+            <select name="Ethnicity" class="form-control" ng-model="fc.form.selectedEthnicity" ng-required="true">
                 <option disabled selected value> -- select an option --</option>
                                 <option value="Asian">Asian / Pacific Islander</option>
                                 <option value="Black">Black or African American</option>
@@ -63,27 +63,27 @@ session_start();
             </select>
             <br/>
             Country
-            <select name="Country" class="form-control" ng-model="fc.form.selectedCountry" ng-options="x for x in country">
+            <select name="Country" class="form-control" ng-model="fc.form.selectedCountry" ng-options="x for x in country"  ng-required="true">
                 <option disabled selected value> -- select an option --</option>
 
             </select>
             <br/>
             State
-            <select name="State" class="form-control" ng-model="fc.form.selectedState" ng-options="x for x in states">
+            <select name="State" class="form-control" ng-model="fc.form.selectedState" ng-options="x for x in states"  ng-required="true">
                 <option disabled selected value> -- select an option --</option>
 
             </select>
             <br/>
             Relationship Status
             <select name="Relationship Status" class="form-control" ng-model="fc.form.selectedRelationship"
-                    ng-options="x for x in relationship_status">
+                    ng-options="x for x in relationship_status"  ng-required="true">
                 <option disabled selected value> -- select an option --</option>
 
             </select>
             <br/>
             Education
             <select name="Education" class="form-control" ng-model="fc.form.selectedEducation"
-                    ng-options="x for x in education">
+                    ng-options="x for x in education"  ng-required="true">
                 <option disabled selected value> -- select an option --</option>
             </select>
             <br/>
@@ -95,13 +95,13 @@ session_start();
             </select>
             <br/>
             Number of Children
-            <select name="Children" class="form-control" ng-model="fc.form.selectedChildren" ng-options="x for x in children">
+            <select name="Children" class="form-control" ng-model="fc.form.selectedChildren" ng-options="x for x in children"  ng-required="true">
                 <option disabled selected value> -- select an option --</option>
 
             </select>
             <br/>
             Employment
-            <select name="Employment" class="form-control" ng-model="fc.form.selectedEmployment" ng-options="x for x in employment">
+            <select name="Employment" class="form-control" ng-model="fc.form.selectedEmployment" ng-options="x for x in employment"  ng-required="true">
                 <option disabled selected value> -- select an option --</option>
 
             </select>
@@ -113,7 +113,7 @@ session_start();
             </select>
             <br/>
             Status of your parents
-            <select name="Parent" class="form-control" ng-model="fc.form.selectedParentStatus">
+            <select name="Parent" class="form-control" ng-model="fc.form.selectedParentStatus"  ng-required="true">
                 <option disabled selected value> -- select an option --</option>
                 <option>Parents Married</option>
                 <option>Parents Divorced</option>
@@ -122,7 +122,7 @@ session_start();
             </select>
             <br>
             Are you a protected Veteran?
-            <select name="Veteran" class="form-control" ng-model="fc.form.selectedVeteran">
+            <select name="Veteran" class="form-control" ng-model="fc.form.selectedVeteran"  ng-required="true">
                 <option disabled selected value> -- select an option --</option>
                 <option>Yes</option>
                 <option>No</option>
@@ -150,14 +150,14 @@ session_start();
             </select>
             <br>
             Have you ever experienced significant brain trauma?
-            <select name="Brian Trauma" class="form-control" ng-model="fc.form.selectedBrainTrauma">
+            <select name="Brian Trauma" class="form-control" ng-model="fc.form.selectedBrainTrauma"  ng-required="true">
                 <option disabled selected value> -- select an option --</option>
                 <option>Yes</option>
                 <option>No</option>
             </select>
             <br>
             Have your mother or father suffered from mental health problems?
-            <select name="Parents" class="form-control" ng-model="fc.form.selectedParentHealth">
+            <select name="Parents" class="form-control" ng-model="fc.form.selectedParentHealth"  ng-required="true">
                 <option disabled selected value> -- select an option --</option>
                 <option>Yes</option>
                 <option>No</option>
@@ -165,7 +165,7 @@ session_start();
             </select>
             <br>
             Longest you've been without a place to live?
-            <select name="Homeless" class="form-control" ng-model="fc.form.selectedHomeless">
+            <select name="Homeless" class="form-control" ng-model="fc.form.selectedHomeless"  ng-required="true">
                 <option disabled selected value> -- select an option --</option>
                 <option>I've always had a place to live</option>
                 <option>1-2 weeks</option>
@@ -178,7 +178,7 @@ session_start();
             </select>
             <br>
             How many days per week do you get more than 20 min of physical activity?
-            <select name="Activity" class="form-control" ng-model="fc.form.selectedActivity">
+            <select name="Activity" class="form-control" ng-model="fc.form.selectedActivity"  ng-required="true">
                 <option disabled selected value> -- select an option --</option>
                 <option>0</option>
                 <option>1</option>
@@ -198,13 +198,13 @@ session_start();
             <h3 class="third_head">Past Treatment</h3>
             Combined Years of Therapy
             <select name="Length of Therapy" class="form-control" ng-model="fc.form.selectedYears"
-                    ng-options="x for x in therapy_years">
+                    ng-options="x for x in therapy_years"  ng-required="true">
                 <option disabled selected value> -- select an option --</option>
             </select>
             <br/>
             Number of Past Diagnosis's
             <select name="Past Diagnosis" class="form-control" ng-model="fc.form.selectedNumberDiagnosis" ng-value="fc.displayDiagnosisFields(fc.form.selectedNumberDiagnosis)"
-                    ng-options="x for x in num_of_diagnosis">
+                    ng-options="x for x in num_of_diagnosis"  ng-required="true">
                 <option disabled selected value> -- select an option --</option>
             </select>
             <br/>

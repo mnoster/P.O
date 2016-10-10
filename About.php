@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid fade-background1">
 <div class="container">
     <div class="col-md-10 col-sm-12 col-xs 12">
         <h1>Our Mission</h1>
@@ -7,6 +7,8 @@
         </p>
     </div>
 </div>
+</div>
+<div class="container-fluid fade-background">
 <div class="container">
     <div class="col-md-10 col-sm-12 col-xs 12" >
         <h2>Purpose</h2>
@@ -23,4 +25,14 @@
         </p>
     </div>
 </div>
+</div>
+<div class="container-fluid fade-background1">
+    <div class="container">
+        <div class="col-md-10 col-sm-12 col-xs 12">
+            <h1>Our Mission</h1>
+            <p><h2  class="fancy">PsychOrigins.com is a tool for licensed mental health clinicians and those in the field of research.
+                It provides a readily updated and organized documentation of current trends within the mental health field.</h2>
+            </p>
+        </div>
+    </div>
 </div>
