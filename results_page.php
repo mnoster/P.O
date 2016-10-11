@@ -17,7 +17,7 @@ $query = $_SESSION['query'];
     <div class="container">
     <div class="col-md-10 col-sm-12 col-xs 12">
         <h1>PsychOrigins
-            <!--            <small class="text-muted">.com</small>-->
+                        <small class="text-muted">academic search</small>
         </h1>
         <form>
             <div class="input-group" ng-init="mc.query='<?=$query?>'; mc.makeQuery(mc.query,mc.order)">
@@ -36,8 +36,9 @@ $query = $_SESSION['query'];
         </div>
     </div>
     <div class="container-fluid results_page">
+        <div ng-hide="loader" class="loader"><img src="Images/loader.gif" height="50vh"></div>
         <div class ='row'>
-            <ul ng-show="results" ng-repeat="(key,data) in mc.meta_data track by $index" class="result-list">
+            <ul ng-show="loader" ng-repeat="(key,data) in mc.meta_data track by $index" class="result-list">
                 <li class="article-title"> {{mc.meta_data.title[$index]}}
                 </li>
                 <li>
