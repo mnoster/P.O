@@ -95,6 +95,9 @@ app.config(function ($routeProvider) {
         .when('/edit_form1', {
             templateUrl: '/P.O/edit_form1.php'
         })
+        .when('/edit_form2', {
+            templateUrl: '/P.O/edit_form2.php'
+        })
         .when('/form2', {
             templateUrl: '/P.O/form2.php'
         })
@@ -759,7 +762,12 @@ app.provider('MicrosoftService',function(){
                             E = JSON.parse(E);
                             self.meta_data.title[i]= E.DN;
                             self.meta_data.summary[i]= E.D;
-                            self.meta_data.link1[i]= E.S[0].U;
+                            if(!E.S[0]){
+                                self.meta_data.link1[i] =''
+                            }else {
+                                self.meta_data.link1[i]= E.S[0].U;
+
+                            }
                             if(!E.S[1]){
                                 self.meta_data.link2[i] = '';
                                 self.meta_data.link3[i] = '';
@@ -844,7 +852,9 @@ app.provider('MicrosoftService',function(){
                         }
                         // console.log(E);
                         // console.log("meta data: " , self.meta_data);
+                        $scope.loader = true;
                         $scope.$digest();
+
                     }).fail(function(response) {
                         console.log('evaluate error: ', response)
                     }));
@@ -898,7 +908,7 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,$log,searc
     };
 
     self.makeQuery = function(query,order){
-
+        $scope.loader = false;
         self.meta_data = {
             title: [],
             link1: [],

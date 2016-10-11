@@ -4,6 +4,7 @@ session_start();
 <head><link rel="stylesheet" type="text/css" href="pdf_form.css">
 </head>
 
+
 <div class="container pdf-form">
     <div class="container-fluid wrapper">
     <div class="row">
@@ -78,3 +79,20 @@ session_start();
     <hr>
     </div>
 </div>
+<script type='text/javascript'>
+    //Since the angular routing is not restoring session on every redirect, the page needs to be refreshed each time.
+    //This is merely a band-aid approach for now. Need to do more research on solution.
+    (function()
+    {
+        if( window.localStorage )
+        {
+            if( !localStorage.getItem( 'firstLoad' ) )
+            {
+                localStorage[ 'firstLoad' ] = true;
+                window.location.reload();
+            }
+            else
+                localStorage.removeItem( 'firstLoad' );
+        }
+    })();
+</script>
