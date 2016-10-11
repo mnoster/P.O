@@ -33,7 +33,6 @@ app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: '/P.O/home.php'
-
         })
         .when('/about', {
             templateUrl: '/P.O/About.php'
@@ -113,6 +112,9 @@ app.config(function ($routeProvider) {
         .when('/results_page', {
             templateUrl: '/P.O/results_page.php'
             // controller:'MicrosoftController'
+        })
+        .when('/main-page',{
+            templateUrl: '/P.O/main-page.php'
         })
         .otherwise({
             redirectTo: '/'

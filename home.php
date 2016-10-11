@@ -2,7 +2,7 @@
     <div class="container">
     <div class="col-md-10 col-sm-12 col-xs 12"  id="logo">
         <h1 id="title" >PsychOrigins
-<!--            <small class="text-muted">.com</small>-->
+             <small class="text-muted">academic search</small>
         </h1>
         <form class="row-form" role="search" id="searchbar">
             <div class="input-group">
