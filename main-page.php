@@ -71,15 +71,19 @@
         font-size: 90px;
     }
     .bg-fade{
-        background-color: rgba(245, 250, 255, 0.33);
+        background-color: rgba(78, 80, 84, 0.33);
         height:100%;
         width:100%;
     }
     .navbar{
         margin-bottom: 0;
     }
-
-
+    .intro{
+        font-family: 'Playfair Display', serif;
+        font-size: 4em;
+        color:black;
+        padding:0 40px 0 40px;
+    }
 </style>
 
 <div id="wrapper">
@@ -87,7 +91,10 @@
             <div class="bg-top">
                 <div class="bg-fade">
                 <h1 class="glyphicon glyphicon-chevron-down"></h1>
-                    <h1 style="margin:0; padding-top:20px"><img src="Images/Logomakr_0X15Cd.png"> PsychOrigins</h1>
+                    <h1 style="margin:0; padding:20px 0 0 45px"><img src="Images/Logomakr_0X15Cd.png"></h1>
+                    <h1 style="padding-left:20px;color:black;">PsychOrigins</h1>
+                    <hr>
+                    <div class="intro">Open Source academic database for researchers and mental health clinicians</div>
                 </div>
         </div>
 
