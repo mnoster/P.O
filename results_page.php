@@ -29,7 +29,7 @@ $query = $_SESSION['query'];
 
             </div>
         </form>
-        <p class="order-by">Order by year <input type="checkbox" ng-model="mc.order" [ng-true-value="true"] [ng-false-value="false"]></p>
+        <p class="order-by">Order by year <input type="checkbox" ng-model="mc.order" [ng-true-value="true"] [ng-false-value="false"]><a href="http://www.citationmachine.net/apa/cite-a-journal/manual" target="_blank"><img class="citation" src="Images/Citation-machine.png" height="40px"></a></p>
 
         <div style="color:red" ng-hide="results">No results for this search</div>
     </div>

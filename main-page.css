@@ -52,7 +52,6 @@
     /*this positioning will put the background image below the navbar*/
     background-position-y: 62px;
     position:relative;
-    text-align: center;
     background-color: rgba(0, 0, 0, 0.68);
 
 }
@@ -71,10 +70,11 @@
     font-family: 'Playfair Display', serif;
     font-size: 55px;
     text-shadow: 1px 1px black;
-    padding:40px 40px 0 40px;
-    margin:40px 20px;
+    padding:20px 40px 0 40px;
+    margin:20px 20px;
     /*text-decoration: underline;*/
     border-bottom: 2px solid white;
+    display:inline-block;
 }
 .bg-fade2>p{
     padding-top: 30px;
@@ -117,6 +117,20 @@ hr{
     text-shadow: 1px 1px black;
     padding:50px 15px 40px 20px;
 }
+.info3{
+    font-family: 'Eczar', serif;
+    color:black;
+    font-size: 30px;
+    text-shadow: 1px 1px white;
+    padding:20px 15px 40px 20px;
+    border:1px solid black;
+    box-shadow: 2px 2px black;
+    background-color: rgba(255, 255, 255, 0.95);
+    margin:10px 8px 20px 8px;
+}
+.red{
+    color:red;
+}
 .info1 >span{
     color: rgb(93, 192, 207);
     text-shadow: 1px 1px black;
@@ -139,4 +153,89 @@ hr{
 }
 .main-logo{
     transition: transform .8s ease-in-out;
+}
+
+
+/*---------------------Mobile Settings-------------------------*/
+/* ----------- iPhone 5 and 5S ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+
+/* Portrait */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) {
+}
+
+/* Landscape */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) {
+
+}
+
+/* ----------- iPhone 6 ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 667px)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+
+/* Portrait */
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 667px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) {
+
+}
+
+/* Landscape */
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 667px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) {
+
+}
+
+/* ----------- iPhone 6+ ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+and (min-device-width: 414px)
+and (max-device-width: 736px)
+and (-webkit-min-device-pixel-ratio: 3) {
+
+}
+
+/* Portrait */
+@media only screen
+and (min-device-width: 414px)
+and (max-device-width: 736px)
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: portrait) {
+
+}
+
+/* Landscape */
+@media only screen
+and (min-device-width: 414px)
+and (max-device-width: 736px)
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: landscape) {
+
 }

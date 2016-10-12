@@ -58,7 +58,15 @@
     <div class="bg-bottom">
         <div class="bg-fade">
             <div>
-               PsychOrigins is a great tool for students because there is no cost and all articles are from peer
+                <div class="col-sm-1 hidden-xs"></div>
+                <div class=" col-xs-11 col-sm-5 info3">
+                    Are you a clinician who would like to contribute to the PsychOrigins database?<br><hr style="margin:25px 0 ">
+                    Go the<a href="#contact"> contact page </a>or send an email to support@psychorigins.com and request a registration form.
+                    It's<span class="red"> easy</span> and<span class="red"> free</span>!
+
+                </div>
+                <div class=" col-xs-11 col-sm-5 info3">PsychOrigins is a great tool for students because there is no cost and all articles are from peer</div>
+
             </div>
         </div>
     </div>

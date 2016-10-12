@@ -262,6 +262,16 @@ a{
     padding:10px 0 0 0;
 
 }
+.citation{
+    float: right;
+    margin-right: 20px;
+}
+.citation:hover{
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding-right:5px;
+    border:1px solid black;
+}
 
 /*--------mobile settings------*/
 
