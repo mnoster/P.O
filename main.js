@@ -227,7 +227,14 @@ app.factory('logoutData', function ($http) {
     }
 });
 
-
+//------------------main-page------------------
+app.controller('pageTopController',['$location','$anchorScroll', function($location, $anchorScroll){
+    this.scrollTop = function(){
+        console.log("clicked scrolltop");
+        $location.hash('nav');
+        $anchorScroll();
+    }
+}]);
 //-----------client form------------
 app.provider('clientData', function () {
     console.info(" client provider");
@@ -745,8 +752,6 @@ app.provider('MicrosoftService',function(){
                         count: "13",
                         orderby: order,
                         offset: "0"
-
-
                     };
                     $scope.$digest($.ajax({
                         url: evaluate_link + $.param(params2) + "&attributes=Ti,Y,CC,AA.AuN,F.FN,J.JN,W,E",
@@ -758,6 +763,7 @@ app.provider('MicrosoftService',function(){
                         // Request body
                         dataType:'json'
                     }).done(function(response) {
+                        $scope.$digest();
                         console.log('evaluate: ', response);
                         for(var i= 0;i<13;i++){
                             var E =  response.entities[i].E;
@@ -773,7 +779,6 @@ app.provider('MicrosoftService',function(){
                                     self.meta_data.link1[i] = ''
                                 } else {
                                     self.meta_data.link1[i] = E.S[0].U;
-
                                 }
                                 if (!E.S[1]) {
                                     self.meta_data.link2[i] = '';

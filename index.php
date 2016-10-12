@@ -25,7 +25,7 @@ if (empty($_SESSION)) {
     <link rel="icon" type="image/png" href="Images/Logomakr_0X15Cd.png">
 </head>
 <body ng-app="psychoApp">
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" id="nav">
     <div class="contatiner-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
