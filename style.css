@@ -290,6 +290,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
     .article-title{
         width:100%;
     }
+    .intro{
+        font-size: 30px;
+    }
 }
 
 /* Portrait */
@@ -310,6 +313,9 @@ and (orientation: portrait) {
     }
     .article-title{
         width:100%;
+    }
+    .intro{
+        font-size: 30px;
     }
 }
 
@@ -332,6 +338,9 @@ and (orientation: landscape) {
     .article-title{
         width:100%;
     }
+    .intro{
+        font-size: 30px;
+    }
 }
 
 /* ----------- iPhone 6 ----------- */
@@ -352,6 +361,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
         background-position-y: 21vh ;
         background-position-x: 30px ;
         background-size:90% 64%;
+    }
+    .intro{
+        font-size: 30px;
     }
     #logo{
         height:100%;
@@ -379,6 +391,9 @@ and (orientation: portrait) {
     .article-title{
         width:100%;
     }
+    .intro{
+        font-size: 30px;
+    }
 }
 /* Landscape */
 @media only screen
@@ -399,6 +414,12 @@ and (orientation: landscape) {
     #logo{
         height:100%;
     }
+    .intro{
+        font-size: 30px;
+    }
 
 }
+
+
+
     

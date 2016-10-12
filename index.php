@@ -10,21 +10,18 @@ if (empty($_SESSION)) {
 <head>
     <meta charset="UTF-8">
     <title>Psych Origins</title>
+    <meta name="keywords" content="Psychorigins,Psychorigins.com,academic search, google scholar, mircosoft academic search, psych origins, research, client, manager,free academic articles,PsychInfo,download">
+    <meta name="description" content="PsychOrigins.com is a free academic search engine for researchers and health clinicians">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <!--    Goog Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
-    <link rel="icon" type="image/png" href="Images/Logomakr_0X15Cd.png">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-    <script src="http://code.angularjs.org/1.3.15/angular-route.js"></script>
-    <script src="main.js"></script>
-<!--    <script src="login.js"></script>-->
-    <script src="register_control.js"></script>
-<!--    <script src="tablesort"></script>-->
-    <script src="form_script.js"></script>
+    <!--    AOS link-->
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="Images/Logomakr_0X15Cd.png">
 </head>
 <body ng-app="psychoApp">
 <nav class="navbar navbar-inverse">
@@ -65,5 +62,16 @@ if (empty($_SESSION)) {
 </nav>
 <div ng-view></div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<!--    routing-->
+<script src="http://code.angularjs.org/1.3.15/angular-route.js"></script>
+<!--    AOS script-->
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.js"></script>
+<script src="main.js"></script>
+<script src="register_control.js"></script>
+<!--<script src="form_script.js"></script>-->
+<script>AOS.init();</script>
 </body>
 </html>
