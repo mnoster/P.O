@@ -54,6 +54,7 @@
             .
     </div>
 </div>
+    <div class="wrapper">
 <div class="wrapper-inner">
     <div class="bg-bottom">
         <div class="bg-fade">
@@ -72,3 +73,4 @@
     </div>
 </div>
 
+    </div>

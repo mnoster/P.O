@@ -20,16 +20,17 @@ $query = $_SESSION['query'];
                         <small class="text-muted">academic search</small>
         </h1>
         <form>
-            <div class="input-group" ng-init="mc.query='<?=$query?>'; mc.makeQuery(mc.query,mc.order)">
+<!--            <div class="input-group" ng-init="mc.query='--><?//=$query?><!--'; mc.makeQuery(mc.query,mc.order)">-->
+            <div class="input-group" ng-init="mc.makeQuery(query,mc.order)">
 
-                <input ng-model="mc.query" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                <input ng-model="query" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
                 <div class="input-group-btn">
-                    <button class="btn btn-default" ng-click="mc.makeQuery(mc.query,mc.order)"><i class="glyphicon glyphicon-search"></i></button>
+                    <button class="btn btn-default" ng-click="mc.makeQuery(query,mc.order)"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
 
             </div>
         </form>
-        <p class="order-by">Order by year <input type="checkbox" ng-model="mc.order" [ng-true-value="true"] [ng-false-value="false"]><a href="http://www.citationmachine.net/apa/cite-a-journal/manual" target="_blank"><img class="citation" src="Images/Citation-machine.png" height="40px"></a></p>
+        <p class="order-by">Order by year <input type="checkbox" ng-model="mc.order" [ng-true-value="true"] [ng-false-value="false"]><span>{{performance}}</span><a href="http://www.citationmachine.net/apa/cite-a-journal/manual" target="_blank"><img class="citation" src="Images/Citation-machine.png" height="40px"></a></p>
 
         <div style="color:red" ng-hide="results">No results for this search</div>
     </div>

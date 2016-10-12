@@ -687,30 +687,28 @@ app.controller('formController', function ($scope,$log,formSubmit,$location) {
 });
 
 //----------Microsoft Academic API-------------
-app.provider('MicrosoftService',function(){
+app.factory('MicrosoftService',function($http, $q, $log){
     var self = this;
     var interpret_link = "https://api.projectoxford.ai/academic/v1.0/interpret?";
     var evaluate_link =  "https://api.projectoxford.ai/academic/v1.0/evaluate?";
     var key = "03651106c156405b9f833184b7fa09ab";
-
-    this.$get = function ($http, $q, $log) {
         console.log("Microsoft provider");
         return {
-            callApi: function ($scope, query,meta_data,order) {
-                console.log("mircosoft query: " , query);
-                query = query.replace(/['"]+/g, '');
+            callApi: function ($scope, query,meta_data,order,$rootScope) {
+                var t1 = performance.now();
+                console.log("mircosoft query: " , $rootScope.query);
+                $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
+                $rootScope.query= query;
                 var params = {
                     // Request parameters
-                    query: query.toLowerCase(),
+                    query: $rootScope.query.toLowerCase(),
                     model: "latest",
                     count: "10",
                     offset: "0",
                     complete:1
                     // orderby:'Y:asc'
-
                 };
                 //I really hate using jquery ajax in angular but I could not fix the cross origin error so I had no choice to use ajax.
-
                 $.ajax({
                         url: interpret_link + $.param(params),
                         beforeSend: function(xhrObj){
@@ -724,9 +722,7 @@ app.provider('MicrosoftService',function(){
                     }).done(function(response) {
                     if(!response.interpretations[0]){
                             console.log('invalid name');
-
                         $scope.$apply($scope.results = false);
-
                         }else{
                             console.log("success interpret: " , response);
                         $scope.$apply($scope.results = true);
@@ -866,23 +862,25 @@ app.provider('MicrosoftService',function(){
                         // console.log(E);
                         // console.log("meta data: " , self.meta_data);
                         $scope.loader = true;
+                        var t2 = performance.now();
+                        $scope.performance = "Results took " + (t2 - t1) + " milliseconds";
                         $scope.$digest();
-
                     }).fail(function(response) {
                         console.log('evaluate error: ', response)
                     }));
                 }
             }
         }
-    }
 });
-app.factory('searchString',function($http,$q){
+app.factory('searchString',function($http,$q,$rootScope){
     var self = this;
     var link = 'backs/backs.php';
     var defer = $q.defer();
 
     return{
-        callApi: function($scope,query){
+        callApi: function($scope,query,$rootScope){
+            $rootScope.query=query;
+            console.log("search string: " , $rootScope.query);
             var data = $.param({
                 search_query:query,
                 keyword: 'searchData'
@@ -893,7 +891,7 @@ app.factory('searchString',function($http,$q){
                 method:'POST',
                 dataType: 'json'
             }).then(function success(response){
-                defer.resolve(response.data);
+                defer.resolve($rootScope.query);
                 
             }),function error(response){
                 defer.reject("there was an error");
@@ -903,24 +901,24 @@ app.factory('searchString',function($http,$q){
     }
 
 });
-app.controller('MicrosoftController',function($scope,MicrosoftService,$log,searchString,$timeout){
+app.controller('MicrosoftController',function($scope,MicrosoftService,$log,searchString,$timeout,$rootScope){
     var self = this;
-    self.query = null;
     self.error = true;
     $scope.results= true;
-    // self.order = false;
+    $scope.performance = null;
 
     self.sessionQuery = function(query){
-      searchString.callApi($scope,query)
+        $rootScope.query = query;
+      searchString.callApi($scope,query,$rootScope)
           .then(function success(query){
-              console.log("process query: " ,query);
-              $timeout(function (){
               self.makeQuery(query);
-          },1000);
         })
     };
-
+    self.roots = function(query){
+        $rootScope.query=query;
+    };
     self.makeQuery = function(query,order){
+        $rootScope.query = query;
         $scope.loader = false;
         self.meta_data = {
             title: [],
@@ -940,8 +938,7 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,$log,searc
             // keyword6: [],
             // keyword7: []
         };
-        $log.warn(query);
-        MicrosoftService.callApi($scope,query,self.meta_data,order);
-            // .then()
+        $log.warn($rootScope.query);
+        MicrosoftService.callApi($scope,query,self.meta_data,order,$rootScope);
     }
 });
