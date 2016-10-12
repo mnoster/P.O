@@ -9,6 +9,9 @@
     width:100%;
     background-color: white;
 }
+.wrapper{
+
+}
 .wrapper-inner{
     /*height:100vh;*/
     width:100%;
@@ -91,4 +94,15 @@
 }
 hr{
     margin:0 40px 0 40px;
+}
+.info1{
+    font-family: 'Eczar', serif;
+    color: black;
+    font-size: 30px;
+    padding:40px 15px 40px 25px;
+}
+.info1 >span{
+    color: rgb(93, 192, 207);
+    text-shadow: 1px 1px black;
+    font-size: 40px;
 }
