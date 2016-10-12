@@ -14,6 +14,14 @@ nav{
     background-color: rgba(0, 0, 0, 0.91);
     color:white;
 }
+/*navbar gradient background*/
+/*.navbar{*/
+    /*background: black; !* For browsers that do not support gradients *!*/
+    /*background: -webkit-linear-gradient(black, transparent); !* For Safari 5.1 to 6.0 *!*/
+    /*background: -o-linear-gradient(black, transparent); !* For Opera 11.1 to 12.0 *!*/
+    /*background: -moz-linear-gradient(black, transparent); !* For Firefox 3.6 to 15 *!*/
+    /*background: linear-gradient(black,transparent); !* Standard syntax (must be last) *!*/
+/*}*/
 .dropdown-menu>li>a{
     background-color: rgba(255, 255, 255, 0.91);
     color: black;
@@ -282,6 +290,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
     .article-title{
         width:100%;
     }
+    .intro{
+        font-size: 30px;
+    }
 }
 
 /* Portrait */
@@ -302,6 +313,9 @@ and (orientation: portrait) {
     }
     .article-title{
         width:100%;
+    }
+    .intro{
+        font-size: 30px;
     }
 }
 
@@ -324,6 +338,9 @@ and (orientation: landscape) {
     .article-title{
         width:100%;
     }
+    .intro{
+        font-size: 30px;
+    }
 }
 
 /* ----------- iPhone 6 ----------- */
@@ -344,6 +361,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
         background-position-y: 21vh ;
         background-position-x: 30px ;
         background-size:90% 64%;
+    }
+    .intro{
+        font-size: 30px;
     }
     #logo{
         height:100%;
@@ -371,6 +391,9 @@ and (orientation: portrait) {
     .article-title{
         width:100%;
     }
+    .intro{
+        font-size: 30px;
+    }
 }
 /* Landscape */
 @media only screen
@@ -391,6 +414,12 @@ and (orientation: landscape) {
     #logo{
         height:100%;
     }
+    .intro{
+        font-size: 30px;
+    }
 
 }
+
+
+
     
