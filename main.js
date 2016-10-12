@@ -764,21 +764,27 @@ app.provider('MicrosoftService',function(){
                             E = JSON.parse(E);
                             self.meta_data.title[i]= E.DN;
                             self.meta_data.summary[i]= E.D;
-                            if(!E.S[0]){
-                                self.meta_data.link1[i] =''
-                            }else {
-                                self.meta_data.link1[i]= E.S[0].U;
-
-                            }
-                            if(!E.S[1]){
+                            if(!E.S || !E){
+                                self.meta_data.link1[i] ='';
                                 self.meta_data.link2[i] = '';
                                 self.meta_data.link3[i] = '';
-                            }else if(!E.S[2]){
-                                self.meta_data.link2[i] = E.S[1].U;
-                                self.meta_data.link3[i] = '';
-                            }else{
-                                self.meta_data.link2[i] = E.S[1].U;
-                                self.meta_data.link3[i] = E.S[2].U;
+                            }else {
+                                if (!E.S[0].U) {
+                                    self.meta_data.link1[i] = ''
+                                } else {
+                                    self.meta_data.link1[i] = E.S[0].U;
+
+                                }
+                                if (!E.S[1]) {
+                                    self.meta_data.link2[i] = '';
+                                    self.meta_data.link3[i] = '';
+                                } else if (!E.S[2]) {
+                                    self.meta_data.link2[i] = E.S[1].U;
+                                    self.meta_data.link3[i] = '';
+                                } else {
+                                    self.meta_data.link2[i] = E.S[1].U;
+                                    self.meta_data.link3[i] = E.S[2].U;
+                                }
                             }
                             self.meta_data.summary[i]= E.D;
                             self.meta_data.year[i]= response.entities[i].Y;
