@@ -20,7 +20,8 @@ if (empty($_SESSION)) {
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
-    <!--    AOS link-->
+    <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+    <!--    AOS -->
     <link href="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="Images/Logomakr_0X15Cd.png">
 </head>

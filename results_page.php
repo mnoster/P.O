@@ -35,7 +35,7 @@ $query = $_SESSION['query'];
     </div>
         </div>
     </div>
-    <div class="container-fluid results_page">
+    <div class="container-fluid results_page" ng-init="$scope.$digest()">
         <div ng-hide="loader" class="loader"><img src="Images/loader.gif" height="50vh"></div>
         <div class ='row'>
             <ul ng-show="loader" ng-repeat="(key,data) in mc.meta_data track by $index" class="result-list">

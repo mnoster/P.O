@@ -1,4 +1,4 @@
-
+<script>AOS.init();</script>
 <link href="main-page.css" type="text/css" rel="stylesheet">
 <div id="wrapper" ng-controller="pageTopController as ptc">
     <div class="wrapper-inner">
@@ -22,28 +22,45 @@
         <div class="bg-middle">
             <div class="bg-fade2">
                 <p>
-                <span>What makes PsychOrigins different?</span><br>
+                <div class="info2-head">What makes PsychOrigins different?</div><br>
                 <ol class="feature-list">
-                    <li>Analysis of data from actual clients in psychological practices</li>
-                    <li>Platform to manage client background information</li>
-                    <li>Pre-screening of licensed members</li>
-                    <li>Client anonymity & HIPPA Compliance</li>
-                    <li>Free instant access to research articles</li>
+                    <li  data-aos="flip-up">Analysis of data from actual clients in psychological practices</li>
+                    <li  data-aos="flip-up">Platform to manage client background information</li>
+                    <li  data-aos="flip-up">Pre-screening of licensed members</li>
+                    <li  data-aos="flip-up">Client anonymity & HIPPA Compliance</li>
+                    <li  data-aos="flip-up">Free instant access to research articles</li>
                 </ol>
                 </p>
             </div>
         </div>
     </div>
-    <h1>Welcome to PsychOrigins.com</h1>
+<!--    <h1>Welcome to PsychOrigins.com</h1>-->
 </div>
 <div class="wrapper-inner">
-
     <div class="bg-middle2">
+       <p class="info2">
+       </p>
+        <div>
+            <div class="col-xs-12 col-md-6"  data-aos="fade-down">
+                <span  class="info2">Real-time Data</span><br>
+                <img src="Images/analytics.png" height="300px">
+
+            </div>
+            <div class="col-xs-12 col-md-6"  data-aos="fade-down">
+                <span  class="info2">Developing Trends</span><br>
+                <img class="line-image" src="Images/trends.png" height="300px">
+
+            </div>
+            .
     </div>
 </div>
 <div class="wrapper-inner">
-
     <div class="bg-bottom">
+        <div class="bg-fade">
+            <div>
+               PsychOrigins is a great tool for students because there is no cost and all articles are from peer
+            </div>
+        </div>
     </div>
 </div>
 

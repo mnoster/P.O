@@ -18,14 +18,11 @@
 }
 .bg-top{
     background:url('Images/main-brain-red.png') center center no-repeat fixed;
-    /*height:100vh;*/
     width:100%;
-    /*background-position-y: 50px;*/
     background-size: 82% 90%;
     margin:0;
     background-color: rgba(255, 255, 255, 0.46);
     /*this positioning will put the background image below the navbar*/
-    /*background-position: 0 9vh;*/
     background-position-y: 62px;
     position:relative;
     text-align: center;
@@ -37,31 +34,27 @@
     width:100%
 }
 .bg-middle2 {
-    background: url('Images/iam-solutions-brain.png') center 0 no-repeat fixed;
-
-    height: 100vh;
-    width: 100%;
-    background-color: black;
-    background-position-y: 30px;
-    background-size: 85% 90%;
-    margin: 0;
-    padding: 0;
+    /*background: url() center center no-repeat fixed;*/
+    width:100%;
+    background-size: 82% 90%;
+    margin:0;
+    background-color: rgb(16, 216, 206);
     /*this positioning will put the background image below the navbar*/
-    background-position: 0 9vh;
-    background-position-x: 50px;
+    background-position-y: 62px;
+    position:relative;
+    text-align: center;
 }
 .bg-bottom{
-    background:url('Images/brainscan.jpg') center 0 no-repeat fixed;
-
-    height:100vh;
+    background:url('Images/greenbrain.png') center 0 no-repeat fixed;
     width:100%;
-    background-size: 85% 90%;
+    background-size: 82% 90%;
     margin:0;
-    padding:0;
-    background-color: rgba(144, 193, 207, 0.5);
     /*this positioning will put the background image below the navbar*/
-    background-position: 0 9vh;
-    background-position-x: 50px;
+    background-position-y: 62px;
+    position:relative;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.68);
+
 }
 .bg-top> .glyphicon, .glyphicon-chevron-down{
     /*position:absolute;*/
@@ -74,7 +67,7 @@
     height:100%;
     width:100%;
 }
-.bg-fade2 p>span{
+.info2-head{
     font-family: 'Playfair Display', serif;
     font-size: 55px;
     text-shadow: 1px 1px black;
@@ -87,7 +80,7 @@
     padding-top: 30px;
 }
 .bg-fade2{
-    background-color: rgba(0, 0, 0, 0.51);
+    background-color: rgba(0, 0, 0, 0.61);
     height:100%;
     width:100%;
 }
@@ -116,6 +109,13 @@ hr{
     color: black;
     font-size: 30px;
     padding:20px 15px 40px 20px;
+}
+.info2{
+    font-family: 'Bitter', serif;
+    color:white;
+    font-size: 55px;
+    text-shadow: 1px 1px black;
+    padding:50px 15px 40px 20px;
 }
 .info1 >span{
     color: rgb(93, 192, 207);
