@@ -12,7 +12,7 @@
                 </div>
         </div>
     </div>
-    <div class="info1">
+    <div class="info1" data-aos="fade-up">
         Access hundreds of thousands of research articles through the<span> PsychOrigins Academic Search</span>&trade; engine.
         Powered by <img src="Images/micosoftlogo.png" ng-click="ptc.scrollTop();" height="32px">  Microsoft's Academic Knowledge database, all research papers are available for instant viewing without cost.
     </div>
