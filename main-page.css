@@ -3,6 +3,11 @@
     padding:0;
     color:white;
 }
+
+html body{
+    background: rgb(197, 198, 198);
+
+}
 #wrapper{
     overflow: hidden;
     /*height:200vh;*/

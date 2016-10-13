@@ -1,5 +1,6 @@
 <div class="container-fluid main-contain-search" ng-controller="MicrosoftController as mc">
     <div class="container">
+        <div class="col-md-1 hidden-xs"></div>
     <div class="col-md-10 col-sm-12 col-xs 12"  id="logo">
         <h1 id="title" >PsychOrigins
              <small class="text-muted">academic search</small>
