@@ -53,13 +53,13 @@ if (empty($_SESSION)) {
                         <li><a href="#about">About</a></li>
                         <li><a href="#FAQ">FAQ</a></li>
                         <li><a href="#contact">Contact</a></li>
-                        <li><a href="#compliance">Compliance</a></li>
+                        <li class="last-item"><a href="#compliance">Compliance</a></li>
                     </ul>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-                <li><a href="#register"><span class=""></span>Register</a></li>
+<!--                <li><a href="#register"><span class=""></span>Register</a></li>-->
             </ul>
         </div>
     </div>
