@@ -1,5 +1,17 @@
+<style>
+    html body{
+        background: rgb(197, 198, 198);
+    }
+    *{
+        margin:0;
+        padding:0;
+        color:white;
+    }
+    .navbar{
+        margin-bottom: 0;
+    }
+</style>
 <script>AOS.init();</script>
-<link href="main-page.css" type="text/css" rel="stylesheet">
 <div id="wrapper" ng-controller="pageTopController as ptc">
     <div class="wrapper-inner">
             <div class="bg-top">

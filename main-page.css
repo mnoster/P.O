@@ -1,13 +1,4 @@
-*{
-    margin:0;
-    padding:0;
-    color:white;
-}
 
-html body{
-    background: rgb(197, 198, 198);
-
-}
 #wrapper{
     overflow: hidden;
     /*height:200vh;*/
@@ -89,9 +80,7 @@ html body{
     height:100%;
     width:100%;
 }
-.navbar{
-    margin-bottom: 0;
-}
+
 .intro{
     font-family: 'Playfair Display', serif;
     font-size: 4em;
@@ -169,7 +158,14 @@ hr{
 and (min-device-width: 320px)
 and (max-device-width: 568px)
 and (-webkit-min-device-pixel-ratio: 2) {
-
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
 }
 
 /* Portrait */
@@ -178,6 +174,14 @@ and (min-device-width: 320px)
 and (max-device-width: 568px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: portrait) {
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
 }
 
 /* Landscape */
@@ -186,7 +190,14 @@ and (min-device-width: 320px)
 and (max-device-width: 568px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: landscape) {
-
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
 }
 
 /* ----------- iPhone 6 ----------- */
@@ -196,6 +207,14 @@ and (orientation: landscape) {
 and (min-device-width: 375px)
 and (max-device-width: 667px)
 and (-webkit-min-device-pixel-ratio: 2) {
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
 
 }
 
@@ -205,6 +224,14 @@ and (min-device-width: 375px)
 and (max-device-width: 667px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: portrait) {
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
 
 }
 
@@ -214,6 +241,14 @@ and (min-device-width: 375px)
 and (max-device-width: 667px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: landscape) {
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
 
 }
 
@@ -224,6 +259,14 @@ and (orientation: landscape) {
 and (min-device-width: 414px)
 and (max-device-width: 736px)
 and (-webkit-min-device-pixel-ratio: 3) {
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
 
 }
 
@@ -233,6 +276,14 @@ and (min-device-width: 414px)
 and (max-device-width: 736px)
 and (-webkit-min-device-pixel-ratio: 3)
 and (orientation: portrait) {
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
 
 }
 
@@ -242,5 +293,13 @@ and (min-device-width: 414px)
 and (max-device-width: 736px)
 and (-webkit-min-device-pixel-ratio: 3)
 and (orientation: landscape) {
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
 
 }

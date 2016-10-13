@@ -120,9 +120,13 @@ app.config(function ($routeProvider) {
             redirectTo: '/'
         });
 });
-app.run(function($rootScope){
-    
-});
+// app.run(['$location','$anchorScroll', function($location, $anchorScroll,$rootScope){
+//     $rootScope.scrollTop = function(){
+//         console.log("clicked scrolltop");
+//         $location.hash('nav');
+//         $anchorScroll();
+//     }
+// }]);
 
 //-------------login----------------------
 app.provider('loginData', function () {
@@ -230,13 +234,13 @@ app.factory('logoutData', function ($http) {
 });
 
 //------------------main-page------------------
-app.controller('pageTopController',['$location','$anchorScroll', function($location, $anchorScroll,$rootScope){
-    $rootScope.scrollTop = function(){
-        console.log("clicked scrolltop");
-        $location.hash('nav');
-        $anchorScroll();
-    }
-}]);
+// app.controller('pageTopController',['$location','$anchorScroll', function($location, $anchorScroll,$rootScope){
+//     $rootScope.scrollTop = function(){
+//         console.log("clicked scrolltop");
+//         $location.hash('nav');
+//         $anchorScroll();
+//     }
+// }]);
 //-----------client form------------
 app.provider('clientData', function () {
     console.info(" client provider");

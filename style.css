@@ -29,6 +29,9 @@ nav{
     background: -moz-linear-gradient(white, transparent); /* For Firefox 3.6 to 15 */
     background: linear-gradient(white,transparent); /* Standard syntax (must be last) */
 }
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+    border: none;
+}
 .dropdown-menu>li>a{
     background-color: rgba(255, 255, 255, 0.91);
     color: black;
@@ -301,7 +304,6 @@ a{
 }
 .pagi-contain{
     text-align: center;
-
 }
 
 /*--------mobile settings------*/
@@ -332,9 +334,6 @@ and (-webkit-min-device-pixel-ratio: 2) {
     .article-title{
         width:100%;
     }
-    .intro{
-        font-size: 30px;
-    }
     .results-row{
         margin-left:0;
     }
@@ -360,9 +359,6 @@ and (orientation: portrait) {
     .article-title{
         width:100%;
     }
-    .intro{
-        font-size: 30px;
-    }
     .results-row{
         margin-left:0;
     }
@@ -387,9 +383,6 @@ and (orientation: landscape) {
     }
     .article-title{
         width:100%;
-    }
-    .intro{
-        font-size: 30px;
     }
     .results-row{
         margin-left:0;
@@ -415,9 +408,6 @@ and (-webkit-min-device-pixel-ratio: 2) {
         background-position-x: 30px ;
         background-size:90% 64%;
     }
-    .intro{
-        font-size: 30px;
-    }
     #logo{
         height:100%;
         margin-left:0;
@@ -428,6 +418,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
     .results-row{
         margin-left:0;
     }
+
 }
 /* Portrait */
 @media only screen
@@ -448,9 +439,6 @@ and (orientation: portrait) {
     }
     .article-title{
         width:100%;
-    }
-    .intro{
-        font-size: 30px;
     }
     .results-row{
         margin-left:0;
@@ -475,9 +463,6 @@ and (orientation: landscape) {
     #logo{
         height:100%;
         margin-left:0;
-    }
-    .intro{
-        font-size: 30px;
     }
     .results-row{
         margin-left:0;

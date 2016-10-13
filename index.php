@@ -24,6 +24,7 @@ if (empty($_SESSION)) {
     <!--    AOS -->
     <link href="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="Images/Logomakr_0X15Cd.png">
+    <link href="main-page.css" type="text/css" rel="stylesheet">
 </head>
 <body ng-app="psychoApp">
 <nav class="navbar navbar-inverse" id="nav">
