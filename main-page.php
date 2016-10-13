@@ -101,6 +101,6 @@
         </div>
     </div>
 </div>
-<div class="footer">
+<div id="footer">
     Psych Origins &copy; 2016 <br>  <a href="#contact">contact</a> | <a href="#about">info </a> | <a href="#results_page"> research </a>
 </div>

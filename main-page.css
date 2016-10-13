@@ -162,7 +162,7 @@ hr{
 .main-logo{
     transition: transform .8s ease-in-out;
 }
-.footer{
+#footer{
     height:50px;
     color:black;
     background-color: rgb(194, 212, 209);
