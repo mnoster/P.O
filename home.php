@@ -8,7 +8,7 @@
             <div class="input-group">
                 <input ng-model="mc.query" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term" maxlength="150">
                 <div class="input-group-btn">
-                    <a href="#results_page" ng-click="mc.roots(mc.query)"><button class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button></a>
+                    <a ng-click="mc.roots(mc.query)"><button class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button></a>
                 </div>
 
             </div>

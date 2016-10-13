@@ -2,6 +2,9 @@
 session_start();
 $query = $_SESSION['query'];
 ?>
+<script>
+
+</script>
 <style>
     body{
         background-color: transparent;
@@ -30,7 +33,7 @@ $query = $_SESSION['query'];
 
             </div>
         </form>
-        <p class="order-by">Order by year <input type="checkbox" ng-model="mc.order" [ng-true-value="true"] [ng-false-value="false"]><span>{{performance}}</span><a href="http://www.citationmachine.net/apa/cite-a-journal/manual" target="_blank"><img class="citation" src="Images/Citation-machine.png" height="40px"></a></p>
+        <p class="order-by">Order by year <input type="checkbox" ng-model="mc.order" [ng-true-value="true"] [ng-false-value="false"]><a class="hidden-xs" href="http://www.citationmachine.net/apa/cite-a-journal/manual" target="_blank"><img class="citation" src="Images/Citation-machine.png" height="40px"></a><span class="response-time">{{performance}}</span></p>
 
         <div style="color:red" ng-hide="results">No results for this search</div>
     </div>

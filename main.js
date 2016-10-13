@@ -694,7 +694,7 @@ app.factory('MicrosoftService',function($http, $q, $log){
     var key = "03651106c156405b9f833184b7fa09ab";
         console.log("Microsoft provider");
         return {
-            callApi: function ($scope, query,meta_data,order,$rootScope) {
+            callApi: function ($scope, query,meta_data,order,$rootScope,$location) {
                 var t1 = performance.now();
                 console.log("mircosoft query: " , $rootScope.query);
                 $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
@@ -759,35 +759,42 @@ app.factory('MicrosoftService',function($http, $q, $log){
                         // Request body
                         dataType:'json'
                     }).done(function(response) {
+                        var E = null;
                         $scope.$digest();
                         console.log('evaluate: ', response);
                         for(var i= 0;i<13;i++){
-                            var E =  response.entities[i].E;
-                            E = JSON.parse(E);
-                            self.meta_data.title[i]= E.DN;
-                            self.meta_data.summary[i]= E.D;
-                            if(!E.S || !E){
-                                self.meta_data.link1[i] ='';
-                                self.meta_data.link2[i] = '';
-                                self.meta_data.link3[i] = '';
-                            }else {
-                                if (!E.S[0].U) {
-                                    self.meta_data.link1[i] = ''
-                                } else {
-                                    self.meta_data.link1[i] = E.S[0].U;
-                                }
-                                if (!E.S[1]) {
+                            if(!response.entities[i]){
+                                break;
+                            }
+                            else{
+                                console.log('E');
+                                E =  response.entities[i].E;
+                                E = JSON.parse(E);
+                                self.meta_data.title[i] = E.DN;
+                                self.meta_data.summary[i] = E.D;
+                                if (!E.S || !E) {
+                                    self.meta_data.link1[i] = '';
                                     self.meta_data.link2[i] = '';
                                     self.meta_data.link3[i] = '';
-                                } else if (!E.S[2]) {
-                                    self.meta_data.link2[i] = E.S[1].U;
-                                    self.meta_data.link3[i] = '';
                                 } else {
-                                    self.meta_data.link2[i] = E.S[1].U;
-                                    self.meta_data.link3[i] = E.S[2].U;
+                                    if (!E.S[0].U) {
+                                        self.meta_data.link1[i] = ''
+                                    } else {
+                                        self.meta_data.link1[i] = E.S[0].U;
+                                    }
+                                    if (!E.S[1]) {
+                                        self.meta_data.link2[i] = '';
+                                        self.meta_data.link3[i] = '';
+                                    } else if (!E.S[2]) {
+                                        self.meta_data.link2[i] = E.S[1].U;
+                                        self.meta_data.link3[i] = '';
+                                    } else {
+                                        self.meta_data.link2[i] = E.S[1].U;
+                                        self.meta_data.link3[i] = E.S[2].U;
+                                    }
                                 }
+                                self.meta_data.summary[i] = E.D;
                             }
-                            self.meta_data.summary[i]= E.D;
                             self.meta_data.year[i]= response.entities[i].Y;
                             self.meta_data.author1[i] = response.entities[i].AA[0]['AuN'];
                             if(!response.entities[i].AA[1]){
@@ -863,7 +870,9 @@ app.factory('MicrosoftService',function($http, $q, $log){
                         // console.log("meta data: " , self.meta_data);
                         $scope.loader = true;
                         var t2 = performance.now();
-                        $scope.performance = "Results took " + (t2 - t1) + " milliseconds";
+                        $scope.performance = "Results took " + (Math.round(t2 - t1)/1000).toFixed(3)   + " seconds";
+
+
                         $scope.$digest();
                     }).fail(function(response) {
                         console.log('evaluate error: ', response)
@@ -892,7 +901,7 @@ app.factory('searchString',function($http,$q,$rootScope){
                 dataType: 'json'
             }).then(function success(response){
                 defer.resolve($rootScope.query);
-                
+
             }),function error(response){
                 defer.reject("there was an error");
             };
@@ -901,12 +910,18 @@ app.factory('searchString',function($http,$q,$rootScope){
     }
 
 });
-app.controller('MicrosoftController',function($scope,MicrosoftService,$log,searchString,$timeout,$rootScope){
+app.controller('MicrosoftController',function($scope,MicrosoftService,$log,searchString,$timeout,$rootScope,$location){
+    if(window.performance){
+        console.log('yes');
+        if(performance.navigation.type  == 1) {
+            console.log('page reloaded');
+        }
+    }
     var self = this;
     self.error = true;
     $scope.results= true;
     $scope.performance = null;
-
+    $rootScope.query = $location.search().query;
     self.sessionQuery = function(query){
         $rootScope.query = query;
       searchString.callApi($scope,query,$rootScope)
@@ -916,9 +931,11 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,$log,searc
     };
     self.roots = function(query){
         $rootScope.query=query;
+        $location.path('/results_page').search('query', query);
     };
     self.makeQuery = function(query,order){
-        $rootScope.query = query;
+        $rootScope.query = $location.search().query;
+        // $rootScope.query = query;
         $scope.loader = false;
         self.meta_data = {
             title: [],
