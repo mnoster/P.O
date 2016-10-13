@@ -120,7 +120,9 @@ app.config(function ($routeProvider) {
             redirectTo: '/'
         });
 });
-
+app.run(function($rootScope){
+    
+});
 
 //-------------login----------------------
 app.provider('loginData', function () {
@@ -228,8 +230,8 @@ app.factory('logoutData', function ($http) {
 });
 
 //------------------main-page------------------
-app.controller('pageTopController',['$location','$anchorScroll', function($location, $anchorScroll){
-    this.scrollTop = function(){
+app.controller('pageTopController',['$location','$anchorScroll', function($location, $anchorScroll,$rootScope){
+    $rootScope.scrollTop = function(){
         console.log("clicked scrolltop");
         $location.hash('nav');
         $anchorScroll();
@@ -747,7 +749,7 @@ app.factory('MicrosoftService',function($http, $q, $log){
                         model: "latest",
                         count: "13",
                         orderby: order,
-                        offset: "0"
+                        offset: 0
                     };
                     $scope.$digest($.ajax({
                         url: evaluate_link + $.param(params2) + "&attributes=Ti,Y,CC,AA.AuN,F.FN,J.JN,W,E",

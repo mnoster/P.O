@@ -18,7 +18,10 @@ nav{
     color:black;
     border:none;
 }
-/*navbar gradient background*/
+.navbar-inverse .navbar-nav>li>a{
+    color: black;
+}
+    /*navbar gradient background*/
 .navbar{
     background: black; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(white, transparent); /* For Safari 5.1 to 6.0 */
@@ -241,6 +244,12 @@ footer{
     list-style: none;
     padding-right:10px;
 }
+.result-list:last-child{
+    margin-bottom: 70px;
+}
+.results-row{
+    margin-left:8px;
+}
 .summary{
     height:30vh;
     overflow-y: scroll;
@@ -253,6 +262,7 @@ footer{
 }
 .divider{
     border-bottom: 1px solid black;
+    /*border-top: 1px solid black;*/
     padding-bottom: 15px;
     background-color:  rgba(144, 193, 207, 0.5);
     background: url('Images/bluebackground.gif')center 0 fixed;
@@ -283,6 +293,15 @@ a{
 .response-time{
     float:right;
     margin-right:20px;
+}
+.paginav li{
+    display: inline-block;
+    list-style-type: none;
+    padding:0 10px 0 0;
+}
+.pagi-contain{
+    text-align: center;
+
 }
 
 /*--------mobile settings------*/
@@ -316,6 +335,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
     .intro{
         font-size: 30px;
     }
+    .results-row{
+        margin-left:0;
+    }
 }
 
 /* Portrait */
@@ -341,6 +363,9 @@ and (orientation: portrait) {
     .intro{
         font-size: 30px;
     }
+    .results-row{
+        margin-left:0;
+    }
 }
 
 /* Landscape */
@@ -365,6 +390,9 @@ and (orientation: landscape) {
     }
     .intro{
         font-size: 30px;
+    }
+    .results-row{
+        margin-left:0;
     }
 }
 
@@ -397,6 +425,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
     .article-title{
         width:100%;
     }
+    .results-row{
+        margin-left:0;
+    }
 }
 /* Portrait */
 @media only screen
@@ -421,6 +452,9 @@ and (orientation: portrait) {
     .intro{
         font-size: 30px;
     }
+    .results-row{
+        margin-left:0;
+    }
 }
 /* Landscape */
 @media only screen
@@ -444,6 +478,9 @@ and (orientation: landscape) {
     }
     .intro{
         font-size: 30px;
+    }
+    .results-row{
+        margin-left:0;
     }
 
 }

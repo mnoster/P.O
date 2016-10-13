@@ -41,7 +41,7 @@ $query = $_SESSION['query'];
     </div>
     <div class="container-fluid results_page" ng-init="$scope.$digest()">
         <div ng-hide="loader" class="loader"><img src="Images/loader.gif" height="50vh"></div>
-        <div class ='row'>
+        <div class ='row results-row'>
             <ul ng-show="loader" ng-repeat="(key,data) in mc.meta_data track by $index" class="result-list">
                 <li class="article-title"> {{mc.meta_data.title[$index]}}
                 </li>
@@ -59,11 +59,43 @@ $query = $_SESSION['query'];
                 <li>
                     <h4 ng-click="sumClick[$index]= !sumClick[$index]">Summary <span class="caret"></span></h4>
                     <p ng-show="sumClick[$index]" class="summary">{{mc.meta_data.summary[$index]}} <a href="{{mc.meta_data.link1[$index]}}"  target='_blank'> more</a></p>
-                    <hr>
+                    <hr style="margin:0 40px 0 -20px">
                 </li>
             </ul>
 
         </div>
+        <div class="pagi-contain" ng-show="loader">
+            <ul  class="paginav">
+                <li><a class="active"><span>1</span></a></li>
 
+                <li><a ng-click="scrollTop();"><span>2</span></a></li>
+
+                <li><a><span>3</span></a></li>
+
+                <li><a><span>4</span></a></li>
+
+                <li><a><span>5</span></a></li>
+
+                <li><a><span>6</span></a></li>
+
+                <li><a><span>7</span></a></li>
+
+                <li><a><span>8</span></a></li>
+
+                <li><a><span>9</span></a></li>
+
+                <li><a><span>10</span></a></li>
+
+                <li><a><span>11</span></a></li>
+
+                <li><a><span>12</span></a></li>
+
+                <li><a><span>13</span></a></li>
+
+                <li><a><span>14</span></a></li>
+
+                <li><a><span>15</span></a></li>
+                
+            </ul>
     </div>
 </div>
