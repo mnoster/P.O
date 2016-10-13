@@ -2,6 +2,9 @@
 session_start();
 $query = $_SESSION['query'];
 ?>
+<script>
+
+</script>
 <style>
     body{
         background-color: transparent;
@@ -20,22 +23,23 @@ $query = $_SESSION['query'];
                         <small class="text-muted">academic search</small>
         </h1>
         <form>
-            <div class="input-group" ng-init="mc.query='<?=$query?>'; mc.makeQuery(mc.query,mc.order)">
+<!--            <div class="input-group" ng-init="mc.query='--><?//=$query?><!--'; mc.makeQuery(mc.query,mc.order)">-->
+            <div class="input-group" ng-init="mc.makeQuery(query,mc.order)">
 
-                <input ng-model="mc.query" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                <input ng-model="query" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
                 <div class="input-group-btn">
-                    <button class="btn btn-default" ng-click="mc.makeQuery(mc.query,mc.order)"><i class="glyphicon glyphicon-search"></i></button>
+                    <button class="btn btn-default" ng-click="mc.makeQuery(query,mc.order)"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
 
             </div>
         </form>
-        <p class="order-by">Order by year <input type="checkbox" ng-model="mc.order" [ng-true-value="true"] [ng-false-value="false"]></p>
+        <p class="order-by">Order by year <input type="checkbox" ng-model="mc.order" [ng-true-value="true"] [ng-false-value="false"]><a class="hidden-xs" href="http://www.citationmachine.net/apa/cite-a-journal/manual" target="_blank"><img class="citation" src="Images/Citation-machine.png" height="40px"></a><span class="response-time">{{performance}}</span></p>
 
         <div style="color:red" ng-hide="results">No results for this search</div>
     </div>
         </div>
     </div>
-    <div class="container-fluid results_page">
+    <div class="container-fluid results_page" ng-init="$scope.$digest()">
         <div ng-hide="loader" class="loader"><img src="Images/loader.gif" height="50vh"></div>
         <div class ='row'>
             <ul ng-show="loader" ng-repeat="(key,data) in mc.meta_data track by $index" class="result-list">

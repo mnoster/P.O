@@ -1,5 +1,6 @@
 <div class="container-fluid main-contain-search" ng-controller="MicrosoftController as mc">
     <div class="container">
+        <div class="col-md-1 hidden-xs"></div>
     <div class="col-md-10 col-sm-12 col-xs 12"  id="logo">
         <h1 id="title" >PsychOrigins
              <small class="text-muted">academic search</small>
@@ -8,7 +9,7 @@
             <div class="input-group">
                 <input ng-model="mc.query" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term" maxlength="150">
                 <div class="input-group-btn">
-                    <a href="#results_page" ng-click="mc.sessionQuery(mc.query)"><button class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button></a>
+                    <a ng-click="mc.roots(mc.query)"><button class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button></a>
                 </div>
 
             </div>
