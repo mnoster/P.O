@@ -2,13 +2,11 @@
     body {
         background-color: rgb(197, 198, 198);
     }
-
     * {
         margin: 0;
         padding: 0;
         color: white;
     }
-
     .navbar {
         margin-bottom: 0;
     }

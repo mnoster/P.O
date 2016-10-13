@@ -151,7 +151,7 @@ app.provider('loginData', function () {
             $log.error("$http fail: ", response);
         }
     };
-    this.$get = function ($http, $q, $log) {
+    this.$get = function ($http, $q, $log,$rootScope) {
         console.log("$get");
         return {
             callApi: function ($scope, user) {
@@ -171,6 +171,8 @@ app.provider('loginData', function () {
                         self.populate_user_profile_info(user.username, $http);
                         data = " ";
                         user_info = " ";
+                        $rootScope.enabled = true;
+                        console.log("enabled: " , $rootScope.enabled);
                         window.location.replace("index.php");
                     }
                     defer.resolve(response);
@@ -186,9 +188,10 @@ app.provider('loginData', function () {
 
 });
 //Include your service in the function parameter list along with any other services you may want to use
-app.controller('loginController', function (loginData, $scope) {
+app.controller('loginController', function (loginData, $scope,$rootScope) {
     //Create a variable to hold this, DO NOT use the same name you used in your provider
     var new_self = this;
+    $rootScope.enabled = false;
     //Add an empty data object to your controller, make sure to call it 'data'
     $scope.data = {};
     //Add a function called getData to your controller to call the SGT API

@@ -1,6 +1,6 @@
 <?php
 session_start();
-$query = $_SESSION['query'];
+//$query = $_SESSION['query'];
 ?>
 <script>
 

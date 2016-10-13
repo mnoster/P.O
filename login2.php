@@ -22,7 +22,7 @@ if(empty($_SESSION)){
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="http://code.angularjs.org/1.3.15/angular-route.js"></script>
     <script src="main.js"></script>
-<!--    <script src="login.js"></script>-->
+    <!--    <script src="login.js"></script>-->
 </head>
 <body ng-app="psychoApp">
 <nav class="navbar navbar-inverse">
@@ -33,21 +33,21 @@ if(empty($_SESSION)){
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://psychorigins.com/index.php#/main-page"><img  class="logo" src="Images/Logomakr_0X15Cd.png" height="200%"></a>
+            <a class="navbar-brand"><img  class="logo" src="Images/Logomakr_0X15Cd.png" height="200%"></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">Research <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="http://psychorigins.com/index.php#/FAQ">FAQ</a></li>
+                        <li><a href="#FAQ">FAQ</a></li>
                     </ul>
                 </li>
-                <li><a href="http://psychorigins.com/index.php#/About">About</a></li>
-                <li><a href="http://psychorigins.com/index.php#/contact">Contact</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://psychorigins.com/index.php#/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             </ul>
         </div>
     </div>
