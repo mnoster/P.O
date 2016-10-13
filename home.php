@@ -1,3 +1,4 @@
+
 <div class="container-fluid main-contain-search" ng-controller="MicrosoftController as mc">
     <div class="container">
         <div class="col-md-1 hidden-xs"></div>

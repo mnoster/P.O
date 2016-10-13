@@ -1,21 +1,21 @@
-*{
-    margin:0;
-    padding:0;
-    color:white;
-}
 
-html body{
-    background: rgb(197, 198, 198);
-
-}
 #wrapper{
     overflow: hidden;
     /*height:200vh;*/
     width:100%;
     background-color: white;
 }
-.wrapper{
-
+#wrapper3{
+    overflow: hidden;
+    background:url('Images/mechanics-min.png') center center no-repeat fixed;
+    width:100%;
+    background-size: 100% 90%;
+    padding:35px 0 35px 0;
+    margin:0;
+    background-position-y: 62px;
+    position:relative;
+    text-align: center;
+    background-color: black;
 }
 .wrapper-inner{
     /*height:100vh;*/
@@ -89,9 +89,7 @@ html body{
     height:100%;
     width:100%;
 }
-.navbar{
-    margin-bottom: 0;
-}
+
 .intro{
     font-family: 'Playfair Display', serif;
     font-size: 4em;
@@ -123,18 +121,23 @@ hr{
     padding:50px 15px 40px 20px;
 }
 .info3{
-    font-family: 'Eczar', serif;
+    font-family: 'Times', serif;
     color:black;
-    font-size: 30px;
+    font-size: 20px;
     text-shadow: 1px 1px white;
     padding:20px 15px 40px 20px;
-    border:1px solid black;
+    /*border:1px solid black;*/
     box-shadow: 2px 2px black;
-    background-color: rgba(255, 255, 255, 0.84);
+    background-color: rgba(255, 255, 255, 0.98);
     margin:10px 8px 20px 8px;
+}
+.info3 span:first-child{
+    font-size: 30px;
+    color:black;
 }
 .red{
     color:red;
+    font-size: 25px;
 }
 .info1 >span{
     color: rgb(93, 192, 207);
@@ -144,7 +147,7 @@ hr{
 .feature-list{
     font-family:  'Eczar', serif;
     list-style-type: decimal;
-    margin:50px 10px 0 50px;
+    margin:50px 10px 0 70px;
     font-size: 35px;
     width:80%;
     text-shadow: 1px 1px black;
@@ -159,6 +162,12 @@ hr{
 .main-logo{
     transition: transform .8s ease-in-out;
 }
+#footer{
+    height:50px;
+    color:black;
+    background-color: rgb(194, 212, 209);
+    text-align: center;
+}
 
 
 /*---------------------Mobile Settings-------------------------*/
@@ -169,7 +178,17 @@ hr{
 and (min-device-width: 320px)
 and (max-device-width: 568px)
 and (-webkit-min-device-pixel-ratio: 2) {
-
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
+    .feature-list{
+        margin:20px 10px 0 20px;
+    }
 }
 
 /* Portrait */
@@ -178,6 +197,17 @@ and (min-device-width: 320px)
 and (max-device-width: 568px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: portrait) {
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
+    .feature-list{
+        margin:20px 10px 0 20px;
+    }
 }
 
 /* Landscape */
@@ -186,7 +216,17 @@ and (min-device-width: 320px)
 and (max-device-width: 568px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: landscape) {
-
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
+    .feature-list{
+        margin:20px 10px 0 20px;
+    }
 }
 
 /* ----------- iPhone 6 ----------- */
@@ -196,6 +236,17 @@ and (orientation: landscape) {
 and (min-device-width: 375px)
 and (max-device-width: 667px)
 and (-webkit-min-device-pixel-ratio: 2) {
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
+    .feature-list{
+        margin:20px 10px 0 20px;
+    }
 
 }
 
@@ -205,6 +256,17 @@ and (min-device-width: 375px)
 and (max-device-width: 667px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: portrait) {
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
+    .feature-list{
+        margin:20px 10px 0 20px;
+    }
 
 }
 
@@ -214,6 +276,17 @@ and (min-device-width: 375px)
 and (max-device-width: 667px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: landscape) {
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
+    .feature-list{
+        margin:20px 10px 0 20px;
+    }
 
 }
 
@@ -224,6 +297,17 @@ and (orientation: landscape) {
 and (min-device-width: 414px)
 and (max-device-width: 736px)
 and (-webkit-min-device-pixel-ratio: 3) {
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
+    .feature-list{
+        margin:20px 10px 0 20px;
+    }
 
 }
 
@@ -233,6 +317,17 @@ and (min-device-width: 414px)
 and (max-device-width: 736px)
 and (-webkit-min-device-pixel-ratio: 3)
 and (orientation: portrait) {
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
+    .feature-list{
+        margin:20px 10px 0 20px;
+    }
 
 }
 
@@ -242,5 +337,16 @@ and (min-device-width: 414px)
 and (max-device-width: 736px)
 and (-webkit-min-device-pixel-ratio: 3)
 and (orientation: landscape) {
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
+    .feature-list{
+        margin:20px 10px 0 20px;
+    }
 
 }

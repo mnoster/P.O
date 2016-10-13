@@ -18,7 +18,10 @@ nav{
     color:black;
     border:none;
 }
-/*navbar gradient background*/
+.navbar-inverse .navbar-nav>li>a{
+    color: black;
+}
+    /*navbar gradient background*/
 .navbar{
     background: black; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(white, transparent); /* For Safari 5.1 to 6.0 */
@@ -26,13 +29,23 @@ nav{
     background: -moz-linear-gradient(white, transparent); /* For Firefox 3.6 to 15 */
     background: linear-gradient(white,transparent); /* Standard syntax (must be last) */
 }
-.dropdown-menu>li>a{
-    background-color: rgba(255, 255, 255, 0.91);
-    color: black;
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+    /*border: none;*/
 }
+ .dropdown-menu>li>a{
+    /*background-color: rgba(255, 255, 255, 0.91);*/
+  }
+ .last-item{
+     background-color: rgba(255, 255, 255, 0.93);
+     color:black;
+ }
 .logo{
     margin-top: -10px;
     height: 200%;
+}
+.dropdown-menu, .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+    background-color: transparent;
+    border: none;
 }
 body{
     /*background-image: url('Images/iam-solutions-brain.png');*/
@@ -56,7 +69,7 @@ body{
     background-repeat: no-repeat;*/
     height: 30vh;
     background-color: transparent;
-    margin-left:-20px;
+    margin-left:-25px;
 }
 #searchbar{
     margin-top:90px;
@@ -130,7 +143,12 @@ select{
 .second-form {
     margin-bottom: 30px;
 }
-
+.sharp{
+    border-radius: 0;
+}
+.form-signin-heading{
+    font-family: Times, "Times New Roman",Sarif;
+}
 /*-----------------dashboard list---------------*/
 #dashboard-list{
     list-style-type: none;
@@ -241,6 +259,12 @@ footer{
     list-style: none;
     padding-right:10px;
 }
+.result-list:last-child{
+    margin-bottom: 70px;
+}
+.results-row{
+    margin-left:8px;
+}
 .summary{
     height:30vh;
     overflow-y: scroll;
@@ -253,6 +277,7 @@ footer{
 }
 .divider{
     border-bottom: 1px solid black;
+    /*border-top: 1px solid black;*/
     padding-bottom: 15px;
     background-color:  rgba(144, 193, 207, 0.5);
     background: url('Images/bluebackground.gif')center 0 fixed;
@@ -284,6 +309,14 @@ a{
     float:right;
     margin-right:20px;
 }
+.paginav li{
+    display: inline-block;
+    list-style-type: none;
+    padding:0 10px 0 0;
+}
+.pagi-contain{
+    text-align: center;
+}
 
 /*--------mobile settings------*/
 
@@ -308,12 +341,13 @@ and (-webkit-min-device-pixel-ratio: 2) {
     }
     #logo{
         height:100%;
+        margin-left:0;
     }
     .article-title{
         width:100%;
     }
-    .intro{
-        font-size: 30px;
+    .results-row{
+        margin-left:0;
     }
 }
 
@@ -332,12 +366,13 @@ and (orientation: portrait) {
     }
     #logo{
         height:100%;
+        margin-left:0;
     }
     .article-title{
         width:100%;
     }
-    .intro{
-        font-size: 30px;
+    .results-row{
+        margin-left:0;
     }
 }
 
@@ -356,12 +391,13 @@ and (orientation: landscape) {
     }
     #logo{
         height:100%;
+        margin-left:0;
     }
     .article-title{
         width:100%;
     }
-    .intro{
-        font-size: 30px;
+    .results-row{
+        margin-left:0;
     }
 }
 
@@ -384,15 +420,17 @@ and (-webkit-min-device-pixel-ratio: 2) {
         background-position-x: 30px ;
         background-size:90% 64%;
     }
-    .intro{
-        font-size: 30px;
-    }
     #logo{
         height:100%;
+        margin-left:0;
     }
     .article-title{
         width:100%;
     }
+    .results-row{
+        margin-left:0;
+    }
+
 }
 /* Portrait */
 @media only screen
@@ -409,12 +447,13 @@ and (orientation: portrait) {
     }
     #logo{
         height:100%;
+        margin-left:0;
     }
     .article-title{
         width:100%;
     }
-    .intro{
-        font-size: 30px;
+    .results-row{
+        margin-left:0;
     }
 }
 /* Landscape */
@@ -435,13 +474,29 @@ and (orientation: landscape) {
     }
     #logo{
         height:100%;
+        margin-left:0;
     }
-    .intro{
-        font-size: 30px;
+    .results-row{
+        margin-left:0;
     }
 
 }
+/*------bootstrap nav------*/
+
+@media (max-width: 767px){
+    .navbar-inverse .navbar-nav .open .dropdown-menu li a{
+     color:black;
+    }
+    .last-item{
+        background-color: transparent;
+    }
+    .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+        border: none;
+    }
+    .icon-bar{
+        color:black;
+    }
 
 
+}
 
-    

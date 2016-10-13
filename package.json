@@ -1,0 +1,31 @@
+{
+  "name": "psychorigins_test",
+  "version": "1.0.0",
+  "description": "psychorigins",
+  "main": "main.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "karma-jasmine": "^1.0.2",
+    "karma": "^1.3.0",
+    "jasmine-core": "^2.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mnoster/P.O.git"
+  },
+  "keywords": [
+    "psychorigins"
+  ],
+  "author": "Nicholas Porter",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mnoster/P.O/issues"
+  },
+  "homepage": "https://github.com/mnoster/P.O#readme"
+}
