@@ -44,6 +44,9 @@ session_start();
                     </ul>
                 </li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                 <li><a href="http://psychorigins.com/#/register">Register</a></li>
+            </ul>
     </div>
 </nav>
 <div class="container login-background" ng-controller="loginController as lc">

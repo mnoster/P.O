@@ -63,9 +63,8 @@ if (isset($_SESSION['active'])) {
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li  ng-show="active"><a href="#logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-                <li ng-hide="active"><a href="http://psychorigins.com/login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-
-                <!--                <li><a href="#register"><span class=""></span>Register</a></li>-->
+                <li  ng-hide="active"><a href="http://psychorigins.com/login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li  ng-hide="active"><a href="#register">Register</a></li>
             </ul>
         </div>
     </div>
