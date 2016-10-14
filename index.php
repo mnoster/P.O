@@ -1,10 +1,7 @@
 <?php
 session_start();
-//if (empty($_SESSION)) {
-//    header("Location: http://psychorigins.com/"); /* Redirect browser */
-//    exit();
-//}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +25,13 @@ session_start();
 
 </head>
 <body ng-app="psychoApp">
+<?php
+if (isset($_SESSION['active'])) {
+    echo "<span ng-init='active=true'></span>";
+    ?>
+    <?php
+}
+?>
 <nav class="navbar navbar-inverse" id="nav">
     <div class="contatiner-fluid">
         <div class="navbar-header">
@@ -42,7 +46,7 @@ session_start();
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#home">Research</a></li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">Tools<span class="caret"></span></a>
+                    <a ng-show="active" class="dropdown-toggle" data-toggle="dropdown">Tools<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#dashboard">Dashboard</a></li>
                     </ul>
@@ -58,8 +62,9 @@ session_start();
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-<!--                <li><a href="#register"><span class=""></span>Register</a></li>-->
+                <li  ng-show="active"><a href="#logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                <li  ng-hide="active"><a href="http://psychorigins.com/login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li  ng-hide="active"><a href="#register">Register</a></li>
             </ul>
         </div>
     </div>
@@ -75,6 +80,7 @@ session_start();
 <script src="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.js"></script>
 <script src="main.js"></script>
 <script src="register_control.js"></script>
+<script src="contact.js"></script>
 <!--<script src="form_script.js"></script>-->
 <script>AOS.init();</script>
 </body>

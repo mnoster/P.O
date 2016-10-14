@@ -3,8 +3,10 @@
  */
 $(document).on('click','#submit',function(){
     mailer();
+
 });
 function mailer(){
+    $('#submit').html("<img src='Images/loader.gif' height='100p'>");
     var name = $("#name").val();
     console.log("name: " , name);
     var email = $("#email").val();
@@ -16,7 +18,7 @@ function mailer(){
     $.ajax({
         url: 'contact_handler.php',
         method: 'post',
-        dataType:'text',
+        dataType:'json',
         data: {
             name:name,
             email:email,
@@ -24,7 +26,20 @@ function mailer(){
             content:content
         },
         success: function(response){
-//				console.log("connection was success: " , response);
+            if(response.success == true){
+                $('#submit').html("sent!");
+                var name = $("#name").val('');
+                var email = $("#email").val('');
+                var subject = $('#subject').val('');
+                var content = $('#textarea').val('');
+            }
+            else{
+                $('#submit').html("send");
+                alert('Invalid email entered or error with server');
+
+            }
+
+				console.log("connection was success: " , response);
         },
         error: function(response){
             console.log("there was an error: " ,response);

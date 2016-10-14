@@ -7,6 +7,8 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Home | PsychOrigins</title>
+    <meta name="keywords" content="Psychorigins,Psychorigins.com,academic search, google scholar, mircosoft academic search, psych origins, research, client, manager,free academic articles,PsychInfo,download">
+    <meta name="description" content="PsychOrigins.com is a free academic search engine for researchers and health clinicians">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -37,17 +39,21 @@ session_start();
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">Info<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="http://psychorigins.com/index.php#/about">About</a></li>
-                        <li><a href="http://psychorigins.com/index.php#/FAQ">FAQ</a></li>
-                        <li><a href="http://psychorigins.com/index.php#/contact">Contact</a></li>
-                        <li class="last-item"><a href="http://psychorigins.com/index.php#/compliance">Compliance</a></li>
+                        <li><a href="http://psychorigins.com/#/about">About</a></li>
+                        <li><a href="http://psychorigins.com/#/FAQ">FAQ</a></li>
+                        <li><a href="http://psychorigins.com/#/contact">Contact</a></li>
+                        <li class="last-item"><a href="http://psychorigins.com/#/compliance">Compliance</a></li>
                     </ul>
                 </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                 <li><a href="http://psychorigins.com/#/register">Register</a></li>
             </ul>
     </div>
 </nav>
 <div class="container login-background" ng-controller="loginController as lc">
-    <div class="col-xs-12 login-inner">
+    <div class="hidden-xs col-sm-1 col-md-2"></div>
+    <div class="col-xs-12 col-sm-10 col-md-8 login-inner">
         <div class="wrapper">
             <form class="form-signin">
                 <h2 class="form-signin-heading">Please login</h2>

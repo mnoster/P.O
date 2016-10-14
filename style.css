@@ -21,7 +21,6 @@ nav{
 .navbar-inverse .navbar-nav>li>a{
     color: black;
 }
-    /*navbar gradient background*/
 .navbar{
     background: black; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(white, transparent); /* For Safari 5.1 to 6.0 */
@@ -29,22 +28,13 @@ nav{
     background: -moz-linear-gradient(white, transparent); /* For Firefox 3.6 to 15 */
     background: linear-gradient(white,transparent); /* Standard syntax (must be last) */
 }
-.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
-    /*border: none;*/
-}
- .dropdown-menu>li>a{
-    /*background-color: rgba(255, 255, 255, 0.91);*/
-  }
- .last-item{
-     background-color: rgba(255, 255, 255, 0.93);
-     color:black;
- }
 .logo{
     margin-top: -10px;
     height: 200%;
 }
 .dropdown-menu, .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.93);
+    color:black;
     border: none;
 }
 body{
@@ -54,13 +44,13 @@ body{
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: 82% 90%;
+    background-size:  55% auto;
     margin:0;
     padding:0;
     background-color: rgba(144, 193, 207, 0.5);
     width:100%;
     /*this positioning will put the background image below the navbar*/
-    background-position-y: 62px;
+    background-position-y: 50px;
     position:relative;
     /*text-align: center;*/
 }
@@ -147,7 +137,11 @@ select{
     border-radius: 0;
 }
 .form-signin-heading{
-    font-family: Times, "Times New Roman",Sarif;
+    font-family: Helvetica, "Times New Roman",Sarif;
+}
+.login-inner{
+    text-align: center;
+    padding-top: 20px;
 }
 /*-----------------dashboard list---------------*/
 #dashboard-list{
@@ -204,6 +198,12 @@ footer{
 }
 .display_error{
     background-color: red;
+}
+.arrow_down{
+    border-top:2px solid black;
+}
+thead tr{
+    cursor: pointer;
 }
 /*-----------select form---------------*/
 .form-icon{
@@ -339,7 +339,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
         background-position-x: 25px ;
         background-size:90% 64%;
     }
-    #logo{
+    .logo{
         height:100%;
         margin-left:0;
     }
@@ -351,30 +351,6 @@ and (-webkit-min-device-pixel-ratio: 2) {
     }
 }
 
-/* Portrait */
-@media only screen
-and (min-device-width: 320px)
-and (max-device-width: 568px)
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: portrait) {
-    .divider,#logo,.main-contain-results,.main-contain-search,.fade-background1,.fade-background {
-        padding-right: 0;
-        padding-left: 0;
-    }
-    .hippa{
-        display: none;
-    }
-    #logo{
-        height:100%;
-        margin-left:0;
-    }
-    .article-title{
-        width:100%;
-    }
-    .results-row{
-        margin-left:0;
-    }
-}
 
 /* Landscape */
 @media only screen
@@ -389,7 +365,7 @@ and (orientation: landscape) {
     .hippa{
         display: none;
     }
-    #logo{
+    .logo{
         height:100%;
         margin-left:0;
     }
@@ -420,7 +396,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
         background-position-x: 30px ;
         background-size:90% 64%;
     }
-    #logo{
+    .logo{
         height:100%;
         margin-left:0;
     }
@@ -432,30 +408,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
     }
 
 }
-/* Portrait */
-@media only screen
-and (min-device-width: 375px)
-and (max-device-width: 667px)
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: portrait) {
-    .divider,#logo,.main-contain-results,.main-contain-search,.fade-background1,.fade-background{
-        padding-right: 0;
-        padding-left: 0;
-    }
-    .hippa{
-        display: none;
-    }
-    #logo{
-        height:100%;
-        margin-left:0;
-    }
-    .article-title{
-        width:100%;
-    }
-    .results-row{
-        margin-left:0;
-    }
-}
+
 /* Landscape */
 @media only screen
 and (min-device-width: 375px)
@@ -472,7 +425,7 @@ and (orientation: landscape) {
     .hippa{
         display: none;
     }
-    #logo{
+    .logo{
         height:100%;
         margin-left:0;
     }
@@ -481,6 +434,32 @@ and (orientation: landscape) {
     }
 
 }
+/* ----------- iPhone 6+ ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+and (min-device-width: 414px)
+and (max-device-width: 736px)
+and (-webkit-min-device-pixel-ratio: 3) {
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
+    .feature-list{
+        margin:20px 10px 0 20px;
+    }
+    .analytics{
+        height:200px;
+    }
+
+}
+
+
+
 /*------bootstrap nav------*/
 
 @media (max-width: 767px){
@@ -497,6 +476,15 @@ and (orientation: landscape) {
         color:black;
     }
 
-
 }
 
+@media (max-width: 910px){
+    body{
+        background-position-y: 20vh ;
+    }
+}
+@media (max-width: 1200px){
+    body{
+        background-position-y: 15vh ;
+    }
+}

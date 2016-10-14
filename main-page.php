@@ -3,8 +3,6 @@
         background-color: rgb(197, 198, 198);
     }
     * {
-        margin: 0;
-        padding: 0;
         color: white;
     }
     .navbar {
@@ -16,8 +14,7 @@
     <div class="wrapper-inner">
         <div class="bg-top">
             <div class="bg-fade">
-                <h1 data-aos="fade-up" style="margin:0; padding:20px 0 0 45px"><img class="main-logo"
-                                                                                    src="Images/Logomakr_0X15Cd.png">
+                <h1 data-aos="fade-up" style="margin:0; padding:20px 0 0 45px"><img class="main-logo" src="Images/Logomakr_0X15Cd.png">
                 </h1>
                 <h1 data-aos="fade-down" class="title">Psych Origins</h1>
                 <hr>
@@ -31,7 +28,7 @@
     <div class="info1" data-aos="fade-up">
         Access hundreds of thousands of research articles through the<span> PsychOrigins Academic Search</span>&trade;
         engine.
-        Powered by <img src="Images/micosoftlogo.png" ng-click="ptc.scrollTop();" height="32px"> Microsoft's Academic
+        Powered by <img src="Images/micosoftlogo.png" ng-click="scrollTop();" height="32px"> Microsoft's Academic
         Knowledge database, all research papers are available for instant viewing without cost.
     </div>
 </div>
@@ -63,11 +60,11 @@
             <div>
                 <div class="col-xs-12 col-md-6" data-aos="fade-down">
                     <span class="info2">Real-time Data</span><br>
-                    <img src="Images/analytics.png" height="300px">
+                    <img class="analytics" src="Images/analytics.png" height="300px">
                 </div>
                 <div class="col-xs-12 col-md-6" data-aos="fade-down">
                     <span class="info2">Developing Trends</span><br>
-                    <img class="line-image" src="Images/trends.png" height="300px">
+                    <img class="analytics" class="line-image" src="Images/trends.png" height="300px">
                 </div>
                 .
             </div>
@@ -100,5 +97,5 @@
     </div>
 </div>
 <div id="footer">
-    Psych Origins &copy; 2016 <br>  <a href="#contact">contact</a> | <a href="#about">info </a> | <a href="#results_page"> research </a>
+    Psych Origins &copy; 2016 | <a>psyorigins@gmail.com</a> <br>  <a href="#contact">contact</a> | <a href="#about">info </a> | <a href="#results_page"> research </a>
 </div>
