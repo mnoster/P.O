@@ -188,41 +188,22 @@ and (-webkit-min-device-pixel-ratio: 2) {
         margin:4px;
         font-size: 20px;
     }
+    .info3{
+        margin-left:15px ;
+    }
     .feature-list{
         margin:20px 10px 0 20px;
     }
-    .bg-top{
-        background:none;
-    }
     .analytics{
         height:200px;
+    }
+    body{
+        background-position-y: 21vh ;
+        background-position-x: 25px ;
+        background-size:90% 64%;
     }
 }
 
-/* Portrait */
-@media only screen
-and (min-device-width: 320px)
-and (max-device-width: 568px)
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: portrait) {
-    .intro{
-        font-size: 20px;
-    }
-    .info2-head{
-        padding:4px;
-        margin:4px;
-        font-size: 20px;
-    }
-    .feature-list{
-        margin:20px 10px 0 20px;
-    }
-    .bg-top{
-        background:none;
-    }
-    .analytics{
-        height:200px;
-    }
-}
 
 /* Landscape */
 @media only screen
@@ -241,11 +222,11 @@ and (orientation: landscape) {
     .feature-list{
         margin:20px 10px 0 20px;
     }
-    .bg-top{
-        background:none;
-    }
     .analytics{
         height:200px;
+    }
+    .info3{
+        margin-left:15px ;
     }
 }
 
@@ -261,46 +242,26 @@ and (-webkit-min-device-pixel-ratio: 2) {
     }
     .info2-head{
         padding:4px;
-        margin:4px;
+        margin:4px 0 4px 10px;
         font-size: 20px;
     }
     .feature-list{
-        margin:20px 10px 0 20px;
-    }
-    .bg-top{
-        background:none;
+        margin:20px 10px 0 10px;
     }
     .analytics{
         height:200px;
     }
-
-}
-
-/* Portrait */
-@media only screen
-and (min-device-width: 375px)
-and (max-device-width: 667px)
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: portrait) {
-    .intro{
-        font-size: 20px;
-    }
-    .info2-head{
-        padding:4px;
-        margin:4px;
-        font-size: 20px;
-    }
-    .feature-list{
-        margin:20px 10px 0 20px;
-    }
     .bg-top{
-        background:none;
+        background-position-y: 21vh ;
+        background-position-x: 30px ;
+        background-size:90% 64%;
     }
-    .analytics{
-        height:200px;
+    .info3{
+        margin-left:15px ;
     }
 
 }
+
 
 /* Landscape */
 @media only screen
@@ -317,15 +278,14 @@ and (orientation: landscape) {
         font-size: 20px;
     }
     .feature-list{
-        margin:20px 10px 0 20px;
-    }
-    .bg-top{
-        background:none;
+        margin:20px 10px 0 10px;
     }
     .analytics{
         height:200px;
     }
-
+    .info3{
+        margin-left:15px ;
+    }
 }
 
 /* ----------- iPhone 6+ ----------- */
@@ -340,45 +300,21 @@ and (-webkit-min-device-pixel-ratio: 3) {
     }
     .info2-head{
         padding:4px;
-        margin:4px;
+        margin:4px 0 4px 10px;
         font-size: 20px;
     }
     .feature-list{
-        margin:20px 10px 0 20px;
-    }
-    .bg-top{
-        background:none;
+        margin:20px 10px 0 10px;
     }
     .analytics{
         height:200px;
     }
+    .info3{
+        margin-left:15px ;
+    }
 
 }
 
-/* Portrait */
-@media only screen
-and (min-device-width: 414px)
-and (max-device-width: 736px)
-and (-webkit-min-device-pixel-ratio: 3)
-and (orientation: portrait) {
-    .intro{
-        font-size: 20px;
-    }
-    .info2-head{
-        padding:4px;
-        margin:4px;
-        font-size: 20px;
-    }
-    .feature-list{
-        margin:20px 10px 0 20px;
-    }
-    .bg-top{
-        background:none;
-    }
-    .analytics{
-        height:200px;
-    }
-}
 
 /* Landscape */
 @media only screen
@@ -391,17 +327,17 @@ and (orientation: landscape) {
     }
     .info2-head{
         padding:4px;
-        margin:4px;
-        font-size: 20px;
+        margin:4px 0 4px 10px;        font-size: 20px;
     }
     .feature-list{
         margin:20px 10px 0 20px;
     }
-    .bg-top{
-        background:none;
-    }
+
     .analytics{
         height:200px;
+    }
+    .info3{
+        margin-left:15px ;
     }
 }
 

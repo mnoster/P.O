@@ -333,7 +333,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
         background-position-x: 25px ;
         background-size:90% 64%;
     }
-    #logo{
+    .logo{
         height:100%;
         margin-left:0;
     }
@@ -358,7 +358,7 @@ and (orientation: portrait) {
     .hippa{
         display: none;
     }
-    #logo{
+    .logo{
         height:100%;
         margin-left:0;
     }
@@ -383,7 +383,7 @@ and (orientation: landscape) {
     .hippa{
         display: none;
     }
-    #logo{
+    .logo{
         height:100%;
         margin-left:0;
     }
@@ -414,7 +414,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
         background-position-x: 30px ;
         background-size:90% 64%;
     }
-    #logo{
+    .logo{
         height:100%;
         margin-left:0;
     }
@@ -439,7 +439,7 @@ and (orientation: portrait) {
     .hippa{
         display: none;
     }
-    #logo{
+    .logo{
         height:100%;
         margin-left:0;
     }
@@ -466,7 +466,7 @@ and (orientation: landscape) {
     .hippa{
         display: none;
     }
-    #logo{
+    .logo{
         height:100%;
         margin-left:0;
     }
@@ -475,6 +475,32 @@ and (orientation: landscape) {
     }
 
 }
+/* ----------- iPhone 6+ ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+and (min-device-width: 414px)
+and (max-device-width: 736px)
+and (-webkit-min-device-pixel-ratio: 3) {
+    .intro{
+        font-size: 20px;
+    }
+    .info2-head{
+        padding:4px;
+        margin:4px;
+        font-size: 20px;
+    }
+    .feature-list{
+        margin:20px 10px 0 20px;
+    }
+    .analytics{
+        height:200px;
+    }
+
+}
+
+
+
 /*------bootstrap nav------*/
 
 @media (max-width: 767px){
