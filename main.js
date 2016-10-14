@@ -1,34 +1,13 @@
 var app = angular.module("psychoApp", ["ngRoute"]);
 // document.getElementById('client-id').tablesorter();
 
-app.config(function ($httpProvider) {
+app.config(function ($httpProvider,$locationProvider) {
     $httpProvider.defaults.headers.post = {'Content-Type': 'application/x-www-form-urlencoded'};
     // $httpProvider.defaults.headers.get = {'Content-Type': 'application/x-www-form-urlencoded'};
     // $httpProvider.defaults.dataType.post = 'json';
+    // $locationProvider.html5Mode(true);
 
 });
-app.directive('diagnosis', function () {
-    return {
-        restrict: 'AE',
-        priority: 1001,
-        templateUrl: 'diagnosis.html'
-    }
-});
-app.filter('capitalize', function() {
-    return function(str) {
-        if(!str){
-            return
-        }
-        str = str.toLowerCase().split(' ');                // will split the string delimited by space into an array of words
-        for(var i = 0; i < str.length; i++){               // str.length holds the number of occurrences of the array...
-            str[i] = str[i].split('');                    // splits the array occurrence into an array of letters
-            str[i][0] = str[i][0].toUpperCase();          // converts the first occurrence of the array to uppercase
-            str[i] = str[i].join('');                     // converts the array of letters back into a word.
-        }
-        return str.join(' ');                              //  converts the array of words back to a sentence.
-    }
-});
-// this will route the view to whatever specified template URL when an href to that page is clicked on
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
@@ -124,7 +103,32 @@ app.config(function ($routeProvider) {
             redirectTo: '/'
         });
 });
-// app.run(['$location','$anchorScroll', function($location, $anchorScroll,$rootScope){
+
+app.directive('diagnosis', function () {
+    return {
+        restrict: 'AE',
+        priority: 1001,
+        templateUrl: 'diagnosis.html'
+    }
+});
+app.filter('capitalize', function() {
+    return function(str) {
+        if(!str){
+            return
+        }
+        str = str.toLowerCase().split(' ');                // will split the string delimited by space into an array of words
+        for(var i = 0; i < str.length; i++){               // str.length holds the number of occurrences of the array...
+            str[i] = str[i].split('');                    // splits the array occurrence into an array of letters
+            str[i][0] = str[i][0].toUpperCase();          // converts the first occurrence of the array to uppercase
+            str[i] = str[i].join('');                     // converts the array of letters back into a word.
+        }
+        return str.join(' ');                              //  converts the array of words back to a sentence.
+    }
+});
+
+// this will route the view to whatever specified template URL when an href to that page is clicked on
+// app.run(['$location','$anchorScroll','$rootScope', function($location, $anchorScroll,$rootScope){
+//
 //     $rootScope.scrollTop = function(){
 //         console.log("clicked scrolltop");
 //         $location.hash('nav');
@@ -241,13 +245,13 @@ app.factory('logoutData', function ($http) {
 });
 
 //------------------main-page------------------
-// app.controller('pageTopController',['$location','$anchorScroll', function($location, $anchorScroll,$rootScope){
-//     $rootScope.scrollTop = function(){
-//         console.log("clicked scrolltop");
-//         $location.hash('nav');
-//         $anchorScroll();
-//     }
-// }]);
+app.controller('pageTopController',['$location','$anchorScroll','$rootScope', function($location, $anchorScroll,$rootScope){
+    $rootScope.scrollTop = function(){
+        console.log("clicked scrolltop");
+        $location.hash('nav');
+        $anchorScroll();
+    }
+}]);
 //-----------client form------------
 app.provider('clientData', function () {
     console.info(" client provider");
@@ -336,6 +340,20 @@ app.factory('getClients', function ($http) {
                 }
                 $('.page-header').append($("<h4>Number of Clients: " + full_name.length + "</h4>").css({'float': 'right'}));
                 $scope.clientArray = client_obj;
+                $scope.sortColumn = 'full_name';
+                $scope.reverseSort = false;
+                $scope.sortData = function(column){
+                    //If $scope.sortColumn is equal to the column -->  --> change it to true --> else change it to false
+                    $scope.reverseSort = ($scope.sortColumn == column) ? !$scope.reverseSort : false;
+                    $scope.sortColumn = column;
+                    console.log("column: ", column);
+                };
+                $scope.getSortClass = function(column){
+                    if($scope.sortColumn == column){
+                        return $scope.reverseSort ? 'caret' : 'caret';
+                    }
+                    return '';
+                }
             });
         }
     }
@@ -948,7 +966,6 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,$log,searc
     };
     self.makeQuery = function(query,order){
         $rootScope.query = $location.search().query;
-        // $rootScope.query = query;
         $scope.loader = false;
         self.meta_data = {
             title: [],

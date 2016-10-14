@@ -14,8 +14,7 @@
     <div class="wrapper-inner">
         <div class="bg-top">
             <div class="bg-fade">
-                <h1 data-aos="fade-up" style="margin:0; padding:20px 0 0 45px"><img class="main-logo"
-                                                                                    src="Images/Logomakr_0X15Cd.png">
+                <h1 data-aos="fade-up" style="margin:0; padding:20px 0 0 45px"><img class="main-logo" src="Images/Logomakr_0X15Cd.png">
                 </h1>
                 <h1 data-aos="fade-down" class="title">Psych Origins</h1>
                 <hr>
@@ -29,7 +28,7 @@
     <div class="info1" data-aos="fade-up">
         Access hundreds of thousands of research articles through the<span> PsychOrigins Academic Search</span>&trade;
         engine.
-        Powered by <img src="Images/micosoftlogo.png" ng-click="ptc.scrollTop();" height="32px"> Microsoft's Academic
+        Powered by <img src="Images/micosoftlogo.png" ng-click="scrollTop();" height="32px"> Microsoft's Academic
         Knowledge database, all research papers are available for instant viewing without cost.
     </div>
 </div>

@@ -199,6 +199,12 @@ footer{
 .display_error{
     background-color: red;
 }
+.arrow_down{
+    border-top:2px solid black;
+}
+thead tr{
+    cursor: pointer;
+}
 /*-----------select form---------------*/
 .form-icon{
     font-size:200px;

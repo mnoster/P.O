@@ -17,19 +17,19 @@
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-user"></span>
             </span>
-            <input ng-model="cc.client.first_name" type="text" class="form-control" name="firstName" id="lastName"
+            <input ng-model="cc.client.first_name" type="text" class="form-control sharp" name="firstName" id="lastName"
                    placeholder="First Name" maxlength="20">
         </div>
         <div class="input-group form-group">
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-user"></span>
             </span>
-            <input ng-model="cc.client.last_name" type="text" class="form-control" name="lastName" id="lastName"
+            <input ng-model="cc.client.last_name" type="text" class="form-control sharp" name="lastName" id="lastName"
                    placeholder="Last Name" maxlength="30">
         </div>
         <div class="col-xs-6">
             <h4>Active</h4>
-            <input ng-model="cc.client.active" ng-init="cc.client.active = 'false'" type="checkbox" class="form-control"
+            <input ng-model="cc.client.active" ng-init="cc.client.active = 'false'" type="checkbox" class=""
                    name="active" id="active" checked>
         </div>
         <div class="input-group form-group ">
@@ -46,15 +46,15 @@
         <table id="client-list" class="client-list table table-hover">
             <thead>
             <tr>
-                <th>Client Name</th>
-                <th>Date Added</th>
-                <th>Active</th>
-                <th>Form</th>
-                <th class="hidden-xs">Operations</th>
+                <th ng-click="sortData('full_name')">Client Name <div ng-class="getSortClass('full_name')"></div></th>
+                <th ng-click="sortData('date_added')">Date Added  <div ng-class="getSortClass('date_added')"></div></th>
+                <th ng-click="sortData('active')">Active  <div ng-class="getSortClass('active')"></div></th>
+                <th ng-click="sortData('form')">Form  <div ng-class="getSortClass('form')"></div></th>
+                <th class="hidden-xs">Operations </th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="client in clientArray track by $index">
+            <tr ng-repeat="client in clientArray | orderBy:sortColumn:reverseSort">
                 <td>{{client.full_name}}</td>
                 <td>{{client.date_added}}</td>
                 <td>{{client.active}}</td>
