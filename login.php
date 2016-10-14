@@ -1,13 +1,7 @@
 <?php
 session_start();
-$_SESSION['username'] = ""; //do not delete
 ?>
-<?php
-if(empty($_SESSION)){
-    header("Location: login.php"); /* Redirect browser */
-    exit();
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,12 +27,12 @@ if(empty($_SESSION)){
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://psychorigins.com/index.php#/main-page"><img  class="logo" src="Images/Logomakr_0X15Cd.png" height="200%"></a>
+            <a class="navbar-brand" href="http://psychorigins.com"><img  class="logo" src="Images/Logomakr_0X15Cd.png" height="200%"></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="http://psychorigins.com/index.php#/home">Home</a></li>
-                <li class="active"><a href="http://psychorigins.com/index.php#/">Research</a></li>
+                <li class="active"><a href="http://psychorigins.com">Home</a></li>
+                <li class="active"><a href="http://psychorigins.com/#/home">Research</a></li>
 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">Info<span class="caret"></span></a>

@@ -1,9 +1,9 @@
 <?php
 session_start();
-if (empty($_SESSION)) {
-    header("Location: login.php"); /* Redirect browser */
-    exit();
-}
+//if (empty($_SESSION)) {
+//    header("Location: http://psychorigins.com/"); /* Redirect browser */
+//    exit();
+//}
 ?>
 <!DOCTYPE html>
 <html lang="en">
