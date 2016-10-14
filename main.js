@@ -341,12 +341,13 @@ app.factory('getClients', function ($http) {
                 $('.page-header').append($("<h4>Number of Clients: " + full_name.length + "</h4>").css({'float': 'right'}));
                 $scope.clientArray = client_obj;
                 $scope.sortColumn = 'full_name';
+
                 $scope.reverseSort = false;
                 $scope.sortData = function(column){
                     //If $scope.sortColumn is equal to the column -->  --> change it to true --> else change it to false
                     $scope.reverseSort = ($scope.sortColumn == column) ? !$scope.reverseSort : false;
                     $scope.sortColumn = column;
-                    console.log("column: ", column);
+                    // console.log("column: ", column);
                 };
                 $scope.getSortClass = function(column){
                     if($scope.sortColumn == column){

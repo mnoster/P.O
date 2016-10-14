@@ -54,6 +54,7 @@
             </tr>
             </thead>
             <tbody>
+            <!--   NOTE:  If tracking by index the order by sort filter will not work      -->
             <tr ng-repeat="client in clientArray | orderBy:sortColumn:reverseSort">
                 <td>{{client.full_name}}</td>
                 <td>{{client.date_added}}</td>

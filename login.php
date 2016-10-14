@@ -7,6 +7,8 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Home | PsychOrigins</title>
+    <meta name="keywords" content="Psychorigins,Psychorigins.com,academic search, google scholar, mircosoft academic search, psych origins, research, client, manager,free academic articles,PsychInfo,download">
+    <meta name="description" content="PsychOrigins.com is a free academic search engine for researchers and health clinicians">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
