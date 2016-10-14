@@ -24,11 +24,11 @@
 .bg-top{
     background:url('Images/main-brain-red.png') center center no-repeat fixed;
     width:100%;
-    background-size: 82% 90%;
+    background-size:  55% auto;
     margin:0;
     background-color: rgba(255, 255, 255, 0.46);
     /*this positioning will put the background image below the navbar*/
-    background-position-y: 62px;
+    background-position-y: 50px;
     position:relative;
     text-align: center;
 
@@ -168,7 +168,9 @@ hr{
     background-color: rgb(194, 212, 209);
     text-align: center;
 }
-
+.analytics{
+    height:300px;
+}
 
 /*---------------------Mobile Settings-------------------------*/
 /* ----------- iPhone 5 and 5S ----------- */
@@ -189,6 +191,12 @@ and (-webkit-min-device-pixel-ratio: 2) {
     .feature-list{
         margin:20px 10px 0 20px;
     }
+    .bg-top{
+        background:none;
+    }
+    .analytics{
+        height:200px;
+    }
 }
 
 /* Portrait */
@@ -208,6 +216,12 @@ and (orientation: portrait) {
     .feature-list{
         margin:20px 10px 0 20px;
     }
+    .bg-top{
+        background:none;
+    }
+    .analytics{
+        height:200px;
+    }
 }
 
 /* Landscape */
@@ -226,6 +240,12 @@ and (orientation: landscape) {
     }
     .feature-list{
         margin:20px 10px 0 20px;
+    }
+    .bg-top{
+        background:none;
+    }
+    .analytics{
+        height:200px;
     }
 }
 
@@ -247,6 +267,12 @@ and (-webkit-min-device-pixel-ratio: 2) {
     .feature-list{
         margin:20px 10px 0 20px;
     }
+    .bg-top{
+        background:none;
+    }
+    .analytics{
+        height:200px;
+    }
 
 }
 
@@ -267,6 +293,12 @@ and (orientation: portrait) {
     .feature-list{
         margin:20px 10px 0 20px;
     }
+    .bg-top{
+        background:none;
+    }
+    .analytics{
+        height:200px;
+    }
 
 }
 
@@ -286,6 +318,12 @@ and (orientation: landscape) {
     }
     .feature-list{
         margin:20px 10px 0 20px;
+    }
+    .bg-top{
+        background:none;
+    }
+    .analytics{
+        height:200px;
     }
 
 }
@@ -308,6 +346,12 @@ and (-webkit-min-device-pixel-ratio: 3) {
     .feature-list{
         margin:20px 10px 0 20px;
     }
+    .bg-top{
+        background:none;
+    }
+    .analytics{
+        height:200px;
+    }
 
 }
 
@@ -328,7 +372,12 @@ and (orientation: portrait) {
     .feature-list{
         margin:20px 10px 0 20px;
     }
-
+    .bg-top{
+        background:none;
+    }
+    .analytics{
+        height:200px;
+    }
 }
 
 /* Landscape */
@@ -348,5 +397,40 @@ and (orientation: landscape) {
     .feature-list{
         margin:20px 10px 0 20px;
     }
+    .bg-top{
+        background:none;
+    }
+    .analytics{
+        height:200px;
+    }
+}
 
+
+@media (max-width: 767px){
+    .navbar-inverse .navbar-nav .open .dropdown-menu li a{
+        color:black;
+    }
+    .last-item{
+        background-color: transparent;
+    }
+    .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+        border: none;
+    }
+    .icon-bar{
+        color:black;
+    }
+    .analytics{
+        height:200px;
+    }
+
+}
+@media (max-width: 910px){
+    .bg-top{
+        background-position-y: 20vh ;
+    }
+}
+@media (max-width: 1200px){
+    .bg-top{
+        background-position-y: 15vh ;
+    }
 }

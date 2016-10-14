@@ -63,11 +63,11 @@
             <div>
                 <div class="col-xs-12 col-md-6" data-aos="fade-down">
                     <span class="info2">Real-time Data</span><br>
-                    <img src="Images/analytics.png" height="300px">
+                    <img class="analytics" src="Images/analytics.png" height="300px">
                 </div>
                 <div class="col-xs-12 col-md-6" data-aos="fade-down">
                     <span class="info2">Developing Trends</span><br>
-                    <img class="line-image" src="Images/trends.png" height="300px">
+                    <img class="analytics" class="line-image" src="Images/trends.png" height="300px">
                 </div>
                 .
             </div>
@@ -100,5 +100,5 @@
     </div>
 </div>
 <div id="footer">
-    Psych Origins &copy; 2016 <br>  <a href="#contact">contact</a> | <a href="#about">info </a> | <a href="#results_page"> research </a>
+    Psych Origins &copy; 2016 | <a>psyorigins@gmail.com</a> <br>  <a href="#contact">contact</a> | <a href="#about">info </a> | <a href="#results_page"> research </a>
 </div>

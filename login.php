@@ -37,17 +37,18 @@ session_start();
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">Info<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="http://psychorigins.com/index.php#/about">About</a></li>
-                        <li><a href="http://psychorigins.com/index.php#/FAQ">FAQ</a></li>
-                        <li><a href="http://psychorigins.com/index.php#/contact">Contact</a></li>
-                        <li class="last-item"><a href="http://psychorigins.com/index.php#/compliance">Compliance</a></li>
+                        <li><a href="http://psychorigins.com/#/about">About</a></li>
+                        <li><a href="http://psychorigins.com/#/FAQ">FAQ</a></li>
+                        <li><a href="http://psychorigins.com/#/contact">Contact</a></li>
+                        <li class="last-item"><a href="http://psychorigins.com/#/compliance">Compliance</a></li>
                     </ul>
                 </li>
             </ul>
     </div>
 </nav>
 <div class="container login-background" ng-controller="loginController as lc">
-    <div class="col-xs-12 login-inner">
+    <div class="hidden-xs col-sm-1 col-md-2"></div>
+    <div class="col-xs-12 col-sm-10 col-md-8 login-inner">
         <div class="wrapper">
             <form class="form-signin">
                 <h2 class="form-signin-heading">Please login</h2>

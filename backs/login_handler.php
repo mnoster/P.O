@@ -30,11 +30,11 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 
-
 if($rows_affected > 0){
     $_SESSION['username'] = $username;
     $output['message'] = 'success';
     $output['success'] = true;
+    $_SESSION['active'] = 'true';
     $output = json_encode($output);
     print($output);
 }else{
