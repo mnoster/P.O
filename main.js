@@ -32,10 +32,14 @@ app.filter('capitalize', function() {
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: '/P.O/home.php'
+            templateUrl: '/P.O/main-page.php'
         })
         .when('/about', {
             templateUrl: '/P.O/About.php'
+            // controller:'secondController'
+        })
+        .when('/home', {
+            templateUrl: '/P.O/home.php'
             // controller:'secondController'
         })
         .when('/form', {
