@@ -8,13 +8,16 @@
 </head>
 <body>
 <div class="content">
-
+<input class="query"><button class="submit">submit</button>
 </div>
 </body>
 </html>
 <script>
     $(document).ready(function(){
-        getData('science');
+        $('.submit').on('click',function(){
+            var query = $('.query').val();
+            getData(query);
+        });
         console.log("loaded");
     });
 
