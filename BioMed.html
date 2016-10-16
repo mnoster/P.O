@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BioMed</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="BioMedAPI.js" type="javascript"></script>
+</head>
+<body>
+<div class="content">
+
+</div>
+</body>
+</html>
+<script>
+    $(document).ready(function(){
+        getData('science');
+        console.log("loaded");
+    });
+
+    function getData(query){
+        var t0 = performance.now();
+        console.log("getData function call");
+        $.ajax({
+            url:"http://api.springer.com/metadata/json?api_key=aad28331d38b527c831274156fde309c&q=" +query+ "&s=1&p=13",
+            success:function(response){
+                console.log('success: ' , JSON.parse(response ));
+                var allData = JSON.parse(response);
+                $('.content').append(allData);
+                var t1 = performance.now();
+                console.log("Results took " + (Math.round(t1 - t0)/1000).toFixed(3)   + " seconds");
+
+            },
+            error: function(response){
+                console.log('error: ' , response);
+            }
+        })
+    }
+
+</script>
