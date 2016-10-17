@@ -7,8 +7,11 @@
     <script src="BioMedAPI.js" type="javascript"></script>
 </head>
 <body>
-<div class="content">
+<div>
 <input class="query"><button class="submit">submit</button>
+</div>
+<div class="content">
+
 </div>
 </body>
 </html>
@@ -24,27 +27,26 @@
         var t0 = performance.now();
         console.log("getData function call");
         $.ajax({
-            url:"http://api.springer.com/metadata/json?api_key=aad28331d38b527c831274156fde309c&q=" +query+ "&s=1&p=13",
+            url:"http://api.springer.com/metadata/json?&api_key=aad28331d38b527c831274156fde309c&q=" +query+ "&s=1&p=13&date=2000",
             success:function(response){
+                $('.content').text('');
                 console.log('success: ' , JSON.parse(response ));
                 var allData = JSON.parse(response);
-                var year  = allData.records[0].publicationDate[0] +allData.records[0].publicationDate[1] + allData.records[0].publicationDate[2] + allData.records[0].publicationDate[3];
-                $('.content').append("<h2> Title : <br>"+ allData.records[0].title +"</h2>");
-                $('.content').append("<h2> Year : <br>"+ year + "</h2>");
-                $('.content').append("<p> Summary : <br>"+ allData.records[0].abstract +"</p>");
-                $('.content').append("<h4> Authors : <br>"+ allData.records[0].creators[0].creator +"</h4>");
-                $('.content').append("<a> Link : <br>"+ allData.records[0].url[0].value +"</a>");
-                $('.content').append("<a> Keywords : <br>"+ allData.facets[0].values[0].value +"</a>");
-
-
+//                var year  = allData.records[i].publicationDate[0] +allData.records[i].publicationDate[1] + allData.records[i].publicationDate[2] + allData.records[i].publicationDate[3];
+                for(var i = 0;i<allData.records.length;i++){
+                    $('.content').append("<h2> Title : "+ allData.records[i].title +"</h2>")
+                            .append("<h2> Year : "+  allData.records[i].publicationDate[0] +allData.records[i].publicationDate[1] + allData.records[i].publicationDate[2] + allData.records[i].publicationDate[3] + "</h2>")
+                            .append("<p> Summary : <br>"+ allData.records[i].abstract +"</p>")
+                            .append("<h4> Authors : <br>"+ allData.records[i].creators[0].creator +"</h4>")
+                            .append("<a> Link : <br>"+ allData.records[i].url[0].value +"</a> <br><hr>")
+//                          .append("<a> Keywords : <br>"+ allData.facets[i].values[0].value +"</a><hr>");
+                }
                 var t1 = performance.now();
                 console.log("Results took " + (Math.round(t1 - t0)/1000).toFixed(3)   + " seconds");
-
             },
             error: function(response){
                 console.log('error: ' , response);
             }
         })
     }
-
 </script>
