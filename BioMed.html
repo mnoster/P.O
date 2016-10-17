@@ -31,6 +31,7 @@
             success:function(response){
                 $('.content').text('');
                 console.log('success: ' , JSON.parse(response ));
+                //brain+year:2015  <----query syntax to use in search sort by year
                 var allData = JSON.parse(response);
 //                var year  = allData.records[i].publicationDate[0] +allData.records[i].publicationDate[1] + allData.records[i].publicationDate[2] + allData.records[i].publicationDate[3];
                 for(var i = 0;i<allData.records.length;i++){
