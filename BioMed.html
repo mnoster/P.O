@@ -28,9 +28,7 @@
             success:function(response){
                 console.log('success: ' , JSON.parse(response ));
                 var allData = JSON.parse(response);
-
                 var year  = allData.records[0].publicationDate[0] +allData.records[0].publicationDate[1] + allData.records[0].publicationDate[2] + allData.records[0].publicationDate[3];
-
                 $('.content').append("<h2> Title : <br>"+ allData.records[0].title +"</h2>");
                 $('.content').append("<h2> Year : <br>"+ year + "</h2>");
                 $('.content').append("<p> Summary : <br>"+ allData.records[0].abstract +"</p>");
