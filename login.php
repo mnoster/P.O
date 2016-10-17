@@ -5,7 +5,7 @@ session_start();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home | PsychOrigins</title>
+    <title>Psych Origins</title>
     <meta name="keywords" content="Psychorigins,Psychorigins.com,academic search, google scholar, mircosoft academic search, psych origins, research, client, manager,free academic articles,PsychInfo,download">
     <meta name="description" content="PsychOrigins.com is a free academic search engine for researchers and health clinicians">
     <meta name="viewport" content="width=device-width, initial-scale=1">

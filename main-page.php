@@ -21,20 +21,20 @@
                 <div class="intro" data-aos="flip-up" data-aos-easing="ease-in-sine">Open-source academic database for
                     researchers and mental health clinicians
                 </div>
-                <h1 class="glyphicon glyphicon-chevron-down"></h1>
+                <h1 id="cheveron" ng-click="scrollTop('top-info');" class="glyphicon glyphicon-chevron-down"></h1>
             </div>
         </div>
     </div>
-    <div class="info1" data-aos="fade-up">
+    <div id="top-info" class="info1">
         Access hundreds of thousands of research articles through the<span> PsychOrigins Academic Search</span>&trade;
         engine.
-        Powered by <img src="Images/micosoftlogo.png" ng-click="scrollTop();" height="32px"> Microsoft's Academic
+        Powered by <img src="Images/micosoftlogo.png" ng-click="scrollTop(nav);" height="32px"> Microsoft's Academic
         Knowledge database, all research papers are available for instant viewing without cost.
     </div>
 </div>
 <div class="wrapper">
     <div class="wrapper-inner">
-        <div class="bg-middle">
+        <div id="bg-middle">
             <div class="bg-fade2">
                 <p>
                 <div class="info2-head">What makes PsychOrigins different?</div>
@@ -52,6 +52,7 @@
     </div>
     <!--    <h1>Welcome to PsychOrigins.com</h1>-->
 </div>
+<span id="mid"></span>
 <div class="wrapper">
     <div class="wrapper-inner">
         <div class="bg-middle2">

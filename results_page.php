@@ -69,7 +69,7 @@ session_start();
             <ul  class="paginav">
                 <li><a class="active"><span>1</span></a></li>
 
-                <li><a ng-click="scrollTop();"><span>2</span></a></li>
+                <li><a ng-click="scrollTop(nav);"><span>2</span></a></li>
 
                 <li><a><span>3</span></a></li>
 
