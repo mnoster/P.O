@@ -127,14 +127,13 @@ app.filter('capitalize', function() {
 });
 
 // this will route the view to whatever specified template URL when an href to that page is clicked on
-// app.run(['$location','$anchorScroll','$rootScope', function($location, $anchorScroll,$rootScope){
-//
-//     $rootScope.scrollTop = function(){
-//         console.log("clicked scrolltop");
-//         $location.hash('nav');
-//         $anchorScroll();
-//     }
-// }]);
+app.run(['$location','$anchorScroll','$rootScope', function($location, $anchorScroll,$rootScope){
+    $rootScope.scrollTop = function(element){
+        console.log("clicked scrolltop");
+        $location.hash(element);
+        $anchorScroll();
+    }
+}]);
 
 //-------------login----------------------
 app.provider('loginData', function () {
@@ -246,11 +245,11 @@ app.factory('logoutData', function ($http) {
 
 //------------------main-page------------------
 app.controller('pageTopController',['$location','$anchorScroll','$rootScope', function($location, $anchorScroll,$rootScope){
-    $rootScope.scrollTop = function(){
-        console.log("clicked scrolltop");
-        $location.hash('nav');
-        $anchorScroll();
-    }
+    // $rootScope.scrollTop = function(){
+    //     console.log("clicked scrolltop");
+    //     $location.hash('nav');
+    //     $anchorScroll();
+    // }
 }]);
 //-----------client form------------
 app.provider('clientData', function () {

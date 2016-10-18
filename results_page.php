@@ -2,9 +2,6 @@
 session_start();
 //$query = $_SESSION['query'];
 ?>
-<script>
-
-</script>
 <style>
     body{
         background-color: transparent;
@@ -30,17 +27,21 @@ session_start();
                 <div class="input-group-btn">
                     <button class="btn btn-default" ng-click="mc.makeQuery(query,mc.order)"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
-
             </div>
         </form>
         <p class="order-by">Order by year <input type="checkbox" ng-model="mc.order" [ng-true-value="true"] [ng-false-value="false"]><a class="hidden-xs" href="http://www.citationmachine.net/apa/cite-a-journal/manual" target="_blank"><img class="citation" src="Images/Citation-machine.png" height="40px"></a><span class="response-time">{{performance}}</span></p>
-
+        <div><h5 ng-click="dropdown=!dropdown"><a style="color:white;text-shadow: 1px 1px black">More Search Options</a><span class="caret"></span></h5></div>
+        <div ng-show="dropdown">
+        Year <input type="text" placeholder="year" class="sharp">
+        DOI <input  type = "text" placeholder="DOI">
+        Exclude <input  type="text" placeholder="keywords to exclude">
+            </div>
         <div style="color:red" ng-hide="results">No results for this search</div>
     </div>
         </div>
     </div>
     <div class="container-fluid results_page" ng-init="$scope.$digest()">
-        <div ng-hide="loader" class="loader"><img src="Images/loader.gif" height="50vh"></div>
+        <div ng-hide="loader" class="loader"><img src="Images/loader.gif" height="100px"></div>
         <div class ='row results-row'>
             <ul ng-show="loader" ng-repeat="(key,data) in mc.meta_data track by $index" class="result-list">
                 <li class="article-title"> {{mc.meta_data.title[$index]}}
@@ -68,7 +69,7 @@ session_start();
             <ul  class="paginav">
                 <li><a class="active"><span>1</span></a></li>
 
-                <li><a ng-click="scrollTop();"><span>2</span></a></li>
+                <li><a ng-click="scrollTop(nav);"><span>2</span></a></li>
 
                 <li><a><span>3</span></a></li>
 

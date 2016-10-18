@@ -278,7 +278,7 @@ thead tr{
 .divider{
     border-bottom: 1px solid black;
     /*border-top: 1px solid black;*/
-    padding-bottom: 15px;
+    padding-bottom: 5px;
     background-color:  rgba(144, 193, 207, 0.5);
     background: url('Images/bluebackground.gif')center 0 fixed;
     background-size: 100% 50%;
