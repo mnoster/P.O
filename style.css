@@ -317,6 +317,9 @@ a{
 .pagi-contain{
     text-align: center;
 }
+#summary{
+    cursor: pointer;
+}
 
 /*--------mobile settings------*/
 
