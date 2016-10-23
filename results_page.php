@@ -58,7 +58,7 @@ session_start();
                 </li>
                 <li>keywords:  <a ng-click="mc.query =mc.meta_data.keyword1[$index]; mc.makeQuery(mc.query)">{{mc.meta_data.keyword1[$index]}} </a>, <a  ng-click="mc.query =mc.meta_data.keyword2[$index]; mc.makeQuery(mc.query)">{{mc.meta_data.keyword2[$index]}} </a>, <a  ng-click="mc.query =mc.meta_data.keyword3[$index]; mc.makeQuery(mc.query)">{{mc.meta_data.keyword3[$index]}}</a>, <a  ng-click="mc.query =mc.meta_data.keyword4[$index]; mc.makeQuery(mc.query)">{{mc.meta_data.keyword4[$index]}}</a></li>
                 <li>
-                    <h4 ng-click="sumClick[$index]= !sumClick[$index]">Summary <span class="caret"></span></h4>
+                    <h4 ng-click="sumClick[$index]= !sumClick[$index]" id="summary">Summary <span class="caret"></span></h4>
                     <p ng-show="sumClick[$index]" class="summary">{{mc.meta_data.summary[$index]}} <a href="{{mc.meta_data.link1[$index]}}"  target='_blank'> more</a></p>
                     <hr style="margin:0 40px 0 -20px">
                 </li>
