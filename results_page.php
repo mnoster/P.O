@@ -21,7 +21,7 @@ session_start();
         </h1>
         <form>
 <!--            <div class="input-group" ng-init="mc.query='--><?//=$query?><!--'; mc.makeQuery(mc.query,mc.order)">-->
-            <div class="input-group" ng-init="mc.makeQuery(query,mc.order)">
+            <div class="input-group" ng-init="mc.makeQuery(query,mc.order,mc.bioMed)">
 
                 <input ng-model="query" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
                 <div class="input-group-btn">
@@ -29,7 +29,12 @@ session_start();
                 </div>
             </div>
         </form>
-        <p class="order-by">Order by year <input type="checkbox" ng-model="mc.order" [ng-true-value="true"] [ng-false-value="false"]><a class="hidden-xs" href="http://www.citationmachine.net/apa/cite-a-journal/manual" target="_blank"><img class="citation" src="Images/Citation-machine.png" height="40px"></a><span class="response-time">{{performance}}</span></p>
+        <p class="order-by">Order by year <input type="checkbox" ng-model="mc.order" [ng-true-value="true"] [ng-false-value="false"]>
+             Include Paid Articles <input type="checkbox" ng-model="mc.bioMed" [ng-true-value="true"] [ng-false-value="false"]>
+            <a class="hidden-xs" href="http://www.citationmachine.net/apa/cite-a-journal/manual" target="_blank">
+                <img class="citation" src="Images/Citation-machine.png" height="40px">
+            </a><span class="response-time">{{performance}}</span>
+        </p>
         <div><h5 ng-click="dropdown=!dropdown"><a style="color:white;text-shadow: 1px 1px black">More Search Options</a><span class="caret"></span></h5></div>
         <div ng-show="dropdown">
         Year <input type="text" placeholder="year" class="sharp">
