@@ -330,9 +330,15 @@ a{
 and (min-device-width: 320px)
 and (max-device-width: 568px)
 and (-webkit-min-device-pixel-ratio: 2) {
-    .divider,#logo,.main-contain-results,.main-contain-search,.fade-background1,.fade-background{
+    .divider,#logo,.main-contain-results,.fade-background1,.fade-background{
         padding-right: 0;
         padding-left: 0;
+    }
+    .main-contain-search{
+        padding-right: 0;
+    }
+    .main-contain-search>.container{
+        padding-right:2px;
     }
     .hippa{
         display: none;
@@ -352,6 +358,10 @@ and (-webkit-min-device-pixel-ratio: 2) {
     .results-row{
         margin-left:0;
     }
+    #title{
+        margin-left:8px;
+    }
+
 }
 
 
@@ -361,9 +371,15 @@ and (min-device-width: 320px)
 and (max-device-width: 568px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: landscape) {
-    .divider,#logo,.main-contain-results,.main-contain-search,.fade-background1,.fade-background {
+    .divider,#logo,.main-contain-results,.fade-background1,.fade-background {
         padding-right: 0;
         padding-left: 0;
+    }
+    .main-contain-search{
+        padding-right: 0;
+    }
+    .main-contain-search>.container{
+        padding-right:2px;
     }
     .hippa{
         display: none;
@@ -378,6 +394,10 @@ and (orientation: landscape) {
     .results-row{
         margin-left:0;
     }
+    #title{
+        margin-left:8px;
+    }
+
 }
 
 /* ----------- iPhone 6 ----------- */
@@ -387,9 +407,15 @@ and (orientation: landscape) {
 and (min-device-width: 375px)
 and (max-device-width: 667px)
 and (-webkit-min-device-pixel-ratio: 2) {
-    .divider,#logo,.main-contain-results,.main-contain-search,.fade-background1,.fade-background {
+    .divider,#logo,.main-contain-results,.fade-background1,.fade-background {
         padding-right: 0;
         padding-left: 0;
+    }
+    .main-contain-search{
+        padding-right: 0;
+    }
+    .main-contain-search>.container{
+        padding-right:2px;
     }
     .hippa{
         display: none;
@@ -409,6 +435,10 @@ and (-webkit-min-device-pixel-ratio: 2) {
     .results-row{
         margin-left:0;
     }
+    #title{
+        margin-left:8px;
+    }
+
 
 }
 
@@ -418,9 +448,20 @@ and (min-device-width: 375px)
 and (max-device-width: 667px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: landscape) {
-    .divider,#logo,.main-contain-results,.main-contain-search,.fade-background1,.fade-background {
+    .divider,#logo,.main-contain-results,.fade-background1,.fade-background {
         padding-right: 0;
         padding-left: 0;
+    }
+    .main-contain-search{
+        padding-right: 0;
+    }
+    .main-contain-search>.container{
+        padding-right:2px;
+    }
+    body{
+        background-position-y: 21vh ;
+        background-position-x: 30px ;
+        background-size:90% 64%;
     }
     .article-title{
         width:100%;
@@ -435,6 +476,10 @@ and (orientation: landscape) {
     .results-row{
         margin-left:0;
     }
+    #title{
+        margin-left:8px;
+    }
+
 
 }
 /* ----------- iPhone 6+ ----------- */
@@ -444,8 +489,18 @@ and (orientation: landscape) {
 and (min-device-width: 414px)
 and (max-device-width: 736px)
 and (-webkit-min-device-pixel-ratio: 3) {
+    .divider,#logo,.main-contain-results,.fade-background1,.fade-background {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .main-contain-search>.container{
+        padding-right:2px;
+    }
     .intro{
         font-size: 20px;
+    }
+    .main-contain-search{
+        padding-right: 0;
     }
     .info2-head{
         padding:4px;
@@ -458,6 +513,9 @@ and (-webkit-min-device-pixel-ratio: 3) {
     .analytics{
         height:200px;
     }
+    #title{
+        margin-left:8px;
+    }
 
 }
 
@@ -469,6 +527,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
     .navbar-inverse .navbar-nav .open .dropdown-menu li a{
      color:black;
     }
+
     .last-item{
         background-color: transparent;
     }
