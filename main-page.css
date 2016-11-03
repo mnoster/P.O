@@ -171,6 +171,9 @@ hr{
 .analytics{
     height:300px;
 }
+#cheveron{
+    cursor: pointer;
+}
 
 /*---------------------Mobile Settings-------------------------*/
 /* ----------- iPhone 5 and 5S ----------- */
