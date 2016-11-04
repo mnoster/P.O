@@ -5,7 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stat_analysis/TwoRavens" afterPath="$PROJECT_DIR$/stat_analysis/TwoRavens" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results_page.php" afterPath="$PROJECT_DIR$/results_page.php" />
     </list>
     <ignored path="P.O.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,8 +58,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="1160" column="22" selection-start-line="1160" selection-start-column="22" selection-end-line="1160" selection-end-column="22" />
+            <state relative-caret-position="524">
+              <caret line="1197" column="36" selection-start-line="1197" selection-start-column="36" selection-end-line="1197" selection-end-column="36" />
               <folding>
                 <element signature="e#498#3266#0" expanded="false" />
                 <element signature="e#3309#3417#0" expanded="false" />
@@ -84,8 +83,8 @@
                 <element signature="e#37052#47900#0" expanded="false" />
                 <element signature="e#47956#57984#0" expanded="false" />
                 <element signature="e#58043#58811#0" expanded="false" />
-                <marker date="1478238398000" expanded="true" signature="12246:12282" placeholder="..." />
-                <marker date="1478238398000" expanded="false" signature="33342:36271" placeholder="..." />
+                <marker date="1478240784000" expanded="true" signature="12246:12282" placeholder="..." />
+                <marker date="1478240784000" expanded="false" signature="33342:36271" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -316,12 +315,12 @@
       <workItem from="1476930664885" duration="526000" />
       <workItem from="1477247754158" duration="1456000" />
       <workItem from="1478146533860" duration="3865000" />
-      <workItem from="1478220744914" duration="3690000" />
+      <workItem from="1478220744914" duration="4621000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="410481000" />
+    <option name="totallyTimeSpent" value="411412000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -693,8 +692,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="1160" column="22" selection-start-line="1160" selection-start-column="22" selection-end-line="1160" selection-end-column="22" />
+        <state relative-caret-position="524">
+          <caret line="1197" column="36" selection-start-line="1197" selection-start-column="36" selection-end-line="1197" selection-end-column="36" />
           <folding>
             <element signature="e#498#3266#0" expanded="false" />
             <element signature="e#3309#3417#0" expanded="false" />
@@ -718,8 +717,8 @@
             <element signature="e#37052#47900#0" expanded="false" />
             <element signature="e#47956#57984#0" expanded="false" />
             <element signature="e#58043#58811#0" expanded="false" />
-            <marker date="1478238398000" expanded="true" signature="12246:12282" placeholder="..." />
-            <marker date="1478238398000" expanded="false" signature="33342:36271" placeholder="..." />
+            <marker date="1478240784000" expanded="true" signature="12246:12282" placeholder="..." />
+            <marker date="1478240784000" expanded="false" signature="33342:36271" placeholder="..." />
           </folding>
         </state>
       </provider>

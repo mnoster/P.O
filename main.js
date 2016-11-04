@@ -1189,13 +1189,13 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,BioMedServ
         $log.warn($rootScope.query);
         if(micro){
             MicrosoftService.callApi($scope,query,self.meta_data,order,$rootScope);
-            micro  = undefined;
-            bioMed = undefined;
+            self.micro  = undefined;
+            self.bioMed = undefined;
         }
         else if(bioMed){
            BioMedService.callApi($scope,query,self.meta_data,order,$rootScope);
-            bioMed = undefined;
-            micro  = undefined;
+            self.micro  = undefined;
+            self.bioMed = undefined;
         }
     }
 });
