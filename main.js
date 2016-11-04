@@ -725,7 +725,7 @@ app.factory('MicrosoftService',function($http, $q, $log){
     var key = "03651106c156405b9f833184b7fa09ab";
         console.log("Microsoft provider");
         return {
-            callApi: function ($scope, query,meta_data,order,$rootScope,$location) {
+            callApi: function ($scope, query,meta_data,order,$rootScope) {
                 var t1 = performance.now();
                 console.log("mircosoft query: " , $rootScope.query);
                 $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
@@ -912,6 +912,200 @@ app.factory('MicrosoftService',function($http, $q, $log){
             }
         }
 });
+app.factory('BioMedService',function($http, $q, $log){
+    var self = this;
+    var interpret_link = "https://api.projectoxford.ai/academic/v1.0/interpret?";
+    var evaluate_link =  "https://api.projectoxford.ai/academic/v1.0/evaluate?";
+    var key = "03651106c156405b9f833184b7fa09ab";
+    console.log("Microsoft provider");
+    return {
+        callApi: function ($scope, query,meta_data,order,$rootScope) {
+            var t1 = performance.now();
+            console.log("mircosoft query: " , $rootScope.query);
+            $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
+            $rootScope.query= query;
+            var params = {
+                // Request parameters
+                query: $rootScope.query.toLowerCase(),
+                model: "latest",
+                count: "10",
+                offset: "0",
+                complete:1
+                // orderby:'Y:asc'
+            };
+            //I really hate using jquery ajax in angular but I could not fix the cross origin error so I had no choice to use ajax.
+            $.ajax({
+                url: interpret_link + $.param(params),
+                beforeSend: function(xhrObj){
+                    // Request headers
+                    xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", key);
+                },
+                type: "GET",
+                crossDomain : true,
+                // Request body
+                dataType:'json'
+            }).done(function(response) {
+                if(!response.interpretations[0]){
+                    console.log('invalid name');
+                    $scope.$apply($scope.results = false);
+                }else{
+                    console.log("success interpret: " , response);
+                    $scope.$apply($scope.results = true);
+                    microsoft_evaluate(response.interpretations[0].rules[0].output.value,meta_data,order);
+                }
+            }).fail(function() {
+                console.log("error interpret");
+            });
+            function microsoft_evaluate(interpret,meta_data,order){
+                console.log(order);
+
+                if(order){
+                    order = 'Y:desc';
+                }else{
+                    order = ''
+                }
+                self.meta_data = meta_data;
+                console.log(order);
+                var params2 = {
+                    // Request parameters
+                    expr: interpret,
+                    model: "latest",
+                    count: "13",
+                    orderby: order,
+                    offset: 0
+                };
+                $scope.$digest($.ajax({
+                    url: evaluate_link + $.param(params2) + "&attributes=Ti,Y,CC,AA.AuN,F.FN,J.JN,W,E",
+                    beforeSend: function(xhrObj){
+                        // Request headers
+                        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", key);
+                    },
+                    type: "GET",
+                    // Request body
+                    dataType:'json'
+                }).done(function(response) {
+                    var E = null;
+                    $scope.$digest();
+                    console.log('evaluate: ', response);
+                    for(var i= 0;i<13;i++){
+                        if(!response.entities[i]){
+                            break;
+                        }
+                        else{
+                            console.log('E');
+                            E =  response.entities[i].E;
+                            E = JSON.parse(E);
+                            self.meta_data.title[i] = E.DN;
+                            self.meta_data.summary[i] = E.D;
+                            if (!E.S || !E) {
+                                self.meta_data.link1[i] = '';
+                                self.meta_data.link2[i] = '';
+                                self.meta_data.link3[i] = '';
+                            } else {
+                                if (!E.S[0].U) {
+                                    self.meta_data.link1[i] = ''
+                                } else {
+                                    self.meta_data.link1[i] = E.S[0].U;
+                                }
+                                if (!E.S[1]) {
+                                    self.meta_data.link2[i] = '';
+                                    self.meta_data.link3[i] = '';
+                                } else if (!E.S[2]) {
+                                    self.meta_data.link2[i] = E.S[1].U;
+                                    self.meta_data.link3[i] = '';
+                                } else {
+                                    self.meta_data.link2[i] = E.S[1].U;
+                                    self.meta_data.link3[i] = E.S[2].U;
+                                }
+                            }
+                            self.meta_data.summary[i] = E.D;
+                        }
+                        self.meta_data.year[i]= response.entities[i].Y;
+                        self.meta_data.author1[i] = response.entities[i].AA[0]['AuN'];
+                        if(!response.entities[i].AA[1]){
+                            self.meta_data.author2[i] =  '';
+                            self.meta_data.author3[i] =  '';
+                        }else if(!response.entities[i].AA[2]){
+                            self.meta_data.author2[i] =  response.entities[i].AA[1]['AuN'];
+                            self.meta_data.author3[i] =  '';
+                        }else{
+                            self.meta_data.author2[i] =  response.entities[i].AA[1]['AuN'];
+                            self.meta_data.author3[i] =  response.entities[i].AA[2]['AuN'];
+                        }
+                        self.meta_data.keyword1[i] = response.entities[i].W[0];
+                        if(!response.entities[i].W[1]){
+                            self.meta_data.keyword2[i] =  '';
+                            self.meta_data.keyword3[i] =  '';
+                            self.meta_data.keyword4[i] =  '';
+                            // self.meta_data.keyword5[i] =  '';
+                            // self.meta_data.keyword6[i] =  '';
+                            // self.meta_data.keyword7[i] =  '';
+                        }else if(!response.entities[i].W[2]) {
+                            self.meta_data.keyword2[i] = response.entities[i].W[1];
+                            self.meta_data.keyword3[i] = '';
+                            self.meta_data.keyword4[i] = '';
+                            // self.meta_data.keyword5[i] =  '';
+                            // self.meta_data.keyword6[i] =  '';
+                            // self.meta_data.keyword7[i] =  '';
+                        }
+                        else if(!response.entities[i].W[3]){
+                            self.meta_data.keyword2[i] =  response.entities[i].W[1];
+                            self.meta_data.keyword3[i] =  response.entities[i].W[2];
+                            self.meta_data.keyword4[i] =  '';
+                            // self.meta_data.keyword5[i] =  '';
+                            // self.meta_data.keyword6[i] =  '';
+                            // self.meta_data.keyword7[i] =  '';
+                        }
+                        // else if(!response.entities[i].W[4]){
+                        //     self.meta_data.keyword2[i] =  response.entities[i].W[1];
+                        //     self.meta_data.keyword3[i] =  response.entities[i].W[2];
+                        //     self.meta_data.keyword4[i] =  response.entities[i].W[3];
+                        //     self.meta_data.keyword5[i] =  '';
+                        //     self.meta_data.keyword6[i] =  '';
+                        //     self.meta_data.keyword7[i] =  '';
+                        // }
+                        // else if(!response.entities[i].W[5]){
+                        //     self.meta_data.keyword2[i] =  response.entities[i].W[1];
+                        //     self.meta_data.keyword3[i] =  response.entities[i].W[2];
+                        //     self.meta_data.keyword4[i] =  response.entities[i].W[3];
+                        //     self.meta_data.keyword5[i] =  response.entities[i].W[4];
+                        //     self.meta_data.keyword6[i] =  '';
+                        //     self.meta_data.keyword7[i] =  '';
+                        //
+                        // }
+                        // else if(!response.entities[i].W[6]){
+                        //     self.meta_data.keyword2[i] =  response.entities[i].W[1];
+                        //     self.meta_data.keyword3[i] =  response.entities[i].W[2];
+                        //     self.meta_data.keyword4[i] =  response.entities[i].W[3];
+                        //     self.meta_data.keyword5[i] =  response.entities[i].W[4];
+                        //     self.meta_data.keyword6[i] =  response.entities[i].W[5];
+                        //     self.meta_data.keyword7[i] =  '';
+                        // }
+
+                        else{
+                            self.meta_data.keyword2[i] =  response.entities[i].W[1];
+                            self.meta_data.keyword3[i] =  response.entities[i].W[2];
+                            self.meta_data.keyword4[i] =  response.entities[i].W[3];
+                            // self.meta_data.keyword5[i] =  response.entities[i].W[4];
+                            // self.meta_data.keyword6[i] =  response.entities[i].W[5];
+                            // self.meta_data.keyword7[i] =  response.entities[i].W[6];
+                        }
+                    }
+                    // console.log(E);
+                    // console.log("meta data: " , self.meta_data);
+                    $scope.loader = true;
+                    var t2 = performance.now();
+                    $scope.performance = "Results took " + (Math.round(t2 - t1)/1000).toFixed(3)   + " seconds";
+
+
+                    $scope.$digest();
+                }).fail(function(response) {
+                    console.log('evaluate error: ', response)
+                }));
+            }
+        }
+    }
+});
 app.factory('searchString',function($http,$q,$rootScope){
     var self = this;
     var link = 'backs/backs.php';
@@ -941,7 +1135,7 @@ app.factory('searchString',function($http,$q,$rootScope){
     }
 
 });
-app.controller('MicrosoftController',function($scope,MicrosoftService,$log,searchString,$timeout,$rootScope,$location){
+app.controller('MicrosoftController',function($scope,MicrosoftService,BioMedService,$log,searchString,$timeout,$rootScope,$location){
     if(window.performance){
         console.log('yes');
         if(performance.navigation.type  == 1) {
@@ -964,7 +1158,14 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,$log,searc
         $rootScope.query=query;
         $location.path('/results_page').search('query', query);
     };
-    self.makeQuery = function(query,order){
+    self.micro = null;
+    self.bioMed = null;
+    self.makeQuery = function(query,order,micro,bioMed){
+        console.log("micro: " , micro);
+        console.log("biomed: " ,bioMed);
+        console.log("order: " ,order);
+
+
         $rootScope.query = $location.search().query;
         $scope.loader = false;
         self.meta_data = {
@@ -986,6 +1187,15 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,$log,searc
             // keyword7: []
         };
         $log.warn($rootScope.query);
-        MicrosoftService.callApi($scope,query,self.meta_data,order,$rootScope);
+        if(micro){
+            MicrosoftService.callApi($scope,query,self.meta_data,order,$rootScope);
+            self.micro  = undefined;
+            self.bioMed = undefined;
+        }
+        else if(bioMed){
+           BioMedService.callApi($scope,query,self.meta_data,order,$rootScope);
+            self.micro  = undefined;
+            self.bioMed = undefined;
+        }
     }
 });
