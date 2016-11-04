@@ -1136,12 +1136,12 @@ app.factory('searchString',function($http,$q,$rootScope){
 
 });
 app.controller('MicrosoftController',function($scope,MicrosoftService,BioMedService,$log,searchString,$timeout,$rootScope,$location){
-    if(window.performance){
-        console.log('yes');
-        if(performance.navigation.type  == 1) {
-            console.log('page reloaded');
-        }
-    }
+    // if(window.performance){
+    //     console.log('yes');
+    //     if(performance.navigation.type  == 1) {
+    //         console.log('page reloaded');
+    //     }
+    // }
     var self = this;
     self.error = true;
     $scope.results= true;
@@ -1188,14 +1188,15 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,BioMedServ
         };
         $log.warn($rootScope.query);
         if(micro){
+            self.micro = undefined;
             MicrosoftService.callApi($scope,query,self.meta_data,order,$rootScope);
-            self.micro  = undefined;
-            self.bioMed = undefined;
+
         }
         else if(bioMed){
+            self.bioMed  = undefined;
            BioMedService.callApi($scope,query,self.meta_data,order,$rootScope);
-            self.micro  = undefined;
-            self.bioMed = undefined;
+
+
         }
     }
 });
