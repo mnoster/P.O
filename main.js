@@ -716,7 +716,7 @@ app.controller('formController', function ($scope, $log, formSubmit, $location) 
     }
 });
 
-//----------Microsoft Academic API-------------
+//----------Research Articles Academic API-------------
 app.factory('MicrosoftService', function ($http, $q, $log) {
     var self = this;
     var interpret_link = "https://api.projectoxford.ai/academic/v1.0/interpret?";
@@ -915,37 +915,28 @@ app.factory('BioMedService', function ($http, $q, $log) {
     var self = this;
     var interpret_link = "https://api.projectoxford.ai/academic/v1.0/interpret?";
     var evaluate_link = "https://api.projectoxford.ai/academic/v1.0/evaluate?";
-    var key = "03651106c156405b9f833184b7fa09ab";
-    console.log("Microsoft provider");
+    var key = "aad28331d38b527c831274156fde309c&q";
+    console.log("Biomed provider");
     return {
         callApi: function ($scope, query, meta_data, order, $rootScope) {
             var t1 = performance.now();
             console.log("BioMed query: ", $rootScope.query);
             $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
             $rootScope.query = query;
-            var params = {
-                // Request parameters
-                query: $rootScope.query.toLowerCase(),
-                model: "latest",
-                count: "10",
-                offset: "0",
-                complete: 1
-                // orderby:'Y:asc'
-            };
-
+            self.meta_data = meta_data;
 
             //I really hate using jquery ajax in angular but I could not fix the cross origin error so I had no choice to use ajax.
-            $scope.$digest(
+
                 $.ajax({
-                    url: "http://api.springer.com/metadata/json?&api_key=aad28331d38b527c831274156fde309c&q=" + query + "&s=1&p=13&date=2000",
+                    url: "http://api.springer.com/metadata/json?&api_key=" + key + "=" + query + "&s=1&p=13&date=2000",
                     dataType: 'json',
                     type: "GET"
                     // Request body
                 }).success(function (response) {
-                    $('.content').text('');
-                    console.log('success: ', JSON.parse(response));
+                    // $('.content').text('');
+                    // console.log('success: ', JSON.parse(response));
                     //brain+year:2015  <----query syntax to use in search sort by year
-                    var allData = JSON.parse(response);
+                    var allData = response;
 //                var year  = allData.records[i].publicationDate[0] +allData.records[i].publicationDate[1] + allData.records[i].publicationDate[2] + allData.records[i].publicationDate[3];
 //                 for(var i = 0;i<allData.records.length;i++){
 //                     $('.content').append("<h2> Title : "+ allData.records[i].title +"</h2>")
@@ -958,9 +949,10 @@ app.factory('BioMedService', function ($http, $q, $log) {
 
                     $scope.$digest();
                     console.log('BIOMED RESPONSE: ', response);
-                    for (var i = 0; i < allData.records; i++) {
+                    for (var i = 0; i < allData.records.length; i++) {
 
                         self.meta_data.title[i] = allData.records[i].title;
+                        console.log(self.meta_data.title[i]);
                         self.meta_data.summary[i] = allData.records[i].abstract;
                         self.meta_data.link1[i] = allData.records[i].url[0].value;
                         self.meta_data.link2[i] = '';
@@ -968,7 +960,7 @@ app.factory('BioMedService', function ($http, $q, $log) {
                         self.meta_data.year[i] = allData.records[i].publicationDate[0] + allData.records[i].publicationDate[1] + allData.records[i].publicationDate[2] + allData.records[i].publicationDate[3];
                         
                         self.meta_data.author1[i] = allData.records[i].creators[0].creator;
-                        self.meta_data.keyword1[i] = allData.facets[i].values[0].value;
+                        // self.meta_data.keyword1[i] = allData.facets[i].values[0].value;
                         self.meta_data.keyword2[i] = '';
                         self.meta_data.keyword3[i] = '';
                         self.meta_data.keyword4[i] = '';
@@ -980,7 +972,7 @@ app.factory('BioMedService', function ($http, $q, $log) {
                     $scope.$digest();
                 }).fail(function (response) {
                     console.log('evaluate error: ', response)
-                }));
+                });
         }
     }
 });
