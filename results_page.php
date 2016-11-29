@@ -15,7 +15,7 @@ session_start();
 <div class="container-fluid main-contain-results" ng-controller="MicrosoftController as mc">
     <div class="container-fluid divider" >
     <div class="container">
-    <div class="col-md-10 col-sm-12 col-xs 12">
+    <div class="col-md-10 col-sm-12 col-xs-12">
         <h1>PsychOrigins
                         <small class="text-muted">academic search</small>
         </h1>

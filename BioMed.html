@@ -31,6 +31,7 @@
         console.log("getData function call");
         $.ajax({
             url:"http://api.springer.com/metadata/json?&api_key=aad28331d38b527c831274156fde309c&q=" +query+ "&s=1&p=13&date=2000",
+            dataType: 'json',
             success:function(response){
                 $('.content').text('');
                 console.log('success: ' , JSON.parse(response));

@@ -1,7 +1,7 @@
 var app = angular.module("psychoApp", ["ngRoute"]);
 // document.getElementById('client-id').tablesorter();
 
-app.config(function ($httpProvider,$locationProvider) {
+app.config(function ($httpProvider, $locationProvider) {
     $httpProvider.defaults.headers.post = {'Content-Type': 'application/x-www-form-urlencoded'};
     // $httpProvider.defaults.headers.get = {'Content-Type': 'application/x-www-form-urlencoded'};
     // $httpProvider.defaults.dataType.post = 'json';
@@ -96,7 +96,7 @@ app.config(function ($routeProvider) {
             templateUrl: '/P.O/results_page.php'
             // controller:'MicrosoftController'
         })
-        .when('/main-page',{
+        .when('/main-page', {
             templateUrl: '/P.O/main-page.php'
         })
         .otherwise({
@@ -111,13 +111,13 @@ app.directive('diagnosis', function () {
         templateUrl: 'diagnosis.html'
     }
 });
-app.filter('capitalize', function() {
-    return function(str) {
-        if(!str){
+app.filter('capitalize', function () {
+    return function (str) {
+        if (!str) {
             return
         }
         str = str.toLowerCase().split(' ');                // will split the string delimited by space into an array of words
-        for(var i = 0; i < str.length; i++){               // str.length holds the number of occurrences of the array...
+        for (var i = 0; i < str.length; i++) {               // str.length holds the number of occurrences of the array...
             str[i] = str[i].split('');                    // splits the array occurrence into an array of letters
             str[i][0] = str[i][0].toUpperCase();          // converts the first occurrence of the array to uppercase
             str[i] = str[i].join('');                     // converts the array of letters back into a word.
@@ -127,8 +127,8 @@ app.filter('capitalize', function() {
 });
 
 // this will route the view to whatever specified template URL when an href to that page is clicked on
-app.run(['$location','$anchorScroll','$rootScope', function($location, $anchorScroll,$rootScope){
-    $rootScope.scrollTop = function(element){
+app.run(['$location', '$anchorScroll', '$rootScope', function ($location, $anchorScroll, $rootScope) {
+    $rootScope.scrollTop = function (element) {
         console.log("clicked scrolltop");
         $location.hash(element);
         $anchorScroll();
@@ -143,7 +143,7 @@ app.provider('loginData', function () {
     self.populate_user_profile_info = function (username, $http) {
         var data = $.param({
             username: username,
-            keyword:'login'
+            keyword: 'login'
         });
         console.log("username: ", username);
         $http({
@@ -158,11 +158,11 @@ app.provider('loginData', function () {
             $log.error("$http fail: ", response);
         }
     };
-    this.$get = function ($http, $q, $log,$rootScope) {
+    this.$get = function ($http, $q, $log, $rootScope) {
         console.log("$get");
         return {
             callApi: function ($scope, user) {
-                var data = $.param({username: user.username, password: user.password,keyword:'login'});
+                var data = $.param({username: user.username, password: user.password, keyword: 'login'});
                 var user_info = user;
                 var defer = $q.defer();
                 $http({
@@ -179,11 +179,11 @@ app.provider('loginData', function () {
                         data = " ";
                         user_info = " ";
                         $rootScope.enabled = true;
-                        console.log("enabled: " , $rootScope.enabled);
+                        console.log("enabled: ", $rootScope.enabled);
                         window.location.replace("index.php");
                     }
                     defer.resolve(response);
-                    
+
                 }), function error(response) {
                     $log.error("$http fail: ", response);
                     defer.reject("Error msg here");
@@ -195,7 +195,7 @@ app.provider('loginData', function () {
 
 });
 //Include your service in the function parameter list along with any other services you may want to use
-app.controller('loginController', function (loginData, $scope,$rootScope) {
+app.controller('loginController', function (loginData, $scope, $rootScope) {
     //Create a variable to hold this, DO NOT use the same name you used in your provider
     var new_self = this;
     $rootScope.enabled = false;
@@ -224,9 +224,9 @@ app.factory('logoutData', function ($http) {
     console.log("logout provider");
     var api_url = "backs/backs.php";
     var data = $.param({
-        keyword:'logout'
+        keyword: 'logout'
     });
-    return{
+    return {
         callApi: function ($log) {
             $http({
                 method: 'POST',
@@ -234,8 +234,8 @@ app.factory('logoutData', function ($http) {
                 dataType: 'json',
                 data: data
             }).then(function success(response) {
-                    console.log('logout: ', response);
-                if(response.data.status == 'you are logged out'){
+                console.log('logout: ', response);
+                if (response.data.status == 'you are logged out') {
                     window.location.replace('login.php')
                 }
             });
@@ -244,7 +244,7 @@ app.factory('logoutData', function ($http) {
 });
 
 //------------------main-page------------------
-app.controller('pageTopController',['$location','$anchorScroll','$rootScope', function($location, $anchorScroll,$rootScope){
+app.controller('pageTopController', ['$location', '$anchorScroll', '$rootScope', function ($location, $anchorScroll, $rootScope) {
     // $rootScope.scrollTop = function(){
     //     console.log("clicked scrolltop");
     //     $location.hash('nav');
@@ -315,7 +315,7 @@ app.factory('getClients', function ($http) {
     var client_obj = [];
     var full_name = null;
     var data = $.param({
-        keyword:'getClients'
+        keyword: 'getClients'
     });
     return {
         callApi: function ($scope) {
@@ -323,13 +323,13 @@ app.factory('getClients', function ($http) {
                 url: link,
                 dataType: 'json',
                 method: 'POST',
-                data:data
+                data: data
             }).then(function success(response) {
                 console.log(response);
                 client_obj = [];
                 client = response.data.client;
                 full_name = client.full_name;
-                for (var i = 0; i < full_name.length; i++){
+                for (var i = 0; i < full_name.length; i++) {
                     client_obj.push({
                         full_name: full_name[i],
                         date_added: client.date_added[i],
@@ -342,14 +342,14 @@ app.factory('getClients', function ($http) {
                 $scope.sortColumn = 'full_name';
 
                 $scope.reverseSort = false;
-                $scope.sortData = function(column){
+                $scope.sortData = function (column) {
                     //If $scope.sortColumn is equal to the column -->  --> change it to true --> else change it to false
                     $scope.reverseSort = ($scope.sortColumn == column) ? !$scope.reverseSort : false;
                     $scope.sortColumn = column;
                     // console.log("column: ", column);
                 };
-                $scope.getSortClass = function(column){
-                    if($scope.sortColumn == column){
+                $scope.getSortClass = function (column) {
+                    if ($scope.sortColumn == column) {
                         return $scope.reverseSort ? 'caret' : 'caret';
                     }
                     return '';
@@ -359,26 +359,26 @@ app.factory('getClients', function ($http) {
     }
 });
 //----this is the service that will be used to get the form data of the client that is clicked on
-app.factory('getFormInfo',function($http,$log){
+app.factory('getFormInfo', function ($http, $log) {
     $log.info('getFormInfo Service');
     var link = 'backs/backs.php';
-    return{
-        callApi: function ($scope,formName,date){
+    return {
+        callApi: function ($scope, formName, date) {
             $log.info(' Call APi getFormInfo Service');
 
             var data = $.param({
                 name: formName,
-                date:date,
+                date: date,
                 keyword: 'getFormInfo'
             });
             $http({
-                url:link,
+                url: link,
                 dataType: 'json',
                 method: 'post',
                 data: data
-            }).then(function success(response){
-                console.log("succss get form info: " , response );
-                if(response.data.status == 'success'){
+            }).then(function success(response) {
+                console.log("succss get form info: ", response);
+                if (response.data.status == 'success') {
                     console.log('big response');
                 }
             });
@@ -387,7 +387,7 @@ app.factory('getFormInfo',function($http,$log){
 });
 //----This is the controller for the clientData provider, getFormInfo, and the getClients service
 
-app.controller('clientController', function (clientData, $scope, getClients,getFormInfo) {
+app.controller('clientController', function (clientData, $scope, getClients, getFormInfo) {
     //Create a variable to hold this, DO NOT use the same name you used in your provider
     var new_self = this;
     var self = this;
@@ -396,8 +396,8 @@ app.controller('clientController', function (clientData, $scope, getClients,getF
     this.form_options = ["Form 1", "Form 2", "Form 3"];
     //Add an empty data object to your controller
     $scope.data = {};
-    this.getForm = function(formName, date){
-        getFormInfo.callApi($scope, formName,date)
+    this.getForm = function (formName, date) {
+        getFormInfo.callApi($scope, formName, date)
     };
     //Add a function called getData to your controller to call the PHP API
     this.getClientData = function () {
@@ -414,29 +414,29 @@ app.controller('clientController', function (clientData, $scope, getClients,getF
 
 
 //This is the controller and http service that is called when you click next on create client page
-app.factory('clientSetup',function($http,$log){
+app.factory('clientSetup', function ($http, $log) {
     var self = this;
     var link = 'backs/backs.php';
     $log.info("ClientSetup Service");
-    return{
-        callApi: function ($scope, data){
-           if(data.first_name == '' || data.last_name == ''){
+    return {
+        callApi: function ($scope, data) {
+            if (data.first_name == '' || data.last_name == '') {
 
-           }
-            console.log("first name: " , data.first_name);
+            }
+            console.log("first name: ", data.first_name);
             var setupData = $.param({
                 first_name: data.first_name,
-                last_name : data.last_name,
-                notes:data.notes,
-                keyword:'clientSetup'
+                last_name: data.last_name,
+                notes: data.notes,
+                keyword: 'clientSetup'
             });
             $http({
-                url:link,
-                dataType:'json',
+                url: link,
+                dataType: 'json',
                 data: setupData,
-                method:'POST'
-            }).then(function success(response){
-                console.log("clientSetup success: " ,response);
+                method: 'POST'
+            }).then(function success(response) {
+                console.log("clientSetup success: ", response);
             })
         }
     }
@@ -450,34 +450,33 @@ app.controller('clientSetupController', function ($scope, clientSetup) {
             last_name: self.last_name,
             notes: self.notes
         };
-        clientSetup.callApi($scope,self.client_data);
-            // .then(function(response){
-            //     console.log("success for call api promise");
-            // })
+        clientSetup.callApi($scope, self.client_data);
+        // .then(function(response){
+        //     console.log("success for call api promise");
+        // })
     }
 });
 
 
 //This is the controller and http service that is called when you click the FORM 1,2, or 3 on Select_form.php
-app.factory('selectForm',function($http,$log){
+app.factory('selectForm', function ($http, $log) {
     var self = this;
     var link = 'backs/backs.php';
 
     $log.info("Form Setup Service");
-    return{
-        callApi: function ($scope, data){
+    return {
+        callApi: function ($scope, data) {
             var form = $.param(
                 data
-                
             );
-            console.log("form number: " , data);
+            console.log("form number: ", data);
             $http({
-                url:link,
-                dataType:'json',
+                url: link,
+                dataType: 'json',
                 data: form,
-                method:'POST'
-            }).then(function success(response){
-                console.log("form select success: " ,response);
+                method: 'POST'
+            }).then(function success(response) {
+                console.log("form select success: ", response);
             })
         }
     }
@@ -488,13 +487,13 @@ app.controller('selectFormController', function ($scope, selectForm) {
     this.form1 = 'Form 1';
     this.form2 = 'Form 2'; //form2.php has not been made yet, expect error
     this.form3 = 'Form 3'; //form3.php has not been made yet, expect error
-    this.form_type = function (form_number){
+    this.form_type = function (form_number) {
         console.log("form number: ", form_number);
         self.client_form = {
             form: form_number,
-            keyword:'formSelect'
+            keyword: 'formSelect'
         };
-        selectForm.callApi($scope,self.client_form);
+        selectForm.callApi($scope, self.client_form);
         // .then(function(response){
         //     console.log("success for call api promise");
         // })
@@ -503,30 +502,30 @@ app.controller('selectFormController', function ($scope, selectForm) {
 
 
 //------------form Submission service------------
-app.factory('formSubmit',function($http,$log,$q){
+app.factory('formSubmit', function ($http, $log, $q) {
 
     var self = this;
     var link = 'backs/backs.php';
     var link2 = 'backs/all_form_data_handler.php';
     $log.info("formSubmit Service");
-    return{
-        callApi: function ($scope,form){
-            console.log('selected age: ' , form);
+    return {
+        callApi: function ($scope, form) {
+            console.log('selected age: ', form);
             var data = $.param({
                 keyword: 'form'
             });
             var defer = $q.defer();
             $http({
-                url:link,
-                dataType:'json',
-                method:'POST',
-                data:data
-            }).then(function success(response){
-                console.log("success response: " , response);
-                if(response.data.status == 'success'){
+                url: link,
+                dataType: 'json',
+                method: 'POST',
+                data: data
+            }).then(function success(response) {
+                console.log("success response: ", response);
+                if (response.data.status == 'success') {
                     defer.resolve(response)
                 }
-                else{
+                else {
                     console.log("Error in the api");
                 }
             }), function error(response) {
@@ -535,19 +534,19 @@ app.factory('formSubmit',function($http,$log,$q){
             };
             return defer.promise;
         },
-        callApi2:function($scope,form){
-            console.log('form data second api call: ' , form);
+        callApi2: function ($scope, form) {
+            console.log('form data second api call: ', form);
             var submitData = $.param({form});
-            console.log('submit data: ' ,submitData);
+            console.log('submit data: ', submitData);
             var defer = $q.defer();
             $http({
-                url:link2,
-                dataType:'json',
+                url: link2,
+                dataType: 'json',
                 data: submitData,
-                method:'POST'
-            }).then(function success(response){
-                    console.log("call api 2 connected: " , response);
-                    defer.resolve(response)
+                method: 'POST'
+            }).then(function success(response) {
+                console.log("call api 2 connected: ", response);
+                defer.resolve(response)
 
             }), function error(response) {
                 $log.error("$http fail: ", response);
@@ -560,7 +559,7 @@ app.factory('formSubmit',function($http,$log,$q){
 
 });
 //this controller contains all the data that is necessary for the client form
-app.controller('formController', function ($scope,$log,formSubmit,$location) {
+app.controller('formController', function ($scope, $log, formSubmit, $location) {
     var self = this;
     self.numberOfFields = false;
     $scope.states = ['none', 'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
@@ -570,19 +569,19 @@ app.controller('formController', function ($scope,$log,formSubmit,$location) {
         "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russian Federation", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Seychelles", "Sierra Leone", "Singapore", "Slovakia (Slovak Republic)", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "Spain", "Sri Lanka", "St. Helena", "St. Pierre and Miquelon", "Sudan", "Suriname", "Svalbard and Jan Mayen Islands", "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan, Province of China", "Tajikistan", "Tanzania, United Republic of", "Thailand", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States",
         "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (U.S.)", "Wallis and Futuna Islands", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"];
     $scope.gender = ['male', 'female', 'transgender man', 'transgender woman', 'other'];
-    $scope.relationship_status = ['single','significant other','married','separated', 'divorced', 'widowed'];
+    $scope.relationship_status = ['single', 'significant other', 'married', 'separated', 'divorced', 'widowed'];
     $scope.education = ['Less than high school', 'Some high school', 'High school graduate', 'Associates', 'Bachelors', 'Masters', 'Phd'];
     $scope.sexual_orientation = ['straight', 'lesbian', 'bisexual', 'gay', 'queer', 'asexual'];
-    $scope.children = [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-    $scope.therapy_years = [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60];
-    $scope.age = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110];
+    $scope.children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+    $scope.therapy_years = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60];
+    $scope.age = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110];
     $scope.adopted = ['yes', 'no'];
-    $scope.order = ['1st','2nd','3rd','4th','5th','6th','7th','8th'];
+    $scope.order = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th'];
     $scope.ethnicity = ['Chinese', 'Japanese', 'Acholi', 'Akan', 'Albanian', 'Amhara', 'Arab', 'Arminian', 'Assyrian', 'Azerbaijanis', 'Balochis', 'Bamars', 'Bambara', 'Bashkris', 'Basque', 'Bemba', 'Bengali', 'Berbers', 'Beti-Pahuin', 'Bihari', 'Bosniaks', 'Brahui', 'Bulgarian', 'Catalan', 'Chuvash', 'Circassian', 'Chewa', 'Croats', 'Czechs', 'Danes', 'Dinka', 'Dutch', 'English', 'Estonian', 'Faroese', 'Finn', 'French', 'Frisians', 'Fula', 'Ganada', 'German', 'Greek', 'Georgian', 'Gujarati', 'Igbo', 'Hindunstani', 'Hui', 'Hungarian', 'Icelander', 'Irish', 'Italian', 'Javanese', 'Jewish', 'Kazakh', 'Kongo', 'Korean', 'Kurd', 'Lebanese', 'Macedonian', 'Malays', 'Marathi', 'Nepali', 'Persian', 'Polish', 'Portugese', 'Punjab', 'Romanian', 'Russian', 'Scottish', 'Serbian', 'Sinhalese', 'Slovik', 'Spanish', 'Swedish', 'Tajik', 'Thai', 'Turkish', 'Ukrainian', 'Vietnamese', 'Welsh', 'French', 'Filipian', 'Brazilian', 'Peruvian', 'Canadian', 'Jamacian', 'Ecuadorian', 'Mexican', 'Iranian', 'Egyptian', 'Greek', 'Syrian', 'Bolivian'];
-    $scope.past_diagnosis =  ["Absence seizure","Abulia","Acute Stress Disorder","Adjustment Disorders","Agoraphobia","Akiltism","Alcohol Addiction", "Alzheimer’s Disease", "Amnesia", "Amphetamine Addiction", "Anorexia Nervosa", "Anterograde Amnesia", "Antisocial personality disorder", "Anxiety Disorder", "Anxiolytic related disorders", "Asperger’s Syndrome", "Attention Deficit Disorder", "Attention Deficit Hyperactivity Disorder", "Autism Spectrum Disorder", "Autophagia", "Avoidant Personality Disorder",
+    $scope.past_diagnosis = ["Absence seizure", "Abulia", "Acute Stress Disorder", "Adjustment Disorders", "Agoraphobia", "Akiltism", "Alcohol Addiction", "Alzheimer’s Disease", "Amnesia", "Amphetamine Addiction", "Anorexia Nervosa", "Anterograde Amnesia", "Antisocial personality disorder", "Anxiety Disorder", "Anxiolytic related disorders", "Asperger’s Syndrome", "Attention Deficit Disorder", "Attention Deficit Hyperactivity Disorder", "Autism Spectrum Disorder", "Autophagia", "Avoidant Personality Disorder",
         "Barbiturate related disorders", "Benzodiazepine-related disorders", "Bereavement", "Bibliomania", "Binge Eating Disorder", "Bipolar disorder I", "Bipolar disorder II", "Body Dysmorphic Disorder", "Borderline intellectual functioning", "Borderline Personality Disorder", "Breathing-Related Sleep Disorder", "Brief Psychotic Disorder", "Bruxism", "Bulimia Nervosa",
         "Caffeine Addiction", "Cannabis Addiction", "Catatonic disorder", "Catatonic schizophrenia", "Childhood amnesia", "Childhood Onset Fluency Disorder", "Circadian Rhythm Disorders", "Claustrophobia", "Cocaine related disorders", "Communication disorder", "Conduct Disorder", "Conversion Disorder", "Cotard delusion", "Cyclothymia",
-        "Delerium","Delusional Disorder","Dementia", "Dependent Personality Disorder or Asthenic Personality Disorder ", "Depersonalization disorder or Derealization", "Depressive personality disorder", "Derealization disorder", "Dermotillomania", "Desynchronosis", "Developmental coordination disorder", "Diogenes Syndrome", "Disorder of written expression", "Dispareunia", "Dissocial Personality Disorder", "Dissociative Amnesia", "Dissociative Fugue", "Dissociative Identity Disorder or Multiple Personality Disorder", "Down syndrome", "Dyslexia", "Dyspareunia", "Dysthymia or Persistent Depressive Disorder",
+        "Delerium", "Delusional Disorder", "Dementia", "Dependent Personality Disorder or Asthenic Personality Disorder ", "Depersonalization disorder or Derealization", "Depressive personality disorder", "Derealization disorder", "Dermotillomania", "Desynchronosis", "Developmental coordination disorder", "Diogenes Syndrome", "Disorder of written expression", "Dispareunia", "Dissocial Personality Disorder", "Dissociative Amnesia", "Dissociative Fugue", "Dissociative Identity Disorder or Multiple Personality Disorder", "Down syndrome", "Dyslexia", "Dyspareunia", "Dysthymia or Persistent Depressive Disorder",
         "Eating disorder NOS", "Ekbom’s Syndrome (Delusional Parasitosis)", "Encopresis", "Enuresis (bedwetting)", "Erotomania", "Exhibitionistic Disorder", "Expressive language disorder",
         "Factitious Disorder", "Female Sexual Disorders", "Fetishistic Disorder", "Folie à deux", "Fregoli delusion", "Frotteuristic Disorder", "Fugue State",
         "Ganser syndrome", "Gambling Addiction", "Gender Dysphoria or Gender Identity Disorder", "Generalized Anxiety Disorder", "General adaptation syndrome", "Grandiose delusions",
@@ -600,11 +599,11 @@ app.controller('formController', function ($scope,$log,formSubmit,$location) {
         "Tardive dyskinesia", "Tobacco Addiction", "Tourettes Syndrome", "Transient tic disorder", "Transient global amnesia", "Transvestic Disorder", "Trichotillomania",
         "Vaginismus", "Voyeuristic Disorder"
     ];
-    $scope.num_of_diagnosis = [0,1,2,3,4,5,6,7,8];
-    $scope.treatment_types = ["none","Anti-anxiety Agents","Anti-psychotics","Anti-depressants","Anti-obsessive Agents","Anti-Panic Agents","Mood Stabilizers","Stimulants","other"];
-    $scope.therapy_types = ["none","Arts Therapy", "Behavioural activation", "Behavioral Therapy", "Cognitive Behavioural Therapy (CBT)","Counselling","Couples therapy","Family therapy", "Group therapy","Humanistic Therapy", "Interpersonal therapy","Mindfulness-based therapies","other","Psychotherapy",];
-    $scope.employment = ['Employed','Unemployed','Full-time Student','Part-time Student','Retired','Disabled'];
-    $scope.religion = ['None','Atheist/Agnostic','Buddhist','Catholic','Christian','Hindu','Jewish','Mormon','Muslim','Orthodox','Other','Protestant','Scientologist'];
+    $scope.num_of_diagnosis = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    $scope.treatment_types = ["none", "Anti-anxiety Agents", "Anti-psychotics", "Anti-depressants", "Anti-obsessive Agents", "Anti-Panic Agents", "Mood Stabilizers", "Stimulants", "other"];
+    $scope.therapy_types = ["none", "Arts Therapy", "Behavioural activation", "Behavioral Therapy", "Cognitive Behavioural Therapy (CBT)", "Counselling", "Couples therapy", "Family therapy", "Group therapy", "Humanistic Therapy", "Interpersonal therapy", "Mindfulness-based therapies", "other", "Psychotherapy",];
+    $scope.employment = ['Employed', 'Unemployed', 'Full-time Student', 'Part-time Student', 'Retired', 'Disabled'];
+    $scope.religion = ['None', 'Atheist/Agnostic', 'Buddhist', 'Catholic', 'Christian', 'Hindu', 'Jewish', 'Mormon', 'Muslim', 'Orthodox', 'Other', 'Protestant', 'Scientologist'];
     $scope.holdNumber = [];
     $scope.data = {};
     self.goHome = function () {
@@ -612,8 +611,8 @@ app.controller('formController', function ($scope,$log,formSubmit,$location) {
         window.location.replace('index.php');
 
     };
-    this.displayDiagnosisFields = function(num){
-        if(num == 0){
+    this.displayDiagnosisFields = function (num) {
+        if (num == 0) {
             self.oneField = false;
             self.twoFields = false;
             self.threeFields = false;
@@ -622,7 +621,7 @@ app.controller('formController', function ($scope,$log,formSubmit,$location) {
             self.sixFields = false;
             self.sevenFields = false;
             self.eightFields = false;
-        }else if(num == 1){
+        } else if (num == 1) {
             self.oneField = true;
             self.twoFields = false;
             self.threeFields = false;
@@ -631,7 +630,7 @@ app.controller('formController', function ($scope,$log,formSubmit,$location) {
             self.sixFields = false;
             self.sevenFields = false;
             self.eightFields = false;
-        }else if(num == 2){
+        } else if (num == 2) {
             self.oneField = true;
             self.twoFields = true;
             self.threeFields = false;
@@ -640,7 +639,7 @@ app.controller('formController', function ($scope,$log,formSubmit,$location) {
             self.sixFields = false;
             self.sevenFields = false;
             self.eightFields = false;
-        }else if(num == 3){
+        } else if (num == 3) {
             self.oneField = true;
             self.twoFields = true;
             self.threeFields = true;
@@ -649,7 +648,7 @@ app.controller('formController', function ($scope,$log,formSubmit,$location) {
             self.sixFields = false;
             self.sevenFields = false;
             self.eightFields = false;
-        }else if(num == 4){
+        } else if (num == 4) {
             self.oneField = true;
             self.twoFields = true;
             self.threeFields = true;
@@ -658,7 +657,7 @@ app.controller('formController', function ($scope,$log,formSubmit,$location) {
             self.sixFields = false;
             self.sevenFields = false;
             self.eightFields = false;
-        }else if(num == 5){
+        } else if (num == 5) {
             self.oneField = true;
             self.twoFields = true;
             self.threeFields = true;
@@ -667,7 +666,7 @@ app.controller('formController', function ($scope,$log,formSubmit,$location) {
             self.sixFields = false;
             self.sevenFields = false;
             self.eightFields = false;
-        }else if(num == 6){
+        } else if (num == 6) {
             self.oneField = true;
             self.twoFields = true;
             self.threeFields = true;
@@ -676,7 +675,7 @@ app.controller('formController', function ($scope,$log,formSubmit,$location) {
             self.sixFields = true;
             self.sevenFields = false;
             self.eightFields = false;
-        }else if(num == 7){
+        } else if (num == 7) {
             self.oneField = true;
             self.twoFields = true;
             self.threeFields = true;
@@ -685,7 +684,7 @@ app.controller('formController', function ($scope,$log,formSubmit,$location) {
             self.sixFields = true;
             self.sevenFields = true;
             self.eightFields = false;
-        }else if(num == 8){
+        } else if (num == 8) {
             self.oneField = true;
             self.twoFields = true;
             self.threeFields = true;
@@ -699,269 +698,75 @@ app.controller('formController', function ($scope,$log,formSubmit,$location) {
     //Added function called submitData to call the API
     this.submitData = function (form) {
         console.log("submit data function");
-        formSubmit.callApi($scope,form)
+        formSubmit.callApi($scope, form)
             .then(function success(response) {
-                console.log('response promise: ' , response);
+                console.log('response promise: ', response);
                 self.submitAllData(form);
 
             })
     };
-    self.submitAllData = function(form){
-        formSubmit.callApi2($scope,form)
-            .then(function success(response){
-                console.log('all form data submitted correctly: ' , response);
-                if(response.data.status == true){
-                    
+    self.submitAllData = function (form) {
+        formSubmit.callApi2($scope, form)
+            .then(function success(response) {
+                console.log('all form data submitted correctly: ', response);
+                if (response.data.status == true) {
+
                 }
             })
     }
 });
 
 //----------Microsoft Academic API-------------
-app.factory('MicrosoftService',function($http, $q, $log){
+app.factory('MicrosoftService', function ($http, $q, $log) {
     var self = this;
     var interpret_link = "https://api.projectoxford.ai/academic/v1.0/interpret?";
-    var evaluate_link =  "https://api.projectoxford.ai/academic/v1.0/evaluate?";
-    var key = "03651106c156405b9f833184b7fa09ab";
-        console.log("Microsoft provider");
-        return {
-            callApi: function ($scope, query,meta_data,order,$rootScope) {
-                var t1 = performance.now();
-                console.log("mircosoft query: " , $rootScope.query);
-                $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
-                $rootScope.query= query;
-                var params = {
-                    // Request parameters
-                    query: $rootScope.query.toLowerCase(),
-                    model: "latest",
-                    count: "10",
-                    offset: "0",
-                    complete:1
-                    // orderby:'Y:asc'
-                };
-                //I really hate using jquery ajax in angular but I could not fix the cross origin error so I had no choice to use ajax.
-                $.ajax({
-                        url: interpret_link + $.param(params),
-                        beforeSend: function(xhrObj){
-                            // Request headers
-                            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", key);
-                        },
-                        type: "GET",
-                        crossDomain : true,
-                        // Request body
-                        dataType:'json'
-                    }).done(function(response) {
-                    if(!response.interpretations[0]){
-                            console.log('invalid name');
-                        $scope.$apply($scope.results = false);
-                        }else{
-                            console.log("success interpret: " , response);
-                        $scope.$apply($scope.results = true);
-                            microsoft_evaluate(response.interpretations[0].rules[0].output.value,meta_data,order);
-                        }
-                    }).fail(function() {
-                        console.log("error interpret");
-                    });
-                function microsoft_evaluate(interpret,meta_data,order){
-                    console.log(order);
-
-                    if(order){
-                        order = 'Y:desc';
-                    }else{
-                        order = ''
-                    }
-                    self.meta_data = meta_data;
-                    console.log(order);
-                    var params2 = {
-                        // Request parameters
-                        expr: interpret,
-                        model: "latest",
-                        count: "13",
-                        orderby: order,
-                        offset: 0
-                    };
-                    $scope.$digest($.ajax({
-                        url: evaluate_link + $.param(params2) + "&attributes=Ti,Y,CC,AA.AuN,F.FN,J.JN,W,E",
-                        beforeSend: function(xhrObj){
-                            // Request headers
-                            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", key);
-                        },
-                        type: "GET",
-                        // Request body
-                        dataType:'json'
-                    }).done(function(response) {
-                        var E = null;
-                        $scope.$digest();
-                        console.log('evaluate: ', response);
-                        for(var i= 0;i<13;i++){
-                            if(!response.entities[i]){
-                                break;
-                            }
-                            else{
-                                console.log('E');
-                                E =  response.entities[i].E;
-                                E = JSON.parse(E);
-                                self.meta_data.title[i] = E.DN;
-                                self.meta_data.summary[i] = E.D;
-                                if (!E.S || !E) {
-                                    self.meta_data.link1[i] = '';
-                                    self.meta_data.link2[i] = '';
-                                    self.meta_data.link3[i] = '';
-                                } else {
-                                    if (!E.S[0].U) {
-                                        self.meta_data.link1[i] = ''
-                                    } else {
-                                        self.meta_data.link1[i] = E.S[0].U;
-                                    }
-                                    if (!E.S[1]) {
-                                        self.meta_data.link2[i] = '';
-                                        self.meta_data.link3[i] = '';
-                                    } else if (!E.S[2]) {
-                                        self.meta_data.link2[i] = E.S[1].U;
-                                        self.meta_data.link3[i] = '';
-                                    } else {
-                                        self.meta_data.link2[i] = E.S[1].U;
-                                        self.meta_data.link3[i] = E.S[2].U;
-                                    }
-                                }
-                                self.meta_data.summary[i] = E.D;
-                            }
-                            self.meta_data.year[i]= response.entities[i].Y;
-                            self.meta_data.author1[i] = response.entities[i].AA[0]['AuN'];
-                            if(!response.entities[i].AA[1]){
-                                self.meta_data.author2[i] =  '';
-                                self.meta_data.author3[i] =  '';
-                            }else if(!response.entities[i].AA[2]){
-                                self.meta_data.author2[i] =  response.entities[i].AA[1]['AuN'];
-                                self.meta_data.author3[i] =  '';
-                            }else{
-                                self.meta_data.author2[i] =  response.entities[i].AA[1]['AuN'];
-                                self.meta_data.author3[i] =  response.entities[i].AA[2]['AuN'];
-                            }
-                            self.meta_data.keyword1[i] = response.entities[i].W[0];
-                            if(!response.entities[i].W[1]){
-                                self.meta_data.keyword2[i] =  '';
-                                self.meta_data.keyword3[i] =  '';
-                                self.meta_data.keyword4[i] =  '';
-                                // self.meta_data.keyword5[i] =  '';
-                                // self.meta_data.keyword6[i] =  '';
-                                // self.meta_data.keyword7[i] =  '';
-                            }else if(!response.entities[i].W[2]) {
-                                self.meta_data.keyword2[i] = response.entities[i].W[1];
-                                self.meta_data.keyword3[i] = '';
-                                self.meta_data.keyword4[i] = '';
-                                // self.meta_data.keyword5[i] =  '';
-                                // self.meta_data.keyword6[i] =  '';
-                                // self.meta_data.keyword7[i] =  '';
-                            }
-                            else if(!response.entities[i].W[3]){
-                                    self.meta_data.keyword2[i] =  response.entities[i].W[1];
-                                    self.meta_data.keyword3[i] =  response.entities[i].W[2];
-                                    self.meta_data.keyword4[i] =  '';
-                                // self.meta_data.keyword5[i] =  '';
-                                // self.meta_data.keyword6[i] =  '';
-                                // self.meta_data.keyword7[i] =  '';
-                            }
-                            // else if(!response.entities[i].W[4]){
-                            //     self.meta_data.keyword2[i] =  response.entities[i].W[1];
-                            //     self.meta_data.keyword3[i] =  response.entities[i].W[2];
-                            //     self.meta_data.keyword4[i] =  response.entities[i].W[3];
-                            //     self.meta_data.keyword5[i] =  '';
-                            //     self.meta_data.keyword6[i] =  '';
-                            //     self.meta_data.keyword7[i] =  '';
-                            // }
-                            // else if(!response.entities[i].W[5]){
-                            //     self.meta_data.keyword2[i] =  response.entities[i].W[1];
-                            //     self.meta_data.keyword3[i] =  response.entities[i].W[2];
-                            //     self.meta_data.keyword4[i] =  response.entities[i].W[3];
-                            //     self.meta_data.keyword5[i] =  response.entities[i].W[4];
-                            //     self.meta_data.keyword6[i] =  '';
-                            //     self.meta_data.keyword7[i] =  '';
-                            //
-                            // }
-                            // else if(!response.entities[i].W[6]){
-                            //     self.meta_data.keyword2[i] =  response.entities[i].W[1];
-                            //     self.meta_data.keyword3[i] =  response.entities[i].W[2];
-                            //     self.meta_data.keyword4[i] =  response.entities[i].W[3];
-                            //     self.meta_data.keyword5[i] =  response.entities[i].W[4];
-                            //     self.meta_data.keyword6[i] =  response.entities[i].W[5];
-                            //     self.meta_data.keyword7[i] =  '';
-                            // }
-
-                            else{
-                                self.meta_data.keyword2[i] =  response.entities[i].W[1];
-                                self.meta_data.keyword3[i] =  response.entities[i].W[2];
-                                self.meta_data.keyword4[i] =  response.entities[i].W[3];
-                                // self.meta_data.keyword5[i] =  response.entities[i].W[4];
-                                // self.meta_data.keyword6[i] =  response.entities[i].W[5];
-                                // self.meta_data.keyword7[i] =  response.entities[i].W[6];
-                            }
-                        }
-                        // console.log(E);
-                        // console.log("meta data: " , self.meta_data);
-                        $scope.loader = true;
-                        var t2 = performance.now();
-                        $scope.performance = "Results took " + (Math.round(t2 - t1)/1000).toFixed(3)   + " seconds";
-
-
-                        $scope.$digest();
-                    }).fail(function(response) {
-                        console.log('evaluate error: ', response)
-                    }));
-                }
-            }
-        }
-});
-app.factory('BioMedService',function($http, $q, $log){
-    var self = this;
-    var interpret_link = "https://api.projectoxford.ai/academic/v1.0/interpret?";
-    var evaluate_link =  "https://api.projectoxford.ai/academic/v1.0/evaluate?";
+    var evaluate_link = "https://api.projectoxford.ai/academic/v1.0/evaluate?";
     var key = "03651106c156405b9f833184b7fa09ab";
     console.log("Microsoft provider");
     return {
-        callApi: function ($scope, query,meta_data,order,$rootScope) {
+        callApi: function ($scope, query, meta_data, order, $rootScope) {
             var t1 = performance.now();
-            console.log("mircosoft query: " , $rootScope.query);
+            console.log("mircosoft query: ", $rootScope.query);
             $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
-            $rootScope.query= query;
+            $rootScope.query = query;
             var params = {
                 // Request parameters
                 query: $rootScope.query.toLowerCase(),
                 model: "latest",
                 count: "10",
                 offset: "0",
-                complete:1
+                complete: 1
                 // orderby:'Y:asc'
             };
             //I really hate using jquery ajax in angular but I could not fix the cross origin error so I had no choice to use ajax.
             $.ajax({
                 url: interpret_link + $.param(params),
-                beforeSend: function(xhrObj){
+                beforeSend: function (xhrObj) {
                     // Request headers
                     xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", key);
                 },
                 type: "GET",
-                crossDomain : true,
+                crossDomain: true,
                 // Request body
-                dataType:'json'
-            }).done(function(response) {
-                if(!response.interpretations[0]){
+                dataType: 'json'
+            }).done(function (response) {
+                if (!response.interpretations[0]) {
                     console.log('invalid name');
                     $scope.$apply($scope.results = false);
-                }else{
-                    console.log("success interpret: " , response);
+                } else {
+                    console.log("success interpret: ", response);
                     $scope.$apply($scope.results = true);
-                    microsoft_evaluate(response.interpretations[0].rules[0].output.value,meta_data,order);
+                    microsoft_evaluate(response.interpretations[0].rules[0].output.value, meta_data, order);
                 }
-            }).fail(function() {
+            }).fail(function () {
                 console.log("error interpret");
             });
-            function microsoft_evaluate(interpret,meta_data,order){
+            function microsoft_evaluate(interpret, meta_data, order) {
                 console.log(order);
 
-                if(order){
+                if (order) {
                     order = 'Y:desc';
-                }else{
+                } else {
                     order = ''
                 }
                 self.meta_data = meta_data;
@@ -976,24 +781,24 @@ app.factory('BioMedService',function($http, $q, $log){
                 };
                 $scope.$digest($.ajax({
                     url: evaluate_link + $.param(params2) + "&attributes=Ti,Y,CC,AA.AuN,F.FN,J.JN,W,E",
-                    beforeSend: function(xhrObj){
+                    beforeSend: function (xhrObj) {
                         // Request headers
                         xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", key);
                     },
                     type: "GET",
                     // Request body
-                    dataType:'json'
-                }).done(function(response) {
+                    dataType: 'json'
+                }).done(function (response) {
                     var E = null;
                     $scope.$digest();
                     console.log('evaluate: ', response);
-                    for(var i= 0;i<13;i++){
-                        if(!response.entities[i]){
+                    for (var i = 0; i < 13; i++) {
+                        if (!response.entities[i]) {
                             break;
                         }
-                        else{
+                        else {
                             console.log('E');
-                            E =  response.entities[i].E;
+                            E = response.entities[i].E;
                             E = JSON.parse(E);
                             self.meta_data.title[i] = E.DN;
                             self.meta_data.summary[i] = E.D;
@@ -1020,27 +825,27 @@ app.factory('BioMedService',function($http, $q, $log){
                             }
                             self.meta_data.summary[i] = E.D;
                         }
-                        self.meta_data.year[i]= response.entities[i].Y;
+                        self.meta_data.year[i] = response.entities[i].Y;
                         self.meta_data.author1[i] = response.entities[i].AA[0]['AuN'];
-                        if(!response.entities[i].AA[1]){
-                            self.meta_data.author2[i] =  '';
-                            self.meta_data.author3[i] =  '';
-                        }else if(!response.entities[i].AA[2]){
-                            self.meta_data.author2[i] =  response.entities[i].AA[1]['AuN'];
-                            self.meta_data.author3[i] =  '';
-                        }else{
-                            self.meta_data.author2[i] =  response.entities[i].AA[1]['AuN'];
-                            self.meta_data.author3[i] =  response.entities[i].AA[2]['AuN'];
+                        if (!response.entities[i].AA[1]) {
+                            self.meta_data.author2[i] = '';
+                            self.meta_data.author3[i] = '';
+                        } else if (!response.entities[i].AA[2]) {
+                            self.meta_data.author2[i] = response.entities[i].AA[1]['AuN'];
+                            self.meta_data.author3[i] = '';
+                        } else {
+                            self.meta_data.author2[i] = response.entities[i].AA[1]['AuN'];
+                            self.meta_data.author3[i] = response.entities[i].AA[2]['AuN'];
                         }
                         self.meta_data.keyword1[i] = response.entities[i].W[0];
-                        if(!response.entities[i].W[1]){
-                            self.meta_data.keyword2[i] =  '';
-                            self.meta_data.keyword3[i] =  '';
-                            self.meta_data.keyword4[i] =  '';
+                        if (!response.entities[i].W[1]) {
+                            self.meta_data.keyword2[i] = '';
+                            self.meta_data.keyword3[i] = '';
+                            self.meta_data.keyword4[i] = '';
                             // self.meta_data.keyword5[i] =  '';
                             // self.meta_data.keyword6[i] =  '';
                             // self.meta_data.keyword7[i] =  '';
-                        }else if(!response.entities[i].W[2]) {
+                        } else if (!response.entities[i].W[2]) {
                             self.meta_data.keyword2[i] = response.entities[i].W[1];
                             self.meta_data.keyword3[i] = '';
                             self.meta_data.keyword4[i] = '';
@@ -1048,10 +853,10 @@ app.factory('BioMedService',function($http, $q, $log){
                             // self.meta_data.keyword6[i] =  '';
                             // self.meta_data.keyword7[i] =  '';
                         }
-                        else if(!response.entities[i].W[3]){
-                            self.meta_data.keyword2[i] =  response.entities[i].W[1];
-                            self.meta_data.keyword3[i] =  response.entities[i].W[2];
-                            self.meta_data.keyword4[i] =  '';
+                        else if (!response.entities[i].W[3]) {
+                            self.meta_data.keyword2[i] = response.entities[i].W[1];
+                            self.meta_data.keyword3[i] = response.entities[i].W[2];
+                            self.meta_data.keyword4[i] = '';
                             // self.meta_data.keyword5[i] =  '';
                             // self.meta_data.keyword6[i] =  '';
                             // self.meta_data.keyword7[i] =  '';
@@ -1082,10 +887,10 @@ app.factory('BioMedService',function($http, $q, $log){
                         //     self.meta_data.keyword7[i] =  '';
                         // }
 
-                        else{
-                            self.meta_data.keyword2[i] =  response.entities[i].W[1];
-                            self.meta_data.keyword3[i] =  response.entities[i].W[2];
-                            self.meta_data.keyword4[i] =  response.entities[i].W[3];
+                        else {
+                            self.meta_data.keyword2[i] = response.entities[i].W[1];
+                            self.meta_data.keyword3[i] = response.entities[i].W[2];
+                            self.meta_data.keyword4[i] = response.entities[i].W[3];
                             // self.meta_data.keyword5[i] =  response.entities[i].W[4];
                             // self.meta_data.keyword6[i] =  response.entities[i].W[5];
                             // self.meta_data.keyword7[i] =  response.entities[i].W[6];
@@ -1095,39 +900,112 @@ app.factory('BioMedService',function($http, $q, $log){
                     // console.log("meta data: " , self.meta_data);
                     $scope.loader = true;
                     var t2 = performance.now();
-                    $scope.performance = "Results took " + (Math.round(t2 - t1)/1000).toFixed(3)   + " seconds";
+                    $scope.performance = "Results took " + (Math.round(t2 - t1) / 1000).toFixed(3) + " seconds";
 
 
                     $scope.$digest();
-                }).fail(function(response) {
+                }).fail(function (response) {
                     console.log('evaluate error: ', response)
                 }));
             }
         }
     }
 });
-app.factory('searchString',function($http,$q,$rootScope){
+app.factory('BioMedService', function ($http, $q, $log) {
+    var self = this;
+    var interpret_link = "https://api.projectoxford.ai/academic/v1.0/interpret?";
+    var evaluate_link = "https://api.projectoxford.ai/academic/v1.0/evaluate?";
+    var key = "03651106c156405b9f833184b7fa09ab";
+    console.log("Microsoft provider");
+    return {
+        callApi: function ($scope, query, meta_data, order, $rootScope) {
+            var t1 = performance.now();
+            console.log("BioMed query: ", $rootScope.query);
+            $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
+            $rootScope.query = query;
+            var params = {
+                // Request parameters
+                query: $rootScope.query.toLowerCase(),
+                model: "latest",
+                count: "10",
+                offset: "0",
+                complete: 1
+                // orderby:'Y:asc'
+            };
+
+
+            //I really hate using jquery ajax in angular but I could not fix the cross origin error so I had no choice to use ajax.
+            $scope.$digest(
+                $.ajax({
+                    url: "http://api.springer.com/metadata/json?&api_key=aad28331d38b527c831274156fde309c&q=" + query + "&s=1&p=13&date=2000",
+                    dataType: 'json',
+                    type: "GET"
+                    // Request body
+                }).success(function (response) {
+                    $('.content').text('');
+                    console.log('success: ', JSON.parse(response));
+                    //brain+year:2015  <----query syntax to use in search sort by year
+                    var allData = JSON.parse(response);
+//                var year  = allData.records[i].publicationDate[0] +allData.records[i].publicationDate[1] + allData.records[i].publicationDate[2] + allData.records[i].publicationDate[3];
+//                 for(var i = 0;i<allData.records.length;i++){
+//                     $('.content').append("<h2> Title : "+ allData.records[i].title +"</h2>")
+//                         .append("<h2> Year : "+  allData.records[i].publicationDate[0] +allData.records[i].publicationDate[1] + allData.records[i].publicationDate[2] + allData.records[i].publicationDate[3] + "</h2>")
+//                         .append("<p> Summary : <br>"+ allData.records[i].abstract +"</p>")
+//                         .append("<h4> Authors : <br>"+ allData.records[i].creators[0].creator +"</h4>")
+//                         .append("<a> Link : <br>"+ allData.records[i].url[0].value +"</a> <br><hr>");
+// //                          .append("<a> Keywords : <br>"+ allData.facets[i].values[0].value +"</a><hr>");
+//                 }
+
+                    $scope.$digest();
+                    console.log('BIOMED RESPONSE: ', response);
+                    for (var i = 0; i < allData.records; i++) {
+
+                        self.meta_data.title[i] = allData.records[i].title;
+                        self.meta_data.summary[i] = allData.records[i].abstract;
+                        self.meta_data.link1[i] = allData.records[i].url[0].value;
+                        self.meta_data.link2[i] = '';
+                        self.meta_data.link3[i] = '';
+                        self.meta_data.year[i] = allData.records[i].publicationDate[0] + allData.records[i].publicationDate[1] + allData.records[i].publicationDate[2] + allData.records[i].publicationDate[3];
+                        
+                        self.meta_data.author1[i] = allData.records[i].creators[0].creator;
+                        self.meta_data.keyword1[i] = allData.facets[i].values[0].value;
+                        self.meta_data.keyword2[i] = '';
+                        self.meta_data.keyword3[i] = '';
+                        self.meta_data.keyword4[i] = '';
+                    }
+
+                    $scope.loader = true;
+                    var t2 = performance.now();
+                    $scope.performance = "Results took " + (Math.round(t2 - t1) / 1000).toFixed(3) + " seconds";
+                    $scope.$digest();
+                }).fail(function (response) {
+                    console.log('evaluate error: ', response)
+                }));
+        }
+    }
+});
+app.factory('searchString', function ($http, $q, $rootScope) {
     var self = this;
     var link = 'backs/backs.php';
     var defer = $q.defer();
 
-    return{
-        callApi: function($scope,query,$rootScope){
-            $rootScope.query=query;
-            console.log("search string: " , $rootScope.query);
+    return {
+        callApi: function ($scope, query, $rootScope) {
+            $rootScope.query = query;
+            console.log("search string: ", $rootScope.query);
             var data = $.param({
-                search_query:query,
+                search_query: query,
                 keyword: 'searchData'
             });
             $http({
-                url:link,
+                url: link,
                 data: data,
-                method:'POST',
+                method: 'POST',
                 dataType: 'json'
-            }).then(function success(response){
+            }).then(function success(response) {
                 defer.resolve($rootScope.query);
 
-            }),function error(response){
+            }), function error(response) {
                 defer.reject("there was an error");
             };
             return defer.promise;
@@ -1135,7 +1013,7 @@ app.factory('searchString',function($http,$q,$rootScope){
     }
 
 });
-app.controller('MicrosoftController',function($scope,MicrosoftService,BioMedService,$log,searchString,$timeout,$rootScope,$location){
+app.controller('MicrosoftController', function ($scope, MicrosoftService, BioMedService, $log, searchString, $timeout, $rootScope, $location) {
     // if(window.performance){
     //     console.log('yes');
     //     if(performance.navigation.type  == 1) {
@@ -1144,26 +1022,26 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,BioMedServ
     // }
     var self = this;
     self.error = true;
-    $scope.results= true;
+    $scope.results = true;
     $scope.performance = null;
     $rootScope.query = $location.search().query;
-    self.sessionQuery = function(query){
+    self.sessionQuery = function (query) {
         $rootScope.query = query;
-      searchString.callApi($scope,query,$rootScope)
-          .then(function success(query){
-              self.makeQuery(query);
-        })
+        searchString.callApi($scope, query, $rootScope)
+            .then(function success(query) {
+                self.makeQuery(query);
+            })
     };
-    self.roots = function(query){
-        $rootScope.query=query;
+    self.roots = function (query) {
+        $rootScope.query = query;
         $location.path('/results_page').search('query', query);
     };
     self.micro = null;
     self.bioMed = null;
-    self.makeQuery = function(query,order,micro,bioMed){
-        console.log("micro: " , micro);
-        console.log("biomed: " ,bioMed);
-        console.log("order: " ,order);
+    self.makeQuery = function (query, order, micro, bioMed) {
+        console.log("micro: ", micro);
+        console.log("biomed: ", bioMed);
+        console.log("order: ", order);
 
 
         $rootScope.query = $location.search().query;
@@ -1187,14 +1065,14 @@ app.controller('MicrosoftController',function($scope,MicrosoftService,BioMedServ
             // keyword7: []
         };
         $log.warn($rootScope.query);
-        if(micro){
+        if (micro) {
             self.micro = undefined;
-            MicrosoftService.callApi($scope,query,self.meta_data,order,$rootScope);
+            MicrosoftService.callApi($scope, query, self.meta_data, order, $rootScope);
 
         }
-        else if(bioMed){
-            self.bioMed  = undefined;
-           BioMedService.callApi($scope,query,self.meta_data,order,$rootScope);
+        else if (bioMed) {
+            self.bioMed = undefined;
+            BioMedService.callApi($scope, query, self.meta_data, order, $rootScope);
 
 
         }
