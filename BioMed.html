@@ -31,6 +31,7 @@
         console.log("getData function call");
         $.ajax({
             url:"http://api.springer.com/metadata/json?&api_key=aad28331d38b527c831274156fde309c&q=" +query+ "&s=1&p=13&date=2000",
+            dataType: 'json',
             success:function(response){
                 $('.content').text('');
                 console.log('success: ' , JSON.parse(response));
@@ -42,7 +43,7 @@
                             .append("<h2> Year : "+  allData.records[i].publicationDate[0] +allData.records[i].publicationDate[1] + allData.records[i].publicationDate[2] + allData.records[i].publicationDate[3] + "</h2>")
                             .append("<p> Summary : <br>"+ allData.records[i].abstract +"</p>")
                             .append("<h4> Authors : <br>"+ allData.records[i].creators[0].creator +"</h4>")
-                            .append("<a> Link : <br>"+ allData.records[i].url[0].value +"</a> <br><hr>")
+                            .append("<a> Link : <br>"+ allData.records[i].url[0].value +"</a> <br><hr>");
 //                          .append("<a> Keywords : <br>"+ allData.facets[i].values[0].value +"</a><hr>");
                 }
                 var t1 = performance.now();
