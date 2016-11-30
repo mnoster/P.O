@@ -922,7 +922,7 @@ app.factory('BioMedService', function ($http, $q, $log) {
             var t1 = performance.now();
             console.log("BioMed query: ", $rootScope.query);
             $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
-            $rootScope.query = query;
+            $rootScope.query ='"' + query+ '"';
             self.meta_data = meta_data;
 
             //I really hate using jquery ajax in angular but I could not fix the cross origin error so I had no choice to use ajax.
@@ -960,10 +960,19 @@ app.factory('BioMedService', function ($http, $q, $log) {
                         self.meta_data.year[i] = allData.records[i].publicationDate[0] + allData.records[i].publicationDate[1] + allData.records[i].publicationDate[2] + allData.records[i].publicationDate[3];
                         
                         self.meta_data.author1[i] = allData.records[i].creators[0].creator;
-                        // self.meta_data.keyword1[i] = allData.facets[i].values[0].value;
-                        self.meta_data.keyword2[i] = '';
-                        self.meta_data.keyword3[i] = '';
-                        self.meta_data.keyword4[i] = '';
+                        if(allData.records[i].creators.length < 3){
+                            self.meta_data.author2[i] = '';
+                            self.meta_data.author3[i] = '';
+                        }else{
+                            self.meta_data.author2[i] = allData.records[i].creators[1].creator;
+                            self.meta_data.author3[i] = allData.records[i].creators[2].creator;
+                        }
+
+
+                        self.meta_data.keyword1[i] = allData.facets[5].values[8].value;
+                        self.meta_data.keyword2[i] = allData.facets[5].values[3].value;
+                        self.meta_data.keyword3[i] = allData.facets[5].values[5].value;
+                        self.meta_data.keyword4[i] = allData.facets[5].values[15].value;
                     }
 
                     $scope.loader = true;
