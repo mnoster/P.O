@@ -61,7 +61,7 @@ session_start();
                     <a href="{{mc.meta_data.link4[$index]}}" target='_blank'>link 4</a>
                 </li>
                 <li>
-                    Authors: {{mc.meta_data.author1[$index] | capitalize}}, {{mc.meta_data.author2[$index] | capitalize}}, {{mc.meta_data.author3[$index] | capitalize}}
+                    Authors: {{mc.meta_data.author1[$index] | capitalize}} || {{mc.meta_data.author2[$index] | capitalize}} || {{mc.meta_data.author3[$index] | capitalize}}
                 </li>
                 <li>keywords:  <a ng-click="mc.query =mc.meta_data.keyword1[$index]; mc.makeQuery(mc.query)">{{mc.meta_data.keyword1[$index]}} </a>, <a  ng-click="mc.query =mc.meta_data.keyword2[$index]; mc.makeQuery(mc.query)">{{mc.meta_data.keyword2[$index]}} </a>, <a  ng-click="mc.query =mc.meta_data.keyword3[$index]; mc.makeQuery(mc.query)">{{mc.meta_data.keyword3[$index]}}</a>, <a  ng-click="mc.query =mc.meta_data.keyword4[$index]; mc.makeQuery(mc.query)">{{mc.meta_data.keyword4[$index]}}</a></li>
                 <li>

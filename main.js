@@ -937,15 +937,7 @@ app.factory('BioMedService', function ($http, $q, $log) {
                     // console.log('success: ', JSON.parse(response));
                     //brain+year:2015  <----query syntax to use in search sort by year
                     var allData = response;
-//                var year  = allData.records[i].publicationDate[0] +allData.records[i].publicationDate[1] + allData.records[i].publicationDate[2] + allData.records[i].publicationDate[3];
-//                 for(var i = 0;i<allData.records.length;i++){
-//                     $('.content').append("<h2> Title : "+ allData.records[i].title +"</h2>")
-//                         .append("<h2> Year : "+  allData.records[i].publicationDate[0] +allData.records[i].publicationDate[1] + allData.records[i].publicationDate[2] + allData.records[i].publicationDate[3] + "</h2>")
-//                         .append("<p> Summary : <br>"+ allData.records[i].abstract +"</p>")
-//                         .append("<h4> Authors : <br>"+ allData.records[i].creators[0].creator +"</h4>")
-//                         .append("<a> Link : <br>"+ allData.records[i].url[0].value +"</a> <br><hr>");
-// //                          .append("<a> Keywords : <br>"+ allData.facets[i].values[0].value +"</a><hr>");
-//                 }
+
 
                     $scope.$digest();
                     console.log('BIOMED RESPONSE: ', response);
