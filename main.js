@@ -922,7 +922,7 @@ app.factory('BioMedService', function ($http, $q, $log) {
             var t1 = performance.now();
             console.log("BioMed query: ", $rootScope.query);
             $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
-            $rootScope.query = query;
+            $rootScope.query ='"' + query+ '"';
             self.meta_data = meta_data;
 
             //I really hate using jquery ajax in angular but I could not fix the cross origin error so I had no choice to use ajax.
@@ -937,15 +937,7 @@ app.factory('BioMedService', function ($http, $q, $log) {
                     // console.log('success: ', JSON.parse(response));
                     //brain+year:2015  <----query syntax to use in search sort by year
                     var allData = response;
-//                var year  = allData.records[i].publicationDate[0] +allData.records[i].publicationDate[1] + allData.records[i].publicationDate[2] + allData.records[i].publicationDate[3];
-//                 for(var i = 0;i<allData.records.length;i++){
-//                     $('.content').append("<h2> Title : "+ allData.records[i].title +"</h2>")
-//                         .append("<h2> Year : "+  allData.records[i].publicationDate[0] +allData.records[i].publicationDate[1] + allData.records[i].publicationDate[2] + allData.records[i].publicationDate[3] + "</h2>")
-//                         .append("<p> Summary : <br>"+ allData.records[i].abstract +"</p>")
-//                         .append("<h4> Authors : <br>"+ allData.records[i].creators[0].creator +"</h4>")
-//                         .append("<a> Link : <br>"+ allData.records[i].url[0].value +"</a> <br><hr>");
-// //                          .append("<a> Keywords : <br>"+ allData.facets[i].values[0].value +"</a><hr>");
-//                 }
+
 
                     $scope.$digest();
                     console.log('BIOMED RESPONSE: ', response);
@@ -960,10 +952,19 @@ app.factory('BioMedService', function ($http, $q, $log) {
                         self.meta_data.year[i] = allData.records[i].publicationDate[0] + allData.records[i].publicationDate[1] + allData.records[i].publicationDate[2] + allData.records[i].publicationDate[3];
                         
                         self.meta_data.author1[i] = allData.records[i].creators[0].creator;
-                        // self.meta_data.keyword1[i] = allData.facets[i].values[0].value;
-                        self.meta_data.keyword2[i] = '';
-                        self.meta_data.keyword3[i] = '';
-                        self.meta_data.keyword4[i] = '';
+                        if(allData.records[i].creators.length < 3){
+                            self.meta_data.author2[i] = '';
+                            self.meta_data.author3[i] = '';
+                        }else{
+                            self.meta_data.author2[i] = allData.records[i].creators[1].creator;
+                            self.meta_data.author3[i] = allData.records[i].creators[2].creator;
+                        }
+
+
+                        self.meta_data.keyword1[i] = allData.facets[5].values[8].value;
+                        self.meta_data.keyword2[i] = allData.facets[5].values[3].value;
+                        self.meta_data.keyword3[i] = allData.facets[5].values[5].value;
+                        self.meta_data.keyword4[i] = allData.facets[5].values[15].value;
                     }
 
                     $scope.loader = true;
