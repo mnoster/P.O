@@ -724,7 +724,7 @@ app.factory('MicrosoftService', function ($http, $q, $log) {
     var key = "03651106c156405b9f833184b7fa09ab";
     console.log("Microsoft provider");
     return {
-        callApi: function ($scope, query, meta_data, order, $rootScope) {
+        callApi: function ($scope, query, meta_data, order, $rootScope,offset) {
             var t1 = performance.now();
             console.log("mircosoft query: ", $rootScope.query);
             $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
@@ -777,7 +777,7 @@ app.factory('MicrosoftService', function ($http, $q, $log) {
                     model: "latest",
                     count: "13",
                     orderby: order,
-                    offset: 0
+                    offset: offset
                 };
                 $scope.$digest($.ajax({
                     url: evaluate_link + $.param(params2) + "&attributes=Ti,Y,CC,AA.AuN,F.FN,J.JN,W,E",
@@ -1035,7 +1035,7 @@ app.controller('MicrosoftController', function ($scope, MicrosoftService, BioMed
     };
     self.micro = true;
     self.bioMed = null;
-    self.makeQuery = function (query, order, micro, bioMed) {
+    self.makeQuery = function (query, order, micro, bioMed, offset) {
         console.log("micro: ", micro);
         console.log("biomed: ", bioMed);
         console.log("order: ", order);
@@ -1066,12 +1066,12 @@ app.controller('MicrosoftController', function ($scope, MicrosoftService, BioMed
             self.bioMed = null;
 
             self.microChecked = true;
-            MicrosoftService.callApi($scope, query, self.meta_data, order, $rootScope);
+            MicrosoftService.callApi($scope, query, self.meta_data, order, $rootScope, offset);
         }
         else if (bioMed) {
             self.micro = null;
             self.bioMedChecked = true;
-            BioMedService.callApi($scope, query, self.meta_data, order, $rootScope);
+            BioMedService.callApi($scope, query, self.meta_data, order, $rootScope, offset);
 
 
         }
