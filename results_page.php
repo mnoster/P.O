@@ -35,7 +35,10 @@ session_start();
             &nbsp &nbsp Order by year <input type="checkbox" ng-model="mc.order" [ng-true-value="true"] [ng-false-value="false"]>
             <a class="hidden-xs" href="http://www.citationmachine.net/apa/cite-a-journal/manual" target="_blank">
                 <img class="citation" src="Images/Citation-machine.png" height="40px">
-            </a><span class="response-time">{{performance}}</span>
+            </a>
+            <span class="response-time">{{numberOfResults}}</span>
+            <br/>
+            <span class="response-time">{{performance}}</span>
         </p>
         <div><h5 ng-click="dropdown=!dropdown"><a style="color:white;text-shadow: 1px 1px black">More Search Options</a><span class="caret"></span></h5></div>
         <div ng-show="dropdown">
@@ -63,7 +66,7 @@ session_start();
                 <li>
                     Authors: {{mc.meta_data.author1[$index] | capitalize}} || {{mc.meta_data.author2[$index] | capitalize}} || {{mc.meta_data.author3[$index] | capitalize}}
                 </li>
-                <li>keywords:  <a ng-click="mc.query =mc.meta_data.keyword1[$index]; mc.makeQuery(mc.query)">{{mc.meta_data.keyword1[$index]}} </a>, <a  ng-click="mc.query =mc.meta_data.keyword2[$index]; mc.makeQuery(mc.query)">{{mc.meta_data.keyword2[$index]}} </a>, <a  ng-click="mc.query =mc.meta_data.keyword3[$index]; mc.makeQuery(mc.query)">{{mc.meta_data.keyword3[$index]}}</a>, <a  ng-click="mc.query =mc.meta_data.keyword4[$index]; mc.makeQuery(mc.query)">{{mc.meta_data.keyword4[$index]}}</a></li>
+                <li>keywords:  <a ng-click="mc.query = mc.meta_data.keyword1[$index]; mc.makeQuery(mc.query,mc.order,mc.micro,mc.bioMed)">{{mc.meta_data.keyword1[$index]}} </a>, <a  ng-click="mc.query =mc.meta_data.keyword2[$index]; mc.makeQuery(mc.query,mc.order,mc.micro,mc.bioMed)">{{mc.meta_data.keyword2[$index]}} </a>, <a  ng-click="mc.query =mc.meta_data.keyword3[$index]; mc.makeQuery(mc.query,mc.order,mc.micro,mc.bioMed)">{{mc.meta_data.keyword3[$index]}}</a>, <a  ng-click="mc.query =mc.meta_data.keyword4[$index]; mc.makeQuery(mc.query,mc.order,mc.micro,mc.bioMed)">{{mc.meta_data.keyword4[$index]}}</a></li>
                 <li>
                     <h4 ng-click="sumClick[$index]= !sumClick[$index]" id="summary">Summary <span class="caret"></span></h4>
                     <p ng-show="sumClick[$index]" class="summary">{{mc.meta_data.summary[$index]}} <a href="{{mc.meta_data.link1[$index]}}"  target='_blank'> more</a></p>

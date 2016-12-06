@@ -966,7 +966,7 @@ app.factory('BioMedService', function ($http, $q, $log) {
                         self.meta_data.keyword3[i] = allData.facets[5].values[5].value;
                         self.meta_data.keyword4[i] = allData.facets[5].values[15].value;
                     }
-
+                        $scope.numberOfResults = allData.result[0].total + " articles found";
                     $scope.loader = true;
                     var t2 = performance.now();
                     $scope.performance = "Results took " + (Math.round(t2 - t1) / 1000).toFixed(3) + " seconds";
