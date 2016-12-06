@@ -29,7 +29,7 @@
         Access hundreds of thousands of research articles through the<span> PsychOrigins Academic Search</span>&trade;
         engine.
         Powered by <img src="Images/micosoftlogo.png" ng-click="scrollTop(nav);" height="32px"> Microsoft's Academic
-        Knowledge database, all research papers are available for instant viewing without cost.
+        Knowledge database, research papers are available for instant viewing without cost.
     </div>
 </div>
 <div class="wrapper">
@@ -90,7 +90,7 @@
                     Are you a student looking for articles and sources for your research? <br>
                     <hr style="margin:25px 0">
                     PsychOrigins provides an academic search engine and quick access to citation resources for
-                    proper APA formatting.<br>
+                    proper<span class="red"> APA formatting</span>.<br>
                     We're always looking to expand our database.
                 </div>
             </div>
@@ -98,5 +98,5 @@
     </div>
 </div>
 <div id="footer">
-    Psych Origins &copy; 2016 | <a>psyorigins@gmail.com</a> <br>  <a href="#contact">contact</a> | <a href="#about">info </a> | <a href="#results_page"> research </a>
+    Psych Origins &copy; 2016 &nbsp |&nbsp  <a>psyorigins@gmail.com</a> <br>  <a href="#contact">contact</a> &nbsp |&nbsp  <a href="#about">info </a>&nbsp  | &nbsp <a href="#results_page"> research </a>
 </div>

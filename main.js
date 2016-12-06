@@ -724,11 +724,16 @@ app.factory('MicrosoftService', function ($http, $q, $log) {
     var key = "03651106c156405b9f833184b7fa09ab";
     console.log("Microsoft provider");
     return {
-        callApi: function ($scope, query, meta_data, order, $rootScope) {
+        callApi: function ($scope, query, meta_data, order, $rootScope,offset) {
             var t1 = performance.now();
             console.log("mircosoft query: ", $rootScope.query);
             $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
             $rootScope.query = query;
+            $scope.numberOfResults = undefined;
+            $scope.numberOfResultsText = undefined;
+            $scope.strikethrough1 = false;
+            $scope.strikethrough2 = false;
+            $scope.strikethrough3 = false;
             var params = {
                 // Request parameters
                 query: $rootScope.query.toLowerCase(),
@@ -777,7 +782,7 @@ app.factory('MicrosoftService', function ($http, $q, $log) {
                     model: "latest",
                     count: "13",
                     orderby: order,
-                    offset: 0
+                    offset: offset
                 };
                 $scope.$digest($.ajax({
                     url: evaluate_link + $.param(params2) + "&attributes=Ti,Y,CC,AA.AuN,F.FN,J.JN,W,E",
@@ -916,13 +921,19 @@ app.factory('BioMedService', function ($http, $q, $log) {
     var interpret_link = "https://api.projectoxford.ai/academic/v1.0/interpret?";
     var evaluate_link = "https://api.projectoxford.ai/academic/v1.0/evaluate?";
     var key = "aad28331d38b527c831274156fde309c&q";
+
     console.log("Biomed provider");
     return {
         callApi: function ($scope, query, meta_data, order, $rootScope) {
             var t1 = performance.now();
             console.log("BioMed query: ", $rootScope.query);
             $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
-            $rootScope.query ='"' + query+ '"';
+            $rootScope.query = query;
+            $scope.strikethrough1 = true;
+            $scope.strikethrough2 = true;
+            $scope.strikethrough3 = true;
+
+            // $rootScope.query ='"' + query+ '"';
             self.meta_data = meta_data;
 
             //I really hate using jquery ajax in angular but I could not fix the cross origin error so I had no choice to use ajax.
@@ -966,7 +977,8 @@ app.factory('BioMedService', function ($http, $q, $log) {
                         self.meta_data.keyword3[i] = allData.facets[5].values[5].value;
                         self.meta_data.keyword4[i] = allData.facets[5].values[15].value;
                     }
-
+                        $scope.numberOfResults = allData.result[0].total;
+                        $scope.numberOfResultsText = " articles found";
                     $scope.loader = true;
                     var t2 = performance.now();
                     $scope.performance = "Results took " + (Math.round(t2 - t1) / 1000).toFixed(3) + " seconds";
@@ -1029,9 +1041,9 @@ app.controller('MicrosoftController', function ($scope, MicrosoftService, BioMed
         $rootScope.query = query;
         $location.path('/results_page').search('query', query);
     };
-    self.micro = null;
+    self.micro = true;
     self.bioMed = null;
-    self.makeQuery = function (query, order, micro, bioMed) {
+    self.makeQuery = function (query, order, micro, bioMed, offset) {
         console.log("micro: ", micro);
         console.log("biomed: ", bioMed);
         console.log("order: ", order);
@@ -1059,13 +1071,15 @@ app.controller('MicrosoftController', function ($scope, MicrosoftService, BioMed
         };
         $log.warn($rootScope.query);
         if (micro) {
-            self.micro = undefined;
-            MicrosoftService.callApi($scope, query, self.meta_data, order, $rootScope);
+            self.bioMed = null;
 
+            self.microChecked = true;
+            MicrosoftService.callApi($scope, query, self.meta_data, order, $rootScope, offset);
         }
         else if (bioMed) {
-            self.bioMed = undefined;
-            BioMedService.callApi($scope, query, self.meta_data, order, $rootScope);
+            self.micro = null;
+            self.bioMedChecked = true;
+            BioMedService.callApi($scope, query, self.meta_data, order, $rootScope, offset);
 
 
         }
