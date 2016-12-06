@@ -40,12 +40,12 @@ session_start();
             <br/>
             <span class="response-time">{{performance}}</span>
         </p>
-        <div><h5 ng-click="dropdown=!dropdown"><a style="color:white;text-shadow: 1px 1px black">More Search Options</a><span class="caret"></span></h5></div>
-        <div ng-show="dropdown">
-        Year <input type="text" placeholder="year" class="sharp">
-        DOI <input  type = "text" placeholder="DOI">
-        Exclude <input  type="text" placeholder="keywords to exclude">
-            </div>
+<!--        <div><h5 ng-click="dropdown=!dropdown"><a style="color:white;text-shadow: 1px 1px black">More Search Options</a><span class="caret"></span></h5></div>-->
+<!--        <div ng-show="dropdown">-->
+<!--        Year <input type="text" placeholder="year" class="sharp">-->
+<!--        DOI <input  type = "text" placeholder="DOI">-->
+<!--        Exclude <input  type="text" placeholder="keywords to exclude">-->
+<!--            </div>-->
         <div style="color:red" ng-hide="results">No results for this search</div>
     </div>
         </div>
@@ -60,7 +60,7 @@ session_start();
                     <span>{{mc.meta_data.year[$index]}} &nbsp &nbsp  &nbsp  &nbsp</span>
                     <a href="{{mc.meta_data.link1[$index]}}" target='_blank'>link 1 </a> |
                     <a href="{{mc.meta_data.link2[$index]}}" target='_blank' ng-class="{strikethrough:strikethrough1}">link 2</a>  |
-                    <a href="{{mc.meta_data.link3[$index]}}" target='_blank' ng-class="{strikethrough:strikethrough2}">link 3 </a> 
+                    <a href="{{mc.meta_data.link3[$index]}}" target='_blank' ng-class="{strikethrough:strikethrough2}">link 3 </a>
 <!--                    <a href="{{mc.meta_data.link4[$index]}}" target='_blank' ng-class="{strikethrough:strikethrough3}">link 4</a>-->
                 </li>
                 <li>
