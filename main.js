@@ -729,6 +729,11 @@ app.factory('MicrosoftService', function ($http, $q, $log) {
             console.log("mircosoft query: ", $rootScope.query);
             $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
             $rootScope.query = query;
+            $scope.numberOfResults = undefined;
+            $scope.numberOfResultsText = undefined;
+            $scope.strikethrough1 = false;
+            $scope.strikethrough2 = false;
+            $scope.strikethrough3 = false;
             var params = {
                 // Request parameters
                 query: $rootScope.query.toLowerCase(),
@@ -924,6 +929,9 @@ app.factory('BioMedService', function ($http, $q, $log) {
             console.log("BioMed query: ", $rootScope.query);
             $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
             $rootScope.query = query;
+            $scope.strikethrough1 = true;
+            $scope.strikethrough2 = true;
+            $scope.strikethrough3 = true;
 
             // $rootScope.query ='"' + query+ '"';
             self.meta_data = meta_data;

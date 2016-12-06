@@ -59,9 +59,9 @@ session_start();
                 <li>
                     <span>{{mc.meta_data.year[$index]}} &nbsp &nbsp  &nbsp  &nbsp</span>
                     <a href="{{mc.meta_data.link1[$index]}}" target='_blank'>link 1 </a> |
-                    <a href="{{mc.meta_data.link2[$index]}}" target='_blank'>link 2</a>  |
-                    <a href="{{mc.meta_data.link3[$index]}}" target='_blank'>link 3 </a> |
-                    <a href="{{mc.meta_data.link4[$index]}}" target='_blank'>link 4</a>
+                    <a href="{{mc.meta_data.link2[$index]}}" target='_blank' ng-class="{strikethrough:strikethrough1}">link 2</a>  |
+                    <a href="{{mc.meta_data.link3[$index]}}" target='_blank' ng-class="{strikethrough:strikethrough2}">link 3 </a> 
+<!--                    <a href="{{mc.meta_data.link4[$index]}}" target='_blank' ng-class="{strikethrough:strikethrough3}">link 4</a>-->
                 </li>
                 <li>
                     Authors: {{mc.meta_data.author1[$index] | capitalize}} || {{mc.meta_data.author2[$index] | capitalize}} || {{mc.meta_data.author3[$index] | capitalize}}

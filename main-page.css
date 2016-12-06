@@ -177,6 +177,9 @@ hr{
 #cheveron:hover{
     color: #767676;
 }
+.strikethrough{
+    text-decoration: line-through;
+}
 
 /*---------------------Mobile Settings-------------------------*/
 /* ----------- iPhone 5 and 5S ----------- */
