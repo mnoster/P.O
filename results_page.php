@@ -36,7 +36,7 @@ session_start();
             <a class="hidden-xs" href="http://www.citationmachine.net/apa/cite-a-journal/manual" target="_blank">
                 <img class="citation" src="Images/Citation-machine.png" height="40px">
             </a>
-            <span class="response-time">{{numberOfResults}}</span>
+            <span class="response-time">{{numberOfResults | number}}{{numberOfResultsText}}</span>
             <br/>
             <span class="response-time">{{performance}}</span>
         </p>

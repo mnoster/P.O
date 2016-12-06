@@ -916,12 +916,15 @@ app.factory('BioMedService', function ($http, $q, $log) {
     var interpret_link = "https://api.projectoxford.ai/academic/v1.0/interpret?";
     var evaluate_link = "https://api.projectoxford.ai/academic/v1.0/evaluate?";
     var key = "aad28331d38b527c831274156fde309c&q";
+
     console.log("Biomed provider");
     return {
         callApi: function ($scope, query, meta_data, order, $rootScope) {
             var t1 = performance.now();
             console.log("BioMed query: ", $rootScope.query);
             $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
+            $rootScope.query = query;
+
             // $rootScope.query ='"' + query+ '"';
             self.meta_data = meta_data;
 
@@ -966,7 +969,8 @@ app.factory('BioMedService', function ($http, $q, $log) {
                         self.meta_data.keyword3[i] = allData.facets[5].values[5].value;
                         self.meta_data.keyword4[i] = allData.facets[5].values[15].value;
                     }
-                        $scope.numberOfResults = allData.result[0].total + " articles found";
+                        $scope.numberOfResults = allData.result[0].total;
+                        $scope.numberOfResultsText = " articles found";
                     $scope.loader = true;
                     var t2 = performance.now();
                     $scope.performance = "Results took " + (Math.round(t2 - t1) / 1000).toFixed(3) + " seconds";
