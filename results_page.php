@@ -30,8 +30,8 @@ session_start();
             </div>
         </form>
         <p class="order-by">
-             All Articles <input type="radio" name="article-type" ng-model="mc.bioMed" value="bioMed">
-             Free Articles <input type="radio" name="article-type" ng-model="mc.micro" value="micro" ng-checked="true">
+             All Articles <input type="radio" name="article-type" ng-model="mc.bioMed" value="bioMed" ng-checked="mc.bioMedChecked" ng-click="mc.micro = false">
+             Free Articles <input type="radio" name="article-type" ng-model="mc.micro" value="micro" ng-checked="mc.microChecked" ng-click="mc.bioMed = false">
             &nbsp &nbsp Order by year <input type="checkbox" ng-model="mc.order" [ng-true-value="true"] [ng-false-value="false"]>
             <a class="hidden-xs" href="http://www.citationmachine.net/apa/cite-a-journal/manual" target="_blank">
                 <img class="citation" src="Images/Citation-machine.png" height="40px">

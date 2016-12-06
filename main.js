@@ -922,7 +922,7 @@ app.factory('BioMedService', function ($http, $q, $log) {
             var t1 = performance.now();
             console.log("BioMed query: ", $rootScope.query);
             $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
-            $rootScope.query ='"' + query+ '"';
+            // $rootScope.query ='"' + query+ '"';
             self.meta_data = meta_data;
 
             //I really hate using jquery ajax in angular but I could not fix the cross origin error so I had no choice to use ajax.
@@ -1029,7 +1029,7 @@ app.controller('MicrosoftController', function ($scope, MicrosoftService, BioMed
         $rootScope.query = query;
         $location.path('/results_page').search('query', query);
     };
-    self.micro = null;
+    self.micro = true;
     self.bioMed = null;
     self.makeQuery = function (query, order, micro, bioMed) {
         console.log("micro: ", micro);
@@ -1059,12 +1059,14 @@ app.controller('MicrosoftController', function ($scope, MicrosoftService, BioMed
         };
         $log.warn($rootScope.query);
         if (micro) {
-            self.micro = undefined;
-            MicrosoftService.callApi($scope, query, self.meta_data, order, $rootScope);
+            self.bioMed = null;
 
+            self.microChecked = true;
+            MicrosoftService.callApi($scope, query, self.meta_data, order, $rootScope);
         }
         else if (bioMed) {
-            self.bioMed = undefined;
+            self.micro = null;
+            self.bioMedChecked = true;
             BioMedService.callApi($scope, query, self.meta_data, order, $rootScope);
 
 
