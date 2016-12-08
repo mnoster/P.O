@@ -12,6 +12,7 @@ session_start();
     }
 </style>
 
+
 <div class="container-fluid main-contain-results" ng-controller="MicrosoftController as mc">
     <div class="container-fluid divider" >
     <div class="container">

@@ -21,6 +21,16 @@ session_start();
     <link href="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="Images/Logomakr_0X15Cd.png">
     <link href="main-page.css" type="text/css" rel="stylesheet">
+<!-- Google Analytics   -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-88577149-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 
 </head>
 <body ng-app="psychoApp">
@@ -63,7 +73,7 @@ if (isset($_SESSION['active'])) {
             <ul class="nav navbar-nav navbar-right">
                 <li ng-show="active"><a href="#logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 <li ng-hide="active"><a href="http://psychorigins.com/login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li ng-hide="active"><a href="#register">Register</a></li>
+                <li ng-hide="active"><a href="#contact">Register</a></li>
             </ul>
         </div>
     </div>
