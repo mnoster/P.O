@@ -924,7 +924,7 @@ app.factory('BioMedService', function ($http, $q, $log) {
 
     console.log("Biomed provider");
     return {
-        callApi: function ($scope, query, meta_data, order, $rootScope) {
+        callApi: function ($scope, query, meta_data, order, $rootScope,offset) {
             var t1 = performance.now();
             console.log("BioMed query: ", $rootScope.query);
             $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
@@ -939,7 +939,7 @@ app.factory('BioMedService', function ($http, $q, $log) {
             //I really hate using jquery ajax in angular but I could not fix the cross origin error so I had no choice to use ajax.
 
                 $.ajax({
-                    url: "http://api.springer.com/metadata/json?&api_key=" + key + "=" + query + "&s=1&p=13&date=2000",
+                    url: "http://api.springer.com/metadata/json?&api_key=" + key + "=" + query + "&s=" + offset + "&p=13&date=2000",
                     dataType: 'json',
                     type: "GET"
                     // Request body
