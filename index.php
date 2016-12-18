@@ -6,6 +6,14 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Psych Origins</title>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MRH3B8X');
+    </script>
+    <!-- End Google Tag Manager -->
     <meta name="keywords" content="Psychorigins,Psychorigins.com,academic search, google scholar, mircosoft academic search, psych origins, research, client, manager,free academic articles,PsychInfo,download">
     <meta name="description" content="PsychOrigins.com is a free academic search engine for researchers and health clinicians">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,6 +42,11 @@ session_start();
 
 </head>
 <body ng-app="psychoApp">
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MRH3B8X" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
 <?php
 if (isset($_SESSION['active'])) {
     echo "<span ng-init='active=true'></span>";
