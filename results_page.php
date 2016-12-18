@@ -106,8 +106,38 @@ session_start();
 
                 <li><a ng-click="scrollTop(nav); mc.makeQuery(query,mc.order,mc.micro,mc.bioMed, 172)"><span>14</span></a></li>
 
-                <li><a ng-click="scrollTop(nav); mc.makeQuery(query,mc.order,mc.micro,mc.bioMed, 186)"><span>15</span></a></li>
-                
+                <li><a ng-click="scrollTop(nav); mc.makeQuery(query,mc.order,mc.micro,mc.bioMed, 185)"><span>15</span></a></li>
+            </ul>
+            <ul  class="paginav">
+                <li><a ng-click="scrollTop(nav); mc.makeQuery(query,mc.order,mc.micro,mc.bioMed, 199)"><span>16</span></a></li>
+
+                <li><a ng-click="scrollTop(nav); mc.makeQuery(query,mc.order,mc.micro,mc.bioMed, 212)"><span>17</span></a></li>
+
+                <li><a ng-click="scrollTop(nav); mc.makeQuery(query,mc.order,mc.micro,mc.bioMed, 225)"><span>18</span></a></li>
+
+                <li><a ng-click="scrollTop(nav); mc.makeQuery(query,mc.order,mc.micro,mc.bioMed, 238)"><span>19</span></a></li>
+
+                <li><a ng-click="scrollTop(nav); mc.makeQuery(query,mc.order,mc.micro,mc.bioMed, 251)"><span>20</span></a></li>
+
+                <li><a ng-click="scrollTop(nav); mc.makeQuery(query,mc.order,mc.micro,mc.bioMed, 264)"><span>21</span></a></li>
+
+                <li><a ng-click="scrollTop(nav); mc.makeQuery(query,mc.order,mc.micro,mc.bioMed, 277)"><span>22</span></a></li>
+
+                <li><a ng-click="scrollTop(nav); mc.makeQuery(query,mc.order,mc.micro,mc.bioMed, 290)"><span>23</span></a></li>
+
+                <li><a ng-click="scrollTop(nav); mc.makeQuery(query,mc.order,mc.micro,mc.bioMed, 303)"><span>24</span></a></li>
+
+                <li><a ng-click="scrollTop(nav); mc.makeQuery(query,mc.order,mc.micro,mc.bioMed, 316)"><span>25</span></a></li>
+
+                <li><a ng-click="scrollTop(nav); mc.makeQuery(query,mc.order,mc.micro,mc.bioMed, 329)"><span>26</span></a></li>
+
+                <li><a ng-click="scrollTop(nav); mc.makeQuery(query,mc.order,mc.micro,mc.bioMed, 342)"><span>27</span></a></li>
+
+                <li><a ng-click="scrollTop(nav); mc.makeQuery(query,mc.order,mc.micro,mc.bioMed, 355)"><span>28</span></a></li>
+
+                <li><a ng-click="scrollTop(nav); mc.makeQuery(query,mc.order,mc.micro,mc.bioMed, 368)"><span>29</span></a></li>
+
+                <li><a ng-click="scrollTop(nav); mc.makeQuery(query,mc.order,mc.micro,mc.bioMed, 381)"><span>30</span></a></li>
             </ul>
     </div>
 </div>
