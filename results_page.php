@@ -26,7 +26,7 @@ session_start();
 
                 <input ng-model="query" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
                 <div class="input-group-btn">
-                    <button class="btn btn-default" ng-click="mc.makeQuery(query,mc.order,mc.micro,mc.bioMed,0)"><i class="glyphicon glyphicon-search"></i></button>
+                    <button class="btn btn-default" ng-click="mc.makeQuery(query,mc.order,mc.micro,mc.bioMed,0,mc.exact)"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
             </div>
         </form>
@@ -41,12 +41,13 @@ session_start();
             <br/>
             <span class="response-time">{{performance}}</span>
         </p>
-<!--        <div><h5 ng-click="dropdown=!dropdown"><a style="color:white;text-shadow: 1px 1px black">More Search Options</a><span class="caret"></span></h5></div>-->
-<!--        <div ng-show="dropdown">-->
-<!--        Year <input type="text" placeholder="year" class="sharp">-->
+        <div><h5 ng-click="dropdown=!dropdown"><a style="color:white;text-shadow: 1px 1px black">More Search Options</a><span class="caret"></span></h5></div>
+        <div ng-show="dropdown">
+            Search Exact Phrase <input type="checkbox" ng-model= "mc.exact" [ng-true-value="true"] [ng-false-value="false"] class="sharp">
+            <!--        Year <input type="text" placeholder="year" class="sharp">-->
 <!--        DOI <input  type = "text" placeholder="DOI">-->
 <!--        Exclude <input  type="text" placeholder="keywords to exclude">-->
-<!--            </div>-->
+            </div>
         <div style="color:red" ng-hide="results">No results for this search</div>
     </div>
         </div>
