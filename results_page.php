@@ -44,7 +44,7 @@ session_start();
         <div><h5 ng-click="dropdown=!dropdown"><a style="color:white;text-shadow: 1px 1px black">More Search Options</a><span class="caret"></span></h5></div>
         <div ng-show="dropdown">
             Search Exact Phrase <input type="checkbox" ng-model= "mc.exact" [ng-true-value="true"] [ng-false-value="false"] class="sharp">
-            <!--        Year <input type="text" placeholder="year" class="sharp">-->
+            Year <input type="text" placeholder="year" class="sharp">
 <!--        DOI <input  type = "text" placeholder="DOI">-->
 <!--        Exclude <input  type="text" placeholder="keywords to exclude">-->
             </div>

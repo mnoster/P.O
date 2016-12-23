@@ -1053,6 +1053,7 @@ app.controller('MicrosoftController', function ($scope, MicrosoftService, BioMed
         console.log("exact phrase: " , exact_phrase);
         
         $rootScope.query = $location.search().query;
+        $location.path('/results_page').search('query', query);
         $scope.loader = false;
         self.meta_data = {
             title: [],
