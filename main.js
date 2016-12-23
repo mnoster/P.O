@@ -1023,7 +1023,6 @@ app.factory('searchString', function ($http, $q, $rootScope) {
 });
 app.controller('MicrosoftController', function ($scope, MicrosoftService, BioMedService, $log, searchString, $timeout, $rootScope, $location) {
     // if(window.performance){
-    //     console.log('yes');
     //     if(performance.navigation.type  == 1) {
     //         console.log('page reloaded');
     //     }
