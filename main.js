@@ -939,7 +939,7 @@ app.factory('BioMedService', function ($http, $q, $log) {
             //I really hate using jquery ajax in angular but I could not fix the cross origin error so I had no choice to use ajax.
 
                 $.ajax({
-                    url: "http://api.springer.com/metadata/json?&api_key=" + key + "=" + query + "&s=" + offset + "&p=13",
+                    url: "http://api.springer.com/metadata/json?&api_key=" + key + '=' + '"' + query + '"' + "&s=" + offset + "&p=13",
                     dataType: 'json',
                     type: "GET"
                     // Request body
@@ -973,7 +973,7 @@ app.factory('BioMedService', function ($http, $q, $log) {
                         self.meta_data.keyword1[i] = allData.facets[5].values[8].value;
                         self.meta_data.keyword2[i] = allData.facets[5].values[3].value;
                         self.meta_data.keyword3[i] = allData.facets[5].values[5].value;
-                        self.meta_data.keyword4[i] = allData.facets[5].values[15].value;
+                        self.meta_data.keyword4[i] = allData.facets[5].values[10].value;
                     }
                         $scope.numberOfResults = allData.result[0].total;
                         $scope.numberOfResultsText = " articles found";
