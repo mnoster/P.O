@@ -924,22 +924,27 @@ app.factory('BioMedService', function ($http, $q, $log) {
 
     console.log("Biomed provider");
     return {
-        callApi: function ($scope, query, meta_data, order, $rootScope,offset) {
+        callApi: function ($scope, query, meta_data, order, $rootScope,offset,exact_phrase) {
             var t1 = performance.now();
+            var url = null;
             console.log("BioMed query: ", $rootScope.query);
             $rootScope.query = $rootScope.query.replace(/['"]+/g, '');
             $rootScope.query = query;
             $scope.strikethrough1 = true;
             $scope.strikethrough2 = true;
             $scope.strikethrough3 = true;
-
+            var all_results = "http://api.springer.com/metadata/json?&api_key=" + key + '='  + query +  "&s=" + offset + "&p=13";
+            var exact_phrase_results = "http://api.springer.com/metadata/json?&api_key=" + key + '=' + '"' + query + '"' + "&s=" + offset + "&p=13";
             // $rootScope.query ='"' + query+ '"';
             self.meta_data = meta_data;
-
+            if(exact_phrase){
+                url = exact_phrase_results;
+            }else{
+                url = all_results;
+            }
             //I really hate using jquery ajax in angular but I could not fix the cross origin error so I had no choice to use ajax.
-
                 $.ajax({
-                    url: "http://api.springer.com/metadata/json?&api_key=" + key + '=' + '"' + query + '"' + "&s=" + offset + "&p=13",
+                    url: url,
                     dataType: 'json',
                     type: "GET"
                     // Request body
@@ -1041,13 +1046,14 @@ app.controller('MicrosoftController', function ($scope, MicrosoftService, BioMed
     };
     self.micro = true;
     self.bioMed = null;
-    self.makeQuery = function (query, order, micro, bioMed, offset) {
+    self.makeQuery = function (query, order, micro, bioMed, offset,exact_phrase) {
         console.log("micro: ", micro);
         console.log("biomed: ", bioMed);
         console.log("order: ", order);
-
-
+        console.log("exact phrase: " , exact_phrase);
+        
         $rootScope.query = $location.search().query;
+        $location.path('/results_page').search('query', query);
         $scope.loader = false;
         self.meta_data = {
             title: [],
@@ -1063,9 +1069,6 @@ app.controller('MicrosoftController', function ($scope, MicrosoftService, BioMed
             keyword2: [],
             keyword3: [],
             keyword4: []
-            // keyword5: [],
-            // keyword6: [],
-            // keyword7: []
         };
         $log.warn($rootScope.query);
         if (micro) {
@@ -1077,9 +1080,7 @@ app.controller('MicrosoftController', function ($scope, MicrosoftService, BioMed
         else if (bioMed) {
             self.micro = null;
             self.bioMedChecked = true;
-            BioMedService.callApi($scope, query, self.meta_data, order, $rootScope, offset);
-
-
+            BioMedService.callApi($scope, query, self.meta_data, order, $rootScope, offset,exact_phrase);
         }
     }
 });
